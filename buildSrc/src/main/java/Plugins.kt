@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.kotlin
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -13,5 +14,11 @@ fun PluginDependenciesSpec.androidApp(): PluginDependencySpec =
 fun PluginDependenciesSpec.kotlinAndroid(): PluginDependencySpec =
     id("org.jetbrains.kotlin.android")
 
-fun PluginDependenciesSpec.ksp(): PluginDependencySpec =
+fun PluginDependenciesSpec.android(): PluginDependencySpec =
+    kotlin("android")
+
+fun PluginDependenciesSpec.kotlinKsp(): PluginDependencySpec =
     id("com.google.devtools.ksp")
+
+fun PluginDependenciesSpec.androidLibrary(): PluginDependencySpec =
+    id("com.android.library")

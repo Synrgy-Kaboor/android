@@ -16,4 +16,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Kaboor"
 include(":app")
- 
+include(":data")
+include(":domain")
+include(":common")
+include(":di")

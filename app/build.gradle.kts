@@ -4,21 +4,26 @@ plugins {
 }
 
 android {
-    namespace = "com.synrgy.kaboor"
-    compileSdk = 34
+    namespace = AppConfig.namespace_app
+    compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.synrgy.kaboor"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AppConfig.applicationId
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = generateVersionCode()
+        versionName = generateVersionName()
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfig.testInstrumentationRunner
     }
 
     buildTypes {
-        release {
+        getByName("debug") {
+            isDebuggable = true
+            isMinifyEnabled = false
+        }
+        getByName("release") {
+            isDebuggable = false
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -26,6 +31,31 @@ android {
             )
         }
     }
+
+    val env = readProperties(file("${rootProject.rootDir}/env.properties"))
+    flavorDimensions.add(AppConfig.flavorDimensions)
+    productFlavors {
+        create(AppConfig.flavorDev){
+            dimension = AppConfig.flavorDimensions
+            applicationIdSuffix = AppConfig.applicationIdSuffixDev
+            buildConfigField("String", "base_url", env.getProperty("base_url_dev") as String)
+        }
+        create(AppConfig.flavorStaging){
+            dimension = AppConfig.flavorDimensions
+            applicationIdSuffix = AppConfig.applicationIdSuffixStaging
+            buildConfigField("String", "base_url", env.getProperty("base_url_staging") as String)
+        }
+        create(AppConfig.flavorProduction){
+            dimension = AppConfig.flavorDimensions
+            applicationIdSuffix = AppConfig.applicationIdSuffixProduction
+            buildConfigField("String", "base_url", env.getProperty("base_url_production") as String)
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,13 +66,12 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    api(project(Modules.di))
+
+    implementation(Dependecies.appcompat)
+    implementation(Dependecies.material)
+    implementation(Dependecies.constraintlayout)
+    implementation(Dependecies.android_navigation_fragment)
+    implementation(Dependecies.android_navigation_ui)
 }
