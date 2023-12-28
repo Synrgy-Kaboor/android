@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="neutral1">#FFFFFF</color>
+    <color name="neutral2">#F5F5F5</color>
+    <color name="neutral3">#EDEDED</color>
+    <color name="neutral4">#E0E0E0</color>
+    <color name="neutral5">#C2C2C2</color>
+    <color name="neutral6">#9E9E9E</color>
+    <color name="neutral7">#757575</color>
+    <color name="neutral8">#505050</color>
+    <color name="neutral9">#1C1B1F</color>
+    <color name="primaryBlue">#3E7BFA</color>
+    <color name="primaryDarkBlue">#3040DC</color>
+    <color name="primaryBrightBlue">#3A42FF</color>
+    <color name="primaryLightBlue">#B1C5FF</color>
+    <color name="primaryViolet">#553285</color>
+    <color name="primaryDarkViolet">#36175E</color>
+    <color name="primaryBrightViolet">#7B52AB</color>
+    <color name="primaryLightViolet">#E5CFFC</color>
+    <color name="secondaryDanger">#CB3A31</color>
+    <color name="secondaryWarning">#F1A025</color>
+    <color name="secondarySuccess">#18AF5E</color>
+    <color name="secondaryStar">#FFD43A</color>
+    <color name="tintBlack">#BFBFBF</color>
+    <color name="tintRed">#FAEBEA</color>
+</resources>

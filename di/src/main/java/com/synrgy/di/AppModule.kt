@@ -24,5 +24,4 @@ val appModule = module {
             certificatePinner = null
         )
     }
-
 }

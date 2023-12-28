@@ -3,6 +3,8 @@
     <style name="Base.Theme.Kaboor" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/neutral1</item>
+        <item name="android:windowBackground">@color/neutral1</item>
     </style>
 
     <style name="Theme.Kaboor" parent="Base.Theme.Kaboor" />

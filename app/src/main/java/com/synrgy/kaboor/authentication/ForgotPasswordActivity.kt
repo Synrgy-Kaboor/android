@@ -1,23 +1,20 @@
-package com.synrgy.kaboor
+package com.synrgy.kaboor.authentication
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.synrgy.common.presentation.KaboorActivity
-import com.synrgy.kaboor.databinding.ActivityMainBinding
+import com.synrgy.kaboor.databinding.ActivityForgotPasswordBinding
 
-class MainActivity : KaboorActivity<ActivityMainBinding>() {
+class ForgotPasswordActivity : KaboorActivity<ActivityForgotPasswordBinding>() {
 
     companion object {
-        fun start(context: Context){
-            context.startActivity(Intent(context, MainActivity::class.java))
+        fun start(context: AppCompatActivity) {
+            context.startActivity(Intent(context, ForgotPasswordActivity::class.java))
         }
     }
 
-    override fun getViewBinding(): ActivityMainBinding =
-        ActivityMainBinding.inflate(layoutInflater)
-
+    override fun getViewBinding(): ActivityForgotPasswordBinding =
+        ActivityForgotPasswordBinding.inflate(layoutInflater)
 
     // TODO: For handle intent (Data, etc)
     override fun initIntent() {}
@@ -33,4 +30,5 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
 
     // TODO: For Observer (LiveData, etc)
     override fun initObservers() {}
+
 }
