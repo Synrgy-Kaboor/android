@@ -68,13 +68,8 @@ android {
 dependencies {
 
     api(project(Modules.di))
+    api(project(Modules.common))
 
-    implementation(Dependecies.appcompat)
-    implementation(Dependecies.material)
-    implementation(Dependecies.constraintlayout)
     implementation(Dependecies.android_navigation_fragment)
     implementation(Dependecies.android_navigation_ui)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 }

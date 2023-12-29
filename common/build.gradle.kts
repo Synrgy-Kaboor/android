@@ -23,6 +23,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -39,6 +44,9 @@ dependencies {
     api(Dependecies.junit)
     api(Dependecies.junit_ext)
     api(Dependecies.espresso_core)
+    api(Dependecies.appcompat)
+    api(Dependecies.material)
+    api(Dependecies.constraintlayout)
 
     debugApi(Dependecies.chucker)
     releaseApi(Dependecies.chucker_no_op)

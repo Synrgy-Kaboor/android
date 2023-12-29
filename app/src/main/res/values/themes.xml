@@ -5,6 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:statusBarColor">@color/neutral1</item>
         <item name="android:windowBackground">@color/neutral1</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.Kaboor" parent="Base.Theme.Kaboor" />

@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/dimen_6dp">
+    android:layout_height="wrap_content">
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/rounded_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_6dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_oval_primary"
+            android:padding="@dimen/dimen_10dp"
+            app:tint="@color/neutral1"
+            tools:src="@drawable/ic_plane" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_label"
+            style="@style/KaboorTextView.Title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/primaryBrightBlue"
+            tools:text="Pesawat Kertas" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</merge>

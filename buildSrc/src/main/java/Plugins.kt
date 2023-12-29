@@ -17,6 +17,9 @@ fun PluginDependenciesSpec.kotlinAndroid(): PluginDependencySpec =
 fun PluginDependenciesSpec.android(): PluginDependencySpec =
     kotlin("android")
 
+fun PluginDependenciesSpec.androidKotlin(): PluginDependencySpec =
+    id("kotlin-android")
+
 fun PluginDependenciesSpec.kotlinKsp(): PluginDependencySpec =
     id("com.google.devtools.ksp")
 
