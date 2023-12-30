@@ -30,7 +30,6 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
             val navHost =
                 supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
             val navController = navHost.navController
-//            bottomNav.setupWithNavController(navController)
 
             bottomNav.setOnItemSelectedListener { item ->
                 if (item.itemId != bottomNav.selectedItemId) {

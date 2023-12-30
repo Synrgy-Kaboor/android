@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
 import com.synrgy.common.R
@@ -62,5 +63,15 @@ class KaboorRoundedIcon @JvmOverloads constructor(
 
     fun setOnIconClick(onClickListener: () -> Unit) {
         this.onClickListener = onClickListener
+    }
+
+    fun setLabel(label: String) {
+        this.label = label
+        binding.tvLabel.text = label
+    }
+
+    fun setIcon(@DrawableRes icon: Int){
+        this.icon = icon
+        binding.imgIcon.setImageResource(icon)
     }
 }

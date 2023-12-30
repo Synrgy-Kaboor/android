@@ -4,4 +4,14 @@
     <string name="menu_order">Pesanan</string>
     <string name="menu_profile">Akun</string>
     <string name="menu_notification">Notifikasi</string>
+    <string name="label_plane">Pesawat</string>
+    <string name="label_car">Mobik</string>
+    <string name="label_bus">Shuttle Bus</string>
+    <string name="label_train">Kereta Bandara</string>
+    <string name="label_ticket">Bundling Ticket</string>
+    <string name="label_food">Reservasi Makanan</string>
+    <string name="label_airport">Airport Express</string>
+    <string name="label_baggage">Tambah Bagasi</string>
+    <string name="label_assurance">Asuransi Perjalanan</string>
+    <string name="label_search">Search</string>
 </resources>
