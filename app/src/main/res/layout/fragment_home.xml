@@ -3,29 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".home.HomeFragment">
 
-    <com.synrgy.common.reusable.KaboorRoundedIcon
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:icon="@drawable/ic_plane"
-        app:iconTint="@color/neutral9"
-        app:label="Plane" />
-
-    <com.google.android.material.button.MaterialButton
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:text="Simpan"
-        android:textAllCaps="false"
-        style="@style/KaboorButton.Gradient" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Simpan"
-        android:textAllCaps="false"
-        style="@style/KaboorButton.Outline" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/img_header_home" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_email"
+                    style="@style/KaboorTextInput"
+                    android:layout_centerInParent="true"
+                    android:layout_marginHorizontal="16dp"
+                    app:hintEnabled="false"
+                    app:startIconDrawable="@drawable/ic_search">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_email"
+                        style="@style/KaboorEdittext"
+                        android:background="@drawable/bg_rectangle_stroke_white"
+                        android:hint="@string/label_search"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>
