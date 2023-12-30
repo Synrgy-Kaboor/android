@@ -8,6 +8,8 @@ jobs:
     timeout-minutes: 30
     steps:
     - uses: actions/checkout@v4.1.1
+    - name: Make gradlew executable
+      run: chmod +x ./gradlew
     - name: build
       run: ./gradlew assemble
   test:
@@ -16,5 +18,7 @@ jobs:
     needs: build
     steps:
     - uses: actions/checkout@v4.1.1
+    - name: Make gradlew executable
+      run: chmod +x ./gradlew
     - name: test
       run: ./gradlew test
