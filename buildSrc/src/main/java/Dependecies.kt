@@ -26,4 +26,5 @@ object Dependecies {
     const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
     const val multi_state_view = "com.github.kennycason:kennycason:${Versions.multi_state_view}"
     const val build_tools = "com.android.tools.build:gradle:${Versions.build_tools}"
+    const val flexbox = "com.google.android.flexbox:flexbox:${Versions.flexbox}"
 }

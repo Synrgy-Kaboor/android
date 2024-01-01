@@ -8,6 +8,7 @@ import com.synrgy.common.navigation.MenuHome
 import com.synrgy.kaboor.databinding.ItemMenuHomeBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
+import com.wahidabd.library.utils.exts.onClick
 
 
 /**
@@ -19,7 +20,7 @@ import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHol
 class MenuHomeAdapter(
     private val context: Context,
     private val onItemClicked: ((MenuHome) -> Unit)?
-) : BaseAsyncRecyclerAdapter<MenuHome, MenuHomeAdapter.MenuHomeViewHolder>(){
+) : BaseAsyncRecyclerAdapter<MenuHome, MenuHomeAdapter.MenuHomeViewHolder>() {
 
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding =
         ItemMenuHomeBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -30,10 +31,13 @@ class MenuHomeAdapter(
     ): MenuHomeAdapter.MenuHomeViewHolder =
         MenuHomeViewHolder(getViewBinding(parent, viewType))
 
-    inner class MenuHomeViewHolder(binding: ViewBinding) : BaseAsyncItemViewHolder<MenuHome>(binding){
+    inner class MenuHomeViewHolder(binding: ViewBinding) :
+        BaseAsyncItemViewHolder<MenuHome>(binding) {
         override fun bind(data: MenuHome) = with(binding as ItemMenuHomeBinding) {
-            menu.setLabel(data.label)
+            menu.setLabel(context.getString(data.label))
             menu.setIcon(data.icon)
+
+            menu.onClick { onItemClicked?.invoke(data) }
         }
     }
 

@@ -14,6 +14,8 @@ import com.synrgy.common.utils.goneIf
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.onlyGoneIf
+import com.wahidabd.library.utils.exts.setHeight
+import com.wahidabd.library.utils.exts.setWidth
 
 
 /**
@@ -29,12 +31,11 @@ class KaboorRoundedIcon @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     private var binding: LayoutRoundedIconBinding
-    var label = emptyString()
-        private set
-    var icon = 0
-        private set
-    var showLabel = false
-        private set
+
+    private var label = emptyString()
+    private var icon = 0
+    private var showLabel = false
+    private var size = 50
 
     private var onClickListener: () -> Unit = {}
 
@@ -50,12 +51,15 @@ class KaboorRoundedIcon @JvmOverloads constructor(
         label = attributes.getString(R.styleable.KaboorRoundedIcon_label).orEmpty()
         icon = attributes.getResourceId(R.styleable.KaboorRoundedIcon_icon, 0)
         showLabel = attributes.getBoolean(R.styleable.KaboorRoundedIcon_showLabel, true)
+        size = attributes.getDimensionPixelSize(R.styleable.KaboorRoundedIcon_size, 50)
         attributes.recycle()
     }
 
     private fun setupView() = with(binding) {
         tvLabel.goneIf { !showLabel }
         tvLabel.text = label
+        imgIcon.setWidth(size)
+        imgIcon.setHeight(size)
 
         imgIcon.setImageResource(icon)
         roundedIcon.onClick { onClickListener.invoke() }

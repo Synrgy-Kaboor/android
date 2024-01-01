@@ -72,4 +72,5 @@ dependencies {
 
     implementation(Dependecies.android_navigation_fragment)
     implementation(Dependecies.android_navigation_ui)
+    implementation(Dependecies.flexbox)
 }

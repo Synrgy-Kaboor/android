@@ -38,10 +38,127 @@
                         style="@style/KaboorEdittext"
                         android:background="@drawable/bg_rectangle_stroke_white"
                         android:hint="@string/label_search"
+                        android:imeOptions="actionSearch"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
             </RelativeLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="@dimen/dimen_16dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="5"
+                tools:listitem="@layout/item_menu_home" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_30dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/dimen_10dp"
+                android:paddingEnd="@dimen/dimen_16dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_promo_image" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_27dp"
+                android:text="@string/label_last_seen" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_last_seen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/dimen_2dp"
+                android:paddingEnd="@dimen/dimen_16dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_last_seen" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_18dp"
+                android:text="@string/label_favorite_destination" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_90dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:text="@string/content_favorite_destination"
+                android:textColor="@color/neutral7"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_destination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_card_product"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:itemCount="3"
+                android:layout_marginTop="@dimen/dimen_2dp"
+                android:paddingHorizontal="@dimen/dimen_10dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_destination"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_38dp"
+                android:text="@string/label_view_all"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/dimen_16dp"
+                style="@style/KaboorButton.FullRounded"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:text="@string/label_best_rental_car" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_90dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:text="@string/content_best_rental_car"
+                android:textColor="@color/neutral7"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_rental"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_card_product"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:itemCount="3"
+                android:layout_marginTop="@dimen/dimen_2dp"
+                android:paddingHorizontal="@dimen/dimen_10dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_rental"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_38dp"
+                android:text="@string/label_view_all"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginBottom="@dimen/dimen_24dp"
+                style="@style/KaboorButton.FullRounded"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>
