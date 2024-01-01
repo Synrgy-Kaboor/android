@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/dimen_166dp"
+    android:layout_height="@dimen/dimen_96dp"
+    android:layout_marginStart="@dimen/dimen_14dp"
+    android:layout_marginTop="@dimen/dimen_10dp"
+    android:layout_marginBottom="@dimen/dimen_4dp"
+    app:cardElevation="@dimen/dimen_0dp"
+    app:strokeWidth="@dimen/dimen_0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_picture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            tools:src="@drawable/sample_img_manggarai" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Stasiun Manggarai"
+            style="@style/KaboorTextView.Title2"
+            android:textColor="@color/neutral1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

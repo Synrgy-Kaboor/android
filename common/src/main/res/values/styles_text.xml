@@ -36,13 +36,18 @@
 
     <style name="KaboorTextView.Title3">
         <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">@dimen/text_size_16sp</item>
     </style>
 
     <style name="KaboorTextView.Title4">
         <item name="android:fontFamily">@font/open_sans_semibold</item>
         <item name="android:textSize">@dimen/text_size_22sp</item>
     </style>
-    
+
+    <style name="KaboorTextView.Body0">
+        <item name="android:textSize">@dimen/text_size_8sp</item>
+    </style>
+
     <style name="KaboorTextView.Body1">
         <item name="android:textSize">@dimen/text_size_10sp</item>
     </style>

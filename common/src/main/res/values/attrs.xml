@@ -4,5 +4,6 @@
         <attr name="icon" format="reference"/>
         <attr name="label" format="string"/>
         <attr name="showLabel" format="boolean"/>
+        <attr name="size" format="dimension"/>
     </declare-styleable>
 </resources>

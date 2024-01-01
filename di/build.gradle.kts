@@ -33,5 +33,5 @@ android {
 }
 
 dependencies {
-    api(project(Modules.common))
+    api(project(Modules.domain))
 }

@@ -1,6 +1,7 @@
 package com.synrgy.common.navigation
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.synrgy.common.R
 
 
@@ -12,6 +13,6 @@ import com.synrgy.common.R
 
 data class MenuHome(
     val id: Int,
-    val label: String,
+    @StringRes val label: Int,
     @DrawableRes val icon: Int,
 )

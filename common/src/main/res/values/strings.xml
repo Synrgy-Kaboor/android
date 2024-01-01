@@ -14,4 +14,12 @@
     <string name="label_baggage">Tambah Bagasi</string>
     <string name="label_assurance">Asuransi Perjalanan</string>
     <string name="label_search">Search</string>
+    <string name="label_last_seen">Terakhir Anda Lihat</string>
+    <string name="label_favorite_destination">Destinasi Favorit</string>
+    <string name="content_favorite_destination">Terbang ke destinasi di Indonesia dan Internasional makin murah dengan promo akhir tahun</string>
+    <string name="label_best_rental_car">Mobil Rental Terbaik</string>
+    <string name="content_best_rental_car">Nikmati perjalanan Anda dengan rekomendasi mobil rental terbaik di situs kami</string>
+    <string name="label_view_all">Lihat Semua</string>
+    <string name="label_starting_from">Mulai Dari</string>
+    <string name="format_rating">%f/5</string>
 </resources>

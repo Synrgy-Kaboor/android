@@ -22,4 +22,5 @@ object Versions {
     const val paging = "3.2.1"
     const val multi_state_view = "2.2.0"
     const val build_tools = "8.2.0"
+    const val flexbox = "3.0.0"
 }
