@@ -12,14 +12,19 @@ class RegisterActivity : KaboorActivity<ActivityRegisterBinding>() {
     companion object {
         fun start(context: AppCompatActivity){
             context.startActivity(Intent(context, RegisterActivity::class.java))
+
         }
     }
 
     override fun getViewBinding(): ActivityRegisterBinding =
         ActivityRegisterBinding.inflate(layoutInflater)
 
+
     // TODO: For handle intent (Data, etc)
-    override fun initIntent() {}
+    override fun initIntent() {
+        val name = "teriyaki"
+        binding.tvName.text = name
+    }
 
     // TODO: For UI
     override fun initUI() {}
