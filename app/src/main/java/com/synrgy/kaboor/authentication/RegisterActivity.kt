@@ -22,8 +22,6 @@ class RegisterActivity : KaboorActivity<ActivityRegisterBinding>() {
 
     // TODO: For handle intent (Data, etc)
     override fun initIntent() {
-        val name = "teriyaki"
-        binding.tvName.text = name
     }
 
     // TODO: For UI
