@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <declare-styleable name="KaboorRoundedIcon">
-        <attr name="icon" format="reference"/>
-        <attr name="label" format="string"/>
-        <attr name="showLabel" format="boolean"/>
-        <attr name="size" format="dimension"/>
+        <attr name="kaboorRoundedIcon" format="reference" />
+        <attr name="kaboorRoundedIconLabel" format="string" />
+        <attr name="kaboorRoundedIconShowLabel" format="boolean" />
+        <attr name="kaboorRoundedIconSize" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="KaboorPassengerClass">
+        <attr name="kaboorPassengerClass_label" format="string" />
+        <attr name="kaboorPassengerClass_description" format="string" />
+        <attr name="kaboorPassengerClass_showDescription" format="boolean" />
+        <attr name="kaboorPassengerClass_type" format="enum">
+            <enum name="passenger" value="0"/>
+            <enum name="planeClass" value="1"/>
+        </attr>
+    </declare-styleable>
+
 </resources>

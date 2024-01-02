@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.synrgy.common.reusable.KaboorPassengerClass
+        android:id="@+id/kaboorPassengerClass_mature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:kaboorPassengerClass_label="@string/label_mature"
+        app:kaboorPassengerClass_showDescription="false"
+        app:kaboorPassengerClass_type="passenger" />
+
+    <com.synrgy.common.reusable.KaboorPassengerClass
+        android:id="@+id/kaboorPassengerClass_kid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:kaboorPassengerClass_description="@string/label_description_kid"
+        app:kaboorPassengerClass_label="@string/label_kid"
+        app:kaboorPassengerClass_type="passenger" />
+
+    <com.synrgy.common.reusable.KaboorPassengerClass
+        android:id="@+id/kaboorPassengerClass_baby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:kaboorPassengerClass_description="@string/label_description_baby"
+        app:kaboorPassengerClass_label="@string/label_baby"
+        app:kaboorPassengerClass_type="passenger" />
+
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/KaboorTextView.Title1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:text="@string/message_ticket_plane"
+        android:textColor="@color/neutral6" />
+
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/KaboorTextView.Title1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:text="@string/message_instruction_plane"
+        android:textColor="@color/primaryBrightBlue"
+        android:layout_marginBottom="@dimen/dimen_14dp"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

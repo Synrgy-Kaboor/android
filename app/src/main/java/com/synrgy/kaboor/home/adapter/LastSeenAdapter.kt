@@ -8,6 +8,7 @@ import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.kaboor.databinding.ItemLastSeenBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
+import com.wahidabd.library.utils.exts.onClick
 
 
 /**
@@ -35,6 +36,10 @@ class LastSeenAdapter(
         override fun bind(data: LastSeen) = with(binding as ItemLastSeenBinding) {
             tvName.text = data.name
             imgPicture.setImageResource(data.image)
+
+            root.onClick {
+                onItemClick.invoke(data.id)
+            }
         }
     }
 
