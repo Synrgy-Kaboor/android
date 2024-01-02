@@ -22,4 +22,14 @@
     <string name="label_view_all">Lihat Semua</string>
     <string name="label_starting_from">Mulai Dari</string>
     <string name="format_rating">%f/5</string>
+    <string name="label_mature">Dewasa</string>
+    <string name="label_kid">Anak</string>
+    <string name="label_baby">Bayi</string>
+    <string name="label_description_kid">2-11 tahun saat melakukan perjalanan</string>
+    <string name="label_description_baby">Dibawah 2 tahun saat melakukan perjalanan</string>
+    <string name="message_ticket_plane">Hasil menampilkan harga rata-rata per penumpang sudah termasuk pajak, harga dapat bervariasi tergantung jenis penumpang.</string>
+    <string name="message_instruction_plane">Instruksi pesan tiket untuk anak dan bayi</string>
+    <string name="label_save">Simpan</string>
+    <string name="label_passenger">Penumpang</string>
+    <string name="label_class">Kelas</string>
 </resources>

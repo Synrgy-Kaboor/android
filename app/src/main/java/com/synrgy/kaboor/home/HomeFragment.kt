@@ -9,17 +9,22 @@ import com.google.android.flexbox.JustifyContent
 import com.synrgy.common.navigation.ConstantMenu
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.common.utils.enums.ProductAdapterType
-import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.synrgy.kaboor.databinding.FragmentHomeBinding
 import com.synrgy.kaboor.home.adapter.CardProductAdapter
 import com.synrgy.kaboor.home.adapter.LastSeenAdapter
 import com.synrgy.kaboor.home.adapter.MenuHomeAdapter
 import com.synrgy.kaboor.home.adapter.PromoAdapter
+import com.synrgy.kaboor.ticket.PassengerBottomSheetFragment
+import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.wahidabd.library.utils.common.showToast
 
 class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
 
     private val menuHomeAdapter by lazy {
-        MenuHomeAdapter(requireContext(), onItemClicked = {})
+        MenuHomeAdapter(
+            requireContext(),
+            onItemClicked = { showToast(it.id.toString()) }
+        )
     }
 
     private val promoAdapter by lazy {
@@ -27,15 +32,25 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
     }
 
     private val lastSeenAdapter by lazy {
-        LastSeenAdapter(requireContext(), onItemClick = {})
+        LastSeenAdapter(
+            requireContext(),
+            onItemClick = { showToast(it.toString()) }
+        )
     }
 
     private val destinationAdapter by lazy {
-        CardProductAdapter(requireContext(), ProductAdapterType.HOME, onClick = {})
+        CardProductAdapter(
+            requireContext(),
+            ProductAdapterType.HOME,
+            onClick = { showDialog() })
     }
 
     private val rentalAdapter by lazy {
-        CardProductAdapter(requireContext(), ProductAdapterType.HOME, onClick = {})
+        CardProductAdapter(
+            requireContext(),
+            ProductAdapterType.HOME,
+            onClick = {}
+        )
     }
 
     override fun getViewBinding(
@@ -70,23 +85,31 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
     // TODO: For Observer (LiveData, etc)
     override fun initObservers() {}
 
-    private fun initMenu() = with(binding){
-        val layoutManager = FlexboxLayoutManager(requireContext())
+    private fun initMenu() = with(binding) {
+        val layoutManager = FlexboxLayoutManager(activity)
         layoutManager.flexDirection = FlexDirection.ROW
         layoutManager.justifyContent = JustifyContent.CENTER
         rvMenu.layoutManager = layoutManager
         rvMenu.adapter = menuHomeAdapter
     }
 
-    private fun initPromo() = with(binding){
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    private fun initPromo() = with(binding) {
+        val layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         rvPromo.layoutManager = layoutManager
         rvPromo.adapter = promoAdapter
     }
 
-    private fun initLastSeen() = with(binding){
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    private fun initLastSeen() = with(binding) {
+        val layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         rvLastSeen.layoutManager = layoutManager
         rvLastSeen.adapter = lastSeenAdapter
+    }
+
+    // TODO: Remove this after testing
+    private fun showDialog() {
+        PassengerBottomSheetFragment.newInstance()
+            .showBottomSheet(parentFragmentManager)
     }
 }

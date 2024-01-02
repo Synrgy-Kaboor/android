@@ -19,7 +19,7 @@ import com.wahidabd.library.utils.exts.onClick
 
 class MenuHomeAdapter(
     private val context: Context,
-    private val onItemClicked: ((MenuHome) -> Unit)?
+    private val onItemClicked: (MenuHome) -> Unit
 ) : BaseAsyncRecyclerAdapter<MenuHome, MenuHomeAdapter.MenuHomeViewHolder>() {
 
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding =
@@ -37,7 +37,7 @@ class MenuHomeAdapter(
             menu.setLabel(context.getString(data.label))
             menu.setIcon(data.icon)
 
-            menu.onClick { onItemClicked?.invoke(data) }
+            menu.setOnIconClick { onItemClicked(data) }
         }
     }
 

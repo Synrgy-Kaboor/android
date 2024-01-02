@@ -10,6 +10,7 @@ import com.synrgy.common.utils.enums.ProductAdapterType
 import com.synrgy.kaboor.databinding.ItemCardProductBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
+import com.wahidabd.library.utils.exts.onClick
 
 
 /**
@@ -45,8 +46,8 @@ class CardProductAdapter(
             ratingBar.rating = data.rating
             imgPicture.setImageResource(data.image ?: R.drawable.sample_img_car2)
 
-            root.setOnClickListener {
-                onClick(data)
+            root.onClick {
+                onClick.invoke(data)
             }
         }
     }
