@@ -2,4 +2,16 @@
     <string name="app_name">Kaboor</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="karakter_tujuh">Min. 7 Karakter berupa kombinasi angka, huruf besar, dan huruf kecil</string>
+    <string name="menyetujui_syarat">Dengan membuat akun kamu menyetujui Syarat, Ketentuan dan Kebijakan Privasi Kaboor</string>
+    <string name="email">Alamat Email</string>
+    <string name="email_example">andrehutshon230@gmail.com</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="nama_example">Ucop Maulana</string>
+    <string name="sesuai_di_ktp_paspor_sim">Sesuai di KTP/Paspor/SIM</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="buat_akun">Buat Akun</string>
+    <string name="udah_punya_akun_log_in_aja">Udah punya akun? Log in aja!</string>
+    <string name="login_syarat">Dengan Log In kamu menyerujui Syarat, Ketentuan dan Kebijakan Privasi Kaboor</string>
+    <string name="masukkan_email">Masukkan Email</string>
 </resources>
