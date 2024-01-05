@@ -16,4 +16,13 @@
     <style name="KaboorModalDialog" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bg_bottom_sheet_dialog</item>
     </style>
+
+    <style name="KaboorCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/neutral1</item>
+        <item name="rippleColor">@color/rippleCard</item>
+        <item name="cardElevation">@dimen/dimen_3dp</item>
+        <item name="cardCornerRadius">@dimen/dimen_8dp</item>
+        <item name="strokeWidth">@dimen/dimen_1dp</item>
+        <item name="strokeColor">@color/neutral6</item>
+    </style>
 </resources>

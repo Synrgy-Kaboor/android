@@ -6,16 +6,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.synrgy.common.navigation.ConstantMenu
 import com.synrgy.common.presentation.KaboorFragment
+import com.synrgy.common.utils.MenuHome
+import com.synrgy.common.utils.constant.ConstantMenu
 import com.synrgy.common.utils.enums.ProductAdapterType
 import com.synrgy.kaboor.databinding.FragmentHomeBinding
 import com.synrgy.kaboor.home.adapter.CardProductAdapter
 import com.synrgy.kaboor.home.adapter.LastSeenAdapter
 import com.synrgy.kaboor.home.adapter.MenuHomeAdapter
 import com.synrgy.kaboor.home.adapter.PromoAdapter
-import com.synrgy.kaboor.ticket.PassengerBottomSheetFragment
 import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.synrgy.kaboor.utils.navigation.NavHomeDirection
 import com.wahidabd.library.utils.common.showToast
 
 class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
@@ -23,7 +24,7 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
     private val menuHomeAdapter by lazy {
         MenuHomeAdapter(
             requireContext(),
-            onItemClicked = { showToast(it.id.toString()) }
+            onItemClicked = ::handleNavigationMenu
         )
     }
 
@@ -42,7 +43,7 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
         CardProductAdapter(
             requireContext(),
             ProductAdapterType.HOME,
-            onClick = { showDialog() })
+            onClick = { })
     }
 
     private val rentalAdapter by lazy {
@@ -107,9 +108,7 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
         rvLastSeen.adapter = lastSeenAdapter
     }
 
-    // TODO: Remove this after testing
-    private fun showDialog() {
-        PassengerBottomSheetFragment.newInstance()
-            .showBottomSheet(parentFragmentManager)
+    private fun handleNavigationMenu(menuHome: MenuHome) {
+        NavHomeDirection.navDirection(menuHome, requireContext())
     }
 }

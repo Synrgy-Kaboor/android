@@ -1,4 +1,4 @@
-package com.synrgy.common.utils
+package com.synrgy.common.utils.ext
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity

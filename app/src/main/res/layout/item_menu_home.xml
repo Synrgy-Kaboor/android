@@ -14,6 +14,7 @@
         android:id="@+id/menu"
         android:background="?selectableItemBackground"
         tools:kaboorRoundedIcon="@drawable/ic_plane"
+        app:kaboorRoundedIcon_padding="@dimen/dimen_12dp"
         app:kaboorRoundedIconSize="@dimen/dimen_56dp"
         tools:kaboorRoundedIconLabel="Asuransi Perjalanan"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

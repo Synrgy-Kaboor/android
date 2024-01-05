@@ -4,14 +4,13 @@
     <declare-styleable name="KaboorRoundedIcon">
         <attr name="kaboorRoundedIcon" format="reference" />
         <attr name="kaboorRoundedIconLabel" format="string" />
-        <attr name="kaboorRoundedIconShowLabel" format="boolean" />
         <attr name="kaboorRoundedIconSize" format="dimension" />
+        <attr name="kaboorRoundedIcon_padding" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="KaboorPassengerClass">
         <attr name="kaboorPassengerClass_label" format="string" />
         <attr name="kaboorPassengerClass_description" format="string" />
-        <attr name="kaboorPassengerClass_showDescription" format="boolean" />
         <attr name="kaboorPassengerClass_type" format="enum">
             <enum name="passenger" value="0"/>
             <enum name="planeClass" value="1"/>

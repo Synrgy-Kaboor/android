@@ -10,7 +10,7 @@
     <string name="label_train">Kereta Bandara</string>
     <string name="label_ticket">Bundling Ticket</string>
     <string name="label_food">Reservasi Makanan</string>
-    <string name="label_airport">Airport Express</string>
+    <string name="label_airport_express">Airport Express</string>
     <string name="label_baggage">Tambah Bagasi</string>
     <string name="label_assurance">Asuransi Perjalanan</string>
     <string name="label_search">Search</string>
@@ -32,4 +32,14 @@
     <string name="label_save">Simpan</string>
     <string name="label_passenger">Penumpang</string>
     <string name="label_class">Kelas</string>
+    <string name="format_message_welcome_user">Selamat %s, %s</string>
+    <string name="label_where_going">Mau kemana hari ini?</string>
+    <string name="label_for">Dari</string>
+    <string name="label_to">Ke</string>
+    <string name="format_airport">%s, %s</string>
+    <string name="label_departure">Keberangkatan</string>
+    <string name="label_homecoming">Kepulangan</string>
+    <string name="label_search_id">Cari</string>
+    <string name="format_passenger_count">%d Orang</string>
+    <string name="label_airport">Bandara</string>
 </resources>

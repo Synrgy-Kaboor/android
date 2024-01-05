@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:kaboorPassengerClass_label="@string/label_mature"
-        app:kaboorPassengerClass_showDescription="false"
         app:kaboorPassengerClass_type="passenger" />
 
     <com.synrgy.common.reusable.KaboorPassengerClass
