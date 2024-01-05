@@ -35,7 +35,8 @@
                 android:paddingStart="16dp" />
 
             <!-- Tambahkan teks detail di tengah -->
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.SubHeading2"
                 android:id="@+id/tvDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
