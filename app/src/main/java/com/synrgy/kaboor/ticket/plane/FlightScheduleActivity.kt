@@ -7,8 +7,11 @@ import com.synrgy.common.model.AirportData
 import com.synrgy.common.model.PassengerData
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.enums.AirportType
+import com.synrgy.common.utils.enums.PlaneClassType
+import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.kaboor.databinding.ActivityFlightScheduleBinding
 import com.synrgy.kaboor.ticket.plane.dialog.AirportBottomSheetFragment
+import com.synrgy.kaboor.ticket.plane.dialog.FlightClassBottomSheetFragment
 import com.synrgy.kaboor.ticket.plane.dialog.PassengerBottomSheetFragment
 import com.wahidabd.library.utils.exts.onClick
 
@@ -17,6 +20,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     private var passengerData = PassengerData()
     private var departure: AirportData? = null
     private var arrival: AirportData? = null
+    private var planeClassType: PlaneClassType = PlaneClassType.EKONOMI
 
     companion object {
         fun start(context: Context) {
@@ -31,12 +35,16 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
 
     override fun initUI() = with(binding) {
         tvPassenger.text = getString(R.string.format_passenger_count, passengerData.count)
+        tvClass.text = planeClassType.label
     }
 
     override fun initAction() = with(binding) {
         cardPassenger.onClick { showPassengerDialog() }
         kaboorFlight.setOnDepartureListener { showAirportDialog(AirportType.DEPARTURE) }
         kaboorFlight.setOnArrivalListener { showAirportDialog(AirportType.ARRIVAL) }
+        kaboorSchedule.setOnComingHomeListener { showDatePicker(AirportType.ARRIVAL) }
+        kaboorSchedule.setOnDepartureListener { showDatePicker(AirportType.DEPARTURE) }
+        cardClass.onClick { showPlaneClassDialog() }
     }
 
     override fun initProcess() {}
@@ -56,13 +64,14 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         ).show(supportFragmentManager, PassengerBottomSheetFragment::class.java.name)
     }
 
-    private fun showAirportDialog(type: AirportType){
+    private fun showAirportDialog(type: AirportType) {
         AirportBottomSheetFragment.newInstance { airportData ->
-            when(type){
+            when (type) {
                 AirportType.DEPARTURE -> {
                     departure = airportData
                     binding.kaboorFlight.setDeparture(airportData)
                 }
+
                 AirportType.ARRIVAL -> {
                     arrival = airportData
                     binding.kaboorFlight.setArrival(airportData)
@@ -70,4 +79,21 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
             }
         }.show(supportFragmentManager, AirportBottomSheetFragment::class.java.name)
     }
+
+    private fun showPlaneClassDialog() {
+        FlightClassBottomSheetFragment.newInstance(defaultItem = planeClassType) { type ->
+            planeClassType = type
+            binding.tvClass.text = type.label
+        }.show(supportFragmentManager, FlightClassBottomSheetFragment::class.java.name)
+    }
+
+    private fun showDatePicker(type: AirportType) = with(binding) {
+        showDatePicker { date ->
+            when (type) {
+                AirportType.DEPARTURE -> kaboorSchedule.setDeparture(date)
+                AirportType.ARRIVAL -> kaboorSchedule.setComingHome(date)
+            }
+        }
+    }
+
 }

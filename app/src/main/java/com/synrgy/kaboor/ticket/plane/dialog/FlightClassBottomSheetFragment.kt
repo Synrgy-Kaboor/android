@@ -3,7 +3,11 @@ package com.synrgy.kaboor.ticket.plane.dialog
 import android.view.LayoutInflater
 import com.synrgy.common.R
 import com.synrgy.common.presentation.KaboorBottomSheet
+import com.synrgy.common.utils.enums.PlaneClassType
+import com.synrgy.common.utils.ext.Selectable
 import com.synrgy.kaboor.databinding.FragmentFlightClassBottomSheetBinding
+import com.synrgy.kaboor.ticket.plane.adapter.PlaneClassAdapter
+import com.wahidabd.library.utils.exts.onClick
 
 
 /**
@@ -14,6 +18,30 @@ import com.synrgy.kaboor.databinding.FragmentFlightClassBottomSheetBinding
 
 class FlightClassBottomSheetFragment : KaboorBottomSheet<FragmentFlightClassBottomSheetBinding>() {
 
+    private val planeClassAdapter by lazy {
+        PlaneClassAdapter(
+            requireContext(),
+            defaultItem
+        ) { type ->
+            onSave.invoke(type)
+        }
+    }
+
+    private var defaultItem: PlaneClassType = PlaneClassType.EKONOMI
+    private var onSave: (PlaneClassType) -> Unit = {}
+
+    companion object {
+        fun newInstance(
+            defaultItem: PlaneClassType,
+            onSave: (PlaneClassType) -> Unit,
+        ): FlightClassBottomSheetFragment {
+            return FlightClassBottomSheetFragment().apply {
+                this.onSave = onSave
+                this.defaultItem = defaultItem
+            }
+        }
+    }
+
     override val tagName: String = FlightClassBottomSheetFragment::class.java.name
     override fun getTitle(): String = getString(R.string.label_class)
     override fun setCancelButtonEnable(): Boolean = true
@@ -21,4 +49,15 @@ class FlightClassBottomSheetFragment : KaboorBottomSheet<FragmentFlightClassBott
 
     override fun getContentBinding(inflater: LayoutInflater): FragmentFlightClassBottomSheetBinding =
         FragmentFlightClassBottomSheetBinding.inflate(layoutInflater)
+
+    override fun initUI() {
+        super.initUI()
+        contentBinding.rvPlaneClass.adapter = planeClassAdapter
+        binding.btnSave.onClick { dismiss() }
+    }
+
+    override fun initProcess() {
+        super.initProcess()
+        planeClassAdapter.addAll(PlaneClassType.entries)
+    }
 }

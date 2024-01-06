@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import com.google.android.material.card.MaterialCardView
 import com.synrgy.common.databinding.LayoutScheduleCardBinding
+import com.synrgy.common.utils.ext.onGroupClick
 import com.synrgy.common.utils.ext.oneWeekMillis
 import com.synrgy.common.utils.ext.toFullDateFormat
 import com.synrgy.common.utils.ext.tomorrowMillis
@@ -25,6 +26,8 @@ class KaboorScheduleCard @JvmOverloads constructor(
 ) : MaterialCardView(context, attrs, defStyleAttr) {
 
     private var binding: LayoutScheduleCardBinding
+    private var onClickDeparture: () -> Unit = {}
+    private var onClickComingHome: () -> Unit = {}
 
     var departure = tomorrowMillis
         private set
@@ -41,19 +44,30 @@ class KaboorScheduleCard @JvmOverloads constructor(
         tvDeparture.text = departure.toFullDateFormat()
         tvArrival.text = comingHome.toFullDateFormat()
 
+        groupComingHome.onGroupClick { onClickComingHome.invoke() }
+        groupDeparture.onGroupClick { onClickDeparture.invoke() }
+
         btnSwitch.setOnCheckedChangeListener { _, checked ->
-            if (checked) group.visible() else group.gone()
+            if (checked) groupComingHome.visible() else groupComingHome.gone()
         }
     }
 
-    private fun setDeparture(departure: Long) {
+    fun setDeparture(departure: Long) {
         this.departure = departure
-        setupView()
+        binding.tvDeparture.text = departure.toFullDateFormat()
     }
 
-    private fun setComingHome(comingHome: Long) {
-        this.departure = comingHome
-        setupView()
+    fun setComingHome(comingHome: Long) {
+        this.comingHome = comingHome
+        binding.tvArrival.text = comingHome.toFullDateFormat()
+    }
+
+    fun setOnDepartureListener(onClick: () -> Unit) {
+        this.onClickDeparture = onClick
+    }
+
+    fun setOnComingHomeListener(onClick: () -> Unit) {
+        this.onClickComingHome = onClick
     }
 
 }

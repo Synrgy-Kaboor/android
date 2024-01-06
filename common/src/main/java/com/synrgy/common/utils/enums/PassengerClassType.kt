@@ -1,4 +1,4 @@
-package com.synrgy.common.utils.enums.views
+package com.synrgy.common.utils.enums
 
 
 /**
