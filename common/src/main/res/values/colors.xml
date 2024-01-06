@@ -23,4 +23,5 @@
     <color name="secondaryStar">#FFD43A</color>
     <color name="tintBlack">#BFBFBF</color>
     <color name="tintRed">#FAEBEA</color>
+    <color name="rippleCard">#B3FFFFFF</color>
 </resources>

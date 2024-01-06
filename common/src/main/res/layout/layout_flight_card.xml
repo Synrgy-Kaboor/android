@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/neutral1"
+        android:elevation="@dimen/dimen_2dp"
+        app:cardCornerRadius="@dimen/dimen_8dp"
+        app:cardElevation="@dimen/dimen_2dp"
+        app:strokeColor="@color/neutral6"
+        app:strokeWidth="@dimen/dimen_1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_12dp"
+            android:layout_marginTop="@dimen/dimen_14dp"
+            android:layout_marginBottom="@dimen/dimen_24dp">
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_departure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="tv_label_departure, tv_departure, divider_departure, icon_departure"/>
+
+            <com.synrgy.common.reusable.KaboorRoundedIcon
+                android:id="@+id/icon_departure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:kaboorRoundedIcon="@drawable/ic_plane_departure"
+                app:kaboorRoundedIconSize="@dimen/dimen_40dp"
+                app:kaboorRoundedIcon_padding="@dimen/dimen_6dp"
+                app:layout_constraintBottom_toBottomOf="@id/divider_departure"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_label_departure" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_label_departure"
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:text="@string/label_for"
+                android:textColor="@color/neutral6"
+                app:layout_constraintEnd_toStartOf="@+id/btn_switch"
+                app:layout_constraintStart_toEndOf="@id/icon_departure"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_departure"
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:text="@string/label_plane"
+                android:textColor="@color/ef_black_alpha_aa"
+                app:layout_constraintEnd_toStartOf="@+id/btn_switch"
+                app:layout_constraintStart_toStartOf="@id/tv_label_departure"
+                app:layout_constraintTop_toBottomOf="@id/tv_label_departure" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider_departure"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_1dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:layout_marginEnd="@dimen/dimen_22dp"
+                app:dividerColor="@color/neutral6"
+                app:layout_constraintEnd_toStartOf="@+id/btn_switch"
+                app:layout_constraintStart_toStartOf="@id/tv_departure"
+                app:layout_constraintTop_toBottomOf="@id/tv_departure" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_switch"
+                android:layout_width="@dimen/dimen_40dp"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_marginEnd="@dimen/dimen_6dp"
+                android:background="@drawable/ripple_oval_white"
+                android:padding="@dimen/dimen_6dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_arrival"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_label_departure"
+                app:srcCompat="@drawable/ic_switch" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_arrival"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_0dp"
+                app:constraint_referenced_ids="tv_label_arrival, tv_arrival, divider_arrival, icon_arrival" />
+
+            <com.synrgy.common.reusable.KaboorRoundedIcon
+                android:id="@+id/icon_arrival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:kaboorRoundedIcon="@drawable/ic_plane_arrival"
+                app:kaboorRoundedIconSize="@dimen/dimen_40dp"
+                app:kaboorRoundedIcon_padding="@dimen/dimen_6dp"
+                app:layout_constraintBottom_toBottomOf="@id/divider_arrival"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_label_arrival" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_label_arrival"
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:text="@string/label_to"
+                android:textColor="@color/neutral6"
+                app:layout_constraintEnd_toStartOf="@+id/btn_switch"
+                app:layout_constraintStart_toEndOf="@id/icon_arrival"
+                app:layout_constraintTop_toBottomOf="@id/divider_departure" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_arrival"
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:text="@string/label_plane"
+                android:textColor="@color/ef_black_alpha_aa"
+                app:layout_constraintEnd_toStartOf="@+id/btn_switch"
+                app:layout_constraintStart_toStartOf="@id/tv_label_arrival"
+                app:layout_constraintTop_toBottomOf="@id/tv_label_arrival" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider_arrival"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_1dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:layout_marginEnd="@dimen/dimen_22dp"
+                app:dividerColor="@color/neutral6"
+                app:layout_constraintEnd_toStartOf="@+id/btn_switch"
+                app:layout_constraintStart_toStartOf="@id/tv_arrival"
+                app:layout_constraintTop_toBottomOf="@id/tv_arrival" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</merge>

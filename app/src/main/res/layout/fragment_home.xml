@@ -26,7 +26,7 @@
                     android:background="@drawable/img_header_home" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_email"
+                    android:id="@+id/til_search"
                     style="@style/KaboorTextInput"
                     android:layout_centerInParent="true"
                     android:layout_marginHorizontal="16dp"
@@ -34,9 +34,9 @@
                     app:startIconDrawable="@drawable/ic_search">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_email"
+                        android:id="@+id/et_search"
                         style="@style/KaboorEdittext"
-                        android:background="@drawable/bg_rectangle_stroke_white"
+                        android:background="@drawable/bg_rectangle_search"
                         android:hint="@string/label_search"
                         android:imeOptions="actionSearch"
                         android:inputType="text" />

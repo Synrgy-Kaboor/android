@@ -1,4 +1,4 @@
-package com.synrgy.common.navigation
+package com.synrgy.common.utils
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

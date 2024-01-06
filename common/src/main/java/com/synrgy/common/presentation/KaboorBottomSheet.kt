@@ -10,10 +10,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.synrgy.common.R
 import com.synrgy.common.databinding.LayoutBaseBottomSheetBinding
-import com.synrgy.common.utils.visibleIf
+import com.synrgy.common.utils.ext.visibleIf
 import com.wahidabd.library.presentation.fragment.BaseBottomSheetDialogFragment
 import com.wahidabd.library.utils.exts.onClick
-import com.wahidabd.library.utils.exts.onlyVisibleIf
 
 
 /**
@@ -22,7 +21,8 @@ import com.wahidabd.library.utils.exts.onlyVisibleIf
  */
 
 
-abstract class KaboorBottomSheet<VB : ViewBinding> : BaseBottomSheetDialogFragment<LayoutBaseBottomSheetBinding>() {
+abstract class KaboorBottomSheet<VB : ViewBinding> :
+    BaseBottomSheetDialogFragment<LayoutBaseBottomSheetBinding>() {
 
     override val bottomSheetTheme: Int = R.style.KaboorBottomDialog
     abstract override val tagName: String
@@ -36,14 +36,16 @@ abstract class KaboorBottomSheet<VB : ViewBinding> : BaseBottomSheetDialogFragme
         layoutInflater: LayoutInflater,
         container: ViewGroup?,
         attachRoot: Boolean
-    ): LayoutBaseBottomSheetBinding = LayoutBaseBottomSheetBinding.inflate(layoutInflater, container, attachRoot)
+    ): LayoutBaseBottomSheetBinding =
+        LayoutBaseBottomSheetBinding.inflate(layoutInflater, container, attachRoot)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
-        if (dialog is BottomSheetDialog){
+        if (dialog is BottomSheetDialog) {
             dialog.behavior.apply {
                 skipCollapsed = true
                 state = BottomSheetBehavior.STATE_EXPANDED
+                maxHeight = resources.displayMetrics.heightPixels * 6 / 7
             }
         }
 
@@ -51,10 +53,10 @@ abstract class KaboorBottomSheet<VB : ViewBinding> : BaseBottomSheetDialogFragme
     }
 
     @CallSuper
-    override fun initUI() = with(binding){
+    override fun initUI() = with(binding) {
         btnClose.visibleIf { setCancelButtonEnable() }
         tvLabel.text = getTitle()
-        btnClose.visibleIf { showButton() }
+        btnSave.visibleIf { showButton() }
 
         // set content
         contentBinding = getContentBinding(layoutInflater)

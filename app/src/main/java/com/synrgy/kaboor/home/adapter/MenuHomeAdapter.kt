@@ -4,11 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.synrgy.common.navigation.MenuHome
+import com.synrgy.common.utils.MenuHome
 import com.synrgy.kaboor.databinding.ItemMenuHomeBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
-import com.wahidabd.library.utils.exts.onClick
 
 
 /**

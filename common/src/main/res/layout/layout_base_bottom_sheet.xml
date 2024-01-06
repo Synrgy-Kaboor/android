@@ -54,5 +54,6 @@
         android:layout_height="@dimen/dimen_42dp"
         android:layout_margin="@dimen/dimen_16dp"
         style="@style/KaboorButton.Gradient"
+        android:visibility="gone"
         android:text="@string/label_save"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

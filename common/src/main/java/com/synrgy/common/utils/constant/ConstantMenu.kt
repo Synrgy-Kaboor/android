@@ -1,6 +1,7 @@
-package com.synrgy.common.navigation
+package com.synrgy.common.utils.constant
 
 import com.synrgy.common.R
+import com.synrgy.common.utils.MenuHome
 
 
 /**
@@ -18,7 +19,7 @@ object ConstantMenu {
             MenuHome(4, R.string.label_train, R.drawable.ic_train),
             MenuHome(5, R.string.label_ticket, R.drawable.ic_ticket),
             MenuHome(6, R.string.label_food, R.drawable.ic_food),
-            MenuHome(7, R.string.label_airport, R.drawable.ic_airport),
+            MenuHome(7, R.string.label_airport_express, R.drawable.ic_airport),
             MenuHome(8, R.string.label_baggage, R.drawable.ic_baggage),
             MenuHome(9, R.string.label_assurance, R.drawable.ic_assurance),
         )
