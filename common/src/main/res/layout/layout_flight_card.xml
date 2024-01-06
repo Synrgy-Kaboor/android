@@ -21,6 +21,12 @@
             android:layout_marginTop="@dimen/dimen_14dp"
             android:layout_marginBottom="@dimen/dimen_24dp">
 
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_departure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="tv_label_departure, tv_departure, divider_departure, icon_departure"/>
+
             <com.synrgy.common.reusable.KaboorRoundedIcon
                 android:id="@+id/icon_departure"
                 android:layout_width="wrap_content"
@@ -79,6 +85,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_label_departure"
                 app:srcCompat="@drawable/ic_switch" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_arrival"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_0dp"
+                app:constraint_referenced_ids="tv_label_arrival, tv_arrival, divider_arrival, icon_arrival" />
 
             <com.synrgy.common.reusable.KaboorRoundedIcon
                 android:id="@+id/icon_arrival"

@@ -2,7 +2,9 @@ package com.synrgy.common.utils.ext
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.Group
 import com.wahidabd.library.utils.exts.gone
+import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.visible
 
 
@@ -24,3 +26,12 @@ inline fun View.visibleIf(condition: () -> Boolean){
 
 fun AppCompatActivity.onBackPress() =
     this.onBackPressedDispatcher.onBackPressed()
+
+inline fun Group.onGroupClick(crossinline onClick: () -> Unit) {
+    referencedIds.forEach { id ->
+        rootView.findViewById<View>(id).onClick { onClick.invoke() }
+    }
+}
+
+fun String.lowerContains(char: String): Boolean =
+    this.lowercase().contains(char.lowercase())

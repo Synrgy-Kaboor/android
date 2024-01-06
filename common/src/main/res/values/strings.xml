@@ -42,4 +42,5 @@
     <string name="label_search_id">Cari</string>
     <string name="format_passenger_count">%d Orang</string>
     <string name="label_airport">Bandara</string>
+    <string name="format_airport_name">%s - %s</string>
 </resources>

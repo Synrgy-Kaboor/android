@@ -8,6 +8,7 @@ import com.synrgy.common.R
 import com.synrgy.common.databinding.LayoutFlightCardBinding
 import com.synrgy.common.model.AirportData
 import com.synrgy.common.utils.constant.DummyData
+import com.synrgy.common.utils.ext.onGroupClick
 import com.wahidabd.library.utils.exts.onClick
 
 
@@ -30,6 +31,9 @@ class KaboorFlightCard @JvmOverloads constructor(
     private var arrival: AirportData? = DummyData.arrival()
         private set
 
+    private var setOnDepartureListener: (() -> Unit)? = {}
+    private var setOnArrivalListener: (() -> Unit)? = {}
+
     init {
         binding = LayoutFlightCardBinding.inflate(LayoutInflater.from(context), this)
         setupView()
@@ -41,9 +45,10 @@ class KaboorFlightCard @JvmOverloads constructor(
         tvArrival.text = context.getString(R.string.format_airport, arrival?.city, arrival?.iata)
 
         btnSwitch.onClick { switch() }
+        groupDeparture.onGroupClick { setOnDepartureListener?.invoke() }
+        groupArrival.onGroupClick { setOnArrivalListener?.invoke() }
     }
 
-    // TODO: Need to be fixed
     private fun switch() {
         val temp = departure
         departure = arrival
@@ -55,11 +60,21 @@ class KaboorFlightCard @JvmOverloads constructor(
 
     fun setDeparture(departure: AirportData) {
         this.departure = departure
-        binding.tvDeparture.text = context.getString(R.string.format_airport, departure.city, departure.iata)
+        binding.tvDeparture.text =
+            context.getString(R.string.format_airport, departure.city, departure.iata)
     }
 
     fun setArrival(arrival: AirportData) {
         this.arrival = arrival
-        binding.tvArrival.text = context.getString(R.string.format_airport, arrival.city, arrival.iata)
+        binding.tvArrival.text =
+            context.getString(R.string.format_airport, arrival.city, arrival.iata)
+    }
+
+    fun setOnDepartureListener(listener: () -> Unit) {
+        setOnDepartureListener = listener
+    }
+
+    fun setOnArrivalListener(listener: () -> Unit) {
+        setOnArrivalListener = listener
     }
 }
