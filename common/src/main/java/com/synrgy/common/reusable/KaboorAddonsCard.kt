@@ -80,12 +80,11 @@ class KaboorAddonsCard @JvmOverloads constructor(
         tvAssuranceLabel1.text = addonLabel1
         tvAssuranceLabel2.text = addonLabel2
 
-        imgAddon.onClick { onAddonClickList.invoke() }
+        imgAddon.onClick { checkAddon() }
         tvLoadMore.onClick { onLoadMoreClickListener.invoke() }
     }
 
-    fun setAddonClickListener(listener: () -> Unit) {
-        onAddonClickList = listener
+    private fun checkAddon() {
         isSelectedItem = !isSelectedItem
         binding.imgAddon.isSelected = isSelectedItem
     }

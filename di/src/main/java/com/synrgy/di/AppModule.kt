@@ -1,10 +1,8 @@
 package com.synrgy.di
 
 import com.wahidabd.library.data.libs.OkHttpClientFactory
-import org.koin.android.BuildConfig
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import org.koin.dsl.single
 
 
 /**
@@ -24,4 +22,6 @@ val appModule = module {
             certificatePinner = null
         )
     }
+
+    single(named(BASE_URL)){BuildConfig.base_url}
 }

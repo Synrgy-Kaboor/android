@@ -3,6 +3,7 @@ package com.synrgy.kaboor.utils.navigation
 import android.content.Context
 import com.synrgy.common.utils.MenuHome
 import com.synrgy.kaboor.ticket.plane.FlightScheduleActivity
+import com.synrgy.kaboor.ticket.plane.PassengerDetailActivity
 
 
 /**
@@ -15,7 +16,7 @@ object NavHomeDirection {
     fun navDirection(data: MenuHome, context: Context) {
         when (data.id) {
             1 -> FlightScheduleActivity.start(context)
-            2 -> {}
+            2 -> PassengerDetailActivity.start(context) //Change this after test
             3 -> {}
             4 -> {}
             5 -> {}
