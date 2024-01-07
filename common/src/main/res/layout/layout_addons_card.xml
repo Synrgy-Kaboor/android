@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/KaboorCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_14dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/assurance_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_icon"
+                    android:layout_width="@dimen/dimen_32dp"
+                    android:layout_height="@dimen/dimen_32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    tools:srcCompat="@drawable/ic_shield_cross" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_header"
+                    style="@style/KaboorTextView.Title3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/img_icon"
+                    android:layout_alignBottom="@id/img_icon"
+                    android:layout_marginStart="@dimen/dimen_8dp"
+                    android:layout_toEndOf="@id/img_icon"
+                    android:gravity="center_vertical"
+                    tools:text="Asuransi Perjalanan" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_1dp"
+                    android:layout_below="@id/img_icon"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    app:dividerColor="@color/neutral6" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_assurance_label_1"
+                    style="@style/KaboorTextView.Title2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/divider_header"
+                    android:layout_marginHorizontal="@dimen/dimen_14dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:drawablePadding="@dimen/dimen_8dp"
+                    android:gravity="top"
+                    android:textColor="@color/neutral6"
+                    app:drawableStartCompat="@drawable/ic_check_circle_small"
+                    tools:text="Kompensasi Rp. 200 Ribu per 2 jam untuk segala resiko keterlambatan" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_assurance_label_2"
+                    style="@style/KaboorTextView.Title2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_assurance_label_1"
+                    android:layout_marginHorizontal="@dimen/dimen_14dp"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:drawablePadding="@dimen/dimen_8dp"
+                    android:gravity="top"
+                    android:textColor="@color/neutral6"
+                    android:visibility="gone"
+                    app:drawableStartCompat="@drawable/ic_check_circle_small"
+                    tools:text="Kompensasi Rp. 200 Ribu per 2 jam untuk segala resiko keterlambatan" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_load_more"
+                    style="@style/KaboorTextView.Title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_assurance_label_2"
+                    android:layout_marginHorizontal="@dimen/dimen_14dp"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:text="@string/label_more"
+                    android:textColor="@color/primaryBrightBlue" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/normal_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_label"
+                    style="@style/KaboorTextView.Title3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Bagasi" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_description"
+                    style="@style/KaboorTextView.Title2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:textColor="@color/neutral6"
+                    tools:text="@string/message_ticket_plane" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_14dp"
+                android:background="@color/primaryBrightViolet"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/dimen_16dp"
+                android:paddingVertical="@dimen/dimen_8dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_footer"
+                    style="@style/KaboorTextView.Title2"
+                    android:layout_width="@dimen/dimen_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/neutral1"
+                    tools:text="Tambahkan bagasi tambahan" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_addon"
+                    android:layout_width="@dimen/dimen_32dp"
+                    android:layout_height="@dimen/dimen_32dp"
+                    android:padding="@dimen/dimen_4dp"
+                    app:srcCompat="@drawable/selector_addon" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+</merge>

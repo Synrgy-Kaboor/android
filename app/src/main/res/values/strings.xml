@@ -2,4 +2,16 @@
     <string name="app_name">Kaboor</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_input_detail_passenger">Masukkan Detail Penumpang</string>
+    <string name="label_extra_facilities">Fasilitas Ekstra</string>
+    <string name="label_baggage">Bagasi</string>
+    <string name="body_baggage">Yakin bagasi 20 kg cukup semua barang bawaan kamu sekarang</string>
+    <string name="label_footer_baggage">Tambah bagasi tambahan</string>
+    <string name="label_select_chair">Nomor Kursi</string>
+    <string name="body_select_chair">Yuk pilih kursi yang dekat teman atau keluargamu, biar gak keliatan jomblo loh. Apa mau kamu duduk sendiri di kursi tengah?</string>
+    <string name="label_footer_select_chair">Pilih kursimu sekarang</string>
+    <string name="label_buy_food">Makanan</string>
+    <string name="body_buy_food">Terbang 4 jam bisa bikin laper lho. Nikmati hidangan yang cocok dalam petualangnmu dengan kuliner diatas pesawat.</string>
+    <string name="label_footer_buy_food">Beli makananmu sekarang</string>
+    <string name="button_continue_ordering">Lanjutkan Pemesanan</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.synrgy.common.utils.ext
+package com.synrgy.common.utils
 
 
 /**

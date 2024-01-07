@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ticket.plane.PassengerDetailActivity">
+
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:KaboorAppbar_title="@string/label_input_detail_passenger" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:clipToPadding="false"
+        android:paddingVertical="@dimen/dimen_16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_extra_facilities" />
+
+            <com.synrgy.common.reusable.KaboorAddonsCard
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:kaboorAddons_description="@string/body_baggage"
+                app:kaboorAddons_footer="@string/label_footer_baggage"
+                app:kaboorAddons_label="@string/label_baggage" />
+
+            <com.synrgy.common.reusable.KaboorAddonsCard
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:kaboorAddons_description="@string/body_select_chair"
+                app:kaboorAddons_footer="@string/label_footer_select_chair"
+                app:kaboorAddons_label="@string/label_select_chair" />
+
+            <com.synrgy.common.reusable.KaboorAddonsCard
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:kaboorAddons_description="@string/body_buy_food"
+                app:kaboorAddons_footer="@string/label_footer_buy_food"
+                app:kaboorAddons_label="@string/label_buy_food" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_42dp"
+                style="@style/KaboorButton.Gradient"
+                android:layout_marginVertical="@dimen/dimen_40dp"
+                android:text="@string/button_continue_ordering"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -31,8 +31,6 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     override fun getViewBinding(): ActivityFlightScheduleBinding =
         ActivityFlightScheduleBinding.inflate(layoutInflater)
 
-    override fun initIntent() {}
-
     override fun initUI() = with(binding) {
         tvPassenger.text = getString(R.string.format_passenger_count, passengerData.count)
         tvClass.text = planeClassType.label
