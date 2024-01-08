@@ -52,4 +52,6 @@ dependencies {
     releaseApi(Dependecies.chucker_no_op)
 
     api(Dependecies.onelib)
+
+    implementation(Dependecies.lottie)
 }
