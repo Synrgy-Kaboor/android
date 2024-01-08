@@ -5,16 +5,35 @@
         <attr name="kaboorRoundedIcon" format="reference" />
         <attr name="kaboorRoundedIconLabel" format="string" />
         <attr name="kaboorRoundedIconSize" format="dimension" />
-        <attr name="kaboorRoundedIcon_padding" format="dimension"/>
+        <attr name="kaboorRoundedIcon_padding" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="KaboorPassengerClass">
         <attr name="kaboorPassengerClass_label" format="string" />
         <attr name="kaboorPassengerClass_description" format="string" />
         <attr name="kaboorPassengerClass_type" format="enum">
-            <enum name="passenger" value="0"/>
-            <enum name="planeClass" value="1"/>
+            <enum name="passenger" value="0" />
+            <enum name="planeClass" value="1" />
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="KaboorAddons">
+        <attr name="kaboorAddons_label" format="string" />
+        <attr name="kaboorAddons_description" format="string" />
+        <attr name="kaboorAddons_footer" format="string" />
+        <attr name="kaboorAddons_icon" format="reference"/>
+        <attr name="kaboorAddons_header" format="string"/>
+        <attr name="kaboorAddons_price" format="float"/>
+        <attr name="kaboorAddons_assurance_label_1" format="string"/>
+        <attr name="kaboorAddons_assurance_label_2" format="string"/>
+        <attr name="kaboorAddons_type" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="assurance" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="KaboorAppbar">
+        <attr name="KaboorAppbar_title" format="string"/>
+        <attr name="KaboorAppbar_enable_back" format="boolean"/>
+    </declare-styleable>
 </resources>

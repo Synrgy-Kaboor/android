@@ -12,4 +12,7 @@ import com.wahidabd.library.presentation.activity.BaseActivity
 
 abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
 
+    override fun initIntent() {}
+    override fun initProcess() {}
+    override fun initObservers() {}
 }
