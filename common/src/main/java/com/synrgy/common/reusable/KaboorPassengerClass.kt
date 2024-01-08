@@ -93,6 +93,7 @@ class KaboorPassengerClass @JvmOverloads constructor(
     }
 
     fun setDescription(description: String) {
+        binding.tvDescription.visibleIf { description.isNotEmpty() }
         binding.tvDescription.text = description
     }
 }

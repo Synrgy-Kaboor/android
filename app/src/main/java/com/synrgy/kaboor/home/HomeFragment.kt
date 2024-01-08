@@ -7,8 +7,7 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.synrgy.common.presentation.KaboorFragment
-import com.synrgy.common.utils.MenuHome
-import com.synrgy.common.utils.constant.ConstantMenu
+import com.synrgy.common.utils.enums.HomeMenu
 import com.synrgy.common.utils.enums.ProductAdapterType
 import com.synrgy.kaboor.databinding.FragmentHomeBinding
 import com.synrgy.kaboor.home.adapter.CardProductAdapter
@@ -76,7 +75,7 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
     // TODO: For Process (API, Call ViewModel, etc)
     // Remove dummy data if you want to use API
     override fun initProcess() {
-        menuHomeAdapter.setData = ConstantMenu.homeMenus()
+        menuHomeAdapter.setData = HomeMenu.entries.toList()
         promoAdapter.setData = ConstantDummy.promos()
         lastSeenAdapter.setData = ConstantDummy.lastSees()
         destinationAdapter.setData = ConstantDummy.favoriteDestinations()
@@ -108,7 +107,7 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
         rvLastSeen.adapter = lastSeenAdapter
     }
 
-    private fun handleNavigationMenu(menuHome: MenuHome) {
-        NavHomeDirection.navDirection(menuHome, requireContext())
+    private fun handleNavigationMenu(menu: HomeMenu) {
+        NavHomeDirection.navDirection(menu, requireContext())
     }
 }
