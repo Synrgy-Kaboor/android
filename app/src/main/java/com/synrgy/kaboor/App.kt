@@ -1,6 +1,10 @@
-package com.synrgy.common
+package com.synrgy.kaboor
 
 import androidx.appcompat.app.AppCompatDelegate
+import com.synrgy.di.appModule
+import com.synrgy.di.features.authModule
+import com.synrgy.di.retrofitModule
+import com.synrgy.kaboor.utils.di.viewModelModule
 import com.wahidabd.library.presentation.BaseApplication
 import org.koin.core.module.Module
 import timber.log.Timber
@@ -14,7 +18,12 @@ import timber.log.Timber
 
 class App : BaseApplication() {
     override fun getDefineModule(): List<Module> =
-        listOf()
+        listOf(
+            appModule,
+            retrofitModule,
+            authModule,
+            viewModelModule, // make sure this module is still at the bottom of the features module
+        )
 
     override fun initApp() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

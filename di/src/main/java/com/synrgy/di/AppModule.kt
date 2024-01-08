@@ -1,6 +1,8 @@
 package com.synrgy.di
 
 import com.wahidabd.library.data.libs.OkHttpClientFactory
+import com.wahidabd.library.data.libs.interceptor.HeaderInterceptor
+import okhttp3.Interceptor
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -16,7 +18,7 @@ const val BASE_URL = "base_url"
 val appModule = module {
     single {
         return@single OkHttpClientFactory.create(
-            interceptors = listOf(),
+            interceptors = listOf(getHeaderInterceptor()),
             showDebugLog = BuildConfig.DEBUG,
             authenticator = null,
             certificatePinner = null
@@ -24,4 +26,9 @@ val appModule = module {
     }
 
     single(named(BASE_URL)){BuildConfig.base_url}
+}
+
+private fun getHeaderInterceptor(): Interceptor {
+    val headers = HashMap<String, String>()
+    return HeaderInterceptor(headers)
 }

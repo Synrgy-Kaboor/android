@@ -11,8 +11,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_18dp"
-        android:layout_marginBottom="@dimen/dimen_14dp"
+        android:layout_marginVertical="@dimen/dimen_12dp"
         android:gravity="center_vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
