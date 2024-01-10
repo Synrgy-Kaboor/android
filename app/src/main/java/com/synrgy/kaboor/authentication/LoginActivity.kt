@@ -2,15 +2,13 @@ package com.synrgy.kaboor.authentication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.synrgy.common.presentation.KaboorActivity
-import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityLoginBinding
 
 class LoginActivity : KaboorActivity<ActivityLoginBinding>() {
 
     companion object {
-        fun start(context: AppCompatActivity){
+        fun start(context: AppCompatActivity) {
             context.startActivity(Intent(context, LoginActivity::class.java))
         }
     }
