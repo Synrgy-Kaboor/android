@@ -53,4 +53,5 @@
     <string name="message_terms_condition">Dengan Log In kamu menyerujui <font fgcolor='#7B52AB'>Syarat, Ketentuan dan Kebijakan </font>Privasi Kaboor</string>
     <string name="message_doesnt_have_an_account">Belum punya akun?</string>
     <string name="message_create_account">Buat akun yuk?</string>
+    <string name="message_login">Log In</string>
 </resources>

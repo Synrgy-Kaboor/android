@@ -39,10 +39,11 @@
             android:layout_marginTop="@dimen/dimen_32dp"
             app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.synrgy.common.reusable.auth.EmailCustomView
                 android:id="@+id/et_email"
                 style="@style/KaboorEdittext"
-                android:layout_height="@dimen/dimen_44dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_rectangle_search"
                 android:hint="@string/label_input_email"
                 android:inputType="text"
