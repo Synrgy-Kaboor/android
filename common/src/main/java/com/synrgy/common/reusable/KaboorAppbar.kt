@@ -37,9 +37,9 @@ class KaboorAppbar @JvmOverloads constructor(
 
     private fun setAttributes(attrs: AttributeSet?) {
         val attributes = context.theme.obtainStyledAttributes(attrs, R.styleable.KaboorAppbar, 0, 0)
-        title = attributes.getString(R.styleable.KaboorAppbar_KaboorAppbar_title).orEmpty()
+        title = attributes.getString(R.styleable.KaboorAppbar_kaboorAppbar_title).orEmpty()
         enableBackButton =
-            attributes.getBoolean(R.styleable.KaboorAppbar_KaboorAppbar_enable_back, true)
+            attributes.getBoolean(R.styleable.KaboorAppbar_kaboorAppbar_enable_back, true)
         attributes.recycle()
     }
 
