@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".register.DetailRegisterActivity">
+    tools:context=".authentication.RegisterDetailActivity">
 
 
     <LinearLayout
@@ -25,7 +25,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:background="@color/white">
 
-            <!-- Tambahkan ikon panah kembali -->
             <ImageView
                 android:id="@+id/ivBackArrow"
                 android:layout_width="wrap_content"
@@ -34,7 +33,7 @@
                 android:layout_gravity="start"
                 android:paddingStart="16dp" />
 
-            <!-- Tambahkan teks detail di tengah -->
+
             <com.google.android.material.textview.MaterialTextView
                 style="@style/KaboorTextView.SubHeading2"
                 android:id="@+id/tvDetail"
@@ -57,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-
+            android:layout_margin="15dp"
             android:padding="16dp">
 
             <com.google.android.material.textview.MaterialTextView

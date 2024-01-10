@@ -102,7 +102,7 @@ class RegisterActivity : KaboorActivity<ActivityRegisterBinding>() {
     }
 
     private fun kirimData(email: String) {
-//        val intent = Intent(this, DetailRegisterActivity::class.java)
+        val intent = Intent(this, RegisterDetailActivity::class.java)
         intent.putExtra("email", email)
         startActivity(intent)
     }
