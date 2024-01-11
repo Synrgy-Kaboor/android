@@ -24,4 +24,5 @@
     <color name="tintBlack">#BFBFBF</color>
     <color name="tintRed">#FAEBEA</color>
     <color name="rippleCard">#B3FFFFFF</color>
+    <color name="secondary01">#7B52AB</color>
 </resources>

@@ -3,26 +3,21 @@ package com.synrgy.kaboor.authentication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorActivity
-import com.synrgy.kaboor.databinding.ActivityLoginBinding
+import com.synrgy.kaboor.databinding.ActivityLoginPasswordBinding
 
-class LoginActivity : KaboorActivity<ActivityLoginBinding>() {
+class LoginPasswordActivity : KaboorActivity<ActivityLoginPasswordBinding>() {
 
     companion object {
         fun start(context: AppCompatActivity) {
-            context.startActivity(Intent(context, LoginActivity::class.java))
+            context.startActivity(Intent(context, LoginPasswordActivity::class.java))
         }
     }
 
-    override fun getViewBinding(): ActivityLoginBinding =
-        ActivityLoginBinding.inflate(layoutInflater)
+    override fun getViewBinding(): ActivityLoginPasswordBinding =
+        ActivityLoginPasswordBinding.inflate(layoutInflater)
 
     // TODO: For handle intent (Data, etc)
-    override fun initIntent() {
-        binding.btnLogin.setOnClickListener {
-            val intent = Intent(this, LoginPasswordActivity::class.java)
-            startActivity(intent)
-        }
-    }
+    override fun initIntent() {}
 
     // TODO: For UI
     override fun initUI() {}

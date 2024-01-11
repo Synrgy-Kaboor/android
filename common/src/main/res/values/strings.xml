@@ -44,4 +44,14 @@
     <string name="label_airport">Bandara</string>
     <string name="format_airport_name">%s - %s</string>
     <string name="label_more">Selengkapnya</string>
+    <string name="label_input_email">Masukkan email</string>
+    <string name="label_input_password">Kata Sandi</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Sandi</string>
+    <string name="message_btn_login">Masuk</string>
+    <string name="message_forgot_password">Lupa Password?</string>
+    <string name="message_terms_condition">Dengan Log In kamu menyerujui <font fgcolor='#7B52AB'>Syarat, Ketentuan dan Kebijakan </font>Privasi Kaboor</string>
+    <string name="message_doesnt_have_an_account">Belum punya akun?</string>
+    <string name="message_create_account">Buat akun yuk?</string>
+    <string name="message_login">Log In</string>
 </resources>
