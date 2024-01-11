@@ -54,4 +54,6 @@
     <string name="message_doesnt_have_an_account">Belum punya akun?</string>
     <string name="message_create_account">Buat akun yuk?</string>
     <string name="message_login">Log In</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

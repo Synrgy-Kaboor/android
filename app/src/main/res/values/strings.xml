@@ -23,4 +23,6 @@
     <string name="label_check_your_email">Cek Email Kamu</string>
     <string name="label_message_send_otp">Kami sudah mengirimkan kode OTP lewat email kamu</string>
     <string name="label_send_again">Kirim Lagi</string>
+    <string name="message_login_required">Anda belum login</string>
+    <string name="message_login_description">Untuk melanjutkan pemesanan tiket, anda harus login terlebih dahulu</string>
 </resources>

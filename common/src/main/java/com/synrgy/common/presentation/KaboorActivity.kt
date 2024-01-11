@@ -5,7 +5,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.synrgy.common.R
+import com.synrgy.common.presentation.dialog.GenericBottomSheetFragment
 import com.wahidabd.library.presentation.activity.BaseActivity
+import com.wahidabd.library.utils.common.emptyString
 
 
 /**
@@ -50,5 +52,23 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
         super.hideLoading()
         loadingDialog?.hide()
         loadingDialog?.cancel()
+    }
+
+    fun showLoginDialog(
+        title: String = emptyString(),
+        description: String = emptyString(),
+        primaryTextButton: String = emptyString(),
+        secondaryTextButton: String = emptyString(),
+        primaryAction: () -> Unit,
+        secondaryAction: () -> Unit
+    ) {
+        GenericBottomSheetFragment.newInstance(
+            title = title,
+            description = description,
+            primaryTextButton = primaryTextButton,
+            secondaryTextButton = secondaryTextButton,
+            onPrimaryButtonClicked = primaryAction,
+            onSecondaryButtonClicked = secondaryAction,
+        ).show(supportFragmentManager, GenericBottomSheetFragment::class.java.name)
     }
 }

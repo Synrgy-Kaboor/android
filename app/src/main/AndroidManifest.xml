@@ -21,7 +21,7 @@
             android:name=".authentication.OtpActivity"
             android:exported="false" />
         <activity
-            android:name=".authentication.LoginPasswordActivity"
+            android:name=".authentication.login.LoginPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ticket.plane.PassengerDetailActivity"
@@ -36,7 +36,7 @@
             android:name=".authentication.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".authentication.LoginActivity"
+            android:name=".authentication.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

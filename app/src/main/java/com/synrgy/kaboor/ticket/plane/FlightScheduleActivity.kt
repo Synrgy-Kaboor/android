@@ -9,6 +9,7 @@ import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.enums.AirportType
 import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.common.utils.ext.showDatePicker
+import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.ActivityFlightScheduleBinding
 import com.synrgy.kaboor.ticket.plane.dialog.AirportBottomSheetFragment
 import com.synrgy.kaboor.ticket.plane.dialog.FlightClassBottomSheetFragment
@@ -21,6 +22,10 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     private var departure: AirportData? = null
     private var arrival: AirportData? = null
     private var planeClassType: PlaneClassType = PlaneClassType.EKONOMI
+
+    // TODO: Remove this after preference manager ready
+    private var tempLogin = false
+
 
     companion object {
         fun start(context: Context) {
@@ -43,11 +48,19 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         kaboorSchedule.setOnComingHomeListener { showDatePicker(AirportType.ARRIVAL) }
         kaboorSchedule.setOnDepartureListener { showDatePicker(AirportType.DEPARTURE) }
         cardClass.onClick { showPlaneClassDialog() }
+        btnSubmit.onClick { handleNavigation() }
     }
 
     override fun initProcess() {}
 
     override fun initObservers() {}
+
+    private fun handleNavigation() {
+        if (tempLogin) PassengerDetailActivity.start(this)
+//        else showLoginDialog(
+//
+//        )
+    }
 
     private fun showPassengerDialog() {
         PassengerBottomSheetFragment.newInstance(
@@ -55,8 +68,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
             onSave = { passenger ->
                 passenger?.let {
                     passengerData = passenger
-                    binding.tvPassenger.text =
-                        getString(R.string.format_passenger_count, passengerData.count)
+                    binding.tvPassenger.text = getString(R.string.format_passenger_count, passengerData.count)
                 }
             }
         ).show(supportFragmentManager, PassengerBottomSheetFragment::class.java.name)
