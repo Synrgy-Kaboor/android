@@ -14,4 +14,13 @@
     <string name="body_buy_food">Terbang 4 jam bisa bikin laper lho. Nikmati hidangan yang cocok dalam petualangnmu dengan kuliner diatas pesawat.</string>
     <string name="label_footer_buy_food">Beli makananmu sekarang</string>
     <string name="button_continue_ordering">Lanjutkan Pemesanan</string>
+    <string name="label_input_email">Masukkan Email</string>
+    <string name="label_enter">Masuk</string>
+    <string name="label_email">Email</string>
+    <string name="label_verification">Verifikasi</string>
+    <string name="label_back">Kembali</string>
+    <string name="format_count_down_otp">Kode OTP kedaluwarsa pada %d</string>
+    <string name="label_check_your_email">Cek Email Kamu</string>
+    <string name="label_message_send_otp">Kami sudah mengirimkan kode OTP lewat email kamu</string>
+    <string name="label_send_again">Kirim Lagi</string>
 </resources>

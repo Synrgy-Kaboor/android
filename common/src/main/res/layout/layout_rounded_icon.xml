@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_4dp"
             android:gravity="center_horizontal"
-            android:textColor="@color/primaryBrightBlue"
+            android:textColor="@color/primaryViolet"
             tools:text="Pesawat Kertas" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </merge>

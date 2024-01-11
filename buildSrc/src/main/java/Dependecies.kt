@@ -28,4 +28,5 @@ object Dependecies {
     const val build_tools = "com.android.tools.build:gradle:${Versions.build_tools}"
     const val flexbox = "com.google.android.flexbox:flexbox:${Versions.flexbox}"
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+    const val otpview = "com.github.mukeshsolanki:android-otpview-pinview:${Versions.otpview}"
 }
