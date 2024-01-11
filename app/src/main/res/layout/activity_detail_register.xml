@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="15dp"
-            android:padding="16dp">
+            android:padding="@dimen/dimen_17dp">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_marginTop="16dp"
@@ -161,6 +161,7 @@
 
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/syarat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="70dp"
