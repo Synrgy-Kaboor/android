@@ -1,15 +1,15 @@
 package com.synrgy.common.utils.ext
 
+import android.os.CountDownTimer
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-import com.synrgy.common.R
 import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.visible
+import kotlin.time.Duration.Companion.milliseconds
 
 
 /**
@@ -54,3 +54,21 @@ fun AppCompatActivity.showDatePicker(
 }
 
 fun TextInputEditText.textTrim() = this.text.toString().trim()
+
+fun setTimer(
+    millisTimer: Long,
+    interval: Long,
+    onTick: ((Long) -> Unit) = {},
+    onFinish: (() -> Unit) = {}
+): CountDownTimer{
+    return object : CountDownTimer(millisTimer, interval){
+        override fun onTick(millisUntilFinished: Long) = onTick.invoke(millisUntilFinished)
+        override fun onFinish() = onFinish.invoke()
+    }
+}
+
+fun Long.toSeconds(): String {
+    return this.milliseconds.toComponents { _, minutes, seconds, _ ->
+        "%02d:%02d".format(minutes, seconds)
+    }
+}

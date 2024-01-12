@@ -3,7 +3,10 @@ package com.synrgy.kaboor.authentication.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.kaboor.authentication.RegisterActivity
+import com.synrgy.kaboor.authentication.forgot.ForgotPasswordActivity
 import com.synrgy.kaboor.databinding.ActivityLoginBinding
+import com.wahidabd.library.utils.exts.onClick
 
 class LoginActivity : KaboorActivity<ActivityLoginBinding>() {
 
@@ -16,26 +19,20 @@ class LoginActivity : KaboorActivity<ActivityLoginBinding>() {
     override fun getViewBinding(): ActivityLoginBinding =
         ActivityLoginBinding.inflate(layoutInflater)
 
-    // TODO: For handle intent (Data, etc)
-    override fun initIntent() {
-        binding.btnLogin.setOnClickListener {
-            val intent = Intent(this, LoginPasswordActivity::class.java)
-            startActivity(intent)
-        }
-    }
+    override fun initIntent() {}
 
-    // TODO: For UI
     override fun initUI() {}
 
-    // TODO: For Action (Click, Touch, etc)
-    override fun initAction() {}
+    override fun initAction() = with(binding) {
+        btnLogin.onClick { LoginPasswordActivity.start(this@LoginActivity) }
+        tvForgotPassword.onClick { ForgotPasswordActivity.start(this@LoginActivity) }
+        tvCreateAccount.onClick { RegisterActivity.start(this@LoginActivity) }
+    }
 
-    // TODO: For Process (API, Call ViewModel, etc)
     override fun initProcess() {
         super.initProcess()
     }
 
-    // TODO: For Observer (LiveData, etc)
     override fun initObservers() {
         super.initObservers()
     }

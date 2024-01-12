@@ -57,9 +57,10 @@ abstract class KaboorBottomSheet<VB : ViewBinding> :
     override fun initUI() = with(binding) {
         btnClose.visibleIf { setCancelButtonEnable() }
         tvLabel.goneIf { getTitle().isEmpty() }
-        tvLabel.text = getTitle()
         btnSave.visibleIf { showButton() }
+        divider.goneIf { getTitle().isEmpty() }
 
+        tvLabel.text = getTitle()
         // set content
         contentBinding = getContentBinding(layoutInflater)
         container.addView(contentBinding.root)

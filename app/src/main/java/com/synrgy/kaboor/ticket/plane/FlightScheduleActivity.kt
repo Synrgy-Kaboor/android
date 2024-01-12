@@ -2,7 +2,8 @@ package com.synrgy.kaboor.ticket.plane
 
 import android.content.Context
 import android.content.Intent
-import com.synrgy.common.R
+import com.synrgy.common.R as comR
+import com.synrgy.kaboor.R
 import com.synrgy.common.model.AirportData
 import com.synrgy.common.model.PassengerData
 import com.synrgy.common.presentation.KaboorActivity
@@ -37,7 +38,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         ActivityFlightScheduleBinding.inflate(layoutInflater)
 
     override fun initUI() = with(binding) {
-        tvPassenger.text = getString(R.string.format_passenger_count, passengerData.count)
+        tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count)
         tvClass.text = planeClassType.label
     }
 
@@ -57,9 +58,13 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
 
     private fun handleNavigation() {
         if (tempLogin) PassengerDetailActivity.start(this)
-//        else showLoginDialog(
-//
-//        )
+        else showLoginDialog(
+            title = getString(R.string.message_login_required),
+            description = getString(R.string.message_login_description),
+            secondaryTextButton = getString(R.string.label_later),
+            primaryTextButton = getString(R.string.label_login),
+            primaryAction = { LoginActivity.start(this) }
+        )
     }
 
     private fun showPassengerDialog() {
@@ -68,7 +73,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
             onSave = { passenger ->
                 passenger?.let {
                     passengerData = passenger
-                    binding.tvPassenger.text = getString(R.string.format_passenger_count, passengerData.count)
+                    binding.tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count)
                 }
             }
         ).show(supportFragmentManager, PassengerBottomSheetFragment::class.java.name)

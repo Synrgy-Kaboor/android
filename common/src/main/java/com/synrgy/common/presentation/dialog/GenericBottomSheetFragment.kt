@@ -1,7 +1,6 @@
 package com.synrgy.common.presentation.dialog
 
 import android.view.LayoutInflater
-import androidx.fragment.app.FragmentManager
 import com.synrgy.common.databinding.FragmentGenericBottomSheetBinding
 import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.common.utils.ext.goneIf
@@ -14,8 +13,8 @@ class GenericBottomSheetFragment : KaboorBottomSheet<FragmentGenericBottomSheetB
             title: String = emptyString(),
             description: String = emptyString(),
             isCancelable: Boolean = false,
-            primaryTextButton: String = emptyString(),
-            secondaryTextButton: String = emptyString(),
+            primaryTextButton: String? = emptyString(),
+            secondaryTextButton: String? = emptyString(),
             onPrimaryButtonClicked: (() -> Unit)? = null,
             onSecondaryButtonClicked: (() -> Unit)? = null,
         ): GenericBottomSheetFragment {
@@ -34,8 +33,8 @@ class GenericBottomSheetFragment : KaboorBottomSheet<FragmentGenericBottomSheetB
     private var title: String = emptyString()
     private var description: String = emptyString()
     private var isCancelable: Boolean = false
-    private var primaryTextButton: String = emptyString()
-    private var secondaryTextButton: String = emptyString()
+    private var primaryTextButton: String? = emptyString()
+    private var secondaryTextButton: String? = emptyString()
     private var onPrimaryButtonClicked: (() -> Unit)? = {}
     private var onSecondaryButtonClicked: (() -> Unit)? = {}
 
@@ -51,8 +50,8 @@ class GenericBottomSheetFragment : KaboorBottomSheet<FragmentGenericBottomSheetB
         super.initUI()
         with(contentBinding) {
             tvDescription.goneIf { description.isEmpty() }
-            btnSecondary.goneIf { secondaryTextButton.isEmpty() }
-            btnPrimary.goneIf { primaryTextButton.isEmpty() }
+            btnSecondary.goneIf { secondaryTextButton?.isEmpty() == true }
+            btnPrimary.goneIf { primaryTextButton?.isEmpty() == true }
             tvTitle.text = title
             tvDescription.text = description
             btnPrimary.text = primaryTextButton

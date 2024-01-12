@@ -57,10 +57,10 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
     fun showLoginDialog(
         title: String = emptyString(),
         description: String = emptyString(),
-        primaryTextButton: String = emptyString(),
-        secondaryTextButton: String = emptyString(),
-        primaryAction: () -> Unit,
-        secondaryAction: () -> Unit
+        primaryTextButton: String? = emptyString(),
+        secondaryTextButton: String? = emptyString(),
+        primaryAction: (() -> Unit)? = null,
+        secondaryAction: (() -> Unit)? = null
     ) {
         GenericBottomSheetFragment.newInstance(
             title = title,
