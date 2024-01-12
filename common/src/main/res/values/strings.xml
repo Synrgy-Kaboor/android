@@ -54,4 +54,5 @@
     <string name="message_doesnt_have_an_account">Belum punya akun?</string>
     <string name="message_create_account">Buat akun yuk?</string>
     <string name="message_login">Log In</string>
+    <string name="label_choose_departure">Pilih Keberangkatan</string>
 </resources>
