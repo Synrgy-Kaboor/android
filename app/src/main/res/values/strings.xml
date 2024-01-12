@@ -19,8 +19,12 @@
     <string name="label_email">Email</string>
     <string name="label_verification">Verifikasi</string>
     <string name="label_back">Kembali</string>
-    <string name="format_count_down_otp">Kode OTP kedaluwarsa pada %d</string>
+    <string name="format_count_down_otp">Kode OTP kedaluwarsa pada __%s__</string>
     <string name="label_check_your_email">Cek Email Kamu</string>
     <string name="label_message_send_otp">Kami sudah mengirimkan kode OTP lewat email kamu</string>
     <string name="label_send_again">Kirim Lagi</string>
+    <string name="message_login_required">Anda belum login</string>
+    <string name="message_login_description">Untuk melanjutkan pemesanan tiket, anda harus login terlebih dahulu</string>
+    <string name="label_login">Login</string>
+    <string name="label_later">Nanti Saja</string>
 </resources>

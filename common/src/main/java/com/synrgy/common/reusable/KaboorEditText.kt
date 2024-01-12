@@ -52,7 +52,7 @@ class KaboorEditText @JvmOverloads constructor(
     private fun setupView() = with(binding){
         tvLabel.goneIf { label.isNullOrEmpty() }
         tvLabel.text = label
-        til.hint = hint
+        et.hint = hint
         et.inputType = type.type
     }
 

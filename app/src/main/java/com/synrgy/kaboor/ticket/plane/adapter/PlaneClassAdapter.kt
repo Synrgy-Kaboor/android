@@ -20,7 +20,7 @@ import com.wahidabd.library.utils.exts.onClick
 
 class PlaneClassAdapter(
     private val context: Context,
-    private val selectedItem: PlaneClassType,
+    selectedItem: PlaneClassType,
     private val onItemSelectedListener: (PlaneClassType) -> Unit
 ) : BaseAsyncRecyclerAdapter<Selectable<PlaneClassType>, PlaneClassAdapter.PlaneClassAdapterViewHolder>() {
 

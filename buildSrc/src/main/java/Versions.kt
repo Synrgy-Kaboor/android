@@ -25,4 +25,5 @@ object Versions {
     const val flexbox = "3.0.0"
     const val lottie = "6.3.0"
     const val otpview = "3.1.0"
+    const val serialzation = "1.6.0"
 }
