@@ -25,6 +25,10 @@
             android:exported="false" />
         <activity
             android:name=".authentication.login.LoginPasswordActivity"
+            android:name=".ticket.plane.FlightTicketListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.LoginPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ticket.plane.PassengerDetailActivity"
