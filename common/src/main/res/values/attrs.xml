@@ -33,7 +33,20 @@
     </declare-styleable>
 
     <declare-styleable name="KaboorAppbar">
-        <attr name="KaboorAppbar_title" format="string"/>
-        <attr name="KaboorAppbar_enable_back" format="boolean"/>
+        <attr name="kaboorAppbar_title" format="string"/>
+        <attr name="kaboorAppbar_enable_back" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="KaboorEditText">
+        <attr name="kaboorEditText_label" format="string"/>
+        <attr name="kaboorEditText_hint" format="string"/>
+        <attr name="kaboorEditText_type" format="enum">
+            <enum name="text" value="0"/>
+            <enum name="number" value="1"/>
+            <enum name="phone" value="2"/>
+            <enum name="email" value="3"/>
+            <enum name="password" value="5"/>
+            <enum name="multiline" value="4"/>
+        </attr>
     </declare-styleable>
 </resources>

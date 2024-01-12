@@ -1,4 +1,4 @@
-package com.synrgy.kaboor.authentication
+package com.synrgy.kaboor.authentication.forgot
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,19 +16,11 @@ class ForgotPasswordActivity : KaboorActivity<ActivityForgotPasswordBinding>() {
     override fun getViewBinding(): ActivityForgotPasswordBinding =
         ActivityForgotPasswordBinding.inflate(layoutInflater)
 
-    // TODO: For handle intent (Data, etc)
-    override fun initIntent() {}
-
     // TODO: For UI
     override fun initUI() {}
 
     // TODO: For Action (Click, Touch, etc)
     override fun initAction() {}
 
-    // TODO: For Process (API, Call ViewModel, etc)
-    override fun initProcess() {}
-
-    // TODO: For Observer (LiveData, etc)
-    override fun initObservers() {}
 
 }

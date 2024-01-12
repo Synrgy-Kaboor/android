@@ -24,4 +24,5 @@ object Versions {
     const val build_tools = "8.2.0"
     const val flexbox = "3.0.0"
     const val lottie = "6.3.0"
+    const val otpview = "3.1.0"
 }

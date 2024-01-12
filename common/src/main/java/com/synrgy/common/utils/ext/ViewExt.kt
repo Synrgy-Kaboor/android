@@ -4,6 +4,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.synrgy.common.R
 import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.onClick
@@ -50,3 +52,5 @@ fun AppCompatActivity.showDatePicker(
         addOnPositiveButtonClickListener { onClick(it) }
     }
 }
+
+fun TextInputEditText.textTrim() = this.text.toString().trim()
