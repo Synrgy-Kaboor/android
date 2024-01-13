@@ -112,6 +112,18 @@
                     android:maxLines="1"
                     android:textColor="@color/neutral6"
                     tools:text="Durasi 4 Jam" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_date"
+                    style="@style/KaboorTextView.Title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/dimen_6dp"
+                    android:maxLines="1"
+                    android:textColor="@color/neutral6"
+                    android:visibility="gone"
+                    tools:text="Sen, 24 Des 2023" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -164,8 +176,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_4dp"
                 android:background="?selectableItemBackground"
-                app:kaboorRoundedIconSize="@dimen/dimen_18dp"
-                app:kaboorRoundedIcon="@drawable/ic_bag_outline" />
+                app:kaboorRoundedIcon="@drawable/ic_bag_outline"
+                app:kaboorRoundedIconSize="@dimen/dimen_18dp" />
 
             <com.synrgy.common.reusable.KaboorRoundedIcon
                 android:id="@+id/ic_shield"
@@ -173,17 +185,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_4dp"
                 android:background="?selectableItemBackground"
-                app:kaboorRoundedIconSize="@dimen/dimen_18dp"
-                app:kaboorRoundedIcon="@drawable/ic_shield" />
+                app:kaboorRoundedIcon="@drawable/ic_shield"
+                app:kaboorRoundedIconSize="@dimen/dimen_18dp" />
 
             <com.synrgy.common.reusable.KaboorRoundedIcon
                 android:id="@+id/ic_spoon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?selectableItemBackground"
                 android:layout_marginEnd="@dimen/dimen_4dp"
-                app:kaboorRoundedIconSize="@dimen/dimen_18dp"
-                app:kaboorRoundedIcon="@drawable/ic_spoon" />
+                android:background="?selectableItemBackground"
+                app:kaboorRoundedIcon="@drawable/ic_spoon"
+                app:kaboorRoundedIconSize="@dimen/dimen_18dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_price"

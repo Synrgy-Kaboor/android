@@ -28,6 +28,38 @@
                 style="@style/KaboorTextView.Title3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/label_passenger_detail" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_ticket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_minus_16dp"
+                android:layout_marginEnd="@dimen/dimen_minus_16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/item_card_ticket" />
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                style="@style/KaboorTextView.Title3"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/dimen_16dp"-->
+<!--                android:text="@string/label_booker_detail" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                style="@style/KaboorTextView.Title3"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/dimen_16dp"-->
+<!--                android:text="@string/label_passenger" />-->
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/label_extra_facilities" />
 
             <com.synrgy.common.reusable.KaboorAddonsCard
@@ -58,11 +90,11 @@
                 app:kaboorAddons_label="@string/label_buy_food" />
 
             <com.google.android.material.button.MaterialButton
+                style="@style/KaboorButton.Gradient"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_42dp"
-                style="@style/KaboorButton.Gradient"
                 android:layout_marginVertical="@dimen/dimen_40dp"
-                android:text="@string/button_continue_ordering"/>
+                android:text="@string/button_continue_ordering" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>

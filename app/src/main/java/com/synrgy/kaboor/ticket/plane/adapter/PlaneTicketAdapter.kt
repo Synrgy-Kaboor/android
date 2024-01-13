@@ -2,6 +2,7 @@ package com.synrgy.kaboor.ticket.plane.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.synrgy.common.R
@@ -36,6 +37,11 @@ class PlaneTicketAdapter(
             tvDestination.text = data.destination
             tvLanding.text = data.destinationTime
             tvPrice.text = data.price.toString()
+
+            if (data.date != "") {
+                tvDate.visibility = View.VISIBLE
+                tvDate.text = data.date
+            }
 
             root.onClick {
                 onClick.invoke(data)

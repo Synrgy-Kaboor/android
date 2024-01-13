@@ -123,6 +123,7 @@ object ConstantDummy {
                 "Jakarta",
                 "09.00 WIB",
                 "Durasi 4 Jam",
+                "",
                 1274000,
                 image = R.drawable.sample_img_garuda
             ),
@@ -135,6 +136,7 @@ object ConstantDummy {
                 "Jakarta",
                 "09.00 WIB",
                 "Durasi 4 Jam",
+                "",
                 1274000,
                 image = R.drawable.sample_img_lion_air
             ),
@@ -147,6 +149,7 @@ object ConstantDummy {
                 "Jakarta",
                 "10.05 WIB",
                 "Durasi 4 Jam 5 Menit",
+                "",
                 1274000,
                 image = R.drawable.sample_img_batik_air
             ),
@@ -159,6 +162,7 @@ object ConstantDummy {
                 "Jakarta",
                 "09.00 WIB",
                 "Durasi 4 Jam",
+                "",
                 1274000,
                 image = R.drawable.sample_img_garuda
             ),
@@ -171,6 +175,7 @@ object ConstantDummy {
                 "Jakarta",
                 "09.00 WIB",
                 "Durasi 4 Jam",
+                "",
                 1274000,
                 image = R.drawable.sample_img_lion_air
             ),
@@ -183,8 +188,39 @@ object ConstantDummy {
                 "Jakarta",
                 "10.05 WIB",
                 "Durasi 4 Jam 5 Menit",
+                "",
                 1274000,
                 image = R.drawable.sample_img_batik_air
+            )
+        )
+
+    fun roundTripPlaneTicket(): List<Ticket> =
+        listOf(
+            Ticket(
+                1,
+                "Garuda Indonesia",
+                "Ekonomi",
+                "Surabaya",
+                "05.00 WIB",
+                "Jakarta",
+                "09.00 WIB",
+                "Durasi 4 Jam",
+                "Sen, 24 Des 2023",
+                1274000,
+                image = R.drawable.sample_img_garuda
+            ),
+            Ticket(
+                2,
+                "Lion Air",
+                "Ekonomi",
+                "Surabaya",
+                "05.00 WIB",
+                "Jakarta",
+                "09.00 WIB",
+                "Durasi 4 Jam",
+                "Sel, 25 Des 2023",
+                1274000,
+                image = R.drawable.sample_img_lion_air
             )
         )
 }
