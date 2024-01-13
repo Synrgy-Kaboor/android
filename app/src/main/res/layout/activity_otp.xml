@@ -35,16 +35,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_32dp"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         android:textColor="@color/neutral9"
-        app:OtpHideLineWhenFilled="true"
+        app:OtpHideLineWhenFilled="false"
         app:OtpItemCount="4"
         app:OtpItemHeight="@dimen/dimen_50dp"
         app:OtpItemRadius="@dimen/dimen_8dp"
         app:OtpItemSpacing="@dimen/dimen_24dp"
         app:OtpItemWidth="@dimen/dimen_46dp"
         app:OtpLineColor="@color/neutral5"
-        app:OtpState_filled="true"
+        app:OtpState_filled="false"
         app:OtpViewType="rectangle"
         app:OtpLineWidth="@dimen/dimen_1_5dp"/>
 
@@ -53,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        style="@style/KaboorTextView.Body2"
         tools:text="Kode OTP kadaluwarsa pada 02:42"
         android:layout_marginTop="@dimen/dimen_32dp"/>
 

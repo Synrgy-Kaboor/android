@@ -10,6 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.synrgy.common.R
 import com.synrgy.common.databinding.LayoutBaseBottomSheetBinding
+import com.synrgy.common.utils.ext.goneIf
 import com.synrgy.common.utils.ext.visibleIf
 import com.wahidabd.library.presentation.fragment.BaseBottomSheetDialogFragment
 import com.wahidabd.library.utils.exts.onClick
@@ -55,9 +56,11 @@ abstract class KaboorBottomSheet<VB : ViewBinding> :
     @CallSuper
     override fun initUI() = with(binding) {
         btnClose.visibleIf { setCancelButtonEnable() }
-        tvLabel.text = getTitle()
+        tvLabel.goneIf { getTitle().isEmpty() }
         btnSave.visibleIf { showButton() }
+        divider.goneIf { getTitle().isEmpty() }
 
+        tvLabel.text = getTitle()
         // set content
         contentBinding = getContentBinding(layoutInflater)
         container.addView(contentBinding.root)

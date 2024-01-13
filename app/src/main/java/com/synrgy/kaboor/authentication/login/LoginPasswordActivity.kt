@@ -1,8 +1,9 @@
-package com.synrgy.kaboor.authentication
+package com.synrgy.kaboor.authentication.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.kaboor.databinding.ActivityLoginPasswordBinding
 
 class LoginPasswordActivity : KaboorActivity<ActivityLoginPasswordBinding>() {
@@ -23,7 +24,9 @@ class LoginPasswordActivity : KaboorActivity<ActivityLoginPasswordBinding>() {
     override fun initUI() {}
 
     // TODO: For Action (Click, Touch, etc)
-    override fun initAction() {}
+    override fun initAction() = with(binding) {
+        appbar.setOnBackClickListener { onBackPress() }
+    }
 
     // TODO: For Process (API, Call ViewModel, etc)
     override fun initProcess() {}

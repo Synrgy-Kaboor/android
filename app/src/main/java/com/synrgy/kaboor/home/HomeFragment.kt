@@ -15,7 +15,7 @@ import com.synrgy.kaboor.home.adapter.LastSeenAdapter
 import com.synrgy.kaboor.home.adapter.MenuHomeAdapter
 import com.synrgy.kaboor.home.adapter.PromoAdapter
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.kaboor.utils.navigation.NavHomeDirection
+import com.synrgy.kaboor.utils.navigation.NavDirection
 import com.wahidabd.library.utils.common.showToast
 
 class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
@@ -108,6 +108,6 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
     }
 
     private fun handleNavigationMenu(menu: HomeMenu) {
-        NavHomeDirection.navDirection(menu, requireContext())
+        NavDirection.navHomeDirection(menu, requireContext())
     }
 }

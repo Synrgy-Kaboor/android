@@ -1,6 +1,7 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
+    kotlinSerialization()
 }
 
 android {
@@ -52,6 +53,7 @@ dependencies {
     releaseApi(Dependecies.chucker_no_op)
 
     api(Dependecies.onelib)
+    api(Dependecies.serialzation)
 
     implementation(Dependecies.lottie)
 }

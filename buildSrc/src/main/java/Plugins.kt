@@ -25,3 +25,6 @@ fun PluginDependenciesSpec.kotlinKsp(): PluginDependencySpec =
 
 fun PluginDependenciesSpec.androidLibrary(): PluginDependencySpec =
     id("com.android.library")
+
+fun PluginDependenciesSpec.kotlinSerialization(): PluginDependencySpec =
+    kotlin("plugin.serialization")

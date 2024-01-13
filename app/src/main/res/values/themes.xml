@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.Kaboor" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -6,6 +6,7 @@
         <item name="android:statusBarColor">@color/neutral1</item>
         <item name="android:windowBackground">@color/neutral1</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
     </style>
 
     <style name="Theme.Kaboor" parent="Base.Theme.Kaboor" />

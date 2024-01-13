@@ -1,5 +1,8 @@
 package com.synrgy.di
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.wahidabd.library.data.libs.OkHttpClientFactory
 import com.wahidabd.library.data.libs.interceptor.HeaderInterceptor
 import okhttp3.Interceptor
@@ -18,17 +21,29 @@ const val BASE_URL = "base_url"
 val appModule = module {
     single {
         return@single OkHttpClientFactory.create(
-            interceptors = listOf(getHeaderInterceptor()),
+            interceptors = listOf(
+                getHeaderInterceptor(),
+                chuckerInterceptor(get())
+            ),
             showDebugLog = BuildConfig.DEBUG,
             authenticator = null,
             certificatePinner = null
         )
     }
 
-    single(named(BASE_URL)){BuildConfig.base_url}
+    single(named(BASE_URL)) { BuildConfig.base_url }
 }
 
 private fun getHeaderInterceptor(): Interceptor {
     val headers = HashMap<String, String>()
     return HeaderInterceptor(headers)
+}
+
+private fun chuckerInterceptor(context: Context): Interceptor {
+    return ChuckerInterceptor.Builder(context)
+        .collector(ChuckerCollector(context))
+        .maxContentLength(250000L)
+        .redactHeaders(emptySet())
+        .alwaysReadResponseBody(true)
+        .build()
 }
