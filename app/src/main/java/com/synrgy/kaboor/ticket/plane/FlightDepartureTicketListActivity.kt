@@ -20,10 +20,7 @@ class FlightDepartureTicketListActivity :
     private val planeTicketAdapter by lazy {
         PlaneTicketAdapter(
             this,
-            onClick = {
-                val intent = Intent(this, FlightReturnTicketListActivity::class.java)
-                startActivity(intent)
-            }
+            onClick = {}
         )
     }
 

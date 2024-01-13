@@ -10,7 +10,7 @@
     <com.synrgy.common.reusable.KaboorAppbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:kaboorAppbar_title="@string/label_departure" />
+        app:KaboorAppbar_title="@string/label_departure" />
 
     <com.google.android.material.textview.MaterialTextView
         style="@style/KaboorTextView.Title3"
