@@ -4,31 +4,28 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
-import com.synrgy.kaboor.databinding.ActivityFlightDepartureTicketListBinding
+import com.synrgy.kaboor.databinding.ActivityFlightReturnTicketListBinding
 import com.synrgy.kaboor.ticket.plane.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.utils.constant.ConstantDummy
 
-class FlightDepartureTicketListActivity :
-    KaboorActivity<ActivityFlightDepartureTicketListBinding>() {
+class FlightReturnTicketListActivity :
+    KaboorActivity<ActivityFlightReturnTicketListBinding>() {
 
     companion object {
         fun start(context: AppCompatActivity) {
-            context.startActivity(Intent(context, FlightDepartureTicketListActivity::class.java))
+            context.startActivity(Intent(context, FlightReturnTicketListActivity::class.java))
         }
     }
 
     private val planeTicketAdapter by lazy {
         PlaneTicketAdapter(
             this,
-            onClick = {
-                val intent = Intent(this, FlightReturnTicketListActivity::class.java)
-                startActivity(intent)
-            }
+            onClick = {}
         )
     }
 
-    override fun getViewBinding(): ActivityFlightDepartureTicketListBinding =
-        ActivityFlightDepartureTicketListBinding.inflate(layoutInflater)
+    override fun getViewBinding(): ActivityFlightReturnTicketListBinding =
+        ActivityFlightReturnTicketListBinding.inflate(layoutInflater)
 
     // TODO: For handle intent (Data, etc)
     override fun initIntent() {}
@@ -52,7 +49,7 @@ class FlightDepartureTicketListActivity :
     private fun initPlaneTicket() = with(binding) {
         val layoutManager =
             LinearLayoutManager(
-                this@FlightDepartureTicketListActivity,
+                this@FlightReturnTicketListActivity,
                 LinearLayoutManager.VERTICAL,
                 false
             )

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ticket.plane.FlightReturnTicketListActivity">
+
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:kaboorAppbar_title="@string/label_homecoming" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:cardCornerRadius="@dimen/dimen_8dp"
+        app:cardElevation="@dimen/dimen_2dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_17dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_plane"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/sample_img_garuda" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_plane"
+                        style="@style/KaboorTextView.Title3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/neutral9"
+                        android:text="Garuda Indonesia" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_class"
+                        style="@style/KaboorTextView.Title2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/neutral6"
+                        android:text="Ekonomi" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_origin"
+                        style="@style/KaboorTextView.Title2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:textColor="@color/neutral6"
+                        android:text="Surabaya" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_take_off"
+                        style="@style/KaboorTextView.Title3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:textColor="@color/neutral9"
+                        android:text="05.00 WIB" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center|bottom"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_13dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/img_plane" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_duration"
+                        style="@style/KaboorTextView.Title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/dimen_6dp"
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        android:maxLines="1"
+                        android:text="Durasi 4 Jam"
+                        android:textColor="@color/neutral6" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_date"
+                        style="@style/KaboorTextView.Title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/dimen_6dp"
+                        android:maxLines="1"
+                        android:text="Sen, 24 Des 2023"
+                        android:textColor="@color/neutral6" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_destination"
+                        style="@style/KaboorTextView.Title2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/neutral6"
+                        android:text="Jakarta" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_landing"
+                        style="@style/KaboorTextView.Title3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/neutral9"
+                        android:text="09.00 WIB" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_dash_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimen_12dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_dash_line" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.synrgy.common.reusable.KaboorRoundedIcon
+                    android:id="@+id/ic_bag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_4dp"
+                    android:background="?selectableItemBackground"
+                    app:kaboorRoundedIconSize="@dimen/dimen_18dp"
+                    app:kaboorRoundedIcon="@drawable/ic_bag_outline" />
+
+                <com.synrgy.common.reusable.KaboorRoundedIcon
+                    android:id="@+id/ic_shield"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_4dp"
+                    android:background="?selectableItemBackground"
+                    app:kaboorRoundedIconSize="@dimen/dimen_18dp"
+                    app:kaboorRoundedIcon="@drawable/ic_shield" />
+
+                <com.synrgy.common.reusable.KaboorRoundedIcon
+                    android:id="@+id/ic_spoon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?selectableItemBackground"
+                    android:layout_marginEnd="@dimen/dimen_4dp"
+                    app:kaboorRoundedIconSize="@dimen/dimen_18dp"
+                    app:kaboorRoundedIcon="@drawable/ic_spoon" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_price"
+                    style="@style/KaboorTextView.Heading2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/primaryBrightViolet"
+                    tools:text="Rp 1.274.000" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_shape_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/img_shape_line" />
+
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/KaboorTextView.Title3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:text="@string/label_choose_homecoming"
+        android:textColor="@color/neutral9" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ticket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_card_ticket" />
+</androidx.appcompat.widget.LinearLayoutCompat>
