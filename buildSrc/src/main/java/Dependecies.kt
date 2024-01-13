@@ -30,4 +30,5 @@ object Dependecies {
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
     const val otpview = "com.github.mukeshsolanki:android-otpview-pinview:${Versions.otpview}"
     const val serialzation = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serialzation}"
+    const val datastore = "androidx.datastore:datastore-preferences:${Versions.datastore}"
 }

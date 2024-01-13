@@ -21,14 +21,13 @@
             android:name=".authentication.forgot.ForgotNewPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".authentication.OtpActivity"
+            android:name=".authentication.otp.OtpActivity"
             android:exported="false" />
         <activity
             android:name=".authentication.login.LoginPasswordActivity"
-            android:name=".ticket.plane.FlightTicketListActivity"
             android:exported="false" />
         <activity
-            android:name=".authentication.LoginPasswordActivity"
+            android:name=".ticket.plane.FlightTicketListActivity"
             android:exported="false" />
         <activity
             android:name=".ticket.plane.PassengerDetailActivity"

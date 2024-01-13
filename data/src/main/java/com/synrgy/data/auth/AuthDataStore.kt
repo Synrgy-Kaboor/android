@@ -1,11 +1,12 @@
 package com.synrgy.data.auth
 
-import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.common.data.ResponseWrapper
+import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.data.auth.model.request.LoginRequest
+import com.synrgy.data.auth.model.request.NewPasswordRequest
 import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.auth.model.response.LoginResponse
-import com.synrgy.data.auth.model.response.UserResponse
+import com.synrgy.data.user.model.response.UserResponse
 import com.synrgy.data.auth.remote.AuthService
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.enqueue
@@ -72,4 +73,34 @@ class AuthDataStore(
                 onEmit = { data -> emit(data) }
             )
         }.flowOn(Dispatchers.IO)
+
+    override suspend fun verifyOtpResetPassword(email: String): Flow<Resource<KaboorGenericResponse>> =
+        flow {
+            enqueue(
+                email,
+                error::convertGenericError,
+                api::verifyOtpResetPassword,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowOn(Dispatchers.IO)
+
+    override suspend fun changePassword(
+        data: NewPasswordRequest
+    ): Flow<Resource<KaboorGenericResponse>> = flow {
+        enqueue(
+            data,
+            error::convertGenericError,
+            api::changePassword,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun checkEmail(email: String): Flow<Resource<KaboorGenericResponse>> = flow {
+        enqueue(
+            email,
+            error::convertGenericError,
+            api::checkEmail,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowOn(Dispatchers.IO)
 }

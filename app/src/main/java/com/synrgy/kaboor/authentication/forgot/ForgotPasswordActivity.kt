@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.common.utils.ext.onBackPress
-import com.synrgy.kaboor.authentication.OtpActivity
+import com.synrgy.kaboor.authentication.otp.OtpActivity
 import com.synrgy.kaboor.databinding.ActivityForgotPasswordBinding
 import com.wahidabd.library.utils.exts.onClick
 
