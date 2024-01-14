@@ -30,4 +30,5 @@
     <string name="label_passenger_detail">Detail Penumpang</string>
     <string name="label_booker_detail">Detail Pemesan</string>
     <string name="label_passenger">Detail Penumpang</string>
+    <string name="label_add_booker_as_passenger">Tambahkan pemesan sebagai penumpang</string>
 </resources>
