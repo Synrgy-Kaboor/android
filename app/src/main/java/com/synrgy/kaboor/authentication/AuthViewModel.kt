@@ -12,7 +12,6 @@ import com.synrgy.domain.user.UserUseCase
 import com.synrgy.domain.user.model.response.User
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 
@@ -24,7 +23,7 @@ import kotlinx.coroutines.launch
 
 class AuthViewModel(
     private val auth: AuthUseCase,
-    private val user: UserUseCase
+    private val user: UserUseCase,
 ) : ViewModel() {
 
     private val _userData = MutableLiveData<Resource<User>>()
@@ -37,12 +36,14 @@ class AuthViewModel(
     val checkEmail: LiveData<Resource<KaboorGenericResponse>> get() = _checkEmail
 
     fun saveToken(token: String) {
+        _userData.value = Resource.loading()
         viewModelScope.launch {
             user.saveToken(token)
         }
     }
 
     fun checkEmail(email: String) {
+        _checkEmail.value = Resource.loading()
         viewModelScope.launch {
             auth.checkEmail(email)
                 .collectLatest { _checkEmail.value = it }
@@ -50,9 +51,12 @@ class AuthViewModel(
     }
 
     fun login(data: LoginParam) {
+        _jwt.value = Resource.loading()
         viewModelScope.launch {
             auth.login(data)
-                .collectLatest { _jwt.value = it }
+                .collectLatest {
+                    _jwt.value = it
+                }
         }
     }
 }

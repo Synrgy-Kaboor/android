@@ -32,5 +32,16 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_rectangle_search" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Error"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/dimen_4dp"
+            style="@style/KaboorTextView.Body1"
+            android:textColor="@color/secondaryDanger"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 </merge>
