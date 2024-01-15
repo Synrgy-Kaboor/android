@@ -58,4 +58,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label_choose_departure">Pilih Keberangkatan</string>
     <string name="message_error_title">Ooopppss.....</string>
+    <string name="label_choose_homecoming">Pilih Kepulangan</string>
 </resources>

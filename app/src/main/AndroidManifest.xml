@@ -19,6 +19,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".ticket.plane.FlightReturnTicketListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ticket.plane.FlightDepartureTicketListActivity"
+            android:exported="false" />
+        <activity
             android:name=".authentication.forgot.ForgotNewPasswordActivity"
             android:exported="false" />
         <activity

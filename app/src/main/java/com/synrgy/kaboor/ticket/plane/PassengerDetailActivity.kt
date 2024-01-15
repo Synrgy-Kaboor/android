@@ -2,26 +2,48 @@ package com.synrgy.kaboor.ticket.plane
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
-import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityPassengerDetailBinding
+import com.synrgy.kaboor.ticket.plane.adapter.PlaneTicketAdapter
+import com.synrgy.kaboor.utils.constant.ConstantDummy
 
 class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>() {
 
     companion object {
-        fun start(context: Context){
+        fun start(context: Context) {
             context.startActivity(Intent(context, PassengerDetailActivity::class.java))
         }
     }
 
+    private val planeTicketAdapter by lazy {
+        PlaneTicketAdapter(
+            this,
+            onClick = {}
+        )
+    }
 
     override fun getViewBinding(): ActivityPassengerDetailBinding =
         ActivityPassengerDetailBinding.inflate(layoutInflater)
 
-    override fun initUI() {}
+    override fun initUI() {
+        initPlaneTicket()
+    }
 
     override fun initAction() {}
 
+    override fun initProcess() {
+        planeTicketAdapter.setData = ConstantDummy.roundTripPlaneTicket()
+    }
+
+    private fun initPlaneTicket() = with(binding) {
+        val layoutManager =
+            LinearLayoutManager(
+                this@PassengerDetailActivity,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+        rvTicket.layoutManager = layoutManager
+        rvTicket.adapter = planeTicketAdapter
+    }
 }

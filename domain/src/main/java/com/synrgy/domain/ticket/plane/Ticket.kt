@@ -11,6 +11,7 @@ data class Ticket(
     val destination: String,
     val destinationTime: String,
     val boardingTime: String,
+    val date: String? = null,
     val price: Long,
     @DrawableRes val image: Int? = null
 )
