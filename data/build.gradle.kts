@@ -34,4 +34,6 @@ android {
 
 dependencies {
     api(project(Modules.common))
+
+    implementation(Dependecies.datastore)
 }

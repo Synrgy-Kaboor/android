@@ -9,7 +9,10 @@ import com.synrgy.common.databinding.LayoutBaseEditTextBinding
 import com.synrgy.common.utils.enums.EditTextType
 import com.synrgy.common.utils.ext.goneIf
 import com.synrgy.common.utils.ext.textTrim
+import com.wahidabd.library.presentation.view.ErrorableView
 import com.wahidabd.library.utils.common.emptyString
+import com.wahidabd.library.utils.exts.gone
+import com.wahidabd.library.utils.exts.visible
 
 
 /**
@@ -39,8 +42,9 @@ class KaboorEditText @JvmOverloads constructor(
         setupView()
     }
 
-    private fun setAttrs(attrs: AttributeSet?){
-        val attributes = context.theme.obtainStyledAttributes(attrs, R.styleable.KaboorEditText, 0, 0)
+    private fun setAttrs(attrs: AttributeSet?) {
+        val attributes =
+            context.theme.obtainStyledAttributes(attrs, R.styleable.KaboorEditText, 0, 0)
         hint = attributes.getString(R.styleable.KaboorEditText_kaboorEditText_hint).orEmpty()
         label = attributes.getString(R.styleable.KaboorEditText_kaboorEditText_label).orEmpty()
         type = attributes.getInt(R.styleable.KaboorEditText_kaboorEditText_type, 0).let {
@@ -49,7 +53,7 @@ class KaboorEditText @JvmOverloads constructor(
         attributes.recycle()
     }
 
-    private fun setupView() = with(binding){
+    private fun setupView() = with(binding) {
         tvLabel.goneIf { label.isNullOrEmpty() }
         tvLabel.text = label
         et.hint = hint

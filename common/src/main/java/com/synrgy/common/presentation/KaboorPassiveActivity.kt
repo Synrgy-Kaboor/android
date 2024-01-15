@@ -6,23 +6,23 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.synrgy.common.R
 import com.synrgy.common.presentation.dialog.GenericBottomSheetFragment
-import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.common.emptyString
+import com.wahidabd.library.validation.PassiveFormActivity
 
 
 /**
- * Created by wahid on 12/27/2023.
+ * Created by wahid on 1/13/2024.
  * Github github.com/wahidabd.
  */
 
 
-abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
+abstract class KaboorPassiveActivity<VB: ViewBinding> : PassiveFormActivity<VB>() {
 
     private var loadingDialog: AlertDialog? = null
 
-    override fun initIntent() {}
     override fun initProcess() {}
     override fun initObservers() {}
+    override fun onValidationFailed() {}
 
     override fun showLoading() {
         loadingDialog?.let {
@@ -80,4 +80,5 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
             onSecondaryButtonClicked = secondaryAction,
         ).show(supportFragmentManager, GenericBottomSheetFragment::class.java.name)
     }
+
 }
