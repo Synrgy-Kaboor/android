@@ -1,9 +1,9 @@
-name: Build for deployment
+name: Build and Distribute
 
 on:
   workflow_dispatch:
     inputs:
-      variant:
+      variants:
         description: 'Build variant'
         required: true
         default: 'debug'
@@ -60,7 +60,7 @@ jobs:
         if: ${{ env.build_type == 'Debug' }}
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID_STAGING }}
+          appId: ${{ secrets.FIREBASE_APP_ID_DEV }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
           file: app/build/outputs/apk/dev/debug/app-dev-debug.apk
