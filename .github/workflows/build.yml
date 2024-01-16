@@ -38,7 +38,7 @@ jobs:
         uses: kanga333/variable-mapper@master
         id: mapper
         with:
-          options: ${{ inputs.variants }}
+          key: ${{ inputs.variants }}
           map: |
             {
               "debug": {
