@@ -57,7 +57,7 @@ jobs:
         run: ./gradlew assemble${{ env.build_type }}
 
       - name: upload artifact to Firebase App Distribution - Debug
-        if: ${{ inputs.variants == 'debug' }}
+        if: ${{ env.build_type == 'Debug' }}
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID_STAGING }}
@@ -67,7 +67,7 @@ jobs:
           releaseNotes: ${{ inputs.release_notes }}
 
       - name: upload artifact to Firebase App Distribution - Release
-        if: ${{ inputs.variants == 'release' }}
+        if: ${{ env.build_type == 'Release' }}
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
