@@ -1,10 +1,6 @@
 name: Build for deployment
 
 on:
-  push:
-    branches: [ master, develop ]
-  pull_request:
-    branches: [ master, develop ]
   workflow_dispatch:
     inputs:
       variant:
@@ -60,18 +56,18 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew assemble${{ env.build_type }}
 
-      - name: upload artifact to Firebase App Distribution
-        if: ${{ inputs.variants == 'debug' }}
+      - name: upload artifact to Firebase App Distribution - Debug
+        if: ${{ env.build_type == 'Debug' }}
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID_STAGING }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          file: app/build/outputs/apk/staging/debug/app-staging-debug.apk
+          file: app/build/outputs/apk/dev/debug/app-dev-debug.apk
           releaseNotes: ${{ inputs.release_notes }}
 
-      - name: upload artifact to Firebase App Distribution
-        if: ${{ inputs.variants == 'release' }}
+      - name: upload artifact to Firebase App Distribution - Release
+        if: ${{ env.build_type == 'Release' }}
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
