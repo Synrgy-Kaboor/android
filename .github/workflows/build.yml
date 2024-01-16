@@ -38,8 +38,27 @@ jobs:
       - name: Gradle Build Action
         uses: gradle/gradle-build-action@v2.11.1
 
+      - name: Map Options
+        uses: kanga333/variable-mapper@master
+        id: mapper
+        with:
+          options: ${{ inputs.variants }}
+          map: |
+            {
+              "debug": {
+                "build_type": "Debug"
+              },
+              "release": {
+                "build_type": "Release"
+              }
+            }
+          export_to: env
+
       - name: Make gradlew executable
         run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew assemble${{ env.build_type }}
 
       - name: upload artifact to Firebase App Distribution
         if: ${{ inputs.variants == 'debug' }}
@@ -55,7 +74,7 @@ jobs:
         if: ${{ inputs.variants == 'release' }}
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID_STAGING }}
+          appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
           file: app/build/outputs/apk/production/debug/app-production-unsigned.apk
