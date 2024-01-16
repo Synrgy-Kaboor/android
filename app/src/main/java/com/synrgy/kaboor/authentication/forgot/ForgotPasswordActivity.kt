@@ -63,7 +63,7 @@ class ForgotPasswordActivity : KaboorPassiveActivity<ActivityForgotPasswordBindi
             Validation(
                 binding.etEmail.textInput, listOf(
                     notEmptyRule(getString(R.string.error_empty_email)),
-                    emailRule(getString(R.string.error_invalid_email))
+                    emailRule(getString(R.string.error_invalid_email)),
                 )
             )
         )

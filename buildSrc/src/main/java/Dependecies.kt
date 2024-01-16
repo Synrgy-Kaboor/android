@@ -31,4 +31,7 @@ object Dependecies {
     const val otpview = "com.github.mukeshsolanki:android-otpview-pinview:${Versions.otpview}"
     const val serialzation = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serialzation}"
     const val datastore = "androidx.datastore:datastore-preferences:${Versions.datastore}"
+    const val firebase_bom = "com.google.firebase:firebase-bom:${Versions.firebase_bom}"
+    const val firebase_analytics = "com.google.firebase:firebase-analytics-ktx"
+    const val firebase_crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
 }

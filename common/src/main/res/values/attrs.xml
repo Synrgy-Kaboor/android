@@ -35,6 +35,10 @@
     <declare-styleable name="KaboorAppbar">
         <attr name="kaboorAppbar_title" format="string"/>
         <attr name="kaboorAppbar_enable_back" format="boolean"/>
+        <attr name="kaboorAppbar_type" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="ticket" value="1"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="KaboorEditText">
@@ -49,4 +53,5 @@
             <enum name="multiline" value="4"/>
         </attr>
     </declare-styleable>
+
 </resources>
