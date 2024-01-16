@@ -1,0 +1,77 @@
+name: Build and Distribute
+
+on:
+  workflow_dispatch:
+    inputs:
+      variants:
+        description: 'Build variant'
+        required: true
+        default: 'debug'
+        options:
+          - 'debug'
+          - 'release'
+      release_note:
+        type: string
+        required: true
+        default: 'Manual Debug Release'
+        description: 'Release Note'
+
+jobs:
+  build:
+    name: Building and distribution app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.0.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: gradle
+
+      - name: Gradle Build Action
+        uses: gradle/gradle-build-action@v2.11.1
+
+      - name: Map Options
+        uses: kanga333/variable-mapper@master
+        id: mapper
+        with:
+          key: ${{ inputs.variants }}
+          map: |
+            {
+              "debug": {
+                "build_type": "Debug"
+              },
+              "release": {
+                "build_type": "Release"
+              }
+            }
+          export_to: env
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew assemble${{ env.build_type }}
+
+      - name: upload artifact to Firebase App Distribution - Debug
+        if: ${{ env.build_type == 'Debug' }}
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_DEV }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: testers
+          file: app/build/outputs/apk/dev/debug/app-dev-debug.apk
+          releaseNotes: ${{ inputs.release_notes }}
+
+      - name: upload artifact to Firebase App Distribution - Release
+        if: ${{ env.build_type == 'Release' }}
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: testers
+          file: app/build/outputs/apk/production/debug/app-production-unsigned.apk
+          releaseNotes: ${{ inputs.release_notes }}

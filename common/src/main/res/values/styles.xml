@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="KaboorRatingBar" parent="Widget.AppCompat.RatingBar">
         <item name="android:progressDrawable">@drawable/selector_rating</item>
         <item name="android:numStars">5</item>
         <item name="android:stepSize">0.5</item>
         <item name="android:minHeight">@dimen/dimen_0dp</item>
+    </style>
+
+    <style name="KaboorBottomDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/KaboorModalDialog</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize|stateAlwaysVisible</item>
+    </style>
+
+    <style name="KaboorModalDialog" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet_dialog</item>
+    </style>
+
+    <style name="KaboorCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/neutral1</item>
+        <item name="rippleColor">@color/rippleCard</item>
+        <item name="cardElevation">@dimen/dimen_3dp</item>
+        <item name="cardCornerRadius">@dimen/dimen_8dp</item>
+        <item name="strokeWidth">@dimen/dimen_1dp</item>
+        <item name="strokeColor">@color/neutral6</item>
+    </style>
+
+    <style name="KaboorDatePicker" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="colorPrimary">@color/primaryBrightBlue</item>
+        <item name="android:backgroundTint">@color/neutral1</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
     </style>
 </resources>

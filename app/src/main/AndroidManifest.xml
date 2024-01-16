@@ -6,9 +6,10 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:name="com.synrgy.common.App"
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +17,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kaboor"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu">
+        <activity
+            android:name=".ticket.plane.FlightReturnTicketListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ticket.plane.FlightDepartureTicketListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.forgot.ForgotNewPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.otp.OtpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.login.LoginPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ticket.plane.FlightTicketListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ticket.plane.PassengerDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ticket.plane.FlightScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.forgot.ForgotPasswordActivity"
+            android:exported="false" />
         <activity
             android:name=".authentication.RegisterDetailActivity"
             android:exported="false" />
@@ -25,20 +53,20 @@
             android:exported="false" />
         <activity
             android:name=".authentication.RegisterActivity"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".authentication.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".authentication.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor"></activity>
     </application>
 
 </manifest>

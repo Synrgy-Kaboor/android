@@ -25,3 +25,12 @@ fun PluginDependenciesSpec.kotlinKsp(): PluginDependencySpec =
 
 fun PluginDependenciesSpec.androidLibrary(): PluginDependencySpec =
     id("com.android.library")
+
+fun PluginDependenciesSpec.kotlinSerialization(): PluginDependencySpec =
+    kotlin("plugin.serialization")
+
+fun PluginDependenciesSpec.googleGmsServices(): PluginDependencySpec =
+    id("com.google.gms.google-services")
+
+fun PluginDependenciesSpec.firebaseCrashlytics(): PluginDependencySpec =
+    id("com.google.firebase.crashlytics")

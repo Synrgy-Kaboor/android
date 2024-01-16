@@ -52,10 +52,4 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
 
     // TODO: For Action (Click, Touch, etc)
     override fun initAction() {}
-
-    // TODO: For Process (API, Call ViewModel, etc)
-    override fun initProcess() {}
-
-    // TODO: For Observer (LiveData, etc)
-    override fun initObservers() {}
 }

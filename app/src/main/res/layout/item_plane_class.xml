@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.synrgy.common.reusable.KaboorPassengerClass
+    android:id="@+id/kaboorPassengerClass"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:kaboorPassengerClass_type="planeClass"
+    tools:kaboorPassengerClass_description="Tiket pesawat murah, sesuai kebutuhan Anda"
+    tools:kaboorPassengerClass_label="Ekonomi" />

@@ -1,6 +1,9 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
+    kotlinSerialization()
+    googleGmsServices()
+    firebaseCrashlytics()
 }
 
 android {
@@ -29,11 +32,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -47,9 +50,12 @@ dependencies {
     api(Dependecies.appcompat)
     api(Dependecies.material)
     api(Dependecies.constraintlayout)
+    api(Dependecies.onelib)
+    api(Dependecies.serialzation)
+    api(Dependecies.firebase_analytics)
+    api(Dependecies.firebase_crashlytics)
 
     debugApi(Dependecies.chucker)
     releaseApi(Dependecies.chucker_no_op)
-
-    api(Dependecies.onelib)
+    implementation(Dependecies.lottie)
 }

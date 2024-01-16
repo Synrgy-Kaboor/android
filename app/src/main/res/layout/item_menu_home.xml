@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/menu"
         android:background="?selectableItemBackground"
-        tools:icon="@drawable/ic_plane"
-        app:size="@dimen/dimen_56dp"
-        tools:label="Asuransi Perjalanan"/>
+        tools:kaboorRoundedIcon="@drawable/ic_plane"
+        app:kaboorRoundedIcon_padding="@dimen/dimen_12dp"
+        app:kaboorRoundedIconSize="@dimen/dimen_56dp"
+        tools:kaboorRoundedIconLabel="Asuransi Perjalanan"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

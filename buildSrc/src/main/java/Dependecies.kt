@@ -27,4 +27,11 @@ object Dependecies {
     const val multi_state_view = "com.github.kennycason:kennycason:${Versions.multi_state_view}"
     const val build_tools = "com.android.tools.build:gradle:${Versions.build_tools}"
     const val flexbox = "com.google.android.flexbox:flexbox:${Versions.flexbox}"
+    const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+    const val otpview = "com.github.mukeshsolanki:android-otpview-pinview:${Versions.otpview}"
+    const val serialzation = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serialzation}"
+    const val datastore = "androidx.datastore:datastore-preferences:${Versions.datastore}"
+    const val firebase_bom = "com.google.firebase:firebase-bom:${Versions.firebase_bom}"
+    const val firebase_analytics = "com.google.firebase:firebase-analytics-ktx"
+    const val firebase_crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
 }

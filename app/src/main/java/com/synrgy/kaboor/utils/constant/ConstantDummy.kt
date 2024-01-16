@@ -3,6 +3,7 @@ package com.synrgy.kaboor.utils.constant
 import com.synrgy.common.R
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
+import com.synrgy.domain.ticket.plane.Ticket
 
 
 /**
@@ -109,5 +110,117 @@ object ConstantDummy {
                 900000,
                 image = R.drawable.sample_img_car
             ),
+        )
+
+    fun planeTicket(): List<Ticket> =
+        listOf(
+            Ticket(
+                1,
+                "Garuda Indonesia",
+                "Ekonomi",
+                "Surabaya",
+                "05.00 WIB",
+                "Jakarta",
+                "09.00 WIB",
+                "Durasi 4 Jam",
+                "",
+                1274000,
+                image = R.drawable.sample_img_garuda
+            ),
+            Ticket(
+                2,
+                "Lion Air",
+                "Ekonomi",
+                "Surabaya",
+                "05.00 WIB",
+                "Jakarta",
+                "09.00 WIB",
+                "Durasi 4 Jam",
+                "",
+                1274000,
+                image = R.drawable.sample_img_lion_air
+            ),
+            Ticket(
+                3,
+                "Batik Air",
+                "Ekonomi",
+                "Surabaya",
+                "07.00 WIB",
+                "Jakarta",
+                "10.05 WIB",
+                "Durasi 4 Jam 5 Menit",
+                "",
+                1274000,
+                image = R.drawable.sample_img_batik_air
+            ),
+            Ticket(
+                4,
+                "Garuda Indonesia",
+                "Ekonomi",
+                "Surabaya",
+                "05.00 WIB",
+                "Jakarta",
+                "09.00 WIB",
+                "Durasi 4 Jam",
+                "",
+                1274000,
+                image = R.drawable.sample_img_garuda
+            ),
+            Ticket(
+                5,
+                "Lion Air",
+                "Ekonomi",
+                "Surabaya",
+                "05.00 WIB",
+                "Jakarta",
+                "09.00 WIB",
+                "Durasi 4 Jam",
+                "",
+                1274000,
+                image = R.drawable.sample_img_lion_air
+            ),
+            Ticket(
+                6,
+                "Batik Air",
+                "Ekonomi",
+                "Surabaya",
+                "07.00 WIB",
+                "Jakarta",
+                "10.05 WIB",
+                "Durasi 4 Jam 5 Menit",
+                "",
+                1274000,
+                image = R.drawable.sample_img_batik_air
+            )
+        )
+
+    fun roundTripPlaneTicket(): List<Ticket> =
+        listOf(
+            Ticket(
+                1,
+                "Garuda Indonesia",
+                "Ekonomi",
+                "Surabaya",
+                "05.00 WIB",
+                "Jakarta",
+                "09.00 WIB",
+                "Durasi 4 Jam",
+                "Sen, 24 Des 2023",
+                1274000,
+                image = R.drawable.sample_img_garuda
+            ),
+            Ticket(
+                2,
+                "Lion Air",
+                "Ekonomi",
+                "Surabaya",
+                "05.00 WIB",
+                "Jakarta",
+                "09.00 WIB",
+                "Durasi 4 Jam",
+                "Sel, 25 Des 2023",
+                1274000,
+                image = R.drawable.sample_img_lion_air
+            )
         )
 }

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ticket.plane.FlightScheduleActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@drawable/img_header_flight_schedule" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_user"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dimen_32dp"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:background="@drawable/ripple_oval_white"
+        android:padding="@dimen/dimen_14dp"
+        app:srcCompat="@drawable/ic_user" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_user_name"
+        style="@style/KaboorTextView.SubHeading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/img_user"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:layout_toEndOf="@id/img_user"
+        android:textColor="@color/neutral1"
+        tools:text="Selamat pagi, Wahid" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_label"
+        style="@style/KaboorTextView.SubHeading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/img_user"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginBottom="@dimen/dimen_8dp"
+        android:layout_toEndOf="@id/img_user"
+        android:text="@string/label_where_going"
+        android:textColor="@color/neutral1" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/form_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_user"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/bg_rectangle_stroke_white"
+        android:elevation="@dimen/dimen_4dp"
+        android:orientation="vertical">
+
+        <com.synrgy.common.reusable.ticket.KaboorFlightCard
+            android:id="@+id/kaboor_flight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_14dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            app:cardCornerRadius="@dimen/dimen_8dp"
+            app:cardElevation="@dimen/dimen_2dp" />
+
+        <com.synrgy.common.reusable.ticket.KaboorScheduleCard
+            android:id="@+id/kaboor_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_14dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:cardCornerRadius="@dimen/dimen_8dp"
+            app:cardElevation="@dimen/dimen_4dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_14dp"
+            android:layout_marginTop="@dimen/dimen_10dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_passenger"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_4dp"
+                android:layout_weight="1"
+                style="@style/KaboorCard">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_8dp"
+                    android:layout_marginVertical="@dimen/dimen_16dp">
+
+                    <com.synrgy.common.reusable.KaboorRoundedIcon
+                        android:id="@+id/icon_passenger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        app:kaboorRoundedIcon="@drawable/ic_walking"
+                        app:kaboorRoundedIconSize="@dimen/dimen_40dp"
+                        app:kaboorRoundedIcon_padding="@dimen/dimen_6dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_label_passenger"
+                        style="@style/KaboorTextView.Title3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_8dp"
+                        android:layout_toEndOf="@id/icon_passenger"
+                        android:maxLines="1"
+                        android:text="@string/label_passenger"
+                        android:textColor="@color/neutral6" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_passenger"
+                        style="@style/KaboorTextView.Title3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_label_passenger"
+                        android:layout_alignStart="@id/tv_label_passenger"
+                        android:maxLines="1"
+                        tools:text="1 Orang" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_1dp"
+                        android:layout_below="@id/tv_passenger"
+                        android:layout_alignStart="@id/tv_label_passenger"
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        android:layout_marginEnd="@dimen/dimen_12dp"
+                        app:dividerColor="@color/neutral6" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="@dimen/dimen_6dp"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_class"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_4dp"
+                android:layout_weight="1"
+                style="@style/KaboorCard">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_8dp"
+                    android:layout_marginVertical="@dimen/dimen_16dp">
+
+                    <com.synrgy.common.reusable.KaboorRoundedIcon
+                        android:id="@+id/icon_class"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        app:kaboorRoundedIcon="@drawable/ic_loveseat"
+                        app:kaboorRoundedIconSize="@dimen/dimen_40dp"
+                        app:kaboorRoundedIcon_padding="@dimen/dimen_6dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_label_class"
+                        style="@style/KaboorTextView.Title3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_8dp"
+                        android:layout_toEndOf="@id/icon_class"
+                        android:maxLines="1"
+                        android:text="@string/label_class"
+                        android:textColor="@color/neutral6" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_class"
+                        style="@style/KaboorTextView.Title3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_label_class"
+                        android:layout_alignStart="@id/tv_label_class"
+                        android:maxLines="1"
+                        tools:text="Ekonomi" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_1dp"
+                        android:layout_below="@id/tv_class"
+                        android:layout_alignStart="@id/tv_label_class"
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        android:layout_marginEnd="@dimen/dimen_12dp"
+                        app:dividerColor="@color/neutral6" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit"
+            style="@style/KaboorButton.Gradient"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="@dimen/dimen_14dp"
+            android:layout_marginVertical="@dimen/dimen_16dp"
+            android:text="@string/label_search_id" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

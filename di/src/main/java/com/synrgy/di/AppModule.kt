@@ -1,10 +1,14 @@
 package com.synrgy.di
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.synrgy.data.user.local.KaboorDataStore
 import com.wahidabd.library.data.libs.OkHttpClientFactory
-import org.koin.android.BuildConfig
+import com.wahidabd.library.data.libs.interceptor.HeaderInterceptor
+import okhttp3.Interceptor
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import org.koin.dsl.single
 
 
 /**
@@ -16,12 +20,36 @@ import org.koin.dsl.single
 const val BASE_URL = "base_url"
 
 val appModule = module {
+
+    single { KaboorDataStore.getInstance(get()) }
+
     single {
         return@single OkHttpClientFactory.create(
-            interceptors = listOf(),
+            interceptors = listOf(
+                getHeaderInterceptor(get()),
+                chuckerInterceptor(get())
+            ),
             showDebugLog = BuildConfig.DEBUG,
             authenticator = null,
             certificatePinner = null
         )
     }
+
+    single(named(BASE_URL)) { BuildConfig.base_url }
+}
+
+private fun getHeaderInterceptor(data: KaboorDataStore): Interceptor {
+    val headers = HashMap<String, String>()
+    headers["Content-Type"] = "application/json"
+    headers["Authorization"] = "Bearer ${data.getToken()}"
+    return HeaderInterceptor(headers)
+}
+
+private fun chuckerInterceptor(context: Context): Interceptor {
+    return ChuckerInterceptor.Builder(context)
+        .collector(ChuckerCollector(context))
+        .maxContentLength(250000L)
+        .redactHeaders(emptySet())
+        .alwaysReadResponseBody(true)
+        .build()
 }

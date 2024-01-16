@@ -23,4 +23,9 @@ object Versions {
     const val multi_state_view = "2.2.0"
     const val build_tools = "8.2.0"
     const val flexbox = "3.0.0"
+    const val lottie = "6.3.0"
+    const val otpview = "3.1.0"
+    const val serialzation = "1.6.0"
+    const val datastore = "1.0.0"
+    const val firebase_bom = "32.7.0"
 }
