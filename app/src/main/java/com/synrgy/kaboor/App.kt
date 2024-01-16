@@ -1,6 +1,8 @@
 package com.synrgy.kaboor
 
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.synrgy.common.utils.FirebaseCrashlyticsTree
 import com.synrgy.di.appModule
 import com.synrgy.di.features.authModule
 import com.synrgy.di.features.userModule
@@ -29,6 +31,10 @@ class App : BaseApplication() {
 
     override fun initApp() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        Timber.plant(Timber.DebugTree())
+
+        val tree = if (BuildConfig.DEBUG) Timber.DebugTree()
+        else FirebaseCrashlyticsTree(FirebaseCrashlytics.getInstance())
+
+        Timber.plant(tree)
     }
 }

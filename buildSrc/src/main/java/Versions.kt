@@ -27,4 +27,5 @@ object Versions {
     const val otpview = "3.1.0"
     const val serialzation = "1.6.0"
     const val datastore = "1.0.0"
+    const val firebase_bom = "32.7.0"
 }

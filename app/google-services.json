@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "1082777140423",
+    "project_id": "kaboor-6c788",
+    "storage_bucket": "kaboor-6c788.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082777140423:android:80025973730b35ad50d2e2",
+        "android_client_info": {
+          "package_name": "com.synrgy.kaboor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByYFHpuoECcpIhVAfU-pJeEEbeW92dn9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082777140423:android:6a075e3ac977ba4b50d2e2",
+        "android_client_info": {
+          "package_name": "com.synrgy.kaboor.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByYFHpuoECcpIhVAfU-pJeEEbeW92dn9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082777140423:android:73d1e9f1f26bf0e150d2e2",
+        "android_client_info": {
+          "package_name": "com.synrgy.kaboor.staging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByYFHpuoECcpIhVAfU-pJeEEbeW92dn9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

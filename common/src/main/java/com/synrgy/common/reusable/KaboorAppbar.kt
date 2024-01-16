@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.synrgy.common.R
 import com.synrgy.common.databinding.LayoutAppBarBinding
+import com.synrgy.common.utils.enums.AppbarType
 import com.synrgy.common.utils.ext.goneIf
+import com.synrgy.common.utils.ext.invisibleIf
+import com.synrgy.common.utils.ext.visibleIf
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.onClick
 
@@ -27,7 +30,9 @@ class KaboorAppbar @JvmOverloads constructor(
 
     private var title: String = emptyString()
     private var enableBackButton: Boolean = true
+    private var type: AppbarType = AppbarType.NORMAL
     private var onBackListener: () -> Unit = {}
+    private var onNotificationListener: () -> Unit = {}
 
     init {
         binding = LayoutAppBarBinding.inflate(LayoutInflater.from(context), this)
@@ -41,17 +46,30 @@ class KaboorAppbar @JvmOverloads constructor(
         enableBackButton =
             attributes.getBoolean(R.styleable.KaboorAppbar_kaboorAppbar_enable_back, true)
         attributes.recycle()
+        type = attributes.getInt(R.styleable.KaboorAppbar_kaboorAppbar_type, 0).let {
+            AppbarType.entries[it]
+        }
     }
 
     private fun setupView() = with(binding) {
         imgBack.goneIf { !enableBackButton }
+        tvDesc.visibleIf { type == AppbarType.TICKET }
+        imgNotification.invisibleIf { type != AppbarType.TICKET }
         tvTitle.text = title
 
         imgBack.onClick { onBackListener.invoke() }
     }
 
+    fun setDescription(date: String, passenger: Int, clazz: String) = with(binding) {
+        tvDesc.text = context.getString(R.string.format_appbar_description, date, passenger, clazz)
+    }
+
     fun setOnBackClickListener(listener: () -> Unit) {
         onBackListener = listener
+    }
+
+    fun setOnNotificationClickListener(listener: () -> Unit) {
+        onNotificationListener = listener
     }
 
 }

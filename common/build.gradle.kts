@@ -2,6 +2,8 @@ plugins {
     androidLibrary()
     kotlinAndroid()
     kotlinSerialization()
+    googleGmsServices()
+    firebaseCrashlytics()
 }
 
 android {
@@ -48,12 +50,12 @@ dependencies {
     api(Dependecies.appcompat)
     api(Dependecies.material)
     api(Dependecies.constraintlayout)
+    api(Dependecies.onelib)
+    api(Dependecies.serialzation)
+    api(Dependecies.firebase_analytics)
+    api(Dependecies.firebase_crashlytics)
 
     debugApi(Dependecies.chucker)
     releaseApi(Dependecies.chucker_no_op)
-
-    api(Dependecies.onelib)
-    api(Dependecies.serialzation)
-
     implementation(Dependecies.lottie)
 }
