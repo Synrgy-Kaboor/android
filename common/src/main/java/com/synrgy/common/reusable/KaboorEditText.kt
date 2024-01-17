@@ -75,6 +75,10 @@ class KaboorEditText @JvmOverloads constructor(
         }
     }
 
+    fun setText(text: String){
+        binding.et.setText(text)
+    }
+
     private fun setupViewPassword() = with(binding) {
         til.setEndIcon(R.drawable.ic_eye)
         et.transformationMethod = PasswordTransformationMethod.getInstance()
