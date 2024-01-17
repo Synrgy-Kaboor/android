@@ -69,7 +69,8 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
         primaryTextButton: String? = emptyString(),
         secondaryTextButton: String? = emptyString(),
         primaryAction: (() -> Unit)? = null,
-        secondaryAction: (() -> Unit)? = null
+        secondaryAction: (() -> Unit)? = null,
+        isCancelable: Boolean? = true
     ) {
         GenericBottomSheetFragment.newInstance(
             title = title,
@@ -79,5 +80,20 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
             onPrimaryButtonClicked = primaryAction,
             onSecondaryButtonClicked = secondaryAction,
         ).show(supportFragmentManager, GenericBottomSheetFragment::class.java.name)
+    }
+
+    fun showAlertLoginDialog(
+        primaryAction: (() -> Unit)?,
+        secondaryAction: (() -> Unit)? = null
+    ) {
+        showAlertDialog(
+            title = getString(R.string.message_login_required),
+            description = getString(R.string.message_login_description),
+            secondaryTextButton = getString(R.string.label_later),
+            primaryTextButton = getString(R.string.label_login),
+            isCancelable = false,
+            primaryAction =  primaryAction ,
+            secondaryAction = secondaryAction,
+        )
     }
 }

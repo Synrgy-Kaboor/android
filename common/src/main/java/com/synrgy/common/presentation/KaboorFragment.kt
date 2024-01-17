@@ -8,6 +8,7 @@ import com.synrgy.common.R
 import com.synrgy.common.presentation.dialog.GenericBottomSheetFragment
 import com.wahidabd.library.presentation.fragment.BaseFragment
 import com.wahidabd.library.utils.common.emptyString
+import org.koin.core.component.KoinComponent
 
 
 /**
@@ -64,6 +65,21 @@ abstract class KaboorFragment<VB : ViewBinding> : BaseFragment<VB>() {
             primaryTextButton = primaryTextButton,
             secondaryTextButton = secondaryTextButton,
             onPrimaryButtonClicked = primaryAction,
+            onSecondaryButtonClicked = secondaryAction,
+        ).show(childFragmentManager, GenericBottomSheetFragment::class.java.name)
+    }
+
+    fun showAlertLoginDialog(
+        primaryAction: (() -> Unit)?,
+        secondaryAction: (() -> Unit)? = null
+    ) {
+        GenericBottomSheetFragment.newInstance(
+            title = getString(R.string.message_login_required),
+            description = getString(R.string.message_login_description),
+            secondaryTextButton = getString(R.string.label_later),
+            primaryTextButton = getString(R.string.label_login),
+            isCancelable = false,
+            onPrimaryButtonClicked =  primaryAction ,
             onSecondaryButtonClicked = secondaryAction,
         ).show(childFragmentManager, GenericBottomSheetFragment::class.java.name)
     }

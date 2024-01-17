@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.otp.OtpActivity
 import com.synrgy.kaboor.databinding.ActivityForgotPasswordBinding
@@ -52,8 +53,8 @@ class ForgotPasswordActivity : KaboorPassiveActivity<ActivityForgotPasswordBindi
     }
 
     override fun onValidationSuccess() {
-        val email = binding.etEmail.editText
-        viewModel.forgotPassword(email)
+        val body = EmailParam(binding.etEmail.editText)
+        viewModel.forgotPassword(body)
     }
 
     override fun setupValidation() {

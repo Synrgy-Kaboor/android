@@ -18,12 +18,7 @@ object NavDirection {
     fun navHomeDirection(menu: HomeMenu, context: Context) {
         when (menu) {
             HomeMenu.PLANE -> FlightScheduleActivity.start(context)
-            HomeMenu.CAR -> {}
-            HomeMenu.BUS -> {}
-            HomeMenu.TRAIN -> {}
-            HomeMenu.TICKET -> {}
             HomeMenu.FOOD -> {}
-            HomeMenu.AIRPORT -> {}
             HomeMenu.BAGGAGE -> {}
             HomeMenu.ASSURANCE -> {}
         }

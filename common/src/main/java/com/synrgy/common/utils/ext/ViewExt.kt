@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -117,5 +119,12 @@ fun removeErrorTextPadding(listOfTextInput: List<TextInputLayout>) {
                 }
             }
         }
+    }
+}
+
+fun Fragment.navToHome(id: Int) {
+    findNavController().apply {
+        popBackStack()
+        navigate(id)
     }
 }
