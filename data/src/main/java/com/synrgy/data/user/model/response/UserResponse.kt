@@ -8,6 +8,10 @@ package com.synrgy.data.user.model.response
 
 
 data class UserResponse(
+    val user: UserDataResponse
+)
+
+data class UserDataResponse(
     val fullName: String,
     val email: String,
     val phoneNumber: String,

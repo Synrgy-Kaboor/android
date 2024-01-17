@@ -1,6 +1,7 @@
 package com.synrgy.data.user
 
 import com.synrgy.data.user.model.request.UserRequest
+import com.synrgy.data.user.model.response.UserDataResponse
 import com.synrgy.data.user.model.response.UserResponse
 import kotlinx.coroutines.flow.Flow
 
@@ -15,6 +16,6 @@ interface UserRepository {
 
     suspend fun saveToken(token: String)
     suspend fun setUser(data: UserRequest)
-    fun getUser(): Flow<UserResponse>
+    fun getUser(): Flow<UserDataResponse>
 
 }

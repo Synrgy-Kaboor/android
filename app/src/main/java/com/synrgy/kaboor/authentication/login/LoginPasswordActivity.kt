@@ -1,5 +1,6 @@
 package com.synrgy.kaboor.authentication.login
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorActivity
@@ -13,7 +14,7 @@ class LoginPasswordActivity : KaboorActivity<ActivityLoginPasswordBinding>() {
 
     companion object {
         private const val EXTRA_EMAIL = "extra_email"
-        fun start(context: AppCompatActivity, email: String) {
+        fun start(context: Context, email: String) {
             context.startActivity(
                 Intent(context, LoginPasswordActivity::class.java)
                     .putExtra(EXTRA_EMAIL, email)

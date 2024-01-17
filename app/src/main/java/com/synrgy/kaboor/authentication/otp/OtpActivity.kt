@@ -12,28 +12,43 @@ import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.setTimer
 import com.synrgy.common.utils.ext.toSeconds
+import com.synrgy.domain.auth.model.request.EmailParam
+import com.synrgy.domain.auth.model.request.OtpParam
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityOtpBinding
 import com.synrgy.kaboor.utils.navigation.NavDirection
+import com.wahidabd.library.utils.common.emptyString
+import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.exts.getCompatColor
+import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
+import org.koin.android.ext.android.inject
 
-class OtpActivity : KaboorActivity<ActivityOtpBinding>(){
+class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
 
+    private val viewModel: OtpViewModel by inject()
     private var otpType: OtpType? = null
+
+    private var otp: String? = emptyString()
+    private var email: String? = emptyString()
 
     private val countDown = setTimer(
         Constant.OTP_TIMER,
         Constant.OTP_INTERVAL,
         onTick = { setSpannableCountDown(it.toSeconds()) },
-        onFinish = {}
+        onFinish = {
+            binding.btnVerification.isEnabled = false
+            binding.btnSendAgain.isEnabled = true
+        }
     )
 
     companion object {
         private const val EXTRA_DATA = "extra_data"
-        fun start(context: Context, type: OtpType) {
+        private const val EXTRA_EMAIL = "email"
+        fun start(context: Context, type: OtpType, email: String) {
             context.startActivity(Intent(context, OtpActivity::class.java).apply {
                 putExtra(EXTRA_DATA, type)
+                putExtra(EXTRA_EMAIL, email)
             })
         }
     }
@@ -45,6 +60,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>(){
         super.initIntent()
 
         otpType = intent.getSerializableExtra(EXTRA_DATA) as OtpType
+        email = intent.getStringExtra(EXTRA_EMAIL)
     }
 
     override fun initUI() {
@@ -52,9 +68,44 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>(){
     }
 
     override fun initAction() = with(binding) {
+        otpView.setOtpCompletionListener {otp = it}
         appbar.setOnBackClickListener { onBackPress() }
-        btnVerification.onClick { navigate() }
-        otpView.setOtpCompletionListener { navigate() } // change this to viewmodel if API is ready
+        btnVerification.onClick { verifyOtp() }
+        btnSendAgain.onClick { resendOtp() }
+    }
+
+    override fun initObservers() {
+        viewModel.user.observerLiveData(
+            this,
+            onLoading = { showLoading() },
+            onFailure = { _, message -> showErrorDialog(message.toString()) },
+            onSuccess = {
+                hideLoading()
+                navigate()
+            }
+        )
+
+        viewModel.generic.observerLiveData(
+            this,
+            onLoading = { showLoading() },
+            onFailure = { _, message -> showErrorDialog(message.toString()) },
+            onSuccess = {
+                hideLoading()
+                countDown.start()
+                binding.btnVerification.isEnabled = true
+                binding.btnSendAgain.isEnabled = false
+            }
+        )
+    }
+
+    private fun resendOtp(){
+        val body = EmailParam(email.toString())
+        viewModel.resendOtp(body)
+    }
+
+    private fun verifyOtp(){
+        val body = OtpParam(otp.toString())
+        viewModel.verifyOtp(body, otpType)
     }
 
     override fun onPause() {
@@ -68,7 +119,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>(){
     }
 
     private fun navigate() {
-        otpType?.let { NavDirection.navOtpDirection(it, this) }
+        otpType?.let { NavDirection.navOtpDirection(it, this, email) }
     }
 
     private fun setSpannableCountDown(time: String) {

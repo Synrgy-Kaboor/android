@@ -2,6 +2,7 @@ package com.synrgy.data.user
 
 import com.synrgy.data.user.local.KaboorDataStore
 import com.synrgy.data.user.model.request.UserRequest
+import com.synrgy.data.user.model.response.UserDataResponse
 import com.synrgy.data.user.model.response.UserResponse
 import kotlinx.coroutines.flow.Flow
 
@@ -22,7 +23,7 @@ class UserDataStore (private val dataStore: KaboorDataStore) : UserRepository {
         dataStore.setUser(data)
     }
 
-    override fun getUser(): Flow<UserResponse> {
+    override fun getUser(): Flow<UserDataResponse> {
         return dataStore.getUser()
     }
 }

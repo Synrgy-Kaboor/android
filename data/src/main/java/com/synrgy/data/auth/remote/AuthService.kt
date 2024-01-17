@@ -26,7 +26,7 @@ interface AuthService {
     @POST("/api/v1/auth/otp/resend")
     suspend fun resendOTP(
         @Body body: EmailRequest
-    ): Response<ResponseWrapper<UserResponse>>
+    ): Response<KaboorGenericResponse>
 
 
     @POST("/api/v1/auth/otp/verify")
@@ -51,7 +51,7 @@ interface AuthService {
 
     @POST("/api/v1/auth/password/otp/verify")
     suspend fun verifyOtpResetPassword(
-       @Body body: EmailRequest
+       @Body body: OtpRequest
     ): Response<KaboorGenericResponse>
 
     @POST("/api/v1/auth/password/change")

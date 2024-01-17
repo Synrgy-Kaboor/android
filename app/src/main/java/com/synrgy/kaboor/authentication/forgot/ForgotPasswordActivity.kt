@@ -49,11 +49,11 @@ class ForgotPasswordActivity : KaboorPassiveActivity<ActivityForgotPasswordBindi
 
     private fun navigateToOtpActivity() {
         hideLoading()
-        OtpActivity.start(this, OtpType.FORGOT_PASSWORD)
+        OtpActivity.start(this, OtpType.FORGOT_PASSWORD, binding.etEmail.getText())
     }
 
     override fun onValidationSuccess() {
-        val body = EmailParam(binding.etEmail.editText)
+        val body = EmailParam(binding.etEmail.getText())
         viewModel.forgotPassword(body)
     }
 

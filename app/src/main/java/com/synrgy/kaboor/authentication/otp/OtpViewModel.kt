@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.domain.auth.AuthUseCase
 import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.OtpParam
@@ -26,18 +28,25 @@ class OtpViewModel(
     private val _user = MutableLiveData<Resource<User>>()
     val user: LiveData<Resource<User>> get() = _user
 
+    private val _generic = MutableLiveData<Resource<KaboorGenericResponse>>()
+    val generic: LiveData<Resource<KaboorGenericResponse>> get() = _generic
 
-    fun verifyOtp(body: OtpParam) {
+
+    fun verifyOtp(body: OtpParam, type: OtpType?) {
         viewModelScope.launch {
-            auth.verifiedOTP(body)
-                .collectLatest { _user.value = it }
+            when (type) {
+                OtpType.REGISTER -> auth.verifiedOTP(body).collectLatest { _user.value = it }
+                OtpType.FORGOT_PASSWORD -> auth.verifyOtpResetPassword(body)
+                    .collectLatest { _generic.value = it }
+                else -> _generic.value = Resource.fail("Unknown Error")
+            }
         }
     }
 
     fun resendOtp(body: EmailParam) {
         viewModelScope.launch {
             auth.resendOTP(body)
-                .collectLatest { _user.value = it }
+                .collectLatest { _generic.value = it }
         }
     }
 }

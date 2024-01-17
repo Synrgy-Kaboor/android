@@ -4,6 +4,8 @@ import android.content.Context
 import com.synrgy.common.utils.enums.HomeMenu
 import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.kaboor.authentication.forgot.ForgotNewPasswordActivity
+import com.synrgy.kaboor.authentication.login.LoginActivity
+import com.synrgy.kaboor.authentication.login.LoginPasswordActivity
 import com.synrgy.kaboor.ticket.plane.FlightScheduleActivity
 import com.wahidabd.library.utils.common.emptyString
 
@@ -31,7 +33,9 @@ object NavDirection {
     ) {
         when (type) {
             OtpType.FORGOT_PASSWORD -> ForgotNewPasswordActivity.start(context, email.toString())
-            OtpType.REGISTER -> {}
+            OtpType.REGISTER -> {
+                LoginPasswordActivity.start(context, email.toString())
+            }
         }
     }
 }

@@ -23,12 +23,12 @@ import retrofit2.http.Body
 
 
 interface AuthUseCase {
-    suspend fun resendOTP(body: EmailParam): Flow<Resource<User>>
+    suspend fun resendOTP(body: EmailParam): Flow<Resource<KaboorGenericResponse>>
     suspend fun verifiedOTP(body: OtpParam): Flow<Resource<User>>
     suspend fun login(body: LoginParam): Flow<Resource<Login>>
     suspend fun register(body: RegisterParam): Flow<Resource<User>>
     suspend fun forgetPassword(body: EmailParam): Flow<Resource<KaboorGenericResponse>>
-    suspend fun verifyOtpResetPassword(body: EmailParam): Flow<Resource<KaboorGenericResponse>>
+    suspend fun verifyOtpResetPassword(body: OtpParam): Flow<Resource<KaboorGenericResponse>>
     suspend fun changePassword(body: NewPasswordParam): Flow<Resource<KaboorGenericResponse>>
     suspend fun checkEmail(body: EmailParam): Flow<Resource<KaboorGenericResponse>>
 }

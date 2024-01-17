@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.synrgy.common.utils.constant.ConstDataStore
 import com.synrgy.data.user.model.request.UserRequest
+import com.synrgy.data.user.model.response.UserDataResponse
 import com.synrgy.data.user.model.response.UserResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -62,9 +63,9 @@ class KaboorDataStore(context: Context) {
         }
     }
 
-    fun getUser(): Flow<UserResponse> {
+    fun getUser(): Flow<UserDataResponse> {
         return dataStore.data.map { preferences ->
-            UserResponse(
+            UserDataResponse(
                 preferences[FULL_NAME].orEmpty(),
                 preferences[EMAIL].orEmpty(),
                 preferences[PHONE].orEmpty()

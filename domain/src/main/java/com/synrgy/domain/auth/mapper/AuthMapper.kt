@@ -6,6 +6,7 @@ import com.synrgy.data.auth.model.request.NewPasswordRequest
 import com.synrgy.data.auth.model.request.OtpRequest
 import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.auth.model.response.LoginResponse
+import com.synrgy.data.user.model.response.UserDataResponse
 import com.synrgy.data.user.model.response.UserResponse
 import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.LoginParam
@@ -27,6 +28,15 @@ fun LoginResponse.toDomain(): Login {
 }
 
 fun UserResponse.toDomain(): User {
+    return User(
+        phoneNumber = user.phoneNumber,
+        fullName = user.fullName,
+        email = user.email,
+        verified = user.verified
+    )
+}
+
+fun UserDataResponse.toDomain(): User {
     return User(
         phoneNumber = phoneNumber,
         fullName = fullName,
