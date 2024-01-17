@@ -5,32 +5,33 @@ import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.kaboor.databinding.ActivityLoginPasswordBinding
+import com.wahidabd.library.utils.common.emptyString
 
 class LoginPasswordActivity : KaboorActivity<ActivityLoginPasswordBinding>() {
 
+    private var email: String? = emptyString()
+
     companion object {
-        fun start(context: AppCompatActivity) {
-            context.startActivity(Intent(context, LoginPasswordActivity::class.java))
+        private const val EXTRA_EMAIL = "extra_email"
+        fun start(context: AppCompatActivity, email: String) {
+            context.startActivity(
+                Intent(context, LoginPasswordActivity::class.java)
+                    .putExtra(EXTRA_EMAIL, email)
+            )
         }
     }
 
     override fun getViewBinding(): ActivityLoginPasswordBinding =
         ActivityLoginPasswordBinding.inflate(layoutInflater)
 
-    // TODO: For handle intent (Data, etc)
-    override fun initIntent() {}
+    override fun initIntent() {
+        email = intent.getStringExtra(EXTRA_EMAIL)
+    }
 
-    // TODO: For UI
     override fun initUI() {}
 
-    // TODO: For Action (Click, Touch, etc)
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
     }
 
-    // TODO: For Process (API, Call ViewModel, etc)
-    override fun initProcess() {}
-
-    // TODO: For Observer (LiveData, etc)
-    override fun initObservers() {}
 }

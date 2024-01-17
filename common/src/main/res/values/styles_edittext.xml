@@ -11,12 +11,14 @@
         <item name="startIconTint">@color/tintBlack</item>
         <item name="android:textColorHint">@color/tintBlack</item>
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/open_sans</item>
     </style>
 
     <style name="KaboorEdittext" parent="Widget.AppCompat.EditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/open_sans</item>
+        <item name="fontFamily">@font/open_sans</item>
         <item name="android:maxLines">1</item>
         <item name="android:textSize">14sp</item>
         <item name="android:paddingStart">12dp</item>

@@ -57,14 +57,6 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     override fun initObservers() {}
 
     private fun handleNavigation() {
-        if (tempLogin) PassengerDetailActivity.start(this)
-        else showLoginDialog(
-            title = getString(R.string.message_login_required),
-            description = getString(R.string.message_login_description),
-            secondaryTextButton = getString(R.string.label_later),
-            primaryTextButton = getString(R.string.label_login),
-            primaryAction = { LoginActivity.start(this) }
-        )
     }
 
     private fun showPassengerDialog() {

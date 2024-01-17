@@ -9,16 +9,21 @@ import com.google.android.flexbox.JustifyContent
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.common.utils.enums.HomeMenu
 import com.synrgy.common.utils.enums.ProductAdapterType
+import com.synrgy.kaboor.R
+import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.FragmentHomeBinding
 import com.synrgy.kaboor.home.adapter.CardProductAdapter
 import com.synrgy.kaboor.home.adapter.LastSeenAdapter
 import com.synrgy.kaboor.home.adapter.MenuHomeAdapter
 import com.synrgy.kaboor.home.adapter.PromoAdapter
+import com.synrgy.kaboor.ticket.plane.PassengerDetailActivity
 import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.synrgy.kaboor.utils.navigation.NavDirection
 import com.wahidabd.library.utils.common.showToast
 
 class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
+
+    private var tempLogin = false // delete this if data store is ready
 
     private val menuHomeAdapter by lazy {
         MenuHomeAdapter(
@@ -108,6 +113,13 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
     }
 
     private fun handleNavigationMenu(menu: HomeMenu) {
-        NavDirection.navHomeDirection(menu, requireContext())
+        if (tempLogin) NavDirection.navHomeDirection(menu, requireContext())
+        else showAlertDialog(
+            title = getString(R.string.message_login_required),
+            description = getString(R.string.message_login_description),
+            secondaryTextButton = getString(R.string.label_later),
+            primaryTextButton = getString(R.string.label_login),
+            primaryAction = { LoginActivity.start(requireContext()) }
+        )
     }
 }

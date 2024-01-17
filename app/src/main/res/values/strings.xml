@@ -29,6 +29,7 @@
     <string name="label_later">Nanti Saja</string>
     <string name="error_invalid_email">Email tidak valid</string>
     <string name="error_empty_email">Email tidak boleh kosong</string>
+    <string name="error_empty_password">Kata sandi tidak boleh kosong</string>
     <string name="label_passenger_detail">Detail Penumpang</string>
     <string name="label_booker_detail">Detail Pemesan</string>
     <string name="label_passenger">Detail Penumpang</string>
@@ -45,4 +46,23 @@
     <string name="udah_punya_akun_log_in_aja">Udah punya akun? Log in aja!</string>
     <string name="login_syarat">Dengan Log In kamu menyerujui Syarat, Ketentuan dan Kebijakan Privasi Kaboor</string>
     <string name="masukkan_email">Masukkan Email</string>
+    <string name="contains_regitered_account">Email was registered</string>
+    <string name="message_account_not_registered">Email ini belum terdaftar untuk Login</string>
+    <string name="message_account_not_registered_description">Untuk log in menggunakan email ini, silahkan lakukan daftar akun terlebih dulu ya</string>
+    <string name="message_account_was_registered">Email ini sudah terdaftar untuk Log In</string>
+    <string name="message_account_was_registered_description">Untuk masuk ke akun, silahkan Log in menggunakan email ini menuju ke halaman Log in</string>
+    <string name="label_register_account">Daftar Akun</string>
+    <string name="label_input_new_password">Masukkan Sandi Baru</string>
+    <string name="label_confirm_input_new_password">Konfirmasi Sandi Baru</string>
+    <string name="message_rule_new_password">Min. 7 Karakter berupa kombinasi angka, huruf besar, dan huruf kecil</string>
+    <string name="label_change_password">Ubah Sandi</string>
+    <string name="title_fill_your_detail_account">Isi Detail Akunmu</string>
+    <string name="hint_62">+62</string>
+    <string name="hint_full_name">Masukkan nama lengkap</string>
+    <string name="label_full_name">Nama Lengkap</string>
+    <string name="label_phone_number">Nomor Ponsel</string>
+    <string name="message_rule_register_full_name">Sesuai di KTP/Paspor/SIM</string>
+    <string name="error_required_phone_number">Nomor ponsel tidak boleh kosong</string>
+    <string name="error_required_full_name">Nama lengkap tidak boleh kosong</string>
+    <string name="error_required_password">Kata sandi tidak boleh kosong</string>
 </resources>

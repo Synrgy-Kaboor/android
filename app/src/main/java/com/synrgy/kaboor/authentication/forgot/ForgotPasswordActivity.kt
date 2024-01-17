@@ -14,7 +14,6 @@ import com.wahidabd.library.validation.Validation
 import com.wahidabd.library.validation.util.emailRule
 import com.wahidabd.library.validation.util.notEmptyRule
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 class ForgotPasswordActivity : KaboorPassiveActivity<ActivityForgotPasswordBinding>() {
 
@@ -53,7 +52,6 @@ class ForgotPasswordActivity : KaboorPassiveActivity<ActivityForgotPasswordBindi
     }
 
     override fun onValidationSuccess() {
-        Timber.d("Validation Success")
         val email = binding.etEmail.editText
         viewModel.forgotPassword(email)
     }

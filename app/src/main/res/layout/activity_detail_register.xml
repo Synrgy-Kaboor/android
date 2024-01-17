@@ -1,178 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentication.RegisterDetailActivity">
+    android:orientation="vertical"
+    tools:context=".authentication.register.RegisterDetailActivity">
 
-
-    <LinearLayout
-        android:background="@color/white"
-        android:id="@+id/ll_main"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:kaboorAppbar_title="@string/title_fill_your_detail_account"/>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:background="@color/white">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dimen_12dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/dimen_16dp">
 
-            <ImageView
-                android:id="@+id/ivBackArrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow"
-                android:layout_gravity="start"
-                android:paddingStart="16dp" />
-
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/KaboorTextView.SubHeading2"
-                android:id="@+id/tvDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Isi Detail Akunmu"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:layout_gravity="center" />
-        </androidx.appcompat.widget.Toolbar>
-
-        <View
-            android:id="@+id/horizontalLine"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#000000" />
-
-
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="15dp"
-            android:padding="@dimen/dimen_17dp">
+            android:orientation="vertical">
+
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                app:kaboorEditText_label="@string/label_phone_number"
+                app:kaboorEditText_hint="@string/hint_62"
+                app:kaboorEditText_type="phone"/>
+
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:kaboorEditText_label="@string/label_email"
+                app:kaboorEditText_enable="false"/>
+
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:kaboorEditText_label="@string/label_full_name"
+                app:kaboorEditText_hint="@string/hint_full_name"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:layout_marginTop="16dp"
-                android:id="@+id/tv_notelp"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_rule_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nomor Ponsel"
-                style="@style/KaboorTextView.Title3"
-                android:textSize="14sp"/>
-
-            <EditText
-                android:id="@+id/et_notelp"
-                android:layout_width="328dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_form"
-                android:hint="+62"
-                android:padding="16dp"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_Email"
-                style="@style/KaboorTextView.Title3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/email"
-                android:layout_marginTop="16dp"
-                android:textSize="14sp"/>
-
-            <EditText
-                android:id="@+id/et_Email"
-                android:layout_width="328dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_form"
-                android:hint="@string/email_example"
-                android:padding="16dp"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_nama"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nama_lengkap"
-                style="@style/KaboorTextView.Title3"
-                android:layout_marginTop="16dp"
-                android:textSize="14sp"/>
-
-            <EditText
-                android:id="@+id/et_nama"
-                android:layout_width="328dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_form"
-                android:hint="@string/nama_example"
-                android:padding="16dp"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_ktp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sesuai_di_ktp_paspor_sim"
-                android:layout_marginTop="4dp"
-                android:textSize="10sp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:text="@string/message_rule_register_full_name"
                 style="@style/KaboorTextView.Title1"
-                />
+                android:textColor="@color/neutral6"/>
 
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:kaboorEditText_label="@string/label_password"
+                app:kaboorEditText_hint="@string/kata_sandi"
+                app:kaboorEditText_type="password"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_sandi"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_rule_password"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/kata_sandi"
-                style="@style/KaboorTextView.Title3"
-                android:layout_marginTop="16dp"
-                android:textSize="14sp"/>
-
-            <EditText
-                android:id="@+id/et_sandi"
-                android:layout_width="328dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_form"
-                android:hint="@string/kata_sandi"
-                android:inputType="textPassword"
-                android:padding="16dp"
-                android:drawableRight="@drawable/ic_eye"
-                android:paddingRight="16dp"
-                />
-
-            <com.google.android.material.textview.MaterialTextView
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:text="@string/message_rule_new_password"
                 style="@style/KaboorTextView.Title1"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/karakter_tujuh"
-                android:layout_marginTop="6dp"
-                android:textSize="10sp"/>
+                android:textColor="@color/neutral6"/>
 
             <com.google.android.material.button.MaterialButton
-                android:layout_width="328dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/btn_create_account"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_42dp"
                 style="@style/KaboorButton.Gradient"
-                android:text="@string/buat_akun"
-                android:textColor="@color/white"
-                android:layout_marginTop="31dp"/>
-
+                android:layout_marginTop="@dimen/dimen_24dp"
+                android:text="@string/buat_akun"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/syarat"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_terms_condition"
+                style="@style/KaboorTextView.Title2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                style="@style/KaboorTextView.Body1"
-                android:textSize="11sp"
-                android:text="@string/menyetujui_syarat"
-                android:gravity="center"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_60dp"
+                android:text="@string/message_terms_condition"
+                android:textAlignment="center"
+                android:textColor="@color/neutral6" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

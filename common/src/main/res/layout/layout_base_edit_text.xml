@@ -23,13 +23,14 @@
             style="@style/KaboorTextInput"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/dimen_4dp"
-            app:hintEnabled="false">
+            app:hintEnabled="false"
+            app:endIconMode="custom">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et"
                 style="@style/KaboorEdittext"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dimen_46dp"
                 android:background="@drawable/bg_rectangle_search" />
         </com.google.android.material.textfield.TextInputLayout>
 

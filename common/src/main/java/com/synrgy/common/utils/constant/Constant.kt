@@ -10,4 +10,5 @@ package com.synrgy.common.utils.constant
 object Constant {
     const val OTP_TIMER = 180000L
     const val OTP_INTERVAL = 1000L
+    const val regexAlphanumeric = "^[a-zA-Z0-9]{7,}\$"
 }
