@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.ext.removeErrorTextPadding
+import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.authentication.login.LoginPasswordActivity
@@ -57,8 +58,8 @@ class RegisterActivity : KaboorPassiveActivity<ActivityRegisterBinding>() {
             showAlertDialog(
                 title = getString(R.string.message_account_was_registered),
                 description = getString(R.string.message_account_was_registered_description),
-                primaryTextButton = getString(R.string.label_later),
-                secondaryTextButton = getString(R.string.label_register_account),
+                primaryTextButton = getString(R.string.label_login),
+                secondaryTextButton = getString(R.string.label_later),
                 primaryAction = { LoginPasswordActivity.start(this, binding.etEmail.editText) },
             )
         } else {
@@ -67,8 +68,10 @@ class RegisterActivity : KaboorPassiveActivity<ActivityRegisterBinding>() {
     }
 
     override fun onValidationSuccess() {
-        val email = binding.etEmail.editText
-        viewModel.checkEmail(email)
+        val body = EmailParam(
+            binding.etEmail.editText
+        )
+        viewModel.checkEmail(body)
     }
 
     override fun setupValidation() {

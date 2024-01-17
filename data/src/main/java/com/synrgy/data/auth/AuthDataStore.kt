@@ -2,8 +2,10 @@ package com.synrgy.data.auth
 
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.data.auth.model.request.EmailRequest
 import com.synrgy.data.auth.model.request.LoginRequest
 import com.synrgy.data.auth.model.request.NewPasswordRequest
+import com.synrgy.data.auth.model.request.OtpRequest
 import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.auth.model.response.LoginResponse
 import com.synrgy.data.auth.remote.AuthService
@@ -28,56 +30,56 @@ class AuthDataStore(
     private val error: ErrorParser
 ) : AuthRepository {
 
-    override suspend fun resendOTP(email: String): Flow<Resource<ResponseWrapper<UserResponse>>> =
+    override suspend fun resendOTP(body: EmailRequest): Flow<Resource<ResponseWrapper<UserResponse>>> =
         flow {
             enqueue(
-                email,
+                body,
                 error::convertGenericError,
                 api::resendOTP,
                 onEmit = { data -> emit(data) })
         }.flowOn(Dispatchers.IO)
 
-    override suspend fun verifiedOTP(otp: String): Flow<Resource<ResponseWrapper<UserResponse>>> =
+    override suspend fun verifiedOTP(body: OtpRequest): Flow<Resource<ResponseWrapper<UserResponse>>> =
         flow {
             enqueue(
-                otp,
+                body,
                 error::convertGenericError,
                 api::verifiedOTP,
                 onEmit = { data -> emit(data) })
         }.flowOn(Dispatchers.IO)
 
-    override suspend fun login(data: LoginRequest): Flow<Resource<ResponseWrapper<LoginResponse>>> =
+    override suspend fun login(body: LoginRequest): Flow<Resource<ResponseWrapper<LoginResponse>>> =
         flow {
             enqueue(
-                data,
+                body,
                 error::convertGenericError,
                 api::login,
                 onEmit = { data -> emit(data) })
         }.flowOn(Dispatchers.IO)
 
-    override suspend fun register(data: RegisterRequest): Flow<Resource<ResponseWrapper<UserResponse>>> =
+    override suspend fun register(body: RegisterRequest): Flow<Resource<ResponseWrapper<UserResponse>>> =
         flow {
             enqueue(
-                data,
+                body,
                 error::convertGenericError,
                 api::register,
                 onEmit = { data -> emit(data) })
         }.flowOn(Dispatchers.IO)
 
-    override suspend fun forgetPassword(email: String): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun forgetPassword(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> =
         flow {
             enqueue(
-                email,
+                body,
                 error::convertGenericError,
                 api::forgetPassword,
                 onEmit = { data -> emit(data) }
             )
         }.flowOn(Dispatchers.IO)
 
-    override suspend fun verifyOtpResetPassword(email: String): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun verifyOtpResetPassword(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> =
         flow {
             enqueue(
-                email,
+                body,
                 error::convertGenericError,
                 api::verifyOtpResetPassword,
                 onEmit = { data -> emit(data) }
@@ -85,19 +87,19 @@ class AuthDataStore(
         }.flowOn(Dispatchers.IO)
 
     override suspend fun changePassword(
-        data: NewPasswordRequest
+        body: NewPasswordRequest
     ): Flow<Resource<KaboorGenericResponse>> = flow {
         enqueue(
-            data,
+            body,
             error::convertGenericError,
             api::changePassword,
             onEmit = { data -> emit(data) }
         )
     }.flowOn(Dispatchers.IO)
 
-    override suspend fun checkEmail(email: String): Flow<Resource<KaboorGenericResponse>> = flow {
+    override suspend fun checkEmail(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> = flow {
         enqueue(
-            email,
+            body,
             error::convertGenericError,
             api::checkEmail,
             onEmit = { data -> emit(data) }

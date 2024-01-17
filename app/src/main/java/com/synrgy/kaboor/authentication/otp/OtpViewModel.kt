@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.synrgy.domain.auth.AuthUseCase
+import com.synrgy.domain.auth.model.request.EmailParam
+import com.synrgy.domain.auth.model.request.OtpParam
 import com.synrgy.domain.user.model.response.User
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.collectLatest
@@ -25,16 +27,16 @@ class OtpViewModel(
     val user: LiveData<Resource<User>> get() = _user
 
 
-    fun verifyOtp(otp: String) {
+    fun verifyOtp(body: OtpParam) {
         viewModelScope.launch {
-            auth.verifiedOTP(otp)
+            auth.verifiedOTP(body)
                 .collectLatest { _user.value = it }
         }
     }
 
-    fun resendOtp(email: String) {
+    fun resendOtp(body: EmailParam) {
         viewModelScope.launch {
-            auth.resendOTP(email)
+            auth.resendOTP(body)
                 .collectLatest { _user.value = it }
         }
     }

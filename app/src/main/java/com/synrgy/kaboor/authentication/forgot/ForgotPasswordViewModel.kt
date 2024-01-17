@@ -6,11 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.domain.auth.AuthUseCase
+import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.NewPasswordParam
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 
@@ -28,18 +27,18 @@ class ForgotPasswordViewModel(
     val generic: LiveData<Resource<KaboorGenericResponse>> get() = _generic
 
 
-    fun forgotPassword(email: String) {
+    fun forgotPassword(body: EmailParam) {
         _generic.value = Resource.loading()
         viewModelScope.launch {
-            auth.forgetPassword(email)
+            auth.forgetPassword(body)
                 .collectLatest { _generic.value = it }
         }
     }
 
-    fun newPassword(data: NewPasswordParam){
+    fun newPassword(body: NewPasswordParam){
         _generic.value = Resource.loading()
         viewModelScope.launch {
-            auth.changePassword(data)
+            auth.changePassword(body)
                 .collectLatest { _generic.value = it }
         }
     }

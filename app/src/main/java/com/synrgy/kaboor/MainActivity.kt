@@ -11,8 +11,10 @@ import com.wahidabd.library.utils.exts.visible
 
 class MainActivity : KaboorActivity<ActivityMainBinding>() {
 
+    private var tempLogin = true
+
     companion object {
-        fun start(context: Context){
+        fun start(context: Context) {
             context.startActivity(Intent(context, MainActivity::class.java))
         }
     }
@@ -29,11 +31,13 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
                 supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
             val navController = navHost.navController
 
+
             bottomNav.setOnItemSelectedListener { item ->
                 if (item.itemId != bottomNav.selectedItemId) {
                     NavigationUI.onNavDestinationSelected(item, navController)
                 }
                 true
+
             }
 
             navController.addOnDestinationChangedListener { _, dest, _ ->
@@ -42,10 +46,15 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
                     R.id.orderFragment,
                     R.id.notificationFragment,
                     R.id.accountFragment -> bottomNav.visible()
+
                     else -> bottomNav.gone()
                 }
             }
         }
+    }
+
+    private fun setupNavigation(id: Int) {
+
     }
 
     override fun initAction() {}

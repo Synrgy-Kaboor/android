@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.domain.auth.AuthUseCase
+import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.LoginParam
 import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.domain.auth.model.response.Login
@@ -43,28 +44,28 @@ class AuthViewModel(
         }
     }
 
-    fun checkEmail(email: String) {
+    fun checkEmail(body: EmailParam) {
         _checkEmail.value = Resource.loading()
         viewModelScope.launch {
-            auth.checkEmail(email)
+            auth.checkEmail(body)
                 .collectLatest { _checkEmail.value = it }
         }
     }
 
-    fun login(data: LoginParam) {
+    fun login(body: LoginParam) {
         _jwt.value = Resource.loading()
         viewModelScope.launch {
-            auth.login(data)
+            auth.login(body)
                 .collectLatest {
                     _jwt.value = it
                 }
         }
     }
 
-    fun register(data: RegisterParam) {
+    fun register(body: RegisterParam) {
         _jwt.value = Resource.loading()
         viewModelScope.launch {
-            auth.register(data)
+            auth.register(body)
                 .collectLatest { _userData.value = it }
         }
     }

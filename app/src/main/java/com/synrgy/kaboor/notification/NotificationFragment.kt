@@ -3,6 +3,9 @@ package com.synrgy.kaboor.notification
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.synrgy.common.presentation.KaboorFragment
+import com.synrgy.common.utils.ext.navToHome
+import com.synrgy.kaboor.R
+import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.FragmentNotificationBinding
 
 
@@ -14,15 +17,13 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
     ): FragmentNotificationBinding =
         FragmentNotificationBinding.inflate(layoutInflater, container, attachRoot)
 
-    // TODO: For UI
-    override fun initUI() {}
+    override fun initUI() {
+//        showAlertLoginDialog(
+//            secondaryAction = { navToHome(R.id.homeFragment) },
+//            primaryAction = { LoginActivity.start(requireContext()) }
+//        )
+    }
 
-    // TODO: For Action (Click, Touch, etc)
     override fun initAction() {}
 
-    // TODO: For Process (API, Call ViewModel, etc)
-    override fun initProcess() {}
-
-    // TODO: For Observer (LiveData, etc)
-    override fun initObservers() {}
 }
