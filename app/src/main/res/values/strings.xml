@@ -47,10 +47,13 @@
     <string name="login_syarat">Dengan Log In kamu menyerujui Syarat, Ketentuan dan Kebijakan Privasi Kaboor</string>
     <string name="masukkan_email">Masukkan Email</string>
     <string name="contains_regitered_account">Email was registered</string>
+    <string name="contains_available_account">Email is available for new user</string>
     <string name="message_account_not_registered">Email ini belum terdaftar untuk Login</string>
     <string name="message_account_not_registered_description">Untuk log in menggunakan email ini, silahkan lakukan daftar akun terlebih dulu ya</string>
     <string name="message_account_was_registered">Email ini sudah terdaftar untuk Log In</string>
+    <string name="message_account_was_not_registered">Email ini belum terdaftar untuk Log In</string>
     <string name="message_account_was_registered_description">Untuk masuk ke akun, silahkan Log in menggunakan email ini menuju ke halaman Log in</string>
+    <string name="message_account_was_not_registered_description">Untuk log in menggunakan email ini, silahkan lakukan daftar akun terlebih dulu ya</string>
     <string name="label_register_account">Daftar Akun</string>
     <string name="label_input_new_password">Masukkan Sandi Baru</string>
     <string name="label_confirm_input_new_password">Konfirmasi Sandi Baru</string>

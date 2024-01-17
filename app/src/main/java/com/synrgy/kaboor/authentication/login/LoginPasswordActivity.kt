@@ -28,7 +28,9 @@ class LoginPasswordActivity : KaboorActivity<ActivityLoginPasswordBinding>() {
         email = intent.getStringExtra(EXTRA_EMAIL)
     }
 
-    override fun initUI() {}
+    override fun initUI() = with(binding) {
+        etEmail.setText(email.toString())
+    }
 
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }

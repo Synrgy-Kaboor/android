@@ -31,24 +31,14 @@
                 android:background="@drawable/img_header_login_gradient" />
         </RelativeLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_email"
-            style="@style/KaboorTextInput"
-            android:layout_centerInParent="true"
+        <com.synrgy.common.reusable.KaboorEditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimen_16dp"
-            android:layout_marginTop="@dimen/dimen_32dp"
-            app:hintEnabled="false">
-
-            <com.synrgy.common.reusable.auth.EmailCustomView
-                android:id="@+id/et_email"
-                style="@style/KaboorEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_rectangle_search"
-                android:hint="@string/label_input_email"
-                android:inputType="text"
-                android:textColor="@color/neutral6" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="@dimen/dimen_12dp"
+            app:kaboorEditText_hint="@string/label_input_email"
+            app:kaboorEditText_type="email"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_forgot_password"
