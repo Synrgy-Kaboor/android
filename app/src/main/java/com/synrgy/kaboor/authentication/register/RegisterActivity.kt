@@ -44,7 +44,7 @@ class RegisterActivity : KaboorPassiveActivity<ActivityRegisterBinding>() {
             },
             onSuccess = {
                 hideLoading()
-                RegisterDetailActivity.start(this@RegisterActivity, binding.etEmail.editText)
+                RegisterDetailActivity.start(this@RegisterActivity, binding.etEmail.getText())
             }
         )
     }
@@ -60,7 +60,7 @@ class RegisterActivity : KaboorPassiveActivity<ActivityRegisterBinding>() {
                 description = getString(R.string.message_account_was_registered_description),
                 primaryTextButton = getString(R.string.label_login),
                 secondaryTextButton = getString(R.string.label_later),
-                primaryAction = { LoginPasswordActivity.start(this, binding.etEmail.editText) },
+                primaryAction = { LoginPasswordActivity.start(this, binding.etEmail.getText()) },
             )
         } else {
             showErrorDialog(message.toString())
@@ -69,7 +69,7 @@ class RegisterActivity : KaboorPassiveActivity<ActivityRegisterBinding>() {
 
     override fun onValidationSuccess() {
         val body = EmailParam(
-            binding.etEmail.editText
+            binding.etEmail.getText()
         )
         viewModel.checkEmail(body)
     }

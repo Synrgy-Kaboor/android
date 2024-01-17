@@ -4,12 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.constant.Constant
+import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.common.utils.ext.removeErrorTextPadding
 import com.synrgy.common.utils.ext.setClearPaddingTextInput
 import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.authentication.login.LoginActivity
+import com.synrgy.kaboor.authentication.otp.OtpActivity
 import com.synrgy.kaboor.databinding.ActivityDetailRegisterBinding
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.observerLiveData
@@ -43,7 +45,9 @@ class RegisterDetailActivity : KaboorPassiveActivity<ActivityDetailRegisterBindi
         email = intent.getStringExtra(EXTRA_EMAIL)
     }
 
-    override fun initUI() {}
+    override fun initUI() = with(binding){
+        etEmail.setText(email ?: emptyString())
+    }
 
     override fun initAction() = with(binding) {
         btnCreateAccount.onClick { validate() }
@@ -59,7 +63,7 @@ class RegisterDetailActivity : KaboorPassiveActivity<ActivityDetailRegisterBindi
             },
             onSuccess = {
                 hideLoading()
-                LoginActivity.start(this@RegisterDetailActivity)
+                OtpActivity.start(this@RegisterDetailActivity, OtpType.REGISTER, email.toString())
                 finish()
             }
         )
@@ -85,9 +89,9 @@ class RegisterDetailActivity : KaboorPassiveActivity<ActivityDetailRegisterBindi
 
         val data = RegisterParam(
             email = email.toString(),
-            fullName = etFullName.editText,
-            password = etPassword.editText,
-            phoneNumber = etPhone.editText
+            fullName = etFullName.getText(),
+            password = etPassword.getText(),
+            phoneNumber = etPhone.getText()
         )
         viewModel.register(data)
     }

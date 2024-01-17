@@ -30,7 +30,7 @@ class AuthDataStore(
     private val error: ErrorParser
 ) : AuthRepository {
 
-    override suspend fun resendOTP(body: EmailRequest): Flow<Resource<ResponseWrapper<UserResponse>>> =
+    override suspend fun resendOTP(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> =
         flow {
             enqueue(
                 body,
@@ -76,7 +76,7 @@ class AuthDataStore(
             )
         }.flowOn(Dispatchers.IO)
 
-    override suspend fun verifyOtpResetPassword(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun verifyOtpResetPassword(body: OtpRequest): Flow<Resource<KaboorGenericResponse>> =
         flow {
             enqueue(
                 body,

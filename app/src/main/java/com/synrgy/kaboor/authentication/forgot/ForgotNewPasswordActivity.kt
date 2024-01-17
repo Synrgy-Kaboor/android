@@ -57,7 +57,7 @@ class ForgotNewPasswordActivity : KaboorPassiveActivity<ActivityForgotNewPasswor
     override fun onValidationSuccess() {
         binding.tvRule.setTextColor(getColor(commonR.color.neutral6))
 
-        val password = binding.etPassword.editText
+        val password = binding.etPassword.getText()
         val data = NewPasswordParam(email.toString(), password)
         viewModel.newPassword(data)
     }
@@ -80,7 +80,7 @@ class ForgotNewPasswordActivity : KaboorPassiveActivity<ActivityForgotNewPasswor
             Validation(
                 etConfirmPassword.textInput, listOf(
                     notEmptyRule(emptyString()),
-                    customRule(emptyString()) { etPassword.editText == etConfirmPassword.editText }
+                    customRule(emptyString()) { etPassword.getText() == etConfirmPassword.getText() }
                 )
             )
         )

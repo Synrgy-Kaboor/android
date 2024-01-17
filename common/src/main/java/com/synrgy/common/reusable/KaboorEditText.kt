@@ -31,7 +31,6 @@ class KaboorEditText @JvmOverloads constructor(
 
     private lateinit var binding: LayoutBaseEditTextBinding
 
-    val editText by lazy { binding.til.editText?.toStringTrim().toString() }
     val textInput by lazy { binding.til }
 
     private var hint: String? = emptyString()
@@ -74,6 +73,12 @@ class KaboorEditText @JvmOverloads constructor(
             setupViewPassword()
         }
     }
+
+    fun setText(text: String){
+        binding.et.setText(text)
+    }
+
+    fun getText(): String = binding.til.editText?.toStringTrim().toString()
 
     private fun setupViewPassword() = with(binding) {
         til.setEndIcon(R.drawable.ic_eye)

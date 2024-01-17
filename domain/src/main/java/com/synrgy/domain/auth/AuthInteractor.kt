@@ -27,17 +27,8 @@ import kotlinx.coroutines.flow.Flow
 
 class AuthInteractor(private val repository: AuthRepository) : AuthUseCase {
 
-    override suspend fun resendOTP(body: EmailParam): Flow<Resource<User>> {
-        return object : InternetBoundResource<User, ResponseWrapper<UserResponse>>() {
-            override suspend fun createCall(): Flow<Resource<ResponseWrapper<UserResponse>>> {
-                return repository.resendOTP(body.toRequest())
-            }
-
-            override suspend fun saveCallRequest(data: ResponseWrapper<UserResponse>): User {
-                return data.data.toDomain()
-            }
-
-        }.asFlow()
+    override suspend fun resendOTP(body: EmailParam): Flow<Resource<KaboorGenericResponse>> {
+        return repository.resendOTP(body.toRequest())
     }
 
     override suspend fun verifiedOTP(body: OtpParam): Flow<Resource<User>> {
@@ -83,7 +74,7 @@ class AuthInteractor(private val repository: AuthRepository) : AuthUseCase {
         return repository.forgetPassword(body.toRequest())
     }
 
-    override suspend fun verifyOtpResetPassword(body: EmailParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun verifyOtpResetPassword(body: OtpParam): Flow<Resource<KaboorGenericResponse>> {
         return repository.verifyOtpResetPassword(body.toRequest())
     }
 
