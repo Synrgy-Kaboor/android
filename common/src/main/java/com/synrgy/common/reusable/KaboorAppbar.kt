@@ -30,31 +30,33 @@ class KaboorAppbar @JvmOverloads constructor(
 
     private var title: String = emptyString()
     private var enableBackButton: Boolean = true
-    private var type: AppbarType = AppbarType.NORMAL
+    private var type: AppbarType = AppbarType.APPBAR_NORMAL
     private var onBackListener: () -> Unit = {}
     private var onNotificationListener: () -> Unit = {}
 
     init {
         binding = LayoutAppBarBinding.inflate(LayoutInflater.from(context), this)
-        setAttributes(attrs)
+        setAttrs(attrs)
         setupView()
     }
 
-    private fun setAttributes(attrs: AttributeSet?) {
-        val attributes = context.theme.obtainStyledAttributes(attrs, R.styleable.KaboorAppbar, 0, 0)
+    private fun setAttrs(attrs: AttributeSet?) {
+        val attributes =
+            context.theme.obtainStyledAttributes(attrs, R.styleable.KaboorAppbar, 0, 0)
         title = attributes.getString(R.styleable.KaboorAppbar_kaboorAppbar_title).orEmpty()
         enableBackButton =
             attributes.getBoolean(R.styleable.KaboorAppbar_kaboorAppbar_enable_back, true)
-        attributes.recycle()
         type = attributes.getInt(R.styleable.KaboorAppbar_kaboorAppbar_type, 0).let {
             AppbarType.entries[it]
         }
+        attributes.recycle()
     }
 
     private fun setupView() = with(binding) {
         imgBack.goneIf { !enableBackButton }
-        tvDesc.visibleIf { type == AppbarType.TICKET }
-        imgNotification.invisibleIf { type != AppbarType.TICKET }
+        ticketContainer.visibleIf { type == AppbarType.APPBAR_TICKET }
+        imgNotification.invisibleIf { type != AppbarType.APPBAR_TICKET }
+        tvTitle.goneIf { type == AppbarType.APPBAR_TICKET }
         tvTitle.text = title
 
         imgBack.onClick { onBackListener.invoke() }

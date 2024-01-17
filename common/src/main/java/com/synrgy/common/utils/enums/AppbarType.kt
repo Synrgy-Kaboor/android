@@ -8,6 +8,6 @@ package com.synrgy.common.utils.enums
 
 
 enum class AppbarType {
-    NORMAL,
-    TICKET
+    APPBAR_NORMAL,
+    APPBAR_TICKET
 }

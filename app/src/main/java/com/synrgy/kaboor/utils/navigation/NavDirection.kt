@@ -5,7 +5,7 @@ import com.synrgy.common.utils.enums.HomeMenu
 import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.kaboor.authentication.forgot.ForgotNewPasswordActivity
 import com.synrgy.kaboor.ticket.plane.FlightScheduleActivity
-import com.synrgy.kaboor.ticket.plane.PassengerDetailActivity
+import com.wahidabd.library.utils.common.emptyString
 
 
 /**
@@ -29,9 +29,13 @@ object NavDirection {
         }
     }
 
-    fun navOtpDirection(type: OtpType, context: Context){
-        when(type){
-            OtpType.FORGOT_PASSWORD -> ForgotNewPasswordActivity.start(context)
+    fun navOtpDirection(
+        type: OtpType,
+        context: Context,
+        email: String? = emptyString()
+    ) {
+        when (type) {
+            OtpType.FORGOT_PASSWORD -> ForgotNewPasswordActivity.start(context, email.toString())
             OtpType.REGISTER -> {}
         }
     }

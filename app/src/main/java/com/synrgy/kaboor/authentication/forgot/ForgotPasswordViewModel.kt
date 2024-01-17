@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.domain.auth.AuthUseCase
+import com.synrgy.domain.auth.model.request.NewPasswordParam
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
@@ -35,4 +36,11 @@ class ForgotPasswordViewModel(
         }
     }
 
+    fun newPassword(data: NewPasswordParam){
+        _generic.value = Resource.loading()
+        viewModelScope.launch {
+            auth.changePassword(data)
+                .collectLatest { _generic.value = it }
+        }
+    }
 }

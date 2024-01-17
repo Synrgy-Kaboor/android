@@ -63,7 +63,7 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
         ).show(supportFragmentManager, GenericBottomSheetFragment::class.java.name)
     }
 
-    fun showLoginDialog(
+    fun showAlertDialog(
         title: String = emptyString(),
         description: String = emptyString(),
         primaryTextButton: String? = emptyString(),

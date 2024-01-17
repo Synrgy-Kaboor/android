@@ -44,7 +44,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>(){
     override fun initIntent() {
         super.initIntent()
 
-        otpType = intent?.getSerializableExtra(EXTRA_DATA) as OtpType
+        otpType = intent.getSerializableExtra(EXTRA_DATA) as OtpType
     }
 
     override fun initUI() {
@@ -54,7 +54,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>(){
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
         btnVerification.onClick { navigate() }
-        otpView.setOtpCompletionListener {  }
+        otpView.setOtpCompletionListener { navigate() } // change this to viewmodel if API is ready
     }
 
     override fun onPause() {

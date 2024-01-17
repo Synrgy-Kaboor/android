@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.domain.auth.AuthUseCase
 import com.synrgy.domain.auth.model.request.LoginParam
+import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.domain.auth.model.response.Login
 import com.synrgy.domain.user.UserUseCase
 import com.synrgy.domain.user.model.response.User
@@ -57,6 +58,14 @@ class AuthViewModel(
                 .collectLatest {
                     _jwt.value = it
                 }
+        }
+    }
+
+    fun register(data: RegisterParam) {
+        _jwt.value = Resource.loading()
+        viewModelScope.launch {
+            auth.register(data)
+                .collectLatest { _userData.value = it }
         }
     }
 }

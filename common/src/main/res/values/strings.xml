@@ -59,4 +59,6 @@
     <string name="message_error_title">Ooopppss.....</string>
     <string name="label_choose_homecoming">Pilih Kepulangan</string>
     <string name="format_appbar_description">%s, &#8226; %d &#8226; %s</string>
+    <string name="label_does_have_an_account">Udah punya akun?</string>
+    <string name="label_just_login">Login aja!</string>
 </resources>

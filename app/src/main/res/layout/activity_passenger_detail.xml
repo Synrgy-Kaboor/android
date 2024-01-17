@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:kaboorAppbar_title="@string/label_input_detail_passenger"
-        app:kaboorAppbar_type="normal"/>
+        app:kaboorAppbar_type="appbarNormal"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

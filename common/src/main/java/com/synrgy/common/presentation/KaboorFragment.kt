@@ -50,13 +50,13 @@ abstract class KaboorFragment<VB : ViewBinding> : BaseFragment<VB>() {
         loadingDialog?.dismiss()
     }
 
-    fun showLoginDialog(
+    fun showAlertDialog(
         title: String = emptyString(),
         description: String = emptyString(),
-        primaryTextButton: String = emptyString(),
-        secondaryTextButton: String = emptyString(),
-        primaryAction: () -> Unit,
-        secondaryAction: () -> Unit
+        primaryTextButton: String? = emptyString(),
+        secondaryTextButton: String? = emptyString(),
+        primaryAction: (() -> Unit)? = null,
+        secondaryAction: (() -> Unit)? = null
     ) {
         GenericBottomSheetFragment.newInstance(
             title = title,

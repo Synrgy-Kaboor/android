@@ -21,10 +21,8 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
         ActivityMainBinding.inflate(layoutInflater)
 
 
-    // TODO: For handle intent (Data, etc)
     override fun initIntent() {}
 
-    // TODO: For UI
     override fun initUI() {
         with(binding) {
             val navHost =
@@ -50,6 +48,5 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
         }
     }
 
-    // TODO: For Action (Click, Touch, etc)
     override fun initAction() {}
 }
