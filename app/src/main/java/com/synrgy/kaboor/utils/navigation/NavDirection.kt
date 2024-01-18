@@ -1,6 +1,8 @@
 package com.synrgy.kaboor.utils.navigation
 
+import android.app.Activity
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.utils.enums.HomeMenu
 import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.kaboor.authentication.forgot.ForgotNewPasswordActivity
@@ -28,13 +30,14 @@ object NavDirection {
 
     fun navOtpDirection(
         type: OtpType,
-        context: Context,
-        email: String? = emptyString()
+        email: String? = emptyString(),
+        activity: Activity? = null
     ) {
         when (type) {
-            OtpType.FORGOT_PASSWORD -> ForgotNewPasswordActivity.start(context, email.toString())
+            OtpType.FORGOT_PASSWORD -> activity?.let { ForgotNewPasswordActivity.start(it, email.toString()) }
             OtpType.REGISTER -> {
-                LoginPasswordActivity.start(context, email.toString())
+                activity?.let { LoginPasswordActivity.start(it, email.toString()) }
+                activity?.finish()
             }
         }
     }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.constant.Constant
 import com.synrgy.common.utils.enums.OtpType
+import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.removeErrorTextPadding
 import com.synrgy.common.utils.ext.setClearPaddingTextInput
 import com.synrgy.domain.auth.model.request.RegisterParam
@@ -50,6 +51,7 @@ class RegisterDetailActivity : KaboorPassiveActivity<ActivityDetailRegisterBindi
     }
 
     override fun initAction() = with(binding) {
+        appbar.setOnBackClickListener { onBackPress() }
         btnCreateAccount.onClick { validate() }
     }
 
@@ -64,7 +66,6 @@ class RegisterDetailActivity : KaboorPassiveActivity<ActivityDetailRegisterBindi
             onSuccess = {
                 hideLoading()
                 OtpActivity.start(this@RegisterDetailActivity, OtpType.REGISTER, email.toString())
-                finish()
             }
         )
     }

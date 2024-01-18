@@ -119,7 +119,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
     }
 
     private fun navigate() {
-        otpType?.let { NavDirection.navOtpDirection(it, this, email) }
+        otpType?.let { NavDirection.navOtpDirection(it,  email, this) }
     }
 
     private fun setSpannableCountDown(time: String) {
