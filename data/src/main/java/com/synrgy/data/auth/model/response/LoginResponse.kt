@@ -10,6 +10,10 @@ import com.google.gson.annotations.SerializedName
 
 
 data class LoginResponse(
+    val auth: LoginJwtResponse
+)
+
+data class LoginJwtResponse(
     @SerializedName("jwt")
     val jwt: String
 )

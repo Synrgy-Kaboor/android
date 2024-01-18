@@ -13,6 +13,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserUseCase {
     suspend fun saveToken(token: String)
+    suspend fun clearToken()
+    suspend fun setLogin(isLogin: Boolean)
+    fun getLogin(): Flow<Boolean>
     suspend fun setUser(data: UserParam)
     fun getUser(): Flow<User>
 }

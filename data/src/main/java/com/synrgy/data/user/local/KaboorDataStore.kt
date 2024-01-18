@@ -27,7 +27,7 @@ class KaboorDataStore(context: Context) {
         private val FULL_NAME = stringPreferencesKey(ConstDataStore.PREF_FULL_NAME)
         private val EMAIL = stringPreferencesKey(ConstDataStore.PREF_EMAIL)
         private val PHONE = stringPreferencesKey(ConstDataStore.PREF_PHONE)
-        private val STATE = booleanPreferencesKey(ConstDataStore.PREF_STATE)
+        private val LOGIN = booleanPreferencesKey(ConstDataStore.PREF_LOGIN)
 
         @Volatile
         private var INSTANCE: KaboorDataStore? = null
@@ -44,21 +44,27 @@ class KaboorDataStore(context: Context) {
     private val Context.dataStore by preferencesDataStore(ConstDataStore.KABOOR_DATA_STORE)
     private val dataStore = context.dataStore
 
-    suspend fun login() {
+    suspend fun getLogin(isLogin: Boolean) {
         dataStore.edit { preferences ->
-            preferences[STATE] = true
+            preferences[LOGIN] = isLogin
         }
     }
 
-    suspend fun logout() {
-        dataStore.edit { preferences ->
-            preferences[STATE] = false
+    fun getLogin(): Flow<Boolean>{
+        return dataStore.data.map { preferences ->
+            preferences[LOGIN] ?: false
         }
     }
 
     suspend fun saveToken(token: String) {
         dataStore.edit { preferences ->
             preferences[TOKEN] = token
+        }
+    }
+
+    suspend fun clearToken(){
+        dataStore.edit { preferences ->
+            preferences[TOKEN] = ""
         }
     }
 

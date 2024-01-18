@@ -13,5 +13,5 @@ object ConstDataStore {
     const val PREF_FULL_NAME = "full_name"
     const val PREF_EMAIL = "email"
     const val PREF_PHONE = "phone"
-    const val PREF_STATE = "true"
+    const val PREF_LOGIN = "login"
 }

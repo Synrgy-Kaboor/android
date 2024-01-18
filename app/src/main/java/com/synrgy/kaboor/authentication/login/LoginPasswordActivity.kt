@@ -7,10 +7,10 @@ import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.removeErrorTextPadding
 import com.synrgy.common.utils.ext.setClearPaddingTextInput
 import com.synrgy.domain.auth.model.request.LoginParam
+import com.synrgy.kaboor.MainActivity
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.databinding.ActivityLoginPasswordBinding
-import com.synrgy.kaboor.ticket.plane.FlightScheduleActivity
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -65,8 +65,9 @@ class LoginPasswordActivity : KaboorPassiveActivity<ActivityLoginPasswordBinding
             },
             onSuccess = {
                 hideLoading()
-                FlightScheduleActivity.start(this)
-                finish()
+                viewModel.saveToken(it.jwt)
+                MainActivity.start(this)
+                finishAffinity()
             }
         )
     }
