@@ -1,11 +1,13 @@
 package com.synrgy.common.presentation
 
 import android.view.Window
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AlertDialog
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.synrgy.common.R
 import com.synrgy.common.presentation.dialog.GenericBottomSheetFragment
+import com.synrgy.common.utils.ext.initPermissionLauncher
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.common.emptyString
 
@@ -20,7 +22,16 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
 
     private var loadingDialog: AlertDialog? = null
 
-    override fun initIntent() {}
+    protected open var isNeedPermission: Boolean = false
+    private var onAllowedPermission: (() -> Unit)? = null
+    private var onNeedRationalePermission: (() -> Unit)? = null
+    private var onDeniedPermission: (() -> Unit)? = null
+
+    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
+
+    override fun initIntent() {
+        preparePermission()
+    }
     override fun initProcess() {}
     override fun initObservers() {}
 
@@ -95,5 +106,31 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
             primaryAction =  primaryAction ,
             secondaryAction = secondaryAction,
         )
+    }
+
+    fun launchPermission(
+        permissions: Array<String>,
+        onAllowed:() -> Unit,
+        onNeedPermissionRationale: (() -> Unit),
+        onDenied: () -> Unit
+    ){
+        onAllowedPermission = onAllowed
+        onNeedRationalePermission = onNeedPermissionRationale
+        onDeniedPermission = onDenied
+        if (isNeedPermission){
+            permissionLauncher.launch(permissions)
+        }
+    }
+
+    private fun preparePermission(){
+        if (isNeedPermission){
+            permissionLauncher = initPermissionLauncher({
+                onAllowedPermission?.invoke()
+            },{
+                onNeedRationalePermission?.invoke()
+            },{
+                onDeniedPermission?.invoke()
+            })
+        }
     }
 }
