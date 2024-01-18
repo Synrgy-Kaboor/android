@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".authentication.change.ChangePhoneNumberActivity">
+
+
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:kaboorAppbar_title="@string/label_back"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/KaboorTextView.Body2"
+            android:textColor="@color/neutral8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:text="@string/masukan_no_baru"/>
+
+
+        <com.synrgy.common.reusable.KaboorEditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            app:kaboorEditText_label="@string/nomor_hp"
+            app:kaboorEditText_hint="@string/hint_62"
+            app:kaboorEditText_type="phone"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_create_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_42dp"
+            style="@style/KaboorButton.Gradient"
+            android:layout_marginTop="@dimen/dimen_32dp"
+            android:text="@string/kode_verifikasi"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -29,6 +29,7 @@
     <string name="label_later">Nanti Saja</string>
     <string name="error_invalid_email">Email tidak valid</string>
     <string name="error_empty_email">Email tidak boleh kosong</string>
+    <string name="error_empty_phone">Nomor Hp tidak boleh kosong</string>
     <string name="error_empty_password">Kata sandi tidak boleh kosong</string>
     <string name="label_passenger_detail">Detail Penumpang</string>
     <string name="label_booker_detail">Detail Pemesan</string>
@@ -68,4 +69,9 @@
     <string name="error_required_phone_number">Nomor ponsel tidak boleh kosong</string>
     <string name="error_required_full_name">Nama lengkap tidak boleh kosong</string>
     <string name="error_required_password">Kata sandi tidak boleh kosong</string>
+    <string name="masukan_no_baru">Tolong masukkan nomor handphone yang baru</string>
+    <string name="kode_verifikasi">Kode Verifikasi</string>
+    <string name="email_baru">Email Baru</string>
+    <string name="hint_gmail">ucop@gmail.com</string>
+    <string name="nomor_hp">Nomor HP</string>
 </resources>
