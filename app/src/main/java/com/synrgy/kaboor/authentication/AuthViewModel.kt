@@ -37,12 +37,15 @@ class AuthViewModel(
     private val _checkEmail = MutableLiveData<Resource<KaboorGenericResponse>>()
     val checkEmail: LiveData<Resource<KaboorGenericResponse>> get() = _checkEmail
 
+
     fun saveToken(token: String) {
         _userData.value = Resource.loading()
         viewModelScope.launch {
             user.saveToken(token)
+            user.setLogin(true)
         }
     }
+
 
     fun checkEmail(body: EmailParam) {
         _checkEmail.value = Resource.loading()

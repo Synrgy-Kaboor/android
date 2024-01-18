@@ -21,6 +21,18 @@ class UserInteractor(private val repository: UserRepository) : UserUseCase {
         return repository.saveToken(token)
     }
 
+    override suspend fun clearToken() {
+        return repository.clearToken()
+    }
+
+    override suspend fun setLogin(isLogin: Boolean) {
+        return repository.setLogin(isLogin)
+    }
+
+    override fun getLogin(): Flow<Boolean> {
+        return repository.getLogin()
+    }
+
     override suspend fun setUser(data: UserParam) {
         return repository.setUser(data.toRequest())
     }

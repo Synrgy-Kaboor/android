@@ -11,8 +11,6 @@ import com.wahidabd.library.utils.exts.visible
 
 class MainActivity : KaboorActivity<ActivityMainBinding>() {
 
-    private var tempLogin = true
-
     companion object {
         fun start(context: Context) {
             context.startActivity(Intent(context, MainActivity::class.java))
@@ -23,7 +21,9 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
         ActivityMainBinding.inflate(layoutInflater)
 
 
-    override fun initIntent() {}
+    override fun initIntent() {
+        super.initIntent()
+    }
 
     override fun initUI() {
         with(binding) {
@@ -51,10 +51,6 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
                 }
             }
         }
-    }
-
-    private fun setupNavigation(id: Int) {
-
     }
 
     override fun initAction() {}
