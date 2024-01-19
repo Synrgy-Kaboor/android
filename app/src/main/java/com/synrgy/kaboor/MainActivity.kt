@@ -37,7 +37,6 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
                     NavigationUI.onNavDestinationSelected(item, navController)
                 }
                 true
-
             }
 
             navController.addOnDestinationChangedListener { _, dest, _ ->

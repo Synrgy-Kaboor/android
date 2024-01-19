@@ -76,4 +76,5 @@ dependencies {
     implementation(Dependecies.flexbox)
     implementation(Dependecies.otpview)
     implementation(platform(Dependecies.firebase_bom))
+    implementation(Dependecies.circle_image)
 }
