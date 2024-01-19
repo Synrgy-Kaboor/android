@@ -68,4 +68,9 @@
     <string name="error_required_phone_number">Nomor ponsel tidak boleh kosong</string>
     <string name="error_required_full_name">Nama lengkap tidak boleh kosong</string>
     <string name="error_required_password">Kata sandi tidak boleh kosong</string>
+    <string name="label_my_email">Email Saya</string>
+    <string name="label_my_phone">No. Telp</string>
+    <string name="label_my_passport">Paspor</string>
+    <string name="label_customer_service">Pusat Bantuan</string>
+    <string name="label_logout">Keluar</string>
 </resources>

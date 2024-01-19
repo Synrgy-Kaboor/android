@@ -34,4 +34,5 @@ object Dependecies {
     const val firebase_bom = "com.google.firebase:firebase-bom:${Versions.firebase_bom}"
     const val firebase_analytics = "com.google.firebase:firebase-analytics-ktx"
     const val firebase_crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
+    const val circle_image = "de.hdodenhof:circleimageview:${Versions.circle_image}"
 }

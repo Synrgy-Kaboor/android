@@ -18,10 +18,6 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
         FragmentAccountBinding.inflate(layoutInflater, container, attachRoot)
 
     override fun initUI() {
-//        showAlertLoginDialog(
-//            secondaryAction = { navToHome(R.id.homeFragment) },
-//            primaryAction = { LoginActivity.start(requireContext()) }
-//        )
     }
 
     override fun initAction() {}
