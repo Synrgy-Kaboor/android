@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".payment.PaymentMethodActivity"
+            android:exported="false" />
+        <activity
             android:name=".ticket.plane.FlightReturnTicketListActivity"
             android:exported="false" />
         <activity
@@ -34,9 +37,6 @@
             android:name=".authentication.login.LoginPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ticket.plane.FlightTicketListActivity"
-            android:exported="false" />
-        <activity
             android:name=".ticket.plane.PassengerDetailActivity"
             android:exported="false" />
         <activity
@@ -47,9 +47,6 @@
             android:exported="false" />
         <activity
             android:name=".authentication.register.RegisterDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".authentication.ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".authentication.register.RegisterActivity"

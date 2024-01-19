@@ -1,8 +1,10 @@
 package com.synrgy.kaboor.utils.constant
 
 import com.synrgy.common.R
+import com.synrgy.common.utils.Selectable
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
+import com.synrgy.domain.payment.Bank
 import com.synrgy.domain.ticket.plane.Ticket
 
 
@@ -222,5 +224,30 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_lion_air
             )
+        )
+
+    fun bankPaymentMethod(): List<Selectable<Bank>> =
+        listOf(
+            Selectable(
+                Bank(
+                    1,
+                    "Bank BRI",
+                    image = R.drawable.img_bri
+                )
+            ),
+            Selectable(
+                Bank(
+                    2,
+                    "Bank BNI",
+                    image = R.drawable.img_bni
+                )
+            ),
+            Selectable(
+                Bank(
+                    3,
+                    "Bank BCA",
+                    image = R.drawable.img_bca
+                )
+            ),
         )
 }

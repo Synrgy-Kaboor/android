@@ -65,4 +65,9 @@
     <string name="message_login_description">Untuk melanjutkan pemesanan tiket, anda harus login terlebih dahulu</string>
     <string name="label_login">Login</string>
     <string name="label_later">Nanti Saja</string>
+    <string name="label_choose_payment_method">Pilih Metode Pembayaran</string>
+    <string name="label_pay_less">Bayar Lebih Hemat!</string>
+    <string name="label_input_voucher_code">Pilih/Masukkin Voucher disini</string>
+    <string name="label_total_price">Total Harga</string>
+    <string name="label_pay">Bayar</string>
 </resources>
