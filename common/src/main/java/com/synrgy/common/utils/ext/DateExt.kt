@@ -18,3 +18,7 @@ val oneWeekMillis = timeNow + 604800000 // timeNow - timeNow % (7 * 24 * 60 * 60
 fun Long.toFullDateFormat(): String {
     return java.text.SimpleDateFormat("EEEE, dd MMM yyyy", localeIndonesia).format(this)
 }
+
+fun Long.toDateFormat(): String {
+    return java.text.SimpleDateFormat("dd/MM/yyyy", localeIndonesia).format(this)
+}

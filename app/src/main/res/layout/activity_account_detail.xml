@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".account.AccountDetailActivity">
+
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:kaboorAppbar_title="@string/title_personal_information" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:paddingVertical="@dimen/dimen_12dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_label_title"
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_6dp"
+                android:text="@string/label_title" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_48dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:background="@drawable/bg_stroke_neutral_5"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_title"
+                    style="@style/KaboorTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_title" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_12dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_arrow_down" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_first_middle_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:kaboorEditText_hint="@string/hint_first_middle_name"
+                app:kaboorEditText_label="@string/label_first_middle_name" />
+
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:kaboorEditText_hint="@string/hint_last_name"
+                app:kaboorEditText_label="@string/label_last_name" />
+
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_nik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:kaboorEditText_hint="@string/hint_nik"
+                app:kaboorEditText_label="@string/label_nik"
+                app:kaboorEditText_type="number" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_label_gender"
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@string/label_gender" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_48dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:background="@drawable/bg_stroke_neutral_5"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_gender"
+                    style="@style/KaboorTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_gender" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_12dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_arrow_down" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_label_date_of_birth"
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@string/label_date_of_birth" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_date_of_birth"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_48dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:background="@drawable/bg_stroke_neutral_5"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_date_of_birth"
+                    style="@style/KaboorTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_date_of_birth" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_date_of_birth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_12dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_calendar_black" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:kaboorEditText_hint="@string/hint_country"
+                app:kaboorEditText_label="@string/label_country" />
+
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:kaboorEditText_hint="@string/hint_city"
+                app:kaboorEditText_label="@string/label_city" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_label_full_address"
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@string/label_full_address" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_full_address"
+                style="@style/KaboorTextInput"
+                android:layout_height="@dimen/dimen_96dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_full_address"
+                    style="@style/KaboorEdittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_96dp"
+                    android:background="@drawable/bg_rectangle_search"
+                    android:hint="@string/hint_full_address"
+                    android:maxLines="3" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.synrgy.common.reusable.KaboorEditText
+                android:id="@+id/et_citizenship"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:kaboorEditText_hint="@string/hint_citizenship"
+                app:kaboorEditText_label="@string/label_citizenship" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save"
+                style="@style/KaboorButton.Gradient"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_42dp"
+                android:layout_marginTop="@dimen/dimen_28dp"
+                android:text="@string/label_save" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>
