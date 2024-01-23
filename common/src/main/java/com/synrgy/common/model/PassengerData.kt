@@ -11,5 +11,8 @@ data class PassengerData(
     var mature: Int? = 1,
     var kid: Int? = 0,
     var baby: Int? = 0,
-    var count: Int? = mature?.plus(kid ?: 0)?.plus(baby ?: 0)
-)
+){
+    fun count(): Int {
+        return mature?.plus(kid ?: 0)?.plus(baby ?: 0) ?: 0
+    }
+}

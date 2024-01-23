@@ -36,7 +36,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         ActivityFlightScheduleBinding.inflate(layoutInflater)
 
     override fun initUI() = with(binding) {
-        tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count)
+        tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count())
         tvClass.text = planeClassType.label
     }
 
@@ -61,7 +61,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
             onSave = { passenger ->
                 passenger?.let {
                     passengerData = passenger
-                    binding.tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count)
+                    binding.tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count())
                 }
             }
         ).show(supportFragmentManager, PassengerBottomSheetFragment::class.java.name)

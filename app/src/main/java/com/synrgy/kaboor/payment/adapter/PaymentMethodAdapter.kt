@@ -1,4 +1,4 @@
-package com.synrgy.kaboor.payment
+package com.synrgy.kaboor.payment.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -23,7 +23,7 @@ class PaymentMethodAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): PaymentMethodAdapter.PaymentMethodViewHolder =
+    ): PaymentMethodViewHolder =
         PaymentMethodViewHolder(getViewBinding(parent, viewType))
 
     inner class PaymentMethodViewHolder(binding: ViewBinding) :
