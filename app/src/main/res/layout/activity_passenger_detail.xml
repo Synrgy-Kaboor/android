@@ -96,8 +96,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_telp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/dimen_14dp"
+                            android:layout_height="@dimen/dimen_14dp"
                             android:layout_marginEnd="@dimen/dimen_8dp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_phone" />
@@ -120,8 +120,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_mail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/dimen_14dp"
+                            android:layout_height="@dimen/dimen_14dp"
                             android:layout_marginEnd="@dimen/dimen_8dp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_mail_outline" />
