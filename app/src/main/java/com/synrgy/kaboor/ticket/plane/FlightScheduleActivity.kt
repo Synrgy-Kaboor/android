@@ -10,6 +10,7 @@ import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.enums.AirportType
 import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.common.utils.ext.showDatePicker
+import com.synrgy.domain.ticket.plane.model.request.PlaneParam
 import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.ActivityFlightScheduleBinding
 import com.synrgy.kaboor.ticket.plane.dialog.AirportBottomSheetFragment
@@ -23,9 +24,6 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     private var departure: AirportData? = null
     private var arrival: AirportData? = null
     private var planeClassType: PlaneClassType = PlaneClassType.EKONOMI
-
-    // TODO: Remove this after preference manager ready
-    private var tempLogin = false
 
 
     companion object {
@@ -52,11 +50,9 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         btnSubmit.onClick { handleNavigation() }
     }
 
-    override fun initProcess() {}
-
-    override fun initObservers() {}
-
     private fun handleNavigation() {
+        val roundTrip = binding.kaboorSchedule.getRoundTrip()
+        FlightDepartureTicketListActivity.start(this, roundTrip)
     }
 
     private fun showPassengerDialog() {

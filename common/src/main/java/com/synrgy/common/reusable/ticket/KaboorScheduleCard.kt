@@ -28,6 +28,7 @@ class KaboorScheduleCard @JvmOverloads constructor(
     private var binding: LayoutScheduleCardBinding
     private var onClickDeparture: () -> Unit = {}
     private var onClickComingHome: () -> Unit = {}
+    private var isRoundTrip = false
 
     var departure = tomorrowMillis
         private set
@@ -49,6 +50,7 @@ class KaboorScheduleCard @JvmOverloads constructor(
 
         btnSwitch.setOnCheckedChangeListener { _, checked ->
             if (checked) groupComingHome.visible() else groupComingHome.gone()
+            isRoundTrip = checked
         }
     }
 
@@ -69,5 +71,7 @@ class KaboorScheduleCard @JvmOverloads constructor(
     fun setOnComingHomeListener(onClick: () -> Unit) {
         this.onClickComingHome = onClick
     }
+
+    fun getRoundTrip(): Boolean = isRoundTrip
 
 }

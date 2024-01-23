@@ -27,23 +27,18 @@ class FlightReturnTicketListActivity :
     override fun getViewBinding(): ActivityFlightReturnTicketListBinding =
         ActivityFlightReturnTicketListBinding.inflate(layoutInflater)
 
-    // TODO: For handle intent (Data, etc)
     override fun initIntent() {}
 
-    // TODO: For UI
     override fun initUI() {
         initPlaneTicket()
     }
 
-    // TODO: For Action (Click, Touch, etc)
     override fun initAction() {}
 
-    // TODO: For Process (API, Call ViewModel, etc)
     override fun initProcess() {
         planeTicketAdapter.setData = ConstantDummy.planeTicket()
     }
 
-    // TODO: For Observer (LiveData, etc)
     override fun initObservers() {}
 
     private fun initPlaneTicket() = with(binding) {

@@ -1,9 +1,12 @@
 package com.synrgy.common.utils.ext
 
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
+import android.content.Context
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.presentation.KaboorFragment
 
 
 /**
@@ -11,40 +14,25 @@ import com.synrgy.common.presentation.KaboorActivity
  * Github github.com/wahidabd.
  */
 
-fun KaboorActivity<*>.requestMultiplePermission(
+
+fun AppCompatActivity.requestMultiplePermission(
     permissions: Array<String>,
-    onAllowed: () -> Unit,
-    onNeedPermissionRationale: () -> Unit,
-    onDenied: () -> Unit
-){
-    launchPermission(permissions, onAllowed, onNeedPermissionRationale, onDenied)
-}
-
-fun AppCompatActivity.initPermissionLauncher(
-    onAllowed: (() -> Unit)?,
-    onNeedPermissionRationale: (() -> Unit)?,
-    onDenied: (() -> Unit)?
-): ActivityResultLauncher<Array<String>> {
-    return registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissionResult ->
-        val allPermissionGranted = permissionResult.all { it.value }
-        val shouldRational = permissionResult.map {
-            shouldShowRequestPermissionRationale(it.key)
-        }.all { it }
-
-        when {
-            allPermissionGranted -> {
-                onAllowed?.invoke()
-            }
-
-            shouldRational -> {
-                onNeedPermissionRationale?.invoke()
-            }
-
-            else -> {
-                onDenied?.invoke()
-            }
+    requestCode: Int,
+    doIfGranted: (() -> Unit)? = null,
+) {
+    val deniedPermissions = mutableListOf<String>()
+    permissions.forEach { permission ->
+        if (!isGranted(permission)) {
+            deniedPermissions.add(permission)
         }
     }
+    if (deniedPermissions.isNotEmpty()) {
+        ActivityCompat.requestPermissions(this, deniedPermissions.toTypedArray(), requestCode)
+    } else {
+        doIfGranted?.invoke()
+    }
+}
+
+fun AppCompatActivity.isGranted(permission: String): Boolean {
+    return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
 }
