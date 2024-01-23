@@ -7,7 +7,10 @@ import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.domain.payment.Bank
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodBinding
+import com.synrgy.kaboor.promo.VoucherBottomSheetFragment
 import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.wahidabd.library.utils.exts.onClick
 
 class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
 
@@ -29,25 +32,21 @@ class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
     override fun getViewBinding(): ActivityPaymentMethodBinding =
         ActivityPaymentMethodBinding.inflate(layoutInflater)
 
-    // TODO: For handle intent (Data, etc)
     override fun initIntent() {}
 
-    // TODO: For UI
     override fun initUI() {
         initPaymentMethod()
     }
 
-    // TODO: For Action (Click, Touch, etc)
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
+        voucherContainer.onClick { showVoucher() }
     }
 
-    // TODO: For Process (API, Call ViewModel, etc)
     override fun initProcess() {
         paymentMethodAdapter.setData = ConstantDummy.bankPaymentMethod()
     }
 
-    // TODO: For Observer (LiveData, etc)
     override fun initObservers() {}
 
     private fun initPaymentMethod() = with(binding) {
@@ -59,5 +58,11 @@ class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
             )
         rvTicket.layoutManager = layoutManager
         rvTicket.adapter = paymentMethodAdapter
+    }
+
+    private fun showVoucher() {
+        VoucherBottomSheetFragment.newInstance { voucher ->
+            binding.tvVoucherCode.text = voucher.voucherCode
+        }.show(supportFragmentManager, ConstantTag.TAG_VOUCHER)
     }
 }

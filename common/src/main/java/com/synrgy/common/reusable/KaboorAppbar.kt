@@ -62,6 +62,11 @@ class KaboorAppbar @JvmOverloads constructor(
         imgBack.onClick { onBackListener.invoke() }
     }
 
+    fun setTicketTitle(title: Pair<String, String>) = with(binding) {
+        tvDeparture.text = title.first
+        tvArrival.text = title.second
+    }
+
     fun setDescription(date: String, passenger: Int, clazz: String) = with(binding) {
         tvDesc.text = context.getString(R.string.format_appbar_description, date, passenger, clazz)
     }

@@ -31,6 +31,7 @@
         android:textColor="@color/neutral9" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/voucher_container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_48dp"
         android:layout_marginHorizontal="@dimen/dimen_16dp"

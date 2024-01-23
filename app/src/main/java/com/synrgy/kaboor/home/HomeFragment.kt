@@ -1,11 +1,15 @@
 package com.synrgy.kaboor.home
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.common.utils.enums.HomeMenu
 import com.synrgy.common.utils.enums.ProductAdapterType
+import com.synrgy.common.utils.ext.requestMultiplePermission
+import com.synrgy.kaboor.MainActivity
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.FragmentHomeBinding
@@ -16,6 +20,7 @@ import com.synrgy.kaboor.home.adapter.PromoAdapter
 import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.synrgy.kaboor.utils.navigation.NavDirection
 import com.wahidabd.library.utils.common.showToast
+import com.wahidabd.library.utils.extensions.debug
 import org.koin.android.ext.android.inject
 
 class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
@@ -118,4 +123,5 @@ class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
             primaryAction = { LoginActivity.start(requireContext()) }
         )
     }
+
 }

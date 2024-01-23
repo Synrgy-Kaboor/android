@@ -1,52 +1,65 @@
 package com.synrgy.kaboor.ticket.plane
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.domain.ticket.plane.Ticket
 import com.synrgy.kaboor.databinding.ActivityFlightDepartureTicketListBinding
 import com.synrgy.kaboor.ticket.plane.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.synrgy.kaboor.utils.constant.ConstantKey
 
 class FlightDepartureTicketListActivity :
     KaboorActivity<ActivityFlightDepartureTicketListBinding>() {
 
     companion object {
-        fun start(context: AppCompatActivity) {
-            context.startActivity(Intent(context, FlightDepartureTicketListActivity::class.java))
+        fun start(
+            context: Context,
+            isRoundTrip: Boolean
+        ) {
+            context.startActivity(
+                Intent(
+                    context,
+                    FlightDepartureTicketListActivity::class.java
+                ).apply {
+                    putExtra(ConstantKey.KEY_ROUND_TRIP, isRoundTrip)
+                }
+            )
         }
     }
 
+    private var isRoundTrip = false
     private val planeTicketAdapter by lazy {
-        PlaneTicketAdapter(
-            this,
-            onClick = {
-                FlightReturnTicketListActivity.start(this@FlightDepartureTicketListActivity)
-            }
-        )
+        PlaneTicketAdapter(this, ::handleNavigation)
     }
 
     override fun getViewBinding(): ActivityFlightDepartureTicketListBinding =
         ActivityFlightDepartureTicketListBinding.inflate(layoutInflater)
 
-    // TODO: For handle intent (Data, etc)
-    override fun initIntent() {}
+    override fun initIntent() {
+        isRoundTrip = intent.getBooleanExtra(ConstantKey.KEY_ROUND_TRIP, false)
+    }
 
-    // TODO: For UI
     override fun initUI() {
         initPlaneTicket()
     }
 
-    // TODO: For Action (Click, Touch, etc)
-    override fun initAction() {}
+    override fun initAction() = with(binding){
+        appbar.setOnBackClickListener { onBackPress() }
+    }
 
-    // TODO: For Process (API, Call ViewModel, etc)
     override fun initProcess() {
         planeTicketAdapter.setData = ConstantDummy.planeTicket()
     }
 
-    // TODO: For Observer (LiveData, etc)
     override fun initObservers() {}
+
+    private fun handleNavigation(ticket: Ticket) {
+        if (isRoundTrip) FlightReturnTicketListActivity.start(this)
+        else PassengerDetailActivity.start(this)
+    }
 
     private fun initPlaneTicket() = with(binding) {
         val layoutManager =

@@ -1,6 +1,7 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
+    kotlinSerialization()
 }
 
 android {

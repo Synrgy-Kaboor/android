@@ -73,4 +73,10 @@
     <string name="label_my_passport">Paspor</string>
     <string name="label_customer_service">Pusat Bantuan</string>
     <string name="label_logout">Keluar</string>
+    <string name="title_voucher">Voucher</string>
+    <string name="label_promo_and_voucher">Kode Promo &amp; Voucher</string>
+    <string name="label_select_promo">Pilih Promo Buat Transaksimu </string>
+    <string name="hint_input_your_code">Masukkan Kodemu</string>
+    <string name="label_code">Kode : </string>
+    <string name="label_snk">S&amp;K Berlaku</string>
 </resources>

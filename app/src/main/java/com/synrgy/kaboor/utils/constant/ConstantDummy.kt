@@ -2,6 +2,7 @@ package com.synrgy.kaboor.utils.constant
 
 import com.synrgy.common.R
 import com.synrgy.common.utils.Selectable
+import com.synrgy.data.payment.model.response.Promo
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
 import com.synrgy.domain.payment.Bank
@@ -15,6 +16,43 @@ import com.synrgy.domain.ticket.plane.Ticket
 
 
 object ConstantDummy {
+
+    fun vouchers(): List<Promo> =
+        listOf(
+            Promo(
+                "Voucher Promo",
+                "Voucher Promo",
+                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
+                "TEMANKABOOR",
+                100000,
+                26000,
+            ),
+            Promo(
+                "Voucher Promo",
+                "Voucher Promo",
+                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
+                "TEMANKABOOR",
+                100000,
+                26000,
+            ),
+            Promo(
+                "Voucher Promo",
+                "Voucher Promo",
+                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
+                "TEMANKABOOR",
+                100000,
+                26000,
+            ),
+            Promo(
+                "Voucher Promo",
+                "Voucher Promo",
+                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
+                "TEMANKABOOR",
+                100000,
+                26000,
+            ),
+        )
+
     fun promos(): List<Int> =
         listOf(
             R.drawable.sample_img_promo,

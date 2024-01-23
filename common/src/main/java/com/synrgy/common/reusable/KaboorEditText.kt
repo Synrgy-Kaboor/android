@@ -78,7 +78,7 @@ class KaboorEditText @JvmOverloads constructor(
         binding.et.setText(text)
     }
 
-    fun getText(): String = binding.til.editText?.toStringTrim().toString()
+    fun getText(): String = binding.til.toStringTrim()
 
     private fun setupViewPassword() = with(binding) {
         til.setEndIcon(R.drawable.ic_eye)

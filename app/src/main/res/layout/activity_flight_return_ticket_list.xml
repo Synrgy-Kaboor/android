@@ -10,7 +10,7 @@
     <com.synrgy.common.reusable.KaboorAppbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:kaboorAppbar_title="@string/label_homecoming" />
+        app:kaboorAppbar_type="appbarTicket"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
