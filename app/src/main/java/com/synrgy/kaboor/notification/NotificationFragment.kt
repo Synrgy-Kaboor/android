@@ -3,9 +3,6 @@ package com.synrgy.kaboor.notification
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.synrgy.common.presentation.KaboorFragment
-import com.synrgy.common.utils.ext.navToHome
-import com.synrgy.kaboor.R
-import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.FragmentNotificationBinding
 
 

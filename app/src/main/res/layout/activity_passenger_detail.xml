@@ -8,10 +8,10 @@
     tools:context=".ticket.plane.PassengerDetailActivity">
 
     <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:kaboorAppbar_title="@string/label_input_detail_passenger"
-        app:kaboorAppbar_type="appbarNormal"/>
+        app:kaboorAppbar_title="@string/label_input_detail_passenger" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -264,6 +264,7 @@
                 app:kaboorAddons_label="@string/label_buy_food" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_order"
                 style="@style/KaboorButton.Gradient"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_42dp"

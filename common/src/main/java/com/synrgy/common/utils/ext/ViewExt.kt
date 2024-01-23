@@ -1,18 +1,28 @@
 package com.synrgy.common.utils.ext
 
+import android.content.ClipData
+import android.content.Context
 import android.os.CountDownTimer
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textview.MaterialTextView
+import com.synrgy.common.R
+import com.synrgy.common.utils.enums.ClipboardType
 import com.wahidabd.library.utils.common.emptyString
+import com.wahidabd.library.utils.common.showSnackbarMessage
+import com.wahidabd.library.utils.common.showToast
+import com.wahidabd.library.utils.exts.clipboardManager
 import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.invisible
 import com.wahidabd.library.utils.exts.onClick
@@ -88,6 +98,12 @@ fun Long.toSeconds(): String {
     }
 }
 
+fun Long.toMinutes(): String {
+    return this.milliseconds.toComponents{ hours, minutes, seconds, _ ->
+        "%02d:%02d:%02d".format(hours, minutes, seconds)
+    }
+}
+
 fun TextInputLayout.setEndIcon(@DrawableRes icon: Int) {
     this.endIconDrawable = ContextCompat.getDrawable(context, icon)
 }
@@ -108,6 +124,8 @@ fun TextInputLayout.clearErrorPadding() {
     isErrorEnabled = !(this.error == null || this.error == emptyString())
 }
 
+fun MaterialTextView.toStringTrim() = this.text.toString().trim()
+
 fun removeErrorTextPadding(listOfTextInput: List<TextInputLayout>) {
     listOfTextInput.forEach { til ->
         til.apply {
@@ -122,9 +140,23 @@ fun removeErrorTextPadding(listOfTextInput: List<TextInputLayout>) {
     }
 }
 
-fun Fragment.navToHome(id: Int) {
-    findNavController().apply {
-        popBackStack()
-        navigate(id)
-    }
+
+fun AppCompatActivity.copyTextToClipboard(text: String, type: ClipboardType){
+    val clipData = ClipData.newPlainText("text", text)
+    this.clipboardManager.setPrimaryClip(clipData)
+    snackbarSuccess(getString(type.message))
+}
+
+fun AppCompatActivity.snackbarSuccess(message: String) {
+    Snackbar.make(this.window.decorView.rootView, message, Snackbar.LENGTH_LONG).apply {
+        setBackgroundTint(ContextCompat.getColor(this@snackbarSuccess, R.color.secondarySuccess))
+        setTextColor(ContextCompat.getColor(this@snackbarSuccess, R.color.neutral1))
+    }.show()
+}
+
+fun String.chuckedString(): String = this.chunked(4).joinToString(" ")
+
+fun View.showHideToggle(){
+    if (this.visibility == View.VISIBLE) this.gone()
+    else this.visible()
 }

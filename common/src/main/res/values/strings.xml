@@ -70,4 +70,6 @@
     <string name="label_input_voucher_code">Pilih/Masukkin Voucher disini</string>
     <string name="label_total_price">Total Harga</string>
     <string name="label_pay">Bayar</string>
+    <string name="copy_account_number">"Nomor rekening berhasil disalin"</string>
+    <string name="copy_total_payment">Total pembayaran berhasil disalin</string>
 </resources>

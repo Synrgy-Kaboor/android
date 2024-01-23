@@ -4,9 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.kaboor.databinding.ActivityPassengerDetailBinding
+import com.synrgy.kaboor.payment.PaymentMethodActivity
 import com.synrgy.kaboor.ticket.plane.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.wahidabd.library.utils.exts.onClick
 
 class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>() {
 
@@ -30,7 +33,10 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
         initPlaneTicket()
     }
 
-    override fun initAction() {}
+    override fun initAction() = with(binding) {
+        appbar.onClick { onBackPress() }
+        btnOrder.onClick { PaymentMethodActivity.start(this@PassengerDetailActivity) }
+    }
 
     override fun initProcess() {
         planeTicketAdapter.setData = ConstantDummy.roundTripPlaneTicket()

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".payment.PaymentMethodDetailActivity">
+
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:kaboorAppbar_title="@string/title_payment" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:padding="@dimen/dimen_16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/KaboorTextView.Title2"
+                    android:layout_width="@dimen/dimen_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_finish_in"
+                    android:textColor="@color/neutral6" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_time"
+                    style="@style/KaboorTextView.Title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_round_secondary"
+                    android:paddingHorizontal="@dimen/dimen_20dp"
+                    android:paddingVertical="@dimen/dimen_4dp"
+                    android:textColor="@color/neutral1"
+                    tools:text="20:09:10" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_12dp"
+                android:text="@string/label_make_transfer_to" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:background="@drawable/bg_stroke_neutral_6"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/dimen_16dp"
+                android:paddingVertical="@dimen/dimen_10dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_account_number"
+                    style="@style/KaboorTextView.SubHeading2"
+                    android:layout_width="@dimen/dimen_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="1420 2010 0098 2336" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_copy_account_number"
+                    android:layout_width="@dimen/dimen_32dp"
+                    android:layout_height="@dimen/dimen_32dp"
+                    android:background="@drawable/ripple_oval_white"
+                    android:padding="@dimen/dimen_2dp"
+                    android:src="@drawable/ic_copy" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_18dp"
+                android:text="@string/label_total_payment" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:background="@drawable/bg_stroke_neutral_6"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/dimen_16dp"
+                android:paddingVertical="@dimen/dimen_10dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_total_payment"
+                    style="@style/KaboorTextView.SubHeading2"
+                    android:layout_width="@dimen/dimen_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="2.468.000" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_copy_total_payment"
+                    android:layout_width="@dimen/dimen_32dp"
+                    android:layout_height="@dimen/dimen_32dp"
+                    android:background="@drawable/ripple_oval_white"
+                    android:padding="@dimen/dimen_2dp"
+                    android:src="@drawable/ic_copy" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_18dp"
+                android:text="@string/label_how_to_pay" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/KaboorCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:cardElevation="@dimen/dimen_0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_16dp"
+                    android:layout_marginVertical="@dimen/dimen_10dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/KaboorTextView.SubHeading2"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/toggle_atm"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@id/toggle_atm"
+                        android:gravity="center_vertical"
+                        android:text="@string/label_transfer_via_atm" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/toggle_atm"
+                        android:layout_width="@dimen/dimen_32dp"
+                        android:layout_height="@dimen/dimen_32dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/ripple_oval_white"
+                        android:padding="@dimen/dimen_2dp"
+                        android:src="@drawable/selector_toggle" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_atm_instruction"
+                        style="@style/KaboorTextView.SubHeading1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/toggle_atm"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:textColor="@color/neutral8"
+                        android:visibility="gone"
+                        tools:text="&#8226; Transfer melalui ATM\n&#8226; Transfer melalui ATM\n&#8226; Transfer melalui ATM" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/KaboorCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/dimen_0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_16dp"
+                    android:layout_marginVertical="@dimen/dimen_10dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/KaboorTextView.SubHeading2"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/toggle_mobile"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@id/toggle_mobile"
+                        android:gravity="center_vertical"
+                        android:text="@string/label_transfer_via_mobile_banking" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/toggle_mobile"
+                        android:layout_width="@dimen/dimen_32dp"
+                        android:layout_height="@dimen/dimen_32dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/ripple_oval_white"
+                        android:padding="@dimen/dimen_2dp"
+                        android:src="@drawable/selector_toggle" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_mobile_instruction"
+                        style="@style/KaboorTextView.SubHeading1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/toggle_mobile"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:textColor="@color/neutral8"
+                        android:visibility="gone"
+                        tools:text="&#8226; Transfer melalui ATM\n&#8226; Transfer melalui ATM\n&#8226; Transfer melalui ATM" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/KaboorCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/dimen_0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_16dp"
+                    android:layout_marginVertical="@dimen/dimen_10dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/KaboorTextView.SubHeading2"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/toggle_internet"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@id/toggle_internet"
+                        android:gravity="center_vertical"
+                        android:text="@string/label_transfer_via_internet_banking" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/toggle_internet"
+                        android:layout_width="@dimen/dimen_32dp"
+                        android:layout_height="@dimen/dimen_32dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/ripple_oval_white"
+                        android:padding="@dimen/dimen_2dp"
+                        android:src="@drawable/selector_toggle" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_internet_instruction"
+                        style="@style/KaboorTextView.SubHeading1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/toggle_internet"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:textColor="@color/neutral8"
+                        android:visibility="gone"
+                        tools:text="&#8226; Transfer melalui ATM\n&#8226; Transfer melalui ATM\n&#8226; Transfer melalui ATM" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/message_detail_payment"
+                style="@style/KaboorTextView.Title1"
+                android:textColor="@color/neutral6"
+                android:layout_marginTop="@dimen/dimen_8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_show_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/KaboorButton.Gradient"
+                android:text="@string/label_view_order"
+                android:layout_marginTop="@dimen/dimen_18dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_change_payment_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/KaboorButton.Outline"
+                android:text="@string/label_change_payment_method"
+                android:layout_marginTop="@dimen/dimen_8dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

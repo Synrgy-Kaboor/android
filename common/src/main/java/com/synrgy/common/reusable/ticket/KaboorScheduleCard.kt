@@ -29,12 +29,11 @@ class KaboorScheduleCard @JvmOverloads constructor(
     private var onClickDeparture: () -> Unit = {}
     private var onClickComingHome: () -> Unit = {}
     private var isRoundTrip = false
+    private var comingHome = oneWeekMillis
 
     var departure = tomorrowMillis
         private set
 
-    var comingHome = oneWeekMillis
-        private set
 
     init {
         binding = LayoutScheduleCardBinding.inflate(LayoutInflater.from(context), this)
@@ -74,4 +73,7 @@ class KaboorScheduleCard @JvmOverloads constructor(
 
     fun getRoundTrip(): Boolean = isRoundTrip
 
+    fun getComingHome(): Long {
+        return if (isRoundTrip) comingHome else 0
+    }
 }

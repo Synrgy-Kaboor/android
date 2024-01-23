@@ -100,4 +100,15 @@
     <string name="hint_city">Masukkan kota</string>
     <string name="hint_full_address">Masukkan alamat lengkap</string>
     <string name="hint_citizenship">Masukkan kewarganegaraan</string>
+    <string name="title_payment">Pembayaran</string>
+    <string name="label_finish_in">Selesaikan dalam</string>
+    <string name="label_make_transfer_to">Lakukan Transfer ke</string>
+    <string name="label_total_payment">Total Pembayaran</string>
+    <string name="label_how_to_pay">Cara Membayar</string>
+    <string name="label_transfer_via_atm">Transfer Melalui ATM</string>
+    <string name="label_transfer_via_mobile_banking">Transfer Melalui Mobile Banking</string>
+    <string name="label_transfer_via_internet_banking">Transfer Melalui Internet Banking</string>
+    <string name="message_detail_payment">Setelah pembayaran diverifikasi, e-ticket, dan bukti pembayaran akan dikirimkan melalui ke alamat email terdaftar</string>
+    <string name="label_view_order">Lihat Daftar Pesanan</string>
+    <string name="label_change_payment_method">Ganti Metode Pembayaran</string>
 </resources>
