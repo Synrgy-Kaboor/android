@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".account.AccountDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".payment.PaymentMethodActivity"
             android:exported="false" />
         <activity

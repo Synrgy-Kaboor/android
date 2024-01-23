@@ -46,6 +46,14 @@ class AuthViewModel(
         }
     }
 
+    fun clearToken() {
+        _userData.value = Resource.loading()
+        viewModelScope.launch {
+            user.clearToken()
+            user.setLogin(false)
+        }
+    }
+
 
     fun checkEmail(body: EmailParam) {
         _checkEmail.value = Resource.loading()
