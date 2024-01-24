@@ -1,4 +1,4 @@
-package com.synrgy.domain.ticket.plane
+package com.synrgy.domain.booking
 
 import androidx.annotation.DrawableRes
 

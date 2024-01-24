@@ -1,4 +1,4 @@
-package com.synrgy.kaboor.ticket.plane.adapter
+package com.synrgy.kaboor.booking.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.synrgy.common.R
-import com.synrgy.domain.ticket.plane.Ticket
+import com.synrgy.domain.booking.Ticket
 import com.synrgy.kaboor.databinding.ItemCardTicketBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
@@ -22,7 +22,7 @@ class PlaneTicketAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): PlaneTicketAdapter.PlaneTicketViewHolder =
+    ): PlaneTicketViewHolder =
         PlaneTicketViewHolder(getViewBinding(parent, viewType))
 
     inner class PlaneTicketViewHolder(binding: ViewBinding) :

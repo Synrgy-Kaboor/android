@@ -6,7 +6,7 @@ import com.synrgy.data.payment.model.response.Promo
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
 import com.synrgy.domain.payment.Bank
-import com.synrgy.domain.ticket.plane.Ticket
+import com.synrgy.domain.booking.Ticket
 
 
 /**
@@ -268,23 +268,23 @@ object ConstantDummy {
         listOf(
             Selectable(
                 Bank(
-                    1,
-                    "Bank BRI",
-                    image = R.drawable.img_bri
+                    id = 1,
+                    methodName = "Bank BRI",
+                    imageUrl = "https://e7.pngegg.com/pngimages/376/573/png-clipart-logo-bank-rakyat-indonesia-brand-bank-di-indonesia-bank-card-blue-text-thumbnail.png"
                 )
             ),
             Selectable(
                 Bank(
                     2,
                     "Bank BNI",
-                    image = R.drawable.img_bni
+                    imageUrl ="https://logowik.com/content/uploads/images/bni-bank-negara-indonesia8078.logowik.com.webp"
                 )
             ),
             Selectable(
                 Bank(
                     3,
                     "Bank BCA",
-                    image = R.drawable.img_bca
+                    imageUrl = "https://w7.pngwing.com/pngs/561/1/png-transparent-bank-central-asia-logo-bca-finance-business-bank-blue-cdr-text.png"
                 )
             ),
         )

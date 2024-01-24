@@ -1,11 +1,11 @@
-package com.synrgy.kaboor.ticket.plane.dialog
+package com.synrgy.kaboor.booking.dialog
 
 import android.view.LayoutInflater
 import com.synrgy.common.R
 import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.kaboor.databinding.FragmentFlightClassBottomSheetBinding
-import com.synrgy.kaboor.ticket.plane.adapter.PlaneClassAdapter
+import com.synrgy.kaboor.booking.adapter.PlaneClassAdapter
 import com.wahidabd.library.utils.exts.onClick
 
 

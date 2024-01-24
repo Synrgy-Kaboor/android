@@ -1,5 +1,7 @@
 package com.synrgy.domain.user.model.response
 
+import com.wahidabd.library.utils.common.emptyString
+
 
 /**
  * Created by wahid on 1/8/2024.
@@ -8,8 +10,15 @@ package com.synrgy.domain.user.model.response
 
 
 data class User(
-    val phoneNumber: String,
-    val email: String,
-    val fullName: String,
+    val title: String? = emptyString(),
+    val fullName: String? = emptyString(),
+    val gender: String? = emptyString(),
+    val birthday: String? = emptyString(),
+    val country: String? = emptyString(),
+    val city: String? = emptyString(),
+    val address: String? = emptyString(),
+    val email: String? = emptyString(),
+    val phoneNumber: String? = emptyString(),
+    val isWni: Boolean? = false,
     val verified: Boolean = false,
 )

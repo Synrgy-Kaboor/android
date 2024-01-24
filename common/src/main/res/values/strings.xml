@@ -72,4 +72,6 @@
     <string name="label_pay">Bayar</string>
     <string name="copy_account_number">"Nomor rekening berhasil disalin"</string>
     <string name="copy_total_payment">Total pembayaran berhasil disalin</string>
+    <string name="label_upload_file_here">Upload File Disini</string>
+    <string name="label_has_been_uploaded">File telah diupload</string>
 </resources>

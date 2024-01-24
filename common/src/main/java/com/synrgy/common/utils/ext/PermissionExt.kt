@@ -2,6 +2,8 @@ package com.synrgy.common.utils.ext
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -35,4 +37,29 @@ fun AppCompatActivity.requestMultiplePermission(
 
 fun AppCompatActivity.isGranted(permission: String): Boolean {
     return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+}
+
+object PermissionExt {
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    val imagePermissionsAndroid13 = arrayOf(
+        android.Manifest.permission.READ_MEDIA_IMAGES
+    )
+
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    val imagePermissionsAndroid14 = arrayOf(
+        android.Manifest.permission.READ_MEDIA_IMAGES,
+        android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
+    )
+
+    val imagePermissionAndroid12L = arrayOf(
+        android.Manifest.permission.READ_EXTERNAL_STORAGE
+    )
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    val notificationPermission13 = arrayOf(
+        android.Manifest.permission.POST_NOTIFICATIONS
+    )
+
+    const val NOTIFICATION_REQUEST_CODE = 112233
+    const val IMAGE_REQUEST_CODE = 112234
 }

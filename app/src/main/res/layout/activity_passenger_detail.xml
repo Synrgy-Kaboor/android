@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ticket.plane.PassengerDetailActivity">
+    tools:context=".booking.PassengerDetailActivity">
 
     <com.synrgy.common.reusable.KaboorAppbar
         android:id="@+id/appbar"
@@ -245,24 +245,6 @@
                 app:kaboorAddons_footer="@string/label_footer_baggage"
                 app:kaboorAddons_label="@string/label_baggage" />
 
-            <com.synrgy.common.reusable.KaboorAddonsCard
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_8dp"
-                app:cardCornerRadius="@dimen/dimen_8dp"
-                app:kaboorAddons_description="@string/body_select_chair"
-                app:kaboorAddons_footer="@string/label_footer_select_chair"
-                app:kaboorAddons_label="@string/label_select_chair" />
-
-            <com.synrgy.common.reusable.KaboorAddonsCard
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_8dp"
-                app:cardCornerRadius="@dimen/dimen_8dp"
-                app:kaboorAddons_description="@string/body_buy_food"
-                app:kaboorAddons_footer="@string/label_footer_buy_food"
-                app:kaboorAddons_label="@string/label_buy_food" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_order"
                 style="@style/KaboorButton.Gradient"
@@ -270,7 +252,6 @@
                 android:layout_height="@dimen/dimen_42dp"
                 android:layout_marginVertical="@dimen/dimen_40dp"
                 android:text="@string/button_continue_ordering" />
-
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,13 +1,14 @@
-package com.synrgy.kaboor.ticket.plane
+package com.synrgy.kaboor.booking.flight
 
 import android.content.Context
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.onBackPress
-import com.synrgy.domain.ticket.plane.Ticket
+import com.synrgy.domain.booking.Ticket
+import com.synrgy.kaboor.booking.PassengerDetailActivity
 import com.synrgy.kaboor.databinding.ActivityFlightDepartureTicketListBinding
-import com.synrgy.kaboor.ticket.plane.adapter.PlaneTicketAdapter
+import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.synrgy.kaboor.utils.constant.ConstantKey
 

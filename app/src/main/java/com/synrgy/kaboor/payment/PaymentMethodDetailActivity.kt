@@ -2,12 +2,19 @@ package com.synrgy.kaboor.payment
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.enums.ClipboardType
+import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.copyTextToClipboard
 import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showHideToggle
+import com.synrgy.common.utils.ext.snackbarDanger
 import com.synrgy.common.utils.ext.toStringTrim
+import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodDetailBinding
 import com.wahidabd.library.utils.exts.onClick
 
@@ -65,6 +72,51 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
             tvMobileInstruction.showHideToggle()
             mobileBankingState = !mobileBankingState
             toggleMobile.isSelected = mobileBankingState
+        }
+
+        uploadReceipt.setOnSelectImage { requestPermissions() }
+        uploadReceipt.setOnRemoveImage { showAlertRemoveImage() }
+    }
+
+    private fun showAlertRemoveImage() {
+        showAlertDialog(
+            title = getString(R.string.title_alert_remove_image),
+            description = getString(R.string.message_alert_remove_image),
+            primaryTextButton = getString(R.string.label_cancel),
+            secondaryTextButton = getString(R.string.label_remove),
+            secondaryAction = { binding.uploadReceipt.removeImageFile() }
+        )
+    }
+
+    private val pickMedia =
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+            if (uri != null) binding.uploadReceipt.setImageFile(uri)
+            else snackbarDanger(getString(R.string.message_failed_select_image))
+        }
+
+    private fun launchPickMedia() {
+        pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
+
+    private fun requestPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            requestMultiplePermission(
+                permissions = PermissionExt.imagePermissionsAndroid14,
+                requestCode = PermissionExt.IMAGE_REQUEST_CODE,
+                doIfGranted = ::launchPickMedia
+            )
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestMultiplePermission(
+                permissions = PermissionExt.imagePermissionsAndroid13,
+                requestCode = PermissionExt.IMAGE_REQUEST_CODE,
+                doIfGranted = ::launchPickMedia
+            )
+        } else {
+            requestMultiplePermission(
+                permissions = PermissionExt.imagePermissionAndroid12L,
+                requestCode = PermissionExt.IMAGE_REQUEST_CODE,
+                doIfGranted = ::launchPickMedia
+            )
         }
     }
 }

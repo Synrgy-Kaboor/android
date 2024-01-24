@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ticket.plane.FlightReturnTicketListActivity">
+    tools:context=".booking.flight.FlightReturnTicketListActivity">
 
     <com.synrgy.common.reusable.KaboorAppbar
         android:id="@+id/appbar"
