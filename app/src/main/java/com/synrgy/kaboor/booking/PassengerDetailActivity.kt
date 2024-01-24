@@ -35,7 +35,7 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
 
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
-        btnOrder.onClick { PaymentMethodActivity.start(this@PassengerDetailActivity) }
+        btnOrder.onClick { ExtraProtectionActivity.start(this@PassengerDetailActivity) }
     }
 
     override fun initProcess() {

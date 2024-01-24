@@ -270,7 +270,7 @@ object ConstantDummy {
                 Bank(
                     id = 1,
                     methodName = "Bank BRI",
-                    imageUrl = "https://e7.pngegg.com/pngimages/376/573/png-clipart-logo-bank-rakyat-indonesia-brand-bank-di-indonesia-bank-card-blue-text-thumbnail.png"
+                    imageUrl = "https://asset-2.tstatic.net/madura/foto/bank/images/logo-bri-dibuka-lowongan-kerja-di-bank-bri-untuk-lulusan-s1-dan-s2-untuk-september.jpg"
                 )
             ),
             Selectable(
@@ -284,7 +284,7 @@ object ConstantDummy {
                 Bank(
                     3,
                     "Bank BCA",
-                    imageUrl = "https://w7.pngwing.com/pngs/561/1/png-transparent-bank-central-asia-logo-bca-finance-business-bank-blue-cdr-text.png"
+                    imageUrl = "https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png"
                 )
             ),
         )
