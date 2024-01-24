@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.withStyledAttributes
 import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -65,19 +66,6 @@ inline fun Group.onGroupClick(crossinline onClick: () -> Unit) {
 fun String.lowerContains(char: String): Boolean =
     this.lowercase().contains(char.lowercase())
 
-fun AppCompatActivity.showDatePicker(
-    onClick: (Long) -> Unit
-) {
-    val datePicker = MaterialDatePicker.Builder.datePicker()
-        .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-        .build()
-
-    with(datePicker) {
-        show(supportFragmentManager, datePicker.toString())
-        addOnPositiveButtonClickListener { onClick(it) }
-    }
-}
-
 fun TextInputEditText.textTrim() = this.text.toString().trim()
 
 fun setTimer(
@@ -89,18 +77,6 @@ fun setTimer(
     return object : CountDownTimer(millisTimer, interval) {
         override fun onTick(millisUntilFinished: Long) = onTick.invoke(millisUntilFinished)
         override fun onFinish() = onFinish.invoke()
-    }
-}
-
-fun Long.toSeconds(): String {
-    return this.milliseconds.toComponents { _, minutes, seconds, _ ->
-        "%02d:%02d".format(minutes, seconds)
-    }
-}
-
-fun Long.toMinutes(): String {
-    return this.milliseconds.toComponents{ hours, minutes, seconds, _ ->
-        "%02d:%02d:%02d".format(hours, minutes, seconds)
     }
 }
 
@@ -151,6 +127,13 @@ fun AppCompatActivity.snackbarSuccess(message: String) {
     Snackbar.make(this.window.decorView.rootView, message, Snackbar.LENGTH_LONG).apply {
         setBackgroundTint(ContextCompat.getColor(this@snackbarSuccess, R.color.secondarySuccess))
         setTextColor(ContextCompat.getColor(this@snackbarSuccess, R.color.neutral1))
+    }.show()
+}
+
+fun AppCompatActivity.snackbarDanger(message: String) {
+    Snackbar.make(this.window.decorView.rootView, message, Snackbar.LENGTH_LONG).apply {
+        setBackgroundTint(ContextCompat.getColor(this@snackbarDanger, R.color.secondaryDanger))
+        setTextColor(ContextCompat.getColor(this@snackbarDanger, R.color.neutral1))
     }.show()
 }
 

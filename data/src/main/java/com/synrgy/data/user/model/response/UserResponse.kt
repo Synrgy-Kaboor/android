@@ -12,8 +12,15 @@ data class UserResponse(
 )
 
 data class UserDataResponse(
-    val fullName: String,
-    val email: String,
-    val phoneNumber: String,
+    val title: String? = null,
+    val fullName: String? = null,
+    val gender: String? = null,
+    val birthday: String? = null,
+    val country: String? = null,
+    val city: String? = null,
+    val address: String? = null,
+    val email: String? = null,
+    val phoneNumber: String? = null,
+    val isWni: Boolean? = false,
     val verified: Boolean = false,
 )

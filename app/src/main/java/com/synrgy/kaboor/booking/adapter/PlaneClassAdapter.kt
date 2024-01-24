@@ -1,4 +1,4 @@
-package com.synrgy.kaboor.ticket.plane.adapter
+package com.synrgy.kaboor.booking.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -41,7 +41,7 @@ class PlaneClassAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): PlaneClassAdapter.PlaneClassAdapterViewHolder =
+    ): PlaneClassAdapterViewHolder =
         PlaneClassAdapterViewHolder(getViewBinding(parent, viewType))
 
     inner class PlaneClassAdapterViewHolder(binding: ViewBinding) :

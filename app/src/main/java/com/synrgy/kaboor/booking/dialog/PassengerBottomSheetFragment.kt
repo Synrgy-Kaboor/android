@@ -1,4 +1,4 @@
-package com.synrgy.kaboor.ticket.plane.dialog
+package com.synrgy.kaboor.booking.dialog
 
 import android.view.LayoutInflater
 import com.synrgy.common.R

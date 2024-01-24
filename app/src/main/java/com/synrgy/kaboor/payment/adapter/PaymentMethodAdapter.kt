@@ -4,13 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.synrgy.common.R
 import com.synrgy.common.utils.Selectable
 import com.synrgy.domain.payment.Bank
 import com.synrgy.kaboor.databinding.ItemPaymentMethodBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
 import com.wahidabd.library.utils.exts.onClick
+import com.wahidabd.library.utils.exts.setImageUrl
 
 class PaymentMethodAdapter(
     private val context: Context,
@@ -29,8 +29,8 @@ class PaymentMethodAdapter(
     inner class PaymentMethodViewHolder(binding: ViewBinding) :
         BaseAsyncItemViewHolder<Selectable<Bank>>(binding) {
         override fun bind(data: Selectable<Bank>) = with(binding as ItemPaymentMethodBinding) {
-            ivBank.setImageResource(data.item.image ?: R.drawable.img_bca)
-            tvBankName.text = data.item.bankName
+            ivBank.setImageUrl(context, data.item.imageUrl)
+            tvBankName.text = data.item.methodName
 
             setSelectedItem(data.selected)
 

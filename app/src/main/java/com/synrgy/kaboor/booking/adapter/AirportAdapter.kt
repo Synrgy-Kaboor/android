@@ -1,19 +1,14 @@
-package com.synrgy.kaboor.ticket.plane.adapter
+package com.synrgy.kaboor.booking.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import androidx.viewbinding.ViewBinding
 import com.synrgy.common.model.AirportData
 import com.synrgy.common.R
-import com.synrgy.common.utils.ext.lowerContains
 import com.synrgy.kaboor.databinding.ItemAirportBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
-import com.wahidabd.library.utils.common.emptyString
-import java.util.Locale
 
 
 /**
@@ -37,7 +32,7 @@ class AirportAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AirportAdapter.AirportViewHolder = AirportViewHolder(getViewBinding(parent, viewType))
+    ): AirportViewHolder = AirportViewHolder(getViewBinding(parent, viewType))
 
     inner class AirportViewHolder(binding: ViewBinding) : BaseAsyncItemViewHolder<AirportData>(binding) {
         override fun bind(data: AirportData) = with(binding as ItemAirportBinding) {

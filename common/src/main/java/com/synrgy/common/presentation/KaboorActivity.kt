@@ -71,7 +71,7 @@ abstract class KaboorActivity<VB : ViewBinding> : BaseActivity<VB>() {
         secondaryTextButton: String? = emptyString(),
         primaryAction: (() -> Unit)? = null,
         secondaryAction: (() -> Unit)? = null,
-        isCancelable: Boolean? = true
+        isCancelable: Boolean = true
     ) {
         GenericBottomSheetFragment.newInstance(
             title = title,
@@ -80,6 +80,7 @@ abstract class KaboorActivity<VB : ViewBinding> : BaseActivity<VB>() {
             secondaryTextButton = secondaryTextButton,
             onPrimaryButtonClicked = primaryAction,
             onSecondaryButtonClicked = secondaryAction,
+            isCancelable = isCancelable
         ).show(supportFragmentManager, GenericBottomSheetFragment::class.java.name)
     }
 

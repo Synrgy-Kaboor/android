@@ -1,4 +1,4 @@
-package com.synrgy.domain.ticket.plane.model.request
+package com.synrgy.domain.booking.model.request
 
 import kotlinx.serialization.Serializable
 

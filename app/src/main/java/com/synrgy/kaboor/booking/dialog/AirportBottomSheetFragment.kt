@@ -1,4 +1,4 @@
-package com.synrgy.kaboor.ticket.plane.dialog
+package com.synrgy.kaboor.booking.dialog
 
 import android.view.LayoutInflater
 import androidx.core.widget.doAfterTextChanged
@@ -8,7 +8,7 @@ import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.common.utils.constant.DummyData
 import com.synrgy.common.utils.ext.lowerContains
 import com.synrgy.kaboor.databinding.FragmentAirportBottomSheetBinding
-import com.synrgy.kaboor.ticket.plane.adapter.AirportAdapter
+import com.synrgy.kaboor.booking.adapter.AirportAdapter
 
 
 class AirportBottomSheetFragment : KaboorBottomSheet<FragmentAirportBottomSheetBinding>() {

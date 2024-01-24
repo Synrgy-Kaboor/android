@@ -1,21 +1,18 @@
-package com.synrgy.kaboor.ticket.plane
+package com.synrgy.kaboor.booking.flight
 
 import android.content.Context
 import android.content.Intent
 import com.synrgy.common.R as comR
-import com.synrgy.kaboor.R
 import com.synrgy.common.model.AirportData
 import com.synrgy.common.model.PassengerData
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.enums.AirportType
 import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.common.utils.ext.showDatePicker
-import com.synrgy.domain.ticket.plane.model.request.PlaneParam
-import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.ActivityFlightScheduleBinding
-import com.synrgy.kaboor.ticket.plane.dialog.AirportBottomSheetFragment
-import com.synrgy.kaboor.ticket.plane.dialog.FlightClassBottomSheetFragment
-import com.synrgy.kaboor.ticket.plane.dialog.PassengerBottomSheetFragment
+import com.synrgy.kaboor.booking.dialog.AirportBottomSheetFragment
+import com.synrgy.kaboor.booking.dialog.FlightClassBottomSheetFragment
+import com.synrgy.kaboor.booking.dialog.PassengerBottomSheetFragment
 import com.wahidabd.library.utils.exts.onClick
 
 class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {

@@ -85,7 +85,7 @@
                 style="@style/KaboorTextView.Title3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_18dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/label_total_payment" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -118,14 +118,14 @@
                 style="@style/KaboorTextView.Title3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_18dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/label_how_to_pay" />
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/KaboorCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
                 app:cardElevation="@dimen/dimen_0dp">
 
                 <RelativeLayout
@@ -269,28 +269,43 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/message_detail_payment"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@string/label_how_to_pay" />
+
+            <com.synrgy.common.reusable.KaboorPaymentReceipt
+                android:id="@+id/upload_receipt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/dimen_0dp" />
+
+            <com.google.android.material.textview.MaterialTextView
                 style="@style/KaboorTextView.Title1"
-                android:textColor="@color/neutral6"
-                android:layout_marginTop="@dimen/dimen_8dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/message_detail_payment"
+                android:textColor="@color/neutral6" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_show_order"
+                style="@style/KaboorButton.Gradient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/KaboorButton.Gradient"
-                android:text="@string/label_view_order"
-                android:layout_marginTop="@dimen/dimen_18dp" />
+                android:layout_marginTop="@dimen/dimen_18dp"
+                android:text="@string/label_view_order" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_change_payment_method"
+                style="@style/KaboorButton.Outline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/KaboorButton.Outline"
-                android:text="@string/label_change_payment_method"
-                android:layout_marginTop="@dimen/dimen_8dp"/>
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/label_change_payment_method" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

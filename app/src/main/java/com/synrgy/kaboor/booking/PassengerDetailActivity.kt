@@ -1,4 +1,4 @@
-package com.synrgy.kaboor.ticket.plane
+package com.synrgy.kaboor.booking
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,7 @@ import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.kaboor.databinding.ActivityPassengerDetailBinding
 import com.synrgy.kaboor.payment.PaymentMethodActivity
-import com.synrgy.kaboor.ticket.plane.adapter.PlaneTicketAdapter
+import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.wahidabd.library.utils.exts.onClick
 
@@ -34,7 +34,7 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
     }
 
     override fun initAction() = with(binding) {
-        appbar.onClick { onBackPress() }
+        appbar.setOnBackClickListener { onBackPress() }
         btnOrder.onClick { PaymentMethodActivity.start(this@PassengerDetailActivity) }
     }
 
