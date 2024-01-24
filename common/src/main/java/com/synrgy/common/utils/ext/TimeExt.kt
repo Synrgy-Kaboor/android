@@ -1,5 +1,6 @@
 package com.synrgy.common.utils.ext
 
+import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlin.time.Duration.Companion.milliseconds
@@ -21,6 +22,18 @@ fun AppCompatActivity.showDatePicker(
     with(datePicker) {
         show(supportFragmentManager, datePicker.toString())
         addOnPositiveButtonClickListener { onClick(it) }
+    }
+}
+
+fun setTimer(
+    millisTimer: Long,
+    interval: Long,
+    onTick: ((Long) -> Unit) = {},
+    onFinish: (() -> Unit) = {}
+): CountDownTimer {
+    return object : CountDownTimer(millisTimer, interval) {
+        override fun onTick(millisUntilFinished: Long) = onTick.invoke(millisUntilFinished)
+        override fun onFinish() = onFinish.invoke()
     }
 }
 

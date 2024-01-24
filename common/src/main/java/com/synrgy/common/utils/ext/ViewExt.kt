@@ -68,18 +68,6 @@ fun String.lowerContains(char: String): Boolean =
 
 fun TextInputEditText.textTrim() = this.text.toString().trim()
 
-fun setTimer(
-    millisTimer: Long,
-    interval: Long,
-    onTick: ((Long) -> Unit) = {},
-    onFinish: (() -> Unit) = {}
-): CountDownTimer {
-    return object : CountDownTimer(millisTimer, interval) {
-        override fun onTick(millisUntilFinished: Long) = onTick.invoke(millisUntilFinished)
-        override fun onFinish() = onFinish.invoke()
-    }
-}
-
 fun TextInputLayout.setEndIcon(@DrawableRes icon: Int) {
     this.endIconDrawable = ContextCompat.getDrawable(context, icon)
 }

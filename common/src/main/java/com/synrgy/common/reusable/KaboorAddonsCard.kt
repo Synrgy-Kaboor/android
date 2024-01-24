@@ -8,6 +8,7 @@ import com.synrgy.common.R
 import com.synrgy.common.databinding.LayoutAddonsCardBinding
 import com.synrgy.common.utils.enums.AddonsType
 import com.synrgy.common.utils.ext.goneIf
+import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.common.utils.ext.visibleIf
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.onClick
@@ -74,7 +75,10 @@ class KaboorAddonsCard @JvmOverloads constructor(
 
         tvLabel.text = label
         tvDescription.text = description
-        tvFooter.text = if (type == AddonsType.NORMAL) footer else price.toString()
+        tvFooter.text = if (type == AddonsType.NORMAL) footer else context.getString(
+            R.string.format_insurance_price,
+            price.toCurrency()
+        )
         tvHeader.text = header
         imgIcon.setImageResource(icon)
         tvAssuranceLabel1.text = addonLabel1

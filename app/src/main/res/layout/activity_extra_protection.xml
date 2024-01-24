@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".booking.ExtraProtectionActivity">
+
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        app:kaboorAppbar_title="@string/title_extra_protection" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0dp"
+        android:layout_below="@id/appbar"
+        android:layout_above="@id/bottom_bar"
+        android:padding="@dimen/dimen_16dp"
+        android:clipToPadding="false">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_make_transfer_to" />
+
+            <com.synrgy.common.reusable.KaboorAddonsCard
+                android:id="@+id/travel_insurance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:kaboorAddons_type="assurance"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:kaboorAddons_icon="@drawable/ic_shield_cross"
+                app:kaboorAddons_header="@string/title_travel_insurance"
+                app:kaboorAddons_assurance_label_1="@string/label_insurance_1"
+                app:kaboorAddons_assurance_label_2="@string/label_insurance_2"
+                app:kaboorAddons_price="65000"/>
+
+            <com.synrgy.common.reusable.KaboorAddonsCard
+                android:id="@+id/baggage_insurance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:kaboorAddons_type="assurance"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:kaboorAddons_icon="@drawable/ic_shopping_bag"
+                app:kaboorAddons_header="@string/title_baggage_insurance"
+                app:kaboorAddons_assurance_label_1="@string/label_baggage_insurance"
+                app:kaboorAddons_price="15000"/>
+
+            <com.synrgy.common.reusable.KaboorAddonsCard
+                android:id="@+id/delay_protection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:kaboorAddons_type="assurance"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:kaboorAddons_icon="@drawable/ic_clock"
+                app:kaboorAddons_header="@string/title_delay_protection"
+                app:kaboorAddons_assurance_label_1="@string/label_delay_protection"
+                app:kaboorAddons_price="10000"
+                android:layout_marginBottom="@dimen/dimen_20dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:paddingVertical="@dimen/dimen_16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/dimen_16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/btn_pay"
+                android:text="@string/label_total_price"
+                android:textColor="@color/neutral6" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Heading2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/btn_pay"
+                tools:text="Rp 1.230.000"
+                android:textColor="@color/primaryBrightViolet" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_pay"
+            style="@style/KaboorButton.Gradient"
+            android:layout_width="123dp"
+            android:layout_height="@dimen/dimen_38dp"
+            android:text="@string/label_pay" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</RelativeLayout>

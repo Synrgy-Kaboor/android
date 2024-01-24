@@ -9,4 +9,5 @@ package com.synrgy.kaboor.utils.constant
 
 object ConstantTag {
     const val TAG_VOUCHER = "tag_voucher"
+    const val TAG_INSURANCE = "tag_insurance"
 }
