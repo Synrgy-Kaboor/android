@@ -11,131 +11,91 @@ import com.synrgy.common.model.AirportData
 
 object DummyData {
 
-    fun departure() = AirportData("Juanda Intl", "Surabaya", "Indonesia", "SUB")
-    fun arrival() = AirportData("Soekarno Hatta Intl", "Jakarta", "Indonesia", "CGK")
 
-    fun airports(): List<AirportData> =
+    fun departure() = AirportData("Juanda Intl", "Surabaya")
+    fun arrival() = AirportData("Soekarno Hatta Intl", "Jakarta")
+
+    fun airportData(): List<AirportData> =
         listOf(
             AirportData(
                 "Juanda Intl",
-                "Surabaya",
-                "Indonesia",
-                "SUB"
+                "Surabaya"
             ),
             AirportData(
                 "Soekarno Hatta Intl",
-                "Jakarta",
-                "Indonesia",
-                "CGK"
+                "Jakarta"
             ),
             AirportData(
                 "Adi Sumarmo Wiryokusumo",
-                "Solo",
-                "Indonesia",
-                "SOC"
+                "Solo"
             ),
             AirportData(
                 "Husein Sastranegara Intl",
-                "Bandung",
-                "Indonesia",
-                "BDO"
+                "Bandung"
             ),
             AirportData(
                 "Sultan Hasanuddin Intl",
-                "Makassar",
-                "Indonesia",
-                "UPG"
+                "Makassar"
             ),
             AirportData(
                 "Ngurah Rai Intl",
-                "Denpasar",
-                "Indonesia",
-                "DPS"
+                "Denpasar"
             ),
             AirportData(
                 "Kualanamu Intl",
-                "Medan",
-                "Indonesia",
-                "KNO"
+                "Medan"
             ),
             AirportData(
                 "Hang Nadim",
-                "Batam",
-                "Indonesia",
-                "BTH"
+                "Batam"
             ),
             AirportData(
                 "Halim Perdana Kusuma",
-                "Jakarta",
-                "Indonesia",
-                "HLP"
+                "Jakarta"
             ),
             AirportData(
                 "Sultan Syarif Kasim Ii",
-                "Pekanbaru",
-                "Indonesia",
-                "PKU"
+                "Pekanbaru"
             ),
             AirportData(
                 "Sultan Mahmud Badaruddin Ii",
-                "Palembang",
-                "Indonesia",
-                "PLM"
+                "Palembang"
             ),
             AirportData(
                 "Minangkabau",
-                "Padang",
-                "Indonesia",
-                "PDG"
+                "Padang"
             ),
             AirportData(
                 "Sultan Aji Muhamad Sulaiman",
-                "Balikpapan",
-                "Indonesia",
-                "BPN"
+                "Balikpapan"
             ),
             AirportData(
                 "Sultan Iskandarmuda",
-                "Banda Aceh",
-                "Indonesia",
-                "BTJ"
+                "Banda Aceh"
             ),
             AirportData(
                 "Sultan Thaha",
-                "Jambi",
-                "Indonesia",
-                "DJB"
+                "Jambi"
             ),
             AirportData(
                 "Hasanuddin Intl",
-                "Ujung Pandang",
-                "Indonesia",
-                "UPG"
+                "Ujung Pandang"
             ),
             AirportData(
                 "El Tari",
-                "Kupang",
-                "Indonesia",
-                "KOE"
+                "Kupang"
             ),
             AirportData(
                 "Supadio",
-                "Pontianak",
-                "Indonesia",
-                "PNK"
+                "Pontianak"
             ),
             AirportData(
                 "Sam Ratulangi",
-                "Manado",
-                "Indonesia",
-                "MDC"
+                "Manado"
             ),
             AirportData(
                 "Sepinggan",
-                "Balikpapan",
-                "Indonesia",
-                "BPN"
+                "Balikpapan"
             )
         )
-
 }

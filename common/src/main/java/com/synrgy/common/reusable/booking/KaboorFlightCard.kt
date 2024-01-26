@@ -1,4 +1,4 @@
-package com.synrgy.common.reusable.ticket
+package com.synrgy.common.reusable.booking
 
 import android.content.Context
 import android.util.AttributeSet
@@ -26,9 +26,9 @@ class KaboorFlightCard @JvmOverloads constructor(
 
     private var binding: LayoutFlightCardBinding
 
-    private var departure: AirportData? = DummyData.departure()
+    private var departure: AirportData? = null
         private set
-    private var arrival: AirportData? = DummyData.arrival()
+    private var arrival: AirportData? = null
         private set
 
     private var setOnDepartureListener: (() -> Unit)? = {}
@@ -41,8 +41,8 @@ class KaboorFlightCard @JvmOverloads constructor(
 
     private fun setupView() = with(binding) {
         tvDeparture.text =
-            context.getString(R.string.format_airport, departure?.city, departure?.iata)
-        tvArrival.text = context.getString(R.string.format_airport, arrival?.city, arrival?.iata)
+            context.getString(R.string.format_airport, departure?.city, departure?.airport)
+        tvArrival.text = context.getString(R.string.format_airport, arrival?.city, arrival?.airport)
 
         btnSwitch.onClick { switch() }
         groupDeparture.onGroupClick { setOnDepartureListener?.invoke() }
@@ -54,20 +54,20 @@ class KaboorFlightCard @JvmOverloads constructor(
         departure = arrival
         arrival = temp
 
-        setDeparture(departure!!)
-        setArrival(arrival!!)
+        setDeparture(departure)
+        setArrival(arrival)
     }
 
-    fun setDeparture(departure: AirportData) {
+    fun setDeparture(departure: AirportData?) {
         this.departure = departure
         binding.tvDeparture.text =
-            context.getString(R.string.format_airport, departure.city, departure.iata)
+            context.getString(R.string.format_airport, departure?.city, departure?.airport)
     }
 
-    fun setArrival(arrival: AirportData) {
+    fun setArrival(arrival: AirportData?) {
         this.arrival = arrival
         binding.tvArrival.text =
-            context.getString(R.string.format_airport, arrival.city, arrival.iata)
+            context.getString(R.string.format_airport, arrival?.city, arrival?.airport)
     }
 
     fun setOnDepartureListener(listener: () -> Unit) {

@@ -37,6 +37,7 @@ class KaboorEditText @JvmOverloads constructor(
     private var label: String? = emptyString()
     private var enable: Boolean = true
     private var type: EditTextType = EditTextType.TEXT
+    private var endIcon: Int = 0
 
     private var isPasswordShow: Boolean = false
 
@@ -55,6 +56,7 @@ class KaboorEditText @JvmOverloads constructor(
         type = attributes.getInt(R.styleable.KaboorEditText_kaboorEditText_type, 0).let {
             EditTextType.entries[it]
         }
+        endIcon = attributes.getResourceId(R.styleable.KaboorEditText_kaboorEditText_end_icon, 0)
         attributes.recycle()
     }
 
@@ -63,6 +65,8 @@ class KaboorEditText @JvmOverloads constructor(
         tvLabel.text = label
         et.hint = hint
         et.inputType = type.type
+
+        if (endIcon != 0) til.setEndIcon(endIcon)
 
         if (!enable) {
             et.isEnabled = false
@@ -74,7 +78,7 @@ class KaboorEditText @JvmOverloads constructor(
         }
     }
 
-    fun setText(text: String){
+    fun setText(text: String) {
         binding.et.setText(text)
     }
 
@@ -86,11 +90,11 @@ class KaboorEditText @JvmOverloads constructor(
         til.endIconClick { setIconPassword() }
     }
 
-    private fun setIconPassword() = with(binding){
-        if (!isPasswordShow){
+    private fun setIconPassword() = with(binding) {
+        if (!isPasswordShow) {
             til.setEndIcon(R.drawable.ic_eye_slash)
             et.transformationMethod = HideReturnsTransformationMethod.getInstance()
-        }else{
+        } else {
             til.setEndIcon(R.drawable.ic_eye)
             et.transformationMethod = PasswordTransformationMethod.getInstance()
         }

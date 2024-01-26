@@ -13,17 +13,8 @@
         android:layout_height="wrap_content"
         style="@style/KaboorTextView.Title3"
         android:textColor="@color/neutral7"
-        tools:text="Surabaya, Indonesia"
+        tools:text="Surabaya, SUB"
         android:layout_marginHorizontal="@dimen/dimen_16dp"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_airport_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/KaboorTextView.Body2"
-        android:textColor="@color/neutral6"
-        android:layout_marginHorizontal="@dimen/dimen_16dp"
-        tools:text="SUB - Juanda"/>
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"

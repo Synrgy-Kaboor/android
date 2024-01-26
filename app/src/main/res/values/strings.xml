@@ -142,4 +142,13 @@
     <string name="key_delay_2">Santunan Keterlambatan Bagasi Pribadi karena keterlambatan, salah tujuan, atau salah ditempatkan oleh perusahaan pengangkutan.</string>
     <string name="value_delay_1">Hingga Rp 25.000.000 untuk rute  domestik atau hingga Rp 30.000.000 untuk rute  internasional</string>
     <string name="value_delay_2">Hingga Rp 500.000 untuk rute perjalanan domestik atau hingga Rp 1.000.000 untuk rute perjalanan internasional</string>
+    <string name="label_price_notification">Notifikasi Harga</string>
+    <string name="price_add_baggage">Rp 160.000 /pax</string>
+    <string name="message_detail_passenger">Data ini akan digunakan untuk pengiriman e-ticket dan keperluan refund/reschedule </string>
+    <string name="message_ktp">*Sesuai dengan KTP</string>
+    <string name="label_passenger_info">Info Penumpang</string>
+    <string name="label_mr">Mr</string>
+    <string name="label_mrs">Mrs</string>
+    <string name="label_miss">Mr</string>
+    <string name="label_info_passenger_detail">E-Ticket akan dikirimkan ke alamat Email ini</string>
 </resources>

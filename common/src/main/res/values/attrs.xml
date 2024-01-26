@@ -45,6 +45,7 @@
         <attr name="kaboorEditText_label" format="string"/>
         <attr name="kaboorEditText_hint" format="string"/>
         <attr name="kaboorEditText_enable" format="boolean"/>
+        <attr name="kaboorEditText_end_icon" format="reference"/>
         <attr name="kaboorEditText_type" format="enum">
             <enum name="text" value="0"/>
             <enum name="number" value="1"/>

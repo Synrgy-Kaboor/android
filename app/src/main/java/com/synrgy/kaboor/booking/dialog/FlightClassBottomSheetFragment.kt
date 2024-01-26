@@ -6,6 +6,7 @@ import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.kaboor.databinding.FragmentFlightClassBottomSheetBinding
 import com.synrgy.kaboor.booking.adapter.PlaneClassAdapter
+import com.synrgy.kaboor.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.onClick
 
 
@@ -41,7 +42,7 @@ class FlightClassBottomSheetFragment : KaboorBottomSheet<FragmentFlightClassBott
         }
     }
 
-    override val tagName: String = FlightClassBottomSheetFragment::class.java.name
+    override val tagName: String = ConstantTag.TAG_PLANE_CLASS
     override fun getTitle(): String = getString(R.string.label_class)
     override fun setCancelButtonEnable(): Boolean = true
     override fun showButton(): Boolean = true

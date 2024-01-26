@@ -7,6 +7,7 @@ import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
 import com.synrgy.domain.payment.Bank
 import com.synrgy.domain.booking.Ticket
+import com.synrgy.domain.booking.model.response.Airport
 
 
 /**
@@ -16,6 +17,39 @@ import com.synrgy.domain.booking.Ticket
 
 
 object ConstantDummy {
+
+    fun departure(): Airport = Airport("Surabaya", "SUB")
+    fun arrival(): Airport = Airport("Jakarta", "JKT")
+
+    fun airports(): List<Airport> =
+        listOf(
+            Airport("Surabaya", "SUB"),
+            Airport("Jakarta", "JKT"),
+            Airport("Bandung", "BDO"),
+            Airport("Solo", "SOC"),
+            Airport("Makassar", "UPG"),
+            Airport("Denpasar", "DPS"),
+            Airport("Medan", "KNO"),
+            Airport("Yogyakarta", "JOG"),
+            Airport("Semarang", "SRG"),
+            Airport("Palembang", "PLM"),
+            Airport("Balikpapan", "BPN"),
+            Airport("Pekanbaru", "PKU"),
+            Airport("Banjarmasin", "BDJ"),
+            Airport("Batam", "BTH"),
+            Airport("Padang", "PDG"),
+            Airport("Lombok", "LOP"),
+            Airport("Banda Aceh", "BTJ"),
+            Airport("Pekanbaru", "PKU"),
+            Airport("Bengkulu", "BKS"),
+            Airport("Tanjung Pinang", "TNJ"),
+            Airport("Tanjung Pandan", "TJQ"),
+            Airport("Tanjung Selor", "TJS"),
+            Airport("Tanjung Redeb", "BEJ"),
+            Airport("Tanjung Warukin", "TJG"),
+            Airport("Tanjung Karang", "TKG"),
+            Airport("Gorontalo", "GTO"),
+        )
 
     fun vouchers(): List<Promo> =
         listOf(

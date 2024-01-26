@@ -5,10 +5,12 @@ import androidx.core.widget.doAfterTextChanged
 import com.synrgy.common.R
 import com.synrgy.common.model.AirportData
 import com.synrgy.common.presentation.KaboorBottomSheet
-import com.synrgy.common.utils.constant.DummyData
 import com.synrgy.common.utils.ext.lowerContains
-import com.synrgy.kaboor.databinding.FragmentAirportBottomSheetBinding
+import com.synrgy.domain.booking.mapper.toData
 import com.synrgy.kaboor.booking.adapter.AirportAdapter
+import com.synrgy.kaboor.databinding.FragmentAirportBottomSheetBinding
+import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.synrgy.kaboor.utils.constant.ConstantTag
 
 
 class AirportBottomSheetFragment : KaboorBottomSheet<FragmentAirportBottomSheetBinding>() {
@@ -27,7 +29,7 @@ class AirportBottomSheetFragment : KaboorBottomSheet<FragmentAirportBottomSheetB
         }
     }
 
-    override val tagName: String = AirportBottomSheetFragment::class.java.name
+    override val tagName: String = ConstantTag.TAG_PASSENGER
     override fun getTitle(): String = getString(R.string.label_airport)
     override fun setCancelButtonEnable(): Boolean = true
     override fun showButton(): Boolean = false
@@ -46,21 +48,20 @@ class AirportBottomSheetFragment : KaboorBottomSheet<FragmentAirportBottomSheetB
 
     override fun initProcess() {
         super.initProcess()
-        airportAdapter.setData = DummyData.airports()
+        airportAdapter.setData = ConstantDummy.airports().map { it.toData() }
     }
 
-    private fun setAirportSelected(data: AirportData){
+    private fun setAirportSelected(data: AirportData) {
         onSelectedAirport.invoke(data)
         dismiss()
     }
 
-    private fun filter(text: String){
+    private fun filter(text: String) {
         val query = ArrayList<AirportData>()
-        DummyData.airports().forEach {
+        ConstantDummy.airports().map { it.toData() }.forEach {
             if (it.city.lowerContains(text) ||
-                it.country.lowerContains(text) ||
-                it.iata.lowerContains(text) ||
-                it.name.lowerContains(text)){
+                it.airport.lowerContains(text)
+            ) {
                 query.add(it)
             }
         }

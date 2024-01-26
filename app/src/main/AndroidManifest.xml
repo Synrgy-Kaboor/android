@@ -24,6 +24,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".booking.PriceAlertActivity"
+            android:exported="false" />
+        <activity
             android:name=".booking.ExtraProtectionActivity"
             android:exported="false" />
         <activity

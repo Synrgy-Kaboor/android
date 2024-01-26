@@ -1,7 +1,7 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
-    kotlinSerialization()
+    kotlinParcelize()
 }
 
 android {

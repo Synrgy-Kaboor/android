@@ -1,9 +1,9 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
-    kotlinSerialization()
     googleGmsServices()
     firebaseCrashlytics()
+    kotlinParcelize()
 }
 
 android {

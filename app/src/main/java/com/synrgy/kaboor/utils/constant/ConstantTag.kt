@@ -10,4 +10,8 @@ package com.synrgy.kaboor.utils.constant
 object ConstantTag {
     const val TAG_VOUCHER = "tag_voucher"
     const val TAG_INSURANCE = "tag_insurance"
+    const val TAG_DETAIL_PASSENGER = "tag_detail_passenger"
+    const val TAG_PASSENGER = "tag_passenger"
+    const val TAG_AIRPORT = "tag_airport"
+    const val TAG_PLANE_CLASS = "tag_plane_class"
 }
