@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.enums.ProtectionType
+import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.kaboor.booking.dialog.ExtraProtectionBottomSheetFragment
 import com.synrgy.kaboor.databinding.ActivityExtraProtectionBinding
 import com.synrgy.kaboor.payment.PaymentMethodActivity
@@ -26,6 +27,7 @@ class ExtraProtectionActivity : KaboorActivity<ActivityExtraProtectionBinding>()
     }
 
     override fun initAction() = with(binding) {
+        appbar.setOnBackClickListener { onBackPress() }
         travelInsurance.setOnLoadMoreClickListener { showProtectionDialog(ProtectionType.INSURANCE) }
         baggageInsurance.setOnLoadMoreClickListener { showProtectionDialog(ProtectionType.BAGGAGE) }
         delayProtection.setOnLoadMoreClickListener { showProtectionDialog(ProtectionType.DELAY) }

@@ -22,10 +22,6 @@ class AirportAdapter(
     private val onItemClick: (AirportData) -> Unit
 ) : BaseAsyncRecyclerAdapter<AirportData, AirportAdapter.AirportViewHolder>() {
 
-    private val filteredAirport = ArrayList<AirportData>().apply {
-        addAll(setData)
-    }
-
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding =
         ItemAirportBinding.inflate(LayoutInflater.from(context), parent, false)
 
@@ -36,8 +32,7 @@ class AirportAdapter(
 
     inner class AirportViewHolder(binding: ViewBinding) : BaseAsyncItemViewHolder<AirportData>(binding) {
         override fun bind(data: AirportData) = with(binding as ItemAirportBinding) {
-            tvAirportLocation.text = context.getString(R.string.format_airport, data.city, data.country)
-            tvAirportName.text = context.getString(R.string.format_airport_name, data.iata, data.name)
+            tvAirportLocation.text = context.getString(R.string.format_airport, data.city, data.airport)
 
             root.setOnClickListener {
                 onItemClick.invoke(data)

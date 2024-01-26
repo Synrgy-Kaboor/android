@@ -1,4 +1,4 @@
-package com.synrgy.common.reusable.ticket
+package com.synrgy.common.reusable.booking
 
 import android.content.Context
 import android.util.AttributeSet
@@ -69,6 +69,11 @@ class KaboorScheduleCard @JvmOverloads constructor(
 
     fun setOnComingHomeListener(onClick: () -> Unit) {
         this.onClickComingHome = onClick
+    }
+
+    fun setRoundTrip(isRoundTrip: Boolean) {
+        this.isRoundTrip = isRoundTrip
+        binding.btnSwitch.isChecked = isRoundTrip
     }
 
     fun getRoundTrip(): Boolean = isRoundTrip

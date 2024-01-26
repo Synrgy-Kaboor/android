@@ -51,6 +51,7 @@
                 android:text="@string/label_booker_detail" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_booker_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
@@ -241,8 +242,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 app:cardCornerRadius="@dimen/dimen_8dp"
+                app:kaboorAddons_price="160000"
                 app:kaboorAddons_description="@string/body_baggage"
-                app:kaboorAddons_footer="@string/label_footer_baggage"
+                app:kaboorAddons_footer="@string/price_add_baggage"
                 app:kaboorAddons_label="@string/label_baggage" />
 
             <com.google.android.material.button.MaterialButton

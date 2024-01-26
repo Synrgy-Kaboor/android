@@ -89,6 +89,7 @@
             android:layout_height="@dimen/dimen_34dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/dimen_16dp"
+            android:background="@drawable/ripple_oval_white"
             android:padding="@dimen/dimen_4dp"
             app:srcCompat="@drawable/ic_notification_plus" />
 

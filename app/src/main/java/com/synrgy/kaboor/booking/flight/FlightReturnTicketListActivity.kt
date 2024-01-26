@@ -5,37 +5,74 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.onBackPress
-import com.synrgy.kaboor.databinding.ActivityFlightReturnTicketListBinding
+import com.synrgy.domain.booking.Ticket
+import com.synrgy.domain.booking.model.request.FlightParam
+import com.synrgy.kaboor.booking.PassengerDetailActivity
+import com.synrgy.kaboor.booking.PriceAlertActivity
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
+import com.synrgy.kaboor.databinding.ActivityFlightReturnTicketListBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.synrgy.kaboor.utils.constant.ConstantKey
 
 class FlightReturnTicketListActivity :
     KaboorActivity<ActivityFlightReturnTicketListBinding>() {
 
     companion object {
-        fun start(context: AppCompatActivity) {
-            context.startActivity(Intent(context, FlightReturnTicketListActivity::class.java))
+        fun start(
+            context: AppCompatActivity,
+            flightParam: FlightParam?
+        ) {
+            context.startActivity(
+                Intent(
+                    context,
+                    FlightReturnTicketListActivity::class.java
+                ).apply {
+                    putExtra(ConstantKey.KEY_FLIGHT_PARAM, flightParam)
+                })
         }
     }
+
+    private var flightParam: FlightParam? = null
 
     private val planeTicketAdapter by lazy {
         PlaneTicketAdapter(
             this,
-            onClick = {}
+            onClick = ::handleNavigation
         )
     }
 
     override fun getViewBinding(): ActivityFlightReturnTicketListBinding =
         ActivityFlightReturnTicketListBinding.inflate(layoutInflater)
 
-    override fun initIntent() {}
+    override fun initIntent() {
+        flightParam = intent.getParcelableExtra(ConstantKey.KEY_FLIGHT_PARAM)
+    }
 
-    override fun initUI() {
+    override fun initUI() = with(binding) {
+        appbar.setTicketTitle(
+            Pair(
+                flightParam?.originCity.toString(),
+                flightParam?.destinationCity.toString()
+            )
+        )
+
+        appbar.setDescription(
+            date = flightParam?.departureDate.toString(),
+            passenger = flightParam?.countPassenger() ?: 0,
+            clazz = flightParam?.classCode.toString()
+        )
+
         initPlaneTicket()
     }
 
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
+        appbar.setOnNotificationClickListener {
+            PriceAlertActivity.start(
+                this@FlightReturnTicketListActivity,
+                flightParam
+            )
+        }
     }
 
     override fun initProcess() {
@@ -43,6 +80,10 @@ class FlightReturnTicketListActivity :
     }
 
     override fun initObservers() {}
+
+    private fun handleNavigation(ticket: Ticket) {
+        PassengerDetailActivity.start(this)
+    }
 
     private fun initPlaneTicket() = with(binding) {
         val layoutManager =

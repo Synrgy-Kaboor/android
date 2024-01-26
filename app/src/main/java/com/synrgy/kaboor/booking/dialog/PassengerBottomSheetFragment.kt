@@ -5,6 +5,7 @@ import com.synrgy.common.R
 import com.synrgy.common.model.PassengerData
 import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.kaboor.databinding.FragmentPassengerBottomSheetBinding
+import com.synrgy.kaboor.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.onClick
 
 
@@ -20,7 +21,7 @@ class PassengerBottomSheetFragment : KaboorBottomSheet<FragmentPassengerBottomSh
     private var passenger: PassengerData? = null
     private var onSave: (PassengerData?) -> Unit = {}
 
-    override val tagName: String = PassengerBottomSheetFragment::class.java.name
+    override val tagName: String = ConstantTag.TAG_PASSENGER
     override fun getTitle(): String = getString(R.string.label_passenger)
     override fun setCancelButtonEnable(): Boolean = true
     override fun showButton(): Boolean = true

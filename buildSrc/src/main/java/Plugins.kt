@@ -29,6 +29,9 @@ fun PluginDependenciesSpec.androidLibrary(): PluginDependencySpec =
 fun PluginDependenciesSpec.kotlinSerialization(): PluginDependencySpec =
     kotlin("plugin.serialization")
 
+fun PluginDependenciesSpec.kotlinParcelize(): PluginDependencySpec =
+    id("kotlin-parcelize")
+
 fun PluginDependenciesSpec.googleGmsServices(): PluginDependencySpec =
     id("com.google.gms.google-services")
 

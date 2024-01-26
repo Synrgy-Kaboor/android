@@ -5,7 +5,8 @@ import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.data.payment.model.response.Promo
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.FragmentVoucherBottomSheetBinding
-import com.synrgy.kaboor.home.adapter.PromoAdapter
+import com.synrgy.kaboor.promo.adapter.VoucherAdapter
+import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.synrgy.kaboor.utils.constant.ConstantTag
 
 
@@ -28,7 +29,7 @@ class VoucherBottomSheetFragment : KaboorBottomSheet<FragmentVoucherBottomSheetB
     private var onSelectedPromo: (Promo) -> Unit = {}
 
     private val promoAdapter by lazy {
-        PromoAdapter(requireContext())
+        VoucherAdapter(requireContext())
     }
 
     override val tagName: String = ConstantTag.TAG_VOUCHER
@@ -43,12 +44,13 @@ class VoucherBottomSheetFragment : KaboorBottomSheet<FragmentVoucherBottomSheetB
     override fun initUI() {
         super.initUI()
 
-        with(contentBinding){
+        with(contentBinding) {
             rvPromo.adapter = promoAdapter
         }
     }
 
     override fun initProcess() {
+        promoAdapter.setData = ConstantDummy.vouchers()
     }
 
 
