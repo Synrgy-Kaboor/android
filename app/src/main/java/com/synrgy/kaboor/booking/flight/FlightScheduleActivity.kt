@@ -38,6 +38,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         ActivityFlightScheduleBinding.inflate(layoutInflater)
 
     override fun initUI() = with(binding) {
+        tvUserName.text = "Andre Hutshon"
         tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count())
         tvClass.text = planeClassType.label
 

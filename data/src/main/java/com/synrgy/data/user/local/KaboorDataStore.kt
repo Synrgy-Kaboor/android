@@ -8,6 +8,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.synrgy.common.utils.constant.ConstDataStore
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.UserDataResponse
+import com.wahidabd.library.utils.common.emptyString
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -44,7 +45,7 @@ class KaboorDataStore(context: Context) {
     private val Context.dataStore by preferencesDataStore(ConstDataStore.KABOOR_DATA_STORE)
     private val dataStore = context.dataStore
 
-    suspend fun getLogin(isLogin: Boolean) {
+    suspend fun setLogin(isLogin: Boolean) {
         dataStore.edit { preferences ->
             preferences[LOGIN] = isLogin
         }
@@ -64,7 +65,7 @@ class KaboorDataStore(context: Context) {
 
     suspend fun clearToken(){
         dataStore.edit { preferences ->
-            preferences[TOKEN] = ""
+            preferences[TOKEN] = emptyString()
         }
     }
 
@@ -73,6 +74,7 @@ class KaboorDataStore(context: Context) {
             preferences[TOKEN]
         }.first()
     }
+
 
     suspend fun setUser(data: UserRequest) {
         dataStore.edit { preferences ->

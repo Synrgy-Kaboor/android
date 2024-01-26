@@ -8,10 +8,12 @@
     tools:context=".account.AccountFragment">
 
     <RelativeLayout
+        android:id="@+id/profile_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_16dp"
-        android:layout_marginTop="@dimen/dimen_24dp">
+        android:layout_marginTop="@dimen/dimen_24dp"
+        android:background="?selectableItemBackground">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_profile"
@@ -98,6 +100,7 @@
             android:textColor="@color/neutral8" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_email"
             style="@style/KaboorTextView.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

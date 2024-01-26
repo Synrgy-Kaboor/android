@@ -11,8 +11,10 @@ import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.copyTextToClipboard
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.requestMultiplePermission
+import com.synrgy.common.utils.ext.setTimer
 import com.synrgy.common.utils.ext.showHideToggle
 import com.synrgy.common.utils.ext.snackbarDanger
+import com.synrgy.common.utils.ext.toMinutes
 import com.synrgy.common.utils.ext.toStringTrim
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodDetailBinding
@@ -26,9 +28,16 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         }
     }
 
+
     private var atmState = false
     private var internetBankingState = false
     private var mobileBankingState = false
+
+    private val countDown = setTimer(
+        millisTimer = 300000L,
+        interval = 1000L,
+        onTick = { binding.tvTime.text = it.toMinutes() }
+    )
 
     override fun getViewBinding(): ActivityPaymentMethodDetailBinding {
         return ActivityPaymentMethodDetailBinding.inflate(layoutInflater)
@@ -38,6 +47,7 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         // TODO: Remove this after API ready
         tvAccountNumber.text = "1420 2010 0098 2336"
         tvTotalPayment.text = "1.000.000"
+
     }
 
     override fun initAction() = with(binding) {
@@ -76,6 +86,16 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
 
         uploadReceipt.setOnSelectImage { requestPermissions() }
         uploadReceipt.setOnRemoveImage { showAlertRemoveImage() }
+    }
+
+    override fun initProcess() {
+        super.initProcess()
+        countDown.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        countDown.cancel()
     }
 
     private fun showAlertRemoveImage() {

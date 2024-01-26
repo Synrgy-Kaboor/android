@@ -24,6 +24,7 @@ class ExtraProtectionActivity : KaboorActivity<ActivityExtraProtectionBinding>()
     }
 
     override fun initUI() {
+        binding.tvTotalPrice.text = "Rp 1.234.000"
     }
 
     override fun initAction() = with(binding) {

@@ -41,9 +41,9 @@ val appModule = module {
 private fun getHeaderInterceptor(data: KaboorDataStore): Interceptor {
     val headers = HashMap<String, String>()
     headers["Content-Type"] = "application/json"
-    if (data.getToken()?.isNotEmpty() == true){
-        headers["Authorization"] = "Bearer ${data.getToken()}"
-    }
+//    if (data.getToken()?.isNotEmpty() == true){
+//        headers["Authorization"] = "Bearer ${data.getToken()}"
+//    }
     return HeaderInterceptor(headers)
 }
 

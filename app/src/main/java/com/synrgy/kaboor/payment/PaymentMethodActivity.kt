@@ -36,6 +36,7 @@ class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
     override fun initIntent() {}
 
     override fun initUI() = with(binding) {
+        tvPrice.text = "Rp 1.250.000"
         initPaymentMethod()
     }
 

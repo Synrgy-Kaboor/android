@@ -104,6 +104,7 @@
     <string name="label_make_transfer_to">Lakukan Transfer ke</string>
     <string name="label_total_payment">Total Pembayaran</string>
     <string name="label_how_to_pay">Cara Membayar</string>
+    <string name="label_payment_receipt">Bukti Pembayaran</string>
     <string name="label_transfer_via_atm">Transfer Melalui ATM</string>
     <string name="label_transfer_via_mobile_banking">Transfer Melalui Mobile Banking</string>
     <string name="label_transfer_via_internet_banking">Transfer Melalui Internet Banking</string>
@@ -151,4 +152,5 @@
     <string name="label_mrs">Mrs</string>
     <string name="label_miss">Mr</string>
     <string name="label_info_passenger_detail">E-Ticket akan dikirimkan ke alamat Email ini</string>
+    <string name="format_personal_information">Informasi pribadi %d%% lengkap</string>
 </resources>

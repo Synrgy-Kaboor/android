@@ -23,7 +23,7 @@ class UserDataStore (private val dataStore: KaboorDataStore) : UserRepository {
     }
 
     override suspend fun setLogin(isLogin: Boolean) {
-        dataStore.getLogin(isLogin)
+        dataStore.setLogin(isLogin)
     }
 
     override fun getLogin(): Flow<Boolean> {
