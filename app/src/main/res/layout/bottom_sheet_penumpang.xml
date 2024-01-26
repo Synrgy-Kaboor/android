@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_background"
-    android:paddingTop="20dp"
     android:paddingBottom="20dp"
+    android:paddingTop="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.Toolbar
@@ -30,7 +30,7 @@
             android:id="@+id/tvDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Detail Penumpang"
+            android:text="@string/detail_penumpang"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:layout_gravity="center" />
@@ -48,20 +48,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/horizontalLine"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/dimen_15dp">
+        android:orientation="vertical">
 
 
     </View>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/horizontalLine"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_margin="@dimen/dimen_15dp"
-        android:padding="@dimen/dimen_17dp"
+        android:paddingHorizontal="@dimen/dimen_17dp"
         android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
@@ -70,28 +68,29 @@
             android:id="@+id/inpo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Info Penumpang"
+            android:text="@string/info_penumpang"
             android:layout_marginTop="14dp"/>
 
         <EditText
             android:id="@+id/et_nama"
-            android:layout_width="328dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_form"
             android:layout_marginTop="16dp"
-            android:hint="Nama Lengkap"
+            android:hint="@string/nama_lengkap"
             android:paddingLeft="16dp"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*Sesuai dengan KTP"
+            android:text="@string/sesuai_dengan_ktp"
             style="@style/KaboorTextView.Body1"
+            android:layout_marginTop="4dp"
             android:textColor="@color/neutral6"/>
 
         <RadioGroup
             android:id="@+id/radioGroupGender"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
@@ -120,11 +119,11 @@
 
         <com.google.android.material.button.MaterialButton
             style="@style/KaboorButton.Gradient"
-            android:layout_width="328dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Simpan"/>
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import com.synrgy.data.auth.model.request.EmailRequest
 import com.synrgy.data.auth.model.request.LoginRequest
 import com.synrgy.data.auth.model.request.NewPasswordRequest
 import com.synrgy.data.auth.model.request.OtpRequest
+import com.synrgy.data.auth.model.request.PhoneRequest
 import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.auth.model.response.LoginResponse
 import com.synrgy.data.auth.remote.AuthService
@@ -102,6 +103,42 @@ class AuthDataStore(
             body,
             error::convertGenericError,
             api::checkEmail,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun changeEmail(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> = flow {
+        enqueue(
+            body,
+            error::convertGenericError,
+            api::changeEmail,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun verifyOtpEmail(body: OtpRequest): Flow<Resource<KaboorGenericResponse>> = flow {
+        enqueue(
+            body,
+            error::convertGenericError,
+            api::verifyOtpEmail,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun changeNumber(body: PhoneRequest): Flow<Resource<KaboorGenericResponse>> = flow {
+        enqueue(
+            body,
+            error::convertGenericError,
+            api::changeNumber,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun verifyOtpNumber(body: OtpRequest): Flow<Resource<KaboorGenericResponse>> = flow {
+        enqueue(
+            body,
+            error::convertGenericError,
+            api::verifyOtpNumber,
             onEmit = { data -> emit(data) }
         )
     }.flowOn(Dispatchers.IO)

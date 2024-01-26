@@ -9,6 +9,7 @@
 
 
     <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:kaboorAppbar_title="@string/label_back"/>
@@ -38,7 +39,7 @@
             app:kaboorEditText_type="phone"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_create_account"
+            android:id="@+id/btn_verification"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_42dp"
             style="@style/KaboorButton.Gradient"

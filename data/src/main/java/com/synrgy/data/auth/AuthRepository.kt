@@ -6,6 +6,7 @@ import com.synrgy.data.auth.model.request.EmailRequest
 import com.synrgy.data.auth.model.request.LoginRequest
 import com.synrgy.data.auth.model.request.NewPasswordRequest
 import com.synrgy.data.auth.model.request.OtpRequest
+import com.synrgy.data.auth.model.request.PhoneRequest
 import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.auth.model.response.LoginResponse
 import com.synrgy.data.user.model.response.UserResponse
@@ -29,4 +30,12 @@ interface AuthRepository {
     suspend fun verifyOtpResetPassword(body: OtpRequest): Flow<Resource<KaboorGenericResponse>>
     suspend fun changePassword(body: NewPasswordRequest): Flow<Resource<KaboorGenericResponse>>
     suspend fun checkEmail(body: EmailRequest): Flow<Resource<KaboorGenericResponse>>
+
+    suspend fun changeEmail(body: EmailRequest): Flow<Resource<KaboorGenericResponse>>
+
+    suspend fun verifyOtpEmail(body: OtpRequest): Flow<Resource<KaboorGenericResponse>>
+
+    suspend fun changeNumber(body: PhoneRequest): Flow<Resource<KaboorGenericResponse>>
+
+    suspend fun verifyOtpNumber(body: OtpRequest): Flow<Resource<KaboorGenericResponse>>
 }

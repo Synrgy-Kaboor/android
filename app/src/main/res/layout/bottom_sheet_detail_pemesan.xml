@@ -30,7 +30,7 @@ app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/tvDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Detail Pemesan"
+            android:text="@string/detail_pemesan"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:layout_gravity="center" />
@@ -43,33 +43,34 @@ app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         android:background="#000000" />
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/horizontalLine"
-        android:layout_margin="@dimen/dimen_15dp"
-        android:padding="@dimen/dimen_17dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingHorizontal="@dimen/dimen_17dp"
         >
 
         <com.google.android.material.textview.MaterialTextView
             style="@style/KaboorTextView.Title2"
             android:textColor="@color/neutral6"
             android:id="@+id/data"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Data ini akan digunakan untuk pengiriman e-ticket dan keperluan refund/reschedule "/>
+            android:text="@string/data_ini"/>
 
         <EditText
             android:id="@+id/et_nama"
-            android:layout_width="328dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_form"
             app:layout_constraintTop_toBottomOf="@id/data"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="8dp"
-            android:hint="Nama Lengkap"
+            android:hint="@string/nama_lengkap"
             android:paddingLeft="16dp"/>
 
         <com.google.android.material.textview.MaterialTextView
@@ -79,11 +80,11 @@ app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Sesuai dengan KTP"/>
+            android:text="@string/sesuai_dengan_ktp"/>
 
         <RadioGroup
             android:id="@+id/radioGroupGender"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
@@ -92,33 +93,33 @@ app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/radioButtonmr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mr" />
+                android:text="@string/mr" />
 
             <RadioButton
                 android:id="@+id/radioButtonmrs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mrs"
+                android:text="@string/mrs"
                 android:layout_marginStart="74dp" />
 
             <RadioButton
                 android:id="@+id/radioButtonmiss"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="miss"
+                android:text="@string/miss"
                 android:layout_marginStart="74dp" />
 
         </RadioGroup>
 
         <EditText
             android:id="@+id/et_nomor"
-            android:layout_width="328dp"
+            android:layout_width="match_parent"
             app:layout_constraintTop_toBottomOf="@id/radioGroupGender"
             app:layout_constraintLeft_toLeftOf="@id/radioGroupGender"
             android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_form"
-            android:hint="No Telepon"
+            android:hint="@string/no_telepon"
             android:inputType="textPassword"
             android:paddingLeft="16dp"
             android:drawableRight="@drawable/ic_eye"
@@ -130,20 +131,16 @@ app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/neutral6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/et_nomor"
-            app:layout_constraintLeft_toLeftOf="@id/et_nomor"
             android:layout_marginTop="4dp"
-            android:text="Nomor Telepon"/>
+            android:text="@string/nomor_telepon"/>
 
         <EditText
             android:id="@+id/et_email"
-            android:layout_width="328dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_nomor"
-            app:layout_constraintLeft_toLeftOf="@id/tv_nomor"
+            android:layout_width="match_parent"
             android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_form"
-            android:hint="Alamat Email"
+            android:hint="@string/alamat_email"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"/>
 
@@ -153,22 +150,20 @@ app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/neutral6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/et_email"
-            app:layout_constraintLeft_toLeftOf="@id/et_email"
             android:layout_marginTop="4dp"
-            android:text="E-Ticket akan dikirimkan ke alamat Email ini"/>
+            android:text="@string/e_ticket_akan_dikirimkan_ke_alamat_email_ini"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_simpan"
-            android:layout_width="328dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_ticket"
             app:layout_constraintLeft_toLeftOf="@id/tv_ticket"
             style="@style/KaboorButton.Gradient"
-            android:text="Simpan"
+            android:text="@string/simpan"
             android:layout_marginTop="30dp"/>
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

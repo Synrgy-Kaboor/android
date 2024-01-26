@@ -11,6 +11,7 @@ import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.LoginParam
 import com.synrgy.domain.auth.model.request.NewPasswordParam
 import com.synrgy.domain.auth.model.request.OtpParam
+import com.synrgy.domain.auth.model.request.PhoneParam
 import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.domain.auth.model.response.Login
 import com.synrgy.domain.user.model.response.User
@@ -84,5 +85,21 @@ class AuthInteractor(private val repository: AuthRepository) : AuthUseCase {
 
     override suspend fun checkEmail(body: EmailParam): Flow<Resource<KaboorGenericResponse>> {
         return repository.checkEmail(body.toRequest())
+    }
+
+    override suspend fun changeEmail(body: EmailParam): Flow<Resource<KaboorGenericResponse>> {
+        return repository.changeEmail(body.toRequest())
+    }
+
+    override suspend fun verifyOtpChangeEmail(body: OtpParam): Flow<Resource<KaboorGenericResponse>> {
+        return repository.verifyOtpEmail(body.toRequest())
+    }
+
+    override suspend fun changePhone(body: PhoneParam): Flow<Resource<KaboorGenericResponse>> {
+        return repository.changeNumber(body.toRequest())
+    }
+
+    override suspend fun verifyOtpChangePhone(body: OtpParam): Flow<Resource<KaboorGenericResponse>> {
+        return repository.verifyOtpNumber(body.toRequest())
     }
 }

@@ -6,6 +6,7 @@ import com.synrgy.data.auth.model.request.EmailRequest
 import com.synrgy.data.auth.model.request.LoginRequest
 import com.synrgy.data.auth.model.request.NewPasswordRequest
 import com.synrgy.data.auth.model.request.OtpRequest
+import com.synrgy.data.auth.model.request.PhoneRequest
 import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.auth.model.response.LoginResponse
 import com.synrgy.data.user.model.response.UserResponse
@@ -63,4 +64,25 @@ interface AuthService {
     suspend fun checkEmail(
         @Body body: EmailRequest
     ): Response<KaboorGenericResponse>
+
+    @POST("/api/v1/auth/change/email")
+    suspend fun changeEmail(
+        @Body body: EmailRequest
+    ):Response<KaboorGenericResponse>
+
+    @POST("/api/v1/auth/email/otp/verify")
+    suspend fun verifyOtpEmail(
+        @Body body: OtpRequest
+    ): Response<KaboorGenericResponse>
+
+    @POST("/api/v1/auth/change/number")
+    suspend fun changeNumber(
+        @Body body: PhoneRequest
+    ):Response<KaboorGenericResponse>
+
+    @POST("/api/v1/auth/number/otp/verify")
+    suspend fun verifyOtpNumber(
+        @Body body: OtpRequest
+    ): Response<KaboorGenericResponse>
+
 }

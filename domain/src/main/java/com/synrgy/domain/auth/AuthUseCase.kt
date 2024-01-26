@@ -8,6 +8,7 @@ import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.LoginParam
 import com.synrgy.domain.auth.model.request.NewPasswordParam
 import com.synrgy.domain.auth.model.request.OtpParam
+import com.synrgy.domain.auth.model.request.PhoneParam
 import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.domain.auth.model.response.Login
 import com.synrgy.domain.user.model.response.User
@@ -31,4 +32,11 @@ interface AuthUseCase {
     suspend fun verifyOtpResetPassword(body: OtpParam): Flow<Resource<KaboorGenericResponse>>
     suspend fun changePassword(body: NewPasswordParam): Flow<Resource<KaboorGenericResponse>>
     suspend fun checkEmail(body: EmailParam): Flow<Resource<KaboorGenericResponse>>
+    suspend fun changeEmail(body: EmailParam): Flow<Resource<KaboorGenericResponse>>
+
+    suspend fun verifyOtpChangeEmail(body: OtpParam): Flow<Resource<KaboorGenericResponse>>
+
+    suspend fun changePhone(body: PhoneParam): Flow<Resource<KaboorGenericResponse>>
+
+    suspend fun verifyOtpChangePhone(body: OtpParam): Flow<Resource<KaboorGenericResponse>>
 }

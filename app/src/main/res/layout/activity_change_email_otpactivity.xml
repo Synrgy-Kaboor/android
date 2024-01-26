@@ -1,9 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".authentication.change.ChangeEmailOTPActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:kaboorAppbar_title="@string/label_back" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title"
+        style="@style/KaboorTextView.Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="@string/label_check_your_email" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_desc"
+        style="@style/KaboorTextView.Title3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_42dp"
+        android:gravity="center_horizontal"
+        android:text="@string/label_message_send_otp"
+        android:textColor="@color/neutral6" />
+
+    <com.mukeshsolanki.OtpView
+        android:id="@+id/otp_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:inputType="numberDecimal"
+        android:textColor="@color/neutral9"
+        app:OtpHideLineWhenFilled="false"
+        app:OtpItemCount="4"
+        app:OtpItemHeight="@dimen/dimen_50dp"
+        app:OtpItemRadius="@dimen/dimen_8dp"
+        app:OtpItemSpacing="@dimen/dimen_24dp"
+        app:OtpItemWidth="@dimen/dimen_46dp"
+        app:OtpLineColor="@color/neutral5"
+        app:OtpState_filled="false"
+        app:OtpViewType="rectangle"
+        app:OtpLineWidth="@dimen/dimen_1_5dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_count_down"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        style="@style/KaboorTextView.Body2"
+        tools:text="Kode OTP kadaluwarsa pada 02:42"
+        android:layout_marginTop="@dimen/dimen_32dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_verification"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_42dp"
+        style="@style/KaboorButton.Gradient"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_28dp"
+        android:text="@string/label_verification"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_send_again"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_42dp"
+        style="@style/KaboorButton.Outline"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:enabled="false"
+        android:text="@string/label_send_again"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

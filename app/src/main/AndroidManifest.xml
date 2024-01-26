@@ -23,19 +23,21 @@
             android:exported="false" />
         <activity
             android:name=".authentication.change.ChangeEmailOTPActivity"
-            android:exported="false" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".authentication.change.ChangeEmailActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".authentication.change.ChangePhoneNumberActivity"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".ticket.plane.FlightReturnTicketListActivity"
             android:exported="false" />
