@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".authentication.otp.OtpActivity">
+    tools:context=".authentication.change.ChangeEmailOTPActivity">
 
     <com.synrgy.common.reusable.KaboorAppbar
         android:id="@+id/appbar"
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_20dp"
-        android:text="@string/cek_inbox_kamu" />
+        android:text="@string/label_check_your_email" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_desc"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_42dp"
         android:gravity="center_horizontal"
-        android:text="@string/label_message_send_otp_phone"
+        android:text="@string/label_message_send_otp"
         android:textColor="@color/neutral6" />
 
     <com.mukeshsolanki.OtpView

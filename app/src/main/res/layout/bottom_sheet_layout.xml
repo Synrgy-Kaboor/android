@@ -4,12 +4,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-   <LinearLayout
+   <androidx.appcompat.widget.LinearLayoutCompat
        android:layout_marginTop="31dp"
        android:layout_width="match_parent"
        android:layout_height="320dp"
-       android:layout_margin="@dimen/dimen_15dp"
-       android:padding="@dimen/dimen_17dp"
+       android:paddingHorizontal="@dimen/dimen_17dp"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintLeft_toLeftOf="parent"
        app:layout_constraintRight_toRightOf="parent"
@@ -23,8 +22,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_gravity="center"
-           android:text="Email ini terdaftar untuk Log In
-dengan Google"
+           android:text="@string/email_ini"
            android:textSize="24sp"
            android:gravity="center"
            />
@@ -37,15 +35,15 @@ dengan Google"
            style="@style/KaboorTextView.Title2"
            android:textSize="11sp"
            android:textColor="@color/neutral6"
-           android:text="Untuk log in menggunakan email ini, silahkan pilih metode log in dengan Google, ya."
+           android:text="@string/untuk_login"
            android:layout_marginTop="8dp"/>
 
        <com.google.android.material.button.MaterialButton
            android:id="@+id/bt_nanti"
-           android:layout_width="328dp"
+           android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_gravity="center"
-           android:text="Nanti Saja"
+           android:text="@string/nanti_saja"
             android:textStyle="bold"
            style="@style/KaboorButton.Outline"
            android:textColor="@color/primaryBrightBlue"
@@ -55,14 +53,14 @@ dengan Google"
        <com.google.android.material.button.MaterialButton
            style="@style/KaboorButton.Gradient"
            android:id="@+id/bt_login"
-           android:layout_width="328dp"
+           android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_gravity="center"
-           android:text="Login"
+           android:text="@string/login"
            android:textColor="@color/white"
-           android:layout_marginTop="8dp"
+           android:layout_marginTop="14dp"
            />
 
 
-   </LinearLayout>
+   </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

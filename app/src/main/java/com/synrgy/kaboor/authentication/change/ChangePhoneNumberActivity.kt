@@ -1,0 +1,69 @@
+package com.synrgy.kaboor.authentication.change
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import com.synrgy.common.presentation.KaboorPassiveActivity
+import com.synrgy.common.utils.enums.OtpType
+import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.domain.auth.model.request.PhoneParam
+import com.synrgy.kaboor.R
+import com.synrgy.kaboor.authentication.otp.OtpActivity
+import com.synrgy.kaboor.databinding.ActivityChangePhoneNumberBinding
+import com.wahidabd.library.utils.exts.observerLiveData
+import com.wahidabd.library.utils.exts.onClick
+import com.wahidabd.library.validation.Validation
+import com.wahidabd.library.validation.util.notEmptyRule
+import org.koin.android.ext.android.inject
+
+class ChangePhoneNumberActivity : KaboorPassiveActivity<ActivityChangePhoneNumberBinding>() {
+    private val viewModel: ChangePhoneViewModel by inject()
+    companion object {
+        fun start(context: AppCompatActivity) {
+            context.startActivity(Intent(context, ChangePhoneNumberActivity::class.java))
+        }
+    }
+
+    override fun getViewBinding(): ActivityChangePhoneNumberBinding =
+        ActivityChangePhoneNumberBinding.inflate(layoutInflater)
+
+    override fun setupValidation() {
+        addValidation(
+            Validation(
+                binding.etPhone.textInput, listOf(
+                    notEmptyRule(getString(R.string.error_empty_phone))
+                )
+            )
+        )
+    }
+
+    override fun initAction() = with(binding) {
+        btnVerification.onClick { validate() }
+        appbar.setOnBackClickListener { onBackPress() }
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+        viewModel.generic.observerLiveData(
+            this,
+            onLoading = { showLoading() },
+            onFailure = { _, message -> showErrorDialog(message.toString()) },
+            onSuccess = { navigateToOtpActivity() }
+        )
+    }
+
+    private fun navigateToOtpActivity() {
+        hideLoading()
+        OtpActivity.start(this, OtpType.FORGOT_PASSWORD, binding.etPhone.getText())
+    }
+
+    override fun initUI() {
+
+    }
+
+    override fun onValidationSuccess() {
+        val body = PhoneParam(binding.etPhone.getText())
+        viewModel.changeNumber(body)
+    }
+
+
+}

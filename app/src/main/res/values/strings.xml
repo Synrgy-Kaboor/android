@@ -21,6 +21,7 @@
     <string name="format_count_down_otp">Kode OTP kedaluwarsa pada __%s__</string>
     <string name="label_check_your_email">Cek Email Kamu</string>
     <string name="label_message_send_otp">Kami sudah mengirimkan kode OTP lewat email kamu</string>
+    <string name="label_message_send_otp_phone">Kami sudah mengirimkan kode OTP lewat Inbox kamu</string>
     <string name="label_send_again">Kirim Lagi</string>
     <string name="message_login_required">Anda belum login</string>
     <string name="message_login_description">Untuk melanjutkan pemesanan tiket, anda harus login terlebih dahulu</string>
@@ -28,6 +29,7 @@
     <string name="label_later">Nanti Saja</string>
     <string name="error_invalid_email">Email tidak valid</string>
     <string name="error_empty_email">Email tidak boleh kosong</string>
+    <string name="error_empty_phone">Nomor Hp tidak boleh kosong</string>
     <string name="error_empty_password">Kata sandi tidak boleh kosong</string>
     <string name="label_passenger_detail">Detail Penumpang</string>
     <string name="label_booker_detail">Detail Pemesan</string>
@@ -151,4 +153,27 @@
     <string name="label_mrs">Mrs</string>
     <string name="label_miss">Mr</string>
     <string name="label_info_passenger_detail">E-Ticket akan dikirimkan ke alamat Email ini</string>
+    <string name="masukan_no_baru">Tolong masukkan nomor handphone yang baru</string>
+    <string name="kode_verifikasi">Kode Verifikasi</string>
+    <string name="email_baru">Email Baru</string>
+    <string name="hint_gmail">ucop@gmail.com</string>
+    <string name="nomor_hp">Nomor HP</string>
+    <string name="sesuai_dengan_ktp">*Sesuai dengan KTP</string>
+    <string name="detail_penumpang">Detail Penumpang</string>
+    <string name="info_penumpang">Info Penumpang</string>
+    <string name="detail_pemesan">Detail Pemesan</string>
+    <string name="data_ini">Data ini akan digunakan untuk pengiriman e-ticket dan keperluan refund/reschedule</string>
+    <string name="simpan">Simpan</string>
+    <string name="e_ticket_akan_dikirimkan_ke_alamat_email_ini">E-Ticket akan dikirimkan ke alamat Email ini</string>
+    <string name="alamat_email">Alamat Email</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="no_telepon">No Telepon</string>
+    <string name="miss">miss</string>
+    <string name="mrs">Mrs</string>
+    <string name="mr">Mr</string>
+    <string name="email_ini">Email ini terdaftar untuk Log In dengan Google</string>
+    <string name="untuk_login">Untuk log in menggunakan email ini, silahkan pilih metode log in dengan Google, ya.</string>
+    <string name="nanti_saja">Nanti Saja</string>
+    <string name="login">Login</string>
+    <string name="cek_inbox_kamu">Cek Inbox Kamu</string>
 </resources>

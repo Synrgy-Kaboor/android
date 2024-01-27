@@ -4,6 +4,7 @@ import com.synrgy.data.auth.model.request.EmailRequest
 import com.synrgy.data.auth.model.request.LoginRequest
 import com.synrgy.data.auth.model.request.NewPasswordRequest
 import com.synrgy.data.auth.model.request.OtpRequest
+import com.synrgy.data.auth.model.request.PhoneRequest
 import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.auth.model.response.LoginResponse
 import com.synrgy.data.user.model.response.UserDataResponse
@@ -12,6 +13,7 @@ import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.LoginParam
 import com.synrgy.domain.auth.model.request.NewPasswordParam
 import com.synrgy.domain.auth.model.request.OtpParam
+import com.synrgy.domain.auth.model.request.PhoneParam
 import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.domain.auth.model.response.Login
 import com.synrgy.domain.user.model.response.User
@@ -79,3 +81,11 @@ fun OtpParam.toRequest(): OtpRequest {
         otp = otp
     )
 }
+
+fun PhoneParam.toRequest(): PhoneRequest {
+    return PhoneRequest(
+        phoneNumber = number
+    )
+}
+
+
