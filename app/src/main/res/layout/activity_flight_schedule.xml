@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ticket.plane.FlightScheduleActivity">
+    tools:context=".booking.flight.FlightScheduleActivity">
 
     <View
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
         android:elevation="@dimen/dimen_4dp"
         android:orientation="vertical">
 
-        <com.synrgy.common.reusable.ticket.KaboorFlightCard
+        <com.synrgy.common.reusable.booking.KaboorFlightCard
             android:id="@+id/kaboor_flight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
             app:cardCornerRadius="@dimen/dimen_8dp"
             app:cardElevation="@dimen/dimen_2dp" />
 
-        <com.synrgy.common.reusable.ticket.KaboorScheduleCard
+        <com.synrgy.common.reusable.booking.KaboorScheduleCard
             android:id="@+id/kaboor_schedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

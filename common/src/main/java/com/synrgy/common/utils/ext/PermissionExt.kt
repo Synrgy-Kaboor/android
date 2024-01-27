@@ -1,9 +1,14 @@
 package com.synrgy.common.utils.ext
 
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
+import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.presentation.KaboorFragment
 
 
 /**
@@ -11,40 +16,50 @@ import com.synrgy.common.presentation.KaboorActivity
  * Github github.com/wahidabd.
  */
 
-fun KaboorActivity<*>.requestMultiplePermission(
+
+fun AppCompatActivity.requestMultiplePermission(
     permissions: Array<String>,
-    onAllowed: () -> Unit,
-    onNeedPermissionRationale: () -> Unit,
-    onDenied: () -> Unit
-){
-    launchPermission(permissions, onAllowed, onNeedPermissionRationale, onDenied)
-}
-
-fun AppCompatActivity.initPermissionLauncher(
-    onAllowed: (() -> Unit)?,
-    onNeedPermissionRationale: (() -> Unit)?,
-    onDenied: (() -> Unit)?
-): ActivityResultLauncher<Array<String>> {
-    return registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissionResult ->
-        val allPermissionGranted = permissionResult.all { it.value }
-        val shouldRational = permissionResult.map {
-            shouldShowRequestPermissionRationale(it.key)
-        }.all { it }
-
-        when {
-            allPermissionGranted -> {
-                onAllowed?.invoke()
-            }
-
-            shouldRational -> {
-                onNeedPermissionRationale?.invoke()
-            }
-
-            else -> {
-                onDenied?.invoke()
-            }
+    requestCode: Int,
+    doIfGranted: (() -> Unit)? = null,
+) {
+    val deniedPermissions = mutableListOf<String>()
+    permissions.forEach { permission ->
+        if (!isGranted(permission)) {
+            deniedPermissions.add(permission)
         }
     }
+    if (deniedPermissions.isNotEmpty()) {
+        ActivityCompat.requestPermissions(this, deniedPermissions.toTypedArray(), requestCode)
+    } else {
+        doIfGranted?.invoke()
+    }
+}
+
+fun AppCompatActivity.isGranted(permission: String): Boolean {
+    return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+}
+
+object PermissionExt {
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    val imagePermissionsAndroid13 = arrayOf(
+        android.Manifest.permission.READ_MEDIA_IMAGES
+    )
+
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    val imagePermissionsAndroid14 = arrayOf(
+        android.Manifest.permission.READ_MEDIA_IMAGES,
+        android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
+    )
+
+    val imagePermissionAndroid12L = arrayOf(
+        android.Manifest.permission.READ_EXTERNAL_STORAGE
+    )
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    val notificationPermission13 = arrayOf(
+        android.Manifest.permission.POST_NOTIFICATIONS
+    )
+
+    const val NOTIFICATION_REQUEST_CODE = 112233
+    const val IMAGE_REQUEST_CODE = 112234
 }

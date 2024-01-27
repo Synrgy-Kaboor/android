@@ -1,5 +1,6 @@
 package com.synrgy.common.utils.ext
 
+import java.text.SimpleDateFormat
 import java.util.Locale
 
 
@@ -16,5 +17,23 @@ val oneWeekMillis = timeNow + 604800000 // timeNow - timeNow % (7 * 24 * 60 * 60
 
 
 fun Long.toFullDateFormat(): String {
-    return java.text.SimpleDateFormat("EEEE, dd MMM yyyy", localeIndonesia).format(this)
+    return SimpleDateFormat("EEEE, dd MMM yyyy", localeIndonesia).format(this)
+}
+
+fun Long.toDateFormat(): String {
+    return SimpleDateFormat("dd/MM/yyyy", localeIndonesia).format(this)
+}
+
+fun Long.toDateFormatMonth(): String {
+    return SimpleDateFormat("dd-mm-yyyy", localeIndonesia).format(this)
+}
+
+fun String.toHeaderBookingDate(): String {
+    return SimpleDateFormat("EE, dd MMM", localeIndonesia).format(
+        SimpleDateFormat("dd-mm-yyyy", localeIndonesia).parse(this)!!
+    )
+}
+
+fun String.toEpochMillis(): Long {
+    return SimpleDateFormat("dd-mm-yyyy", localeIndonesia).parse(this)?.time!!
 }

@@ -6,7 +6,6 @@ package com.synrgy.common.utils.enums
  * Github github.com/wahidabd.
  */
 
-
 enum class OtpType {
     REGISTER,
     FORGOT_PASSWORD,

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".payment.PaymentMethodActivity">
+
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:kaboorAppbar_title="@string/label_choose_payment_method" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ticket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_14dp"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_payment_method" />
+
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/KaboorTextView.Title3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginVertical="@dimen/dimen_8dp"
+        android:text="@string/label_pay_less"
+        android:textColor="@color/neutral9" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/voucher_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_48dp"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginBottom="@dimen/dimen_8dp"
+        android:background="@drawable/bg_stroke_neutral_5"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:layout_marginVertical="@dimen/dimen_12dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_voucher_code"
+                style="@style/KaboorTextView.SubHeading2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/label_input_voucher_code"
+                android:maxLines="1"
+                android:textColor="@color/neutral8" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_ticket_vouchers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_ticket_vouchers" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_40dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_total_price"
+            style="@style/KaboorTextView.Title2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_total_price"
+            android:textColor="@color/neutral6"
+            app:layout_constraintBottom_toTopOf="@id/tv_price"
+            app:layout_constraintEnd_toStartOf="@id/btn_pay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_price"
+            style="@style/KaboorTextView.Heading2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textColor="@color/primaryBrightViolet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_pay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_price"
+            tools:text="Rp 1.274.000" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_pay"
+            style="@style/KaboorButton.Gradient"
+            android:layout_width="123dp"
+            android:text="@string/label_pay"
+            android:textSize="14sp"
+            android:enabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -2,16 +2,18 @@ package com.synrgy.kaboor
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.ext.PermissionExt
+import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.kaboor.databinding.ActivityMainBinding
 import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.visible
 
 class MainActivity : KaboorActivity<ActivityMainBinding>() {
-
-    private var tempLogin = true
 
     companion object {
         fun start(context: Context) {
@@ -23,7 +25,10 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
         ActivityMainBinding.inflate(layoutInflater)
 
 
-    override fun initIntent() {}
+    override fun initIntent() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) requestPermission()
+    }
 
     override fun initUI() {
         with(binding) {
@@ -37,7 +42,6 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
                     NavigationUI.onNavDestinationSelected(item, navController)
                 }
                 true
-
             }
 
             navController.addOnDestinationChangedListener { _, dest, _ ->
@@ -53,9 +57,13 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
         }
     }
 
-    private fun setupNavigation(id: Int) {
-
-    }
-
     override fun initAction() {}
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun requestPermission() {
+        requestMultiplePermission(
+            permissions = PermissionExt.notificationPermission13,
+            requestCode = PermissionExt.NOTIFICATION_REQUEST_CODE
+        )
+    }
 }

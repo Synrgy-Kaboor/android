@@ -1,13 +1,11 @@
 package com.synrgy.common.presentation
 
 import android.view.Window
-import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AlertDialog
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.synrgy.common.R
 import com.synrgy.common.presentation.dialog.GenericBottomSheetFragment
-import com.synrgy.common.utils.ext.initPermissionLauncher
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.common.emptyString
 
@@ -18,20 +16,12 @@ import com.wahidabd.library.utils.common.emptyString
  */
 
 
-abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
+abstract class KaboorActivity<VB : ViewBinding> : BaseActivity<VB>() {
 
     private var loadingDialog: AlertDialog? = null
 
-    protected open var isNeedPermission: Boolean = false
-    private var onAllowedPermission: (() -> Unit)? = null
-    private var onNeedRationalePermission: (() -> Unit)? = null
-    private var onDeniedPermission: (() -> Unit)? = null
-
-    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
-
-    override fun initIntent() {
-        preparePermission()
-    }
+    override fun initAction() {}
+    override fun initIntent() {}
     override fun initProcess() {}
     override fun initObservers() {}
 
@@ -63,7 +53,7 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
         loadingDialog?.cancel()
     }
 
-    fun showErrorDialog(description: String){
+    fun showErrorDialog(description: String) {
         loadingDialog?.hide()
         loadingDialog?.cancel()
 
@@ -81,7 +71,7 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
         secondaryTextButton: String? = emptyString(),
         primaryAction: (() -> Unit)? = null,
         secondaryAction: (() -> Unit)? = null,
-        isCancelable: Boolean? = true
+        isCancelable: Boolean = true
     ) {
         GenericBottomSheetFragment.newInstance(
             title = title,
@@ -90,6 +80,7 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
             secondaryTextButton = secondaryTextButton,
             onPrimaryButtonClicked = primaryAction,
             onSecondaryButtonClicked = secondaryAction,
+            isCancelable = isCancelable
         ).show(supportFragmentManager, GenericBottomSheetFragment::class.java.name)
     }
 
@@ -103,34 +94,8 @@ abstract class KaboorActivity<VB: ViewBinding> : BaseActivity<VB>(){
             secondaryTextButton = getString(R.string.label_later),
             primaryTextButton = getString(R.string.label_login),
             isCancelable = false,
-            primaryAction =  primaryAction ,
+            primaryAction = primaryAction,
             secondaryAction = secondaryAction,
         )
-    }
-
-    fun launchPermission(
-        permissions: Array<String>,
-        onAllowed:() -> Unit,
-        onNeedPermissionRationale: (() -> Unit),
-        onDenied: () -> Unit
-    ){
-        onAllowedPermission = onAllowed
-        onNeedRationalePermission = onNeedPermissionRationale
-        onDeniedPermission = onDenied
-        if (isNeedPermission){
-            permissionLauncher.launch(permissions)
-        }
-    }
-
-    private fun preparePermission(){
-        if (isNeedPermission){
-            permissionLauncher = initPermissionLauncher({
-                onAllowedPermission?.invoke()
-            },{
-                onNeedRationalePermission?.invoke()
-            },{
-                onDeniedPermission?.invoke()
-            })
-        }
     }
 }

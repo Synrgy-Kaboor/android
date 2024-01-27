@@ -2,13 +2,11 @@ package com.synrgy.kaboor.utils.navigation
 
 import android.app.Activity
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.utils.enums.HomeMenu
 import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.kaboor.authentication.forgot.ForgotNewPasswordActivity
-import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.authentication.login.LoginPasswordActivity
-import com.synrgy.kaboor.ticket.plane.FlightScheduleActivity
+import com.synrgy.kaboor.booking.flight.FlightScheduleActivity
 import com.wahidabd.library.utils.common.emptyString
 
 

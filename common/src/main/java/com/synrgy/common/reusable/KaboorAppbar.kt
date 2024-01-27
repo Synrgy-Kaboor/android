@@ -9,6 +9,7 @@ import com.synrgy.common.databinding.LayoutAppBarBinding
 import com.synrgy.common.utils.enums.AppbarType
 import com.synrgy.common.utils.ext.goneIf
 import com.synrgy.common.utils.ext.invisibleIf
+import com.synrgy.common.utils.ext.toHeaderBookingDate
 import com.synrgy.common.utils.ext.visibleIf
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.onClick
@@ -60,10 +61,21 @@ class KaboorAppbar @JvmOverloads constructor(
         tvTitle.text = title
 
         imgBack.onClick { onBackListener.invoke() }
+        imgNotification.onClick { onNotificationListener.invoke() }
+    }
+
+    fun setTicketTitle(title: Pair<String, String>) = with(binding) {
+        tvDeparture.text = title.first
+        tvArrival.text = title.second
     }
 
     fun setDescription(date: String, passenger: Int, clazz: String) = with(binding) {
-        tvDesc.text = context.getString(R.string.format_appbar_description, date, passenger, clazz)
+        tvDesc.text = context.getString(
+            R.string.format_appbar_description,
+            date.toHeaderBookingDate(),
+            passenger,
+            clazz
+        )
     }
 
     fun setOnBackClickListener(listener: () -> Unit) {

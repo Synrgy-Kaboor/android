@@ -26,7 +26,7 @@ import com.synrgy.domain.user.model.response.User
 
 
 fun LoginResponse.toDomain(): Login {
-    return Login(jwt = jwt)
+    return Login(jwt = auth.jwt)
 }
 
 fun UserResponse.toDomain(): User {

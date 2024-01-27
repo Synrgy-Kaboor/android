@@ -36,7 +36,7 @@
 
     <style name="KaboorTextView.Title3">
         <item name="android:fontFamily">@font/open_sans_semibold</item>
-        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
     </style>
 
     <style name="KaboorTextView.Title4">
@@ -53,6 +53,14 @@
     </style>
 
     <style name="KaboorTextView.Body2">
-        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="android:textSize">@dimen/text_size_12sp</item>
+    </style>
+
+    <style name="KaboorTextView.Body1.TabLayoutRow">
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">@dimen/dimen_10dp</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 </resources>

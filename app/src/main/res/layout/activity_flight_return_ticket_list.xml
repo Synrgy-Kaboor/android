@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ticket.plane.FlightReturnTicketListActivity">
+    tools:context=".booking.flight.FlightReturnTicketListActivity">
 
     <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:kaboorAppbar_title="@string/label_homecoming" />
+        app:kaboorAppbar_type="appbarTicket"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -23,12 +24,12 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimen_17dp"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_17dp"
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -51,9 +52,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
+                        android:text="Garuda Indonesia"
                         android:textAlignment="textEnd"
-                        android:textColor="@color/neutral9"
-                        android:text="Garuda Indonesia" />
+                        android:textColor="@color/neutral9" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_class"
@@ -61,9 +62,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
+                        android:text="Ekonomi"
                         android:textAlignment="textEnd"
-                        android:textColor="@color/neutral6"
-                        android:text="Ekonomi" />
+                        android:textColor="@color/neutral6" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -71,6 +72,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_17dp"
                 android:layout_marginTop="@dimen/dimen_16dp">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -84,8 +86,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:textColor="@color/neutral6"
-                        android:text="Surabaya" />
+                        android:text="Surabaya"
+                        android:textColor="@color/neutral6" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_take_off"
@@ -93,8 +95,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:textColor="@color/neutral9"
-                        android:text="05.00 WIB" />
+                        android:text="05.00 WIB"
+                        android:textColor="@color/neutral9" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -149,9 +151,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
+                        android:text="Jakarta"
                         android:textAlignment="textEnd"
-                        android:textColor="@color/neutral6"
-                        android:text="Jakarta" />
+                        android:textColor="@color/neutral6" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_landing"
@@ -159,23 +161,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
+                        android:text="09.00 WIB"
                         android:textAlignment="textEnd"
-                        android:textColor="@color/neutral9"
-                        android:text="09.00 WIB" />
+                        android:textColor="@color/neutral9" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </RelativeLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_dash_line"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dimen_2dp"
                 android:layout_marginVertical="@dimen/dimen_12dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/img_dash_line" />
+                android:src="@drawable/dash_line" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_17dp"
                 android:layout_marginBottom="@dimen/dimen_16dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -186,8 +189,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen_4dp"
                     android:background="?selectableItemBackground"
-                    app:kaboorRoundedIconSize="@dimen/dimen_18dp"
-                    app:kaboorRoundedIcon="@drawable/ic_bag_outline" />
+                    app:kaboorRoundedIcon="@drawable/ic_bag_outline"
+                    app:kaboorRoundedIconSize="@dimen/dimen_18dp" />
 
                 <com.synrgy.common.reusable.KaboorRoundedIcon
                     android:id="@+id/ic_shield"
@@ -195,17 +198,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen_4dp"
                     android:background="?selectableItemBackground"
-                    app:kaboorRoundedIconSize="@dimen/dimen_18dp"
-                    app:kaboorRoundedIcon="@drawable/ic_shield" />
+                    app:kaboorRoundedIcon="@drawable/ic_shield"
+                    app:kaboorRoundedIconSize="@dimen/dimen_18dp" />
 
                 <com.synrgy.common.reusable.KaboorRoundedIcon
                     android:id="@+id/ic_spoon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?selectableItemBackground"
                     android:layout_marginEnd="@dimen/dimen_4dp"
-                    app:kaboorRoundedIconSize="@dimen/dimen_18dp"
-                    app:kaboorRoundedIcon="@drawable/ic_spoon" />
+                    android:background="?selectableItemBackground"
+                    app:kaboorRoundedIcon="@drawable/ic_spoon"
+                    app:kaboorRoundedIconSize="@dimen/dimen_18dp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_price"
@@ -224,11 +227,11 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_shape_line"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen_8dp"
         android:layout_marginTop="@dimen/dimen_16dp"
         android:layout_marginBottom="@dimen/dimen_10dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/img_line" />
+        android:src="@drawable/line" />
 
     <com.google.android.material.textview.MaterialTextView
         style="@style/KaboorTextView.Title3"

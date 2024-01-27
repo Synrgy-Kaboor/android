@@ -17,6 +17,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="@dimen/dimen_16dp"
             android:padding="@dimen/dimen_4dp"
+            android:background="@drawable/ripple_oval_white"
             app:srcCompat="@drawable/ic_chevron_left" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -39,7 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/img_back"
-            android:layout_alignBottom="@id/img_back"
             android:layout_marginStart="@dimen/dimen_8dp"
             android:layout_marginEnd="@dimen/dimen_8dp"
             android:layout_toStartOf="@id/img_notification"
@@ -48,6 +48,31 @@
             android:visibility="gone"
             android:orientation="vertical">
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_departure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="SUB"
+                    style="@style/KaboorTextView.Heading2"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_caret_right"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_arrival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="JKT"
+                    style="@style/KaboorTextView.Heading2"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_desc"
                 style="@style/KaboorTextView.Body1"
@@ -55,7 +80,6 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:textColor="@color/neutral6"
-                android:visibility="gone"
                 tools:text="Rab, 24 Des - 1 org - Ekonomi" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -65,6 +89,7 @@
             android:layout_height="@dimen/dimen_34dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/dimen_16dp"
+            android:background="@drawable/ripple_oval_white"
             android:padding="@dimen/dimen_4dp"
             app:srcCompat="@drawable/ic_notification_plus" />
 

@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ticket.plane.PassengerDetailActivity">
+    tools:context=".booking.PassengerDetailActivity">
 
     <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:kaboorAppbar_title="@string/label_input_detail_passenger"
-        app:kaboorAppbar_type="appbarNormal"/>
+        app:kaboorAppbar_title="@string/label_input_detail_passenger" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -40,6 +40,7 @@
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:spanCount="2"
+                android:layout_marginTop="@dimen/dimen_10dp"
                 tools:listitem="@layout/item_card_ticket" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -49,12 +50,14 @@
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/label_booker_detail" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_booker_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 app:cardCornerRadius="@dimen/dimen_8dp"
-                app:cardElevation="@dimen/dimen_2dp">
+                app:cardElevation="@dimen/dimen_2dp"
+                app:cardBackgroundColor="@color/neutral1">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -94,8 +97,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_telp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/dimen_14dp"
+                            android:layout_height="@dimen/dimen_14dp"
                             android:layout_marginEnd="@dimen/dimen_8dp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_phone" />
@@ -118,8 +121,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_mail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/dimen_14dp"
+                            android:layout_height="@dimen/dimen_14dp"
                             android:layout_marginEnd="@dimen/dimen_8dp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_mail_outline" />
@@ -135,7 +138,7 @@
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/KaboorTextView.Title3"
@@ -144,12 +147,13 @@
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/label_passenger" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 app:cardCornerRadius="@dimen/dimen_8dp"
-                app:cardElevation="@dimen/dimen_2dp">
+                app:cardElevation="@dimen/dimen_2dp"
+                app:cardBackgroundColor="@color/neutral1">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -224,7 +228,7 @@
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/KaboorTextView.Title3"
@@ -238,35 +242,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 app:cardCornerRadius="@dimen/dimen_8dp"
+                app:kaboorAddons_price="160000"
                 app:kaboorAddons_description="@string/body_baggage"
-                app:kaboorAddons_footer="@string/label_footer_baggage"
+                app:kaboorAddons_footer="@string/price_add_baggage"
                 app:kaboorAddons_label="@string/label_baggage" />
 
-            <com.synrgy.common.reusable.KaboorAddonsCard
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_8dp"
-                app:cardCornerRadius="@dimen/dimen_8dp"
-                app:kaboorAddons_description="@string/body_select_chair"
-                app:kaboorAddons_footer="@string/label_footer_select_chair"
-                app:kaboorAddons_label="@string/label_select_chair" />
-
-            <com.synrgy.common.reusable.KaboorAddonsCard
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_8dp"
-                app:cardCornerRadius="@dimen/dimen_8dp"
-                app:kaboorAddons_description="@string/body_buy_food"
-                app:kaboorAddons_footer="@string/label_footer_buy_food"
-                app:kaboorAddons_label="@string/label_buy_food" />
-
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_order"
                 style="@style/KaboorButton.Gradient"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_42dp"
                 android:layout_marginVertical="@dimen/dimen_40dp"
                 android:text="@string/button_continue_ordering" />
-
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>
