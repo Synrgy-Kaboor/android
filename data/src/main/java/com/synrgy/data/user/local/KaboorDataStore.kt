@@ -64,7 +64,7 @@ class KaboorDataStore(context: Context) {
 
     suspend fun clearToken(){
         dataStore.edit { preferences ->
-            preferences[TOKEN] = ""
+            preferences.remove(TOKEN)
         }
     }
 

@@ -176,4 +176,6 @@
     <string name="nanti_saja">Nanti Saja</string>
     <string name="login">Login</string>
     <string name="cek_inbox_kamu">Cek Inbox Kamu</string>
+    <string name="title_logout">Yakin ingin keluar?</string>
+    <string name="message_logout">Kamu akan keluar dari akun ini</string>
 </resources>

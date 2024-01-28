@@ -1,4 +1,4 @@
-package com.synrgy.kaboor
+package com.synrgy.kaboor.base
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,7 @@ import androidx.navigation.ui.NavigationUI
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.requestMultiplePermission
+import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityMainBinding
 import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.visible

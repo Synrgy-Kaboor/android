@@ -76,9 +76,11 @@
         app:dividerColor="@color/neutral5" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/email_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_6dp"
+        android:background="?selectableItemBackground"
         android:gravity="center_vertical"
         android:paddingHorizontal="@dimen/dimen_16dp"
         android:paddingVertical="@dimen/dimen_6dp">
@@ -107,8 +109,10 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/phone_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
         android:gravity="center_vertical"
         android:paddingHorizontal="@dimen/dimen_16dp"
         android:paddingVertical="@dimen/dimen_6dp">
@@ -137,8 +141,10 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/passport_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
         android:gravity="center_vertical"
         android:paddingHorizontal="@dimen/dimen_16dp"
         android:paddingVertical="@dimen/dimen_6dp">
@@ -159,8 +165,10 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/customer_service_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
         android:gravity="center_vertical"
         android:paddingHorizontal="@dimen/dimen_16dp"
         android:paddingVertical="@dimen/dimen_6dp">
@@ -187,10 +195,11 @@
         app:dividerColor="@color/neutral5" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/ll_logout"
+        android:id="@+id/logout_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_10dp"
+        android:background="?selectableItemBackground"
         android:gravity="center_vertical"
         android:paddingHorizontal="@dimen/dimen_16dp"
         android:paddingVertical="@dimen/dimen_6dp">

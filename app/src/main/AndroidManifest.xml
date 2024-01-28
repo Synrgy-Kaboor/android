@@ -72,9 +72,13 @@
             android:name=".authentication.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".base.MainActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".base.SplashActivity"
+            android:exported="true"
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
