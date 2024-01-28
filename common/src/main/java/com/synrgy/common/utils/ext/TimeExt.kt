@@ -2,7 +2,11 @@ package com.synrgy.common.utils.ext
 
 import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.synrgy.common.R
 import kotlin.time.Duration.Companion.milliseconds
 
 
@@ -13,10 +17,18 @@ import kotlin.time.Duration.Companion.milliseconds
 
 
 fun AppCompatActivity.showDatePicker(
+    startDate: Long? = null,
     onClick: (Long) -> Unit
 ) {
+
+    val constraint = CalendarConstraints.Builder()
+        .setValidator(DateValidatorPointForward.from(startDate ?: 0L))
+        .build()
+
     val datePicker = MaterialDatePicker.Builder.datePicker()
         .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+        .setCalendarConstraints(constraint)
+        .setTheme(R.style.KaboorCalendar)
         .build()
 
     with(datePicker) {
@@ -44,7 +56,7 @@ fun Long.toSeconds(): String {
 }
 
 fun Long.toMinutes(): String {
-    return this.milliseconds.toComponents{ hours, minutes, seconds, _ ->
+    return this.milliseconds.toComponents { hours, minutes, seconds, _ ->
         "%02d:%02d:%02d".format(hours, minutes, seconds)
     }
 }

@@ -12,7 +12,8 @@ import java.util.Locale
 
 val localeIndonesia = Locale("in", "ID")
 val timeNow = System.currentTimeMillis()
-val tomorrowMillis = timeNow + 86400000 // timeNow - timeNow % (24 * 60 * 60 * 1000)
+const val plusOneDay = 86400000
+val tomorrowMillis = timeNow + plusOneDay // timeNow - timeNow % (24 * 60 * 60 * 1000)
 val oneWeekMillis = timeNow + 604800000 // timeNow - timeNow % (7 * 24 * 60 * 60 * 1000)
 
 

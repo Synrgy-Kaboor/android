@@ -24,6 +24,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".account.help.HelpCenterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.change.ChangePhoneNumberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.change.ChangeEmailActivity"
+            android:exported="false" />
+        <activity
             android:name=".booking.PriceAlertActivity"
             android:exported="false" />
         <activity

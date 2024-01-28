@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.kaboor.R
+import com.synrgy.kaboor.account.help.HelpCenterActivity
 import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.authentication.change.ChangeEmailActivity
 import com.synrgy.kaboor.authentication.change.ChangePhoneNumberActivity
@@ -31,7 +32,7 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
         emailContainer.onClick { ChangeEmailActivity.start(requireContext()) }
         phoneContainer.onClick { ChangePhoneNumberActivity.start(requireContext()) }
         passportContainer.onClick { }
-        customerServiceContainer.onClick { }
+        customerServiceContainer.onClick { HelpCenterActivity.start(requireContext()) }
         logoutContainer.onClick { showLogoutDialog() }
     }
 

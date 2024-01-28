@@ -15,3 +15,9 @@ fun Float.toCurrency(): String {
     formatter.minimumFractionDigits = 0
     return formatter.format(this)
 }
+
+fun Long.toCurrency(): String {
+    val formatter = NumberFormat.getCurrencyInstance(localeIndonesia)
+    formatter.minimumFractionDigits = 0
+    return formatter.format(this)
+}

@@ -2,7 +2,6 @@ package com.synrgy.kaboor.booking
 
 import android.content.Context
 import android.content.Intent
-import com.synrgy.common.R as comR
 import com.synrgy.common.model.AirportData
 import com.synrgy.common.model.PassengerData
 import com.synrgy.common.presentation.KaboorActivity
@@ -11,6 +10,8 @@ import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.oneWeekMillis
 import com.synrgy.common.utils.ext.showDatePicker
+import com.synrgy.common.utils.ext.timeNow
+import com.synrgy.common.utils.ext.plusOneDay
 import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.common.utils.ext.toEpochMillis
 import com.synrgy.common.utils.ext.tomorrowMillis
@@ -22,6 +23,7 @@ import com.synrgy.kaboor.databinding.ActivityPriceAlertBinding
 import com.synrgy.kaboor.utils.constant.ConstantKey
 import com.synrgy.kaboor.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.onClick
+import com.synrgy.common.R as comR
 
 class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
 
@@ -127,7 +129,11 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
     }
 
     private fun showDatePicker(type: AirportType) = with(binding) {
-        showDatePicker { date ->
+        val startDate = when (type) {
+            AirportType.DEPARTURE -> timeNow
+            AirportType.ARRIVAL -> kaboorSchedule.departure + plusOneDay
+        }
+        showDatePicker(startDate) { date ->
             when (type) {
                 AirportType.DEPARTURE -> kaboorSchedule.setDeparture(date)
                 AirportType.ARRIVAL -> kaboorSchedule.setComingHome(date)

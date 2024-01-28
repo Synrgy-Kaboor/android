@@ -178,4 +178,8 @@
     <string name="cek_inbox_kamu">Cek Inbox Kamu</string>
     <string name="title_logout">Yakin ingin keluar?</string>
     <string name="message_logout">Kamu akan keluar dari akun ini</string>
+    <string name="title_help_center">Pusat Bantuan</string>
+    <string name="label_most_question">Pertanyaan yang sering diajukan</string>
+    <string name="label_need_more_help">Butuh bantuan lain?</string>
+    <string name="label_contact_us">Hubungi Kami</string>
 </resources>

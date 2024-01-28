@@ -7,6 +7,7 @@ import com.google.android.material.card.MaterialCardView
 import com.synrgy.common.databinding.LayoutScheduleCardBinding
 import com.synrgy.common.utils.ext.onGroupClick
 import com.synrgy.common.utils.ext.oneWeekMillis
+import com.synrgy.common.utils.ext.plusOneDay
 import com.synrgy.common.utils.ext.toFullDateFormat
 import com.synrgy.common.utils.ext.tomorrowMillis
 import com.wahidabd.library.utils.exts.gone
@@ -55,6 +56,7 @@ class KaboorScheduleCard @JvmOverloads constructor(
 
     fun setDeparture(departure: Long) {
         this.departure = departure
+        if (departure >= comingHome) setComingHome(departure + plusOneDay)
         binding.tvDeparture.text = departure.toFullDateFormat()
     }
 
