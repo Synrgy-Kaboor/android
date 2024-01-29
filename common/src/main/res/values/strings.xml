@@ -78,4 +78,6 @@
     <string name="format_insurance_price">%s /pax</string>
     <string name="label_booker_detail">Detail Pemesan</string>
     <string name="label_passenger_detail">Detail Penumpang</string>
+    <string name="span_contact_us">Hubungi Customer Service __Kaboor__ Melalui :</string>
+    <string name="message_no_internet_connection">Tidak ada koneksi internet</string>
 </resources>

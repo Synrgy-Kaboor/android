@@ -1,6 +1,5 @@
 package com.synrgy.common.utils.ext
 
-import java.text.DecimalFormat
 import java.text.NumberFormat
 
 
@@ -11,6 +10,12 @@ import java.text.NumberFormat
 
 
 fun Float.toCurrency(): String {
+    val formatter = NumberFormat.getCurrencyInstance(localeIndonesia)
+    formatter.minimumFractionDigits = 0
+    return formatter.format(this)
+}
+
+fun Long.toCurrency(): String {
     val formatter = NumberFormat.getCurrencyInstance(localeIndonesia)
     formatter.minimumFractionDigits = 0
     return formatter.format(this)

@@ -1,4 +1,4 @@
-package com.synrgy.kaboor.utils.constant
+package com.synrgy.common.utils.constant
 
 
 /**
@@ -14,4 +14,5 @@ object ConstantTag {
     const val TAG_PASSENGER = "tag_passenger"
     const val TAG_AIRPORT = "tag_airport"
     const val TAG_PLANE_CLASS = "tag_plane_class"
+    const val TAG_LOTTIE = "tag_lottie"
 }

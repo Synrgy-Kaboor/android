@@ -6,8 +6,12 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.synrgy.common.R
 import com.synrgy.common.presentation.dialog.GenericBottomSheetFragment
+import com.synrgy.common.presentation.dialog.LottieBottomSheet
+import com.synrgy.common.utils.constant.ConstantTag
+import com.synrgy.common.utils.ext.observeNetwork
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.common.emptyString
+import com.wahidabd.library.utils.exts.getCompatDrawable
 
 
 /**
@@ -21,9 +25,23 @@ abstract class KaboorActivity<VB : ViewBinding> : BaseActivity<VB>() {
     private var loadingDialog: AlertDialog? = null
 
     override fun initAction() {}
-    override fun initIntent() {}
+    override fun initIntent() {
+        checkConnection()
+    }
+
     override fun initProcess() {}
     override fun initObservers() {}
+
+    private fun checkConnection() {
+        val lottieDialog = LottieBottomSheet.newInstance(
+            message = getString(R.string.message_no_internet_connection),
+        )
+
+        observeNetwork { state ->
+            if (!state) lottieDialog.show(supportFragmentManager, ConstantTag.TAG_LOTTIE)
+            else { if (lottieDialog.isVisible) lottieDialog.dismiss() }
+        }
+    }
 
     override fun showLoading() {
         loadingDialog?.let {
@@ -36,6 +54,7 @@ abstract class KaboorActivity<VB : ViewBinding> : BaseActivity<VB>() {
         loadingDialog = MaterialAlertDialogBuilder(this)
             .setView(R.layout.layout_loading)
             .setCancelable(false)
+            .setBackground(getCompatDrawable(R.drawable.bg_rectangle_stroke_white))
             .create()
             .apply {
                 this.window?.let { window ->
@@ -51,6 +70,13 @@ abstract class KaboorActivity<VB : ViewBinding> : BaseActivity<VB>() {
     override fun hideLoading() {
         loadingDialog?.hide()
         loadingDialog?.cancel()
+    }
+
+    private fun showLottieDialog(
+        message: String,
+    ) {
+        LottieBottomSheet.newInstance(message)
+            .show(supportFragmentManager, ConstantTag.TAG_LOTTIE)
     }
 
     fun showErrorDialog(description: String) {

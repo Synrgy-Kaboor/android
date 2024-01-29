@@ -1,4 +1,4 @@
-package com.synrgy.kaboor
+package com.synrgy.kaboor.base
 
 import android.content.Context
 import android.content.Intent
@@ -9,11 +9,16 @@ import androidx.navigation.ui.NavigationUI
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.requestMultiplePermission
+import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityMainBinding
+import com.synrgy.kaboor.home.SharedViewModel
 import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.visible
+import org.koin.android.ext.android.inject
 
 class MainActivity : KaboorActivity<ActivityMainBinding>() {
+
+    private val viewmodel: SharedViewModel by inject()
 
     companion object {
         fun start(context: Context) {
@@ -26,7 +31,7 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
 
 
     override fun initIntent() {
-
+        super.initIntent()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) requestPermission()
     }
 
@@ -35,7 +40,6 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
             val navHost =
                 supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
             val navController = navHost.navController
-
 
             bottomNav.setOnItemSelectedListener { item ->
                 if (item.itemId != bottomNav.selectedItemId) {
@@ -54,10 +58,16 @@ class MainActivity : KaboorActivity<ActivityMainBinding>() {
                     else -> bottomNav.gone()
                 }
             }
+
         }
     }
 
     override fun initAction() {}
+
+    override fun initProcess() {
+        super.initProcess()
+        viewmodel.checkLogin()
+    }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun requestPermission() {

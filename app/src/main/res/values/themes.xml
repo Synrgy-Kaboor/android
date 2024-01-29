@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Kaboor" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -7,7 +7,10 @@
         <item name="android:windowBackground">@color/neutral1</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
-
+    <style name="SplashScreen" parent="Base.Theme.Kaboor">
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+    </style>
     <style name="Theme.Kaboor" parent="Base.Theme.Kaboor" />
 </resources>

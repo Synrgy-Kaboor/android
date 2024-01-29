@@ -6,7 +6,7 @@ import com.synrgy.common.utils.enums.DetailPassengerType
 import com.synrgy.common.utils.ext.goneIf
 import com.synrgy.common.utils.ext.visibleIf
 import com.synrgy.kaboor.databinding.FragementDetailPassengerBottomSheetBinding
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 
 
 /**

@@ -7,7 +7,7 @@ import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.FragmentVoucherBottomSheetBinding
 import com.synrgy.kaboor.promo.adapter.VoucherAdapter
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 
 
 /**

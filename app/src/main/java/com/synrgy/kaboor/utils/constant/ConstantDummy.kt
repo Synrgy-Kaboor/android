@@ -8,6 +8,7 @@ import com.synrgy.domain.home.model.Product
 import com.synrgy.domain.payment.Bank
 import com.synrgy.domain.booking.Ticket
 import com.synrgy.domain.booking.model.response.Airport
+import com.synrgy.domain.user.model.response.HelpCenter
 
 
 /**
@@ -18,9 +19,36 @@ import com.synrgy.domain.booking.model.response.Airport
 
 object ConstantDummy {
 
+    fun helpCenters(): List<HelpCenter> =
+        listOf(
+            HelpCenter(
+                "Apakah Pembayaran Sudah Diterima",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Cara Membayar Pesanan Saya",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Cara Mengubah Nomor Handphone?",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Cara Mengubah Email",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Transaksi Saya Tidak Berhasil",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Pendaftaran Akun Gagal?",
+                "Lorem ipsum"
+            ),
+        )
+
     fun departure(): Airport = Airport("Surabaya", "SUB")
     fun arrival(): Airport = Airport("Jakarta", "JKT")
-
     fun airports(): List<Airport> =
         listOf(
             Airport("Surabaya", "SUB"),

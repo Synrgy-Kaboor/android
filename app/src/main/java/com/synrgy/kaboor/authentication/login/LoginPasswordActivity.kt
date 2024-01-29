@@ -7,7 +7,7 @@ import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.removeErrorTextPadding
 import com.synrgy.common.utils.ext.setClearPaddingTextInput
 import com.synrgy.domain.auth.model.request.LoginParam
-import com.synrgy.kaboor.MainActivity
+import com.synrgy.kaboor.base.MainActivity
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.databinding.ActivityLoginPasswordBinding
