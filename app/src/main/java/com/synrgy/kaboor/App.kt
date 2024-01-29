@@ -6,6 +6,7 @@ import com.synrgy.common.utils.FirebaseCrashlyticsTree
 import com.synrgy.di.appModule
 import com.synrgy.di.features.authModule
 import com.synrgy.di.features.bookingModule
+import com.synrgy.di.features.notificationModule
 import com.synrgy.di.features.userModule
 import com.synrgy.di.retrofitModule
 import com.synrgy.kaboor.utils.di.viewModelModule
@@ -28,6 +29,7 @@ class App : BaseApplication() {
             authModule,
             userModule,
             bookingModule,
+            notificationModule,
             viewModelModule, // make sure this module is still at the bottom of the features module
         )
 
