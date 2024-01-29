@@ -11,8 +11,8 @@ import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.timeNow
 import com.synrgy.common.utils.ext.oneDay
 import com.synrgy.common.utils.ext.toDateFormatMonth
-import com.synrgy.domain.booking.mapper.toData
-import com.synrgy.domain.booking.model.request.FlightParam
+import com.synrgy.domain.flight.mapper.toData
+import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.kaboor.booking.dialog.AirportBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.FlightClassBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.PassengerBottomSheetFragment

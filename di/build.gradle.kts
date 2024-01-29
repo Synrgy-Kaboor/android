@@ -30,14 +30,17 @@ android {
         create(AppConfig.flavorDev){
             dimension = AppConfig.flavorDimensions
             buildConfigField("String", "base_url", env.getProperty("base_url_dev") as String)
+            buildConfigField("String", "node_base_url", env.getProperty("node_base_url_dev") as String)
         }
         create(AppConfig.flavorStaging){
             dimension = AppConfig.flavorDimensions
             buildConfigField("String", "base_url", env.getProperty("base_url_staging") as String)
+            buildConfigField("String", "node_base_url", env.getProperty("node_base_url_staging") as String)
         }
         create(AppConfig.flavorProduction){
             dimension = AppConfig.flavorDimensions
             buildConfigField("String", "base_url", env.getProperty("base_url_production") as String)
+            buildConfigField("String", "node_base_url", env.getProperty("node_base_url_production") as String)
         }
     }
 

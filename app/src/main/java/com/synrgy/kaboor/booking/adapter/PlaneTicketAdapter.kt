@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.synrgy.common.R
-import com.synrgy.domain.booking.Ticket
+import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.kaboor.databinding.ItemCardTicketBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
@@ -14,8 +14,8 @@ import com.wahidabd.library.utils.exts.onClick
 
 class PlaneTicketAdapter(
     private val context: Context,
-    private val onClick: (Ticket) -> Unit,
-) : BaseAsyncRecyclerAdapter<Ticket, PlaneTicketAdapter.PlaneTicketViewHolder>() {
+    private val onClick: (Flight) -> Unit,
+) : BaseAsyncRecyclerAdapter<Flight, PlaneTicketAdapter.PlaneTicketViewHolder>() {
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding =
         ItemCardTicketBinding.inflate(LayoutInflater.from(context), parent, false)
 
@@ -26,8 +26,8 @@ class PlaneTicketAdapter(
         PlaneTicketViewHolder(getViewBinding(parent, viewType))
 
     inner class PlaneTicketViewHolder(binding: ViewBinding) :
-        BaseAsyncItemViewHolder<Ticket>(binding) {
-        override fun bind(data: Ticket) = with(binding as ItemCardTicketBinding) {
+        BaseAsyncItemViewHolder<Flight>(binding) {
+        override fun bind(data: Flight) = with(binding as ItemCardTicketBinding) {
             imgPlane.setImageResource(data.image ?: R.drawable.sample_img_garuda)
             tvPlane.text = data.plane
             tvClass.text = data.typeClass

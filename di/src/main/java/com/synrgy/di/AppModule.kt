@@ -18,6 +18,7 @@ import org.koin.dsl.module
 
 
 const val BASE_URL = "base_url"
+const val NODE_BASE_URL = "node_base_url"
 
 val appModule = module {
 
@@ -36,12 +37,13 @@ val appModule = module {
     }
 
     single(named(BASE_URL)) { BuildConfig.base_url }
+    single(named(NODE_BASE_URL)) { BuildConfig.node_base_url }
 }
 
 private fun getHeaderInterceptor(data: KaboorDataStore): Interceptor {
     val headers = HashMap<String, String>()
     headers["Content-Type"] = "application/json"
-    if (data.getToken()?.isNotEmpty() == true){
+    if (data.getToken()?.isNotEmpty() == true) {
         headers["Authorization"] = "Bearer ${data.getToken()}"
     }
     return HeaderInterceptor(headers)

@@ -6,8 +6,8 @@ import com.synrgy.data.payment.model.response.Promo
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
 import com.synrgy.domain.payment.Bank
-import com.synrgy.domain.booking.Ticket
-import com.synrgy.domain.booking.model.response.Airport
+import com.synrgy.domain.flight.model.response.Airport
+import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.domain.user.model.response.HelpCenter
 
 
@@ -214,9 +214,9 @@ object ConstantDummy {
             ),
         )
 
-    fun planeTicket(): List<Ticket> =
+    fun planeFlight(): List<Flight> =
         listOf(
-            Ticket(
+            Flight(
                 1,
                 "Garuda Indonesia",
                 "Ekonomi",
@@ -229,7 +229,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_garuda
             ),
-            Ticket(
+            Flight(
                 2,
                 "Lion Air",
                 "Ekonomi",
@@ -242,7 +242,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_lion_air
             ),
-            Ticket(
+            Flight(
                 3,
                 "Batik Air",
                 "Ekonomi",
@@ -255,7 +255,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_batik_air
             ),
-            Ticket(
+            Flight(
                 4,
                 "Garuda Indonesia",
                 "Ekonomi",
@@ -268,7 +268,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_garuda
             ),
-            Ticket(
+            Flight(
                 5,
                 "Lion Air",
                 "Ekonomi",
@@ -281,7 +281,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_lion_air
             ),
-            Ticket(
+            Flight(
                 6,
                 "Batik Air",
                 "Ekonomi",
@@ -296,9 +296,9 @@ object ConstantDummy {
             )
         )
 
-    fun roundTripPlaneTicket(): List<Ticket> =
+    fun roundTripPlaneFlight(): List<Flight> =
         listOf(
-            Ticket(
+            Flight(
                 1,
                 "Garuda Indonesia",
                 "Ekonomi",
@@ -311,7 +311,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_garuda
             ),
-            Ticket(
+            Flight(
                 2,
                 "Lion Air",
                 "Ekonomi",
