@@ -40,17 +40,14 @@ android {
         create(AppConfig.flavorDev){
             dimension = AppConfig.flavorDimensions
             applicationIdSuffix = AppConfig.applicationIdSuffixDev
-            buildConfigField("String", "base_url", env.getProperty("base_url_dev") as String)
         }
         create(AppConfig.flavorStaging){
             dimension = AppConfig.flavorDimensions
             applicationIdSuffix = AppConfig.applicationIdSuffixStaging
-            buildConfigField("String", "base_url", env.getProperty("base_url_staging") as String)
         }
         create(AppConfig.flavorProduction){
             dimension = AppConfig.flavorDimensions
             applicationIdSuffix = AppConfig.applicationIdSuffixProduction
-            buildConfigField("String", "base_url", env.getProperty("base_url_production") as String)
         }
     }
 

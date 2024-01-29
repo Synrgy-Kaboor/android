@@ -6,7 +6,7 @@ import com.synrgy.common.R
 import com.synrgy.common.model.AirportData
 import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.common.utils.ext.lowerContains
-import com.synrgy.domain.booking.mapper.toData
+import com.synrgy.domain.flight.mapper.toData
 import com.synrgy.kaboor.booking.adapter.AirportAdapter
 import com.synrgy.kaboor.databinding.FragmentAirportBottomSheetBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy

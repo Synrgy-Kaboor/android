@@ -15,7 +15,7 @@ import com.synrgy.common.utils.ext.timeNow
 import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.common.utils.ext.toEpochMillis
 import com.synrgy.common.utils.ext.tomorrowMillis
-import com.synrgy.domain.booking.model.request.FlightParam
+import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.kaboor.booking.dialog.AirportBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.FlightClassBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.PassengerBottomSheetFragment

@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.onBackPress
-import com.synrgy.domain.booking.Ticket
-import com.synrgy.domain.booking.model.request.FlightParam
+import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.kaboor.booking.PassengerDetailActivity
 import com.synrgy.kaboor.booking.PriceAlertActivity
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.databinding.ActivityFlightReturnTicketListBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.synrgy.common.utils.constant.ConstantKey
+import com.synrgy.domain.flight.model.response.Flight
 
 class FlightReturnTicketListActivity :
     KaboorActivity<ActivityFlightReturnTicketListBinding>() {
@@ -81,7 +81,7 @@ class FlightReturnTicketListActivity :
 
     override fun initObservers() {}
 
-    private fun handleNavigation(ticket: Ticket) {
+    private fun handleNavigation(flight: Flight) {
         PassengerDetailActivity.start(this)
     }
 
