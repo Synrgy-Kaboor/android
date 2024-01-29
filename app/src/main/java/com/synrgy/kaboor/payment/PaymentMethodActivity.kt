@@ -10,7 +10,7 @@ import com.synrgy.kaboor.databinding.ActivityPaymentMethodBinding
 import com.synrgy.kaboor.payment.adapter.PaymentMethodAdapter
 import com.synrgy.kaboor.promo.VoucherBottomSheetFragment
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.enable
 import com.wahidabd.library.utils.exts.onClick
 
@@ -33,7 +33,9 @@ class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
     override fun getViewBinding(): ActivityPaymentMethodBinding =
         ActivityPaymentMethodBinding.inflate(layoutInflater)
 
-    override fun initIntent() {}
+    override fun initIntent() {
+        super.initIntent()
+    }
 
     override fun initUI() = with(binding) {
         initPaymentMethod()

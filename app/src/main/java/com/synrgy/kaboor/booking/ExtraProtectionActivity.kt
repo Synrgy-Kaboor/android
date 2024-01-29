@@ -8,7 +8,7 @@ import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.kaboor.booking.dialog.ExtraProtectionBottomSheetFragment
 import com.synrgy.kaboor.databinding.ActivityExtraProtectionBinding
 import com.synrgy.kaboor.payment.PaymentMethodActivity
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.onClick
 
 class ExtraProtectionActivity : KaboorActivity<ActivityExtraProtectionBinding>() {

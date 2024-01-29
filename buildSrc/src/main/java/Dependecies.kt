@@ -24,7 +24,7 @@ object Dependecies {
     const val core_testing = "androidx.arch.core:core-testing:${Versions.core_testing}"
     const val coroutines_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines_test}"
     const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
-    const val multi_state_view = "com.github.kennycason:kennycason:${Versions.multi_state_view}"
+    const val multi_state_view = "com.github.Kennyc1012:MultiStateView:${Versions.multi_state_view}"
     const val build_tools = "com.android.tools.build:gradle:${Versions.build_tools}"
     const val flexbox = "com.google.android.flexbox:flexbox:${Versions.flexbox}"
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"

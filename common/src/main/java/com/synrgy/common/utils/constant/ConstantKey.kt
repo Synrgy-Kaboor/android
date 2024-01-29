@@ -1,4 +1,4 @@
-package com.synrgy.kaboor.utils.constant
+package com.synrgy.common.utils.constant
 
 
 /**

@@ -5,7 +5,7 @@ import com.synrgy.common.R
 import com.synrgy.common.model.PassengerData
 import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.kaboor.databinding.FragmentPassengerBottomSheetBinding
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.onClick
 
 

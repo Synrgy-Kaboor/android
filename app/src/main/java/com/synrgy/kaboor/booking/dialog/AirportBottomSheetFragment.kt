@@ -10,7 +10,7 @@ import com.synrgy.domain.booking.mapper.toData
 import com.synrgy.kaboor.booking.adapter.AirportAdapter
 import com.synrgy.kaboor.databinding.FragmentAirportBottomSheetBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 
 
 class AirportBottomSheetFragment : KaboorBottomSheet<FragmentAirportBottomSheetBinding>() {

@@ -20,7 +20,7 @@ import org.koin.android.ext.android.inject
 
 class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
 
-    private val viewMode: HomeViewModel by inject()
+    private val viewMode: SharedViewModel by inject()
 
     private var loginState: Boolean = false
 

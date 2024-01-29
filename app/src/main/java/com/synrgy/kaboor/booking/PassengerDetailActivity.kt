@@ -10,7 +10,7 @@ import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.booking.dialog.DetailPassengerBottomSheetFragment
 import com.synrgy.kaboor.databinding.ActivityPassengerDetailBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.onClick
 
 class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>() {

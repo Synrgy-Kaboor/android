@@ -1,6 +1,5 @@
 package com.synrgy.common.utils.ext
 
-import java.text.DecimalFormat
 import java.text.NumberFormat
 
 

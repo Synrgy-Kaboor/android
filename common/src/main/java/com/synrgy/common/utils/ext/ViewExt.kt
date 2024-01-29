@@ -2,35 +2,29 @@ package com.synrgy.common.utils.ext
 
 import android.content.ClipData
 import android.content.Context
-import android.os.CountDownTimer
+import android.net.ConnectivityManager
+import android.net.Network
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.withStyledAttributes
-import androidx.core.view.setPadding
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.google.android.material.datepicker.MaterialDatePicker
+import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
+import com.kennyc.view.MultiStateView
 import com.synrgy.common.R
 import com.synrgy.common.utils.enums.ClipboardType
 import com.wahidabd.library.utils.common.emptyString
-import com.wahidabd.library.utils.common.showSnackbarMessage
-import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.exts.clipboardManager
 import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.invisible
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.onTextChange
-import com.wahidabd.library.utils.exts.setMargins
 import com.wahidabd.library.utils.exts.visible
-import kotlin.time.Duration.Companion.milliseconds
+import kotlinx.coroutines.flow.callbackFlow
 
 
 /**
@@ -105,7 +99,7 @@ fun removeErrorTextPadding(listOfTextInput: List<TextInputLayout>) {
 }
 
 
-fun AppCompatActivity.copyTextToClipboard(text: String, type: ClipboardType){
+fun AppCompatActivity.copyTextToClipboard(text: String, type: ClipboardType) {
     val clipData = ClipData.newPlainText("text", text)
     this.clipboardManager.setPrimaryClip(clipData)
     snackbarSuccess(getString(type.message))
@@ -127,7 +121,14 @@ fun AppCompatActivity.snackbarDanger(message: String) {
 
 fun String.chuckedString(): String = this.chunked(4).joinToString(" ")
 
-fun View.showHideToggle(){
+fun View.showHideToggle() {
     if (this.visibility == View.VISIBLE) this.gone()
     else this.visible()
+}
+
+inline fun MultiStateView.showLoginState(crossinline action: () -> Unit){
+    this.viewState = MultiStateView.ViewState.ERROR
+    this.getView(MultiStateView.ViewState.ERROR)?.findViewById<View>(R.id.btn_msv_login)?.onClick {
+        action.invoke()
+    }
 }

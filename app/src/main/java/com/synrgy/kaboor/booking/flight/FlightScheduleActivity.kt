@@ -9,7 +9,7 @@ import com.synrgy.common.utils.enums.AirportType
 import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.timeNow
-import com.synrgy.common.utils.ext.plusOneDay
+import com.synrgy.common.utils.ext.oneDay
 import com.synrgy.common.utils.ext.toDateFormatMonth
 import com.synrgy.domain.booking.mapper.toData
 import com.synrgy.domain.booking.model.request.FlightParam
@@ -18,7 +18,7 @@ import com.synrgy.kaboor.booking.dialog.FlightClassBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.PassengerBottomSheetFragment
 import com.synrgy.kaboor.databinding.ActivityFlightScheduleBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.onClick
 import com.synrgy.common.R as comR
 
@@ -114,8 +114,8 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
 
     private fun showDatePicker(type: AirportType) = with(binding) {
         val startDate = when (type) {
-            AirportType.DEPARTURE -> timeNow
-            AirportType.ARRIVAL -> kaboorSchedule.departure + plusOneDay
+            AirportType.DEPARTURE -> timeNow - oneDay
+            AirportType.ARRIVAL -> kaboorSchedule.departure + oneDay
         }
         showDatePicker(startDate) { date ->
             when (type) {

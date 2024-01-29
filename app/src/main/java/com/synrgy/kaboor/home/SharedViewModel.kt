@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
  */
 
 
-class HomeViewModel(
+class SharedViewModel(
     private val userUseCase: UserUseCase
 ) : ViewModel() {
 

@@ -3,13 +3,16 @@ package com.synrgy.kaboor.account
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.synrgy.common.presentation.KaboorFragment
+import com.synrgy.common.utils.ext.showLoginState
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.account.help.HelpCenterActivity
 import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.authentication.change.ChangeEmailActivity
 import com.synrgy.kaboor.authentication.change.ChangePhoneNumberActivity
+import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.base.SplashActivity
 import com.synrgy.kaboor.databinding.FragmentAccountBinding
+import com.synrgy.kaboor.home.SharedViewModel
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import org.koin.android.ext.android.inject
@@ -17,6 +20,7 @@ import org.koin.android.ext.android.inject
 
 class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
 
+    private val sharedViewModel: SharedViewModel by inject()
     private val viewModel: AuthViewModel by inject()
 
     override fun getViewBinding(
@@ -26,7 +30,10 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
     ): FragmentAccountBinding =
         FragmentAccountBinding.inflate(layoutInflater, container, attachRoot)
 
-    override fun initUI() {}
+    override fun initUI() = with(binding) {
+        imgProfile.setImageResource(R.drawable.ic_launcher_foreground)
+        tvUserName.text = "Andre Hudson"
+    }
 
     override fun initAction() = with(binding) {
         emailContainer.onClick { ChangeEmailActivity.start(requireContext()) }
@@ -36,8 +43,16 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
         logoutContainer.onClick { showLogoutDialog() }
     }
 
+    override fun initProcess() {
+        super.initProcess()
+        sharedViewModel.checkLogin()
+    }
+
     override fun initObservers() {
         super.initObservers()
+        sharedViewModel.login.observe(viewLifecycleOwner) { state ->
+            if (!state) binding.msv.showLoginState { LoginActivity.start(requireContext()) }
+        }
         viewModel.logout.observerLiveData(
             viewLifecycleOwner,
             onLoading = ::showLoading,

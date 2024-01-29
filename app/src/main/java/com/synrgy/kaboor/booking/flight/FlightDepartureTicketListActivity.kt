@@ -12,7 +12,7 @@ import com.synrgy.kaboor.booking.PriceAlertActivity
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.databinding.ActivityFlightDepartureTicketListBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.kaboor.utils.constant.ConstantKey
+import com.synrgy.common.utils.constant.ConstantKey
 
 class FlightDepartureTicketListActivity :
     KaboorActivity<ActivityFlightDepartureTicketListBinding>() {

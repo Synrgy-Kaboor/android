@@ -1,6 +1,7 @@
 package com.synrgy.common.utils.ext
 
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.Locale
 
 
@@ -12,8 +13,8 @@ import java.util.Locale
 
 val localeIndonesia = Locale("in", "ID")
 val timeNow = System.currentTimeMillis()
-const val plusOneDay = 86400000
-val tomorrowMillis = timeNow + plusOneDay // timeNow - timeNow % (24 * 60 * 60 * 1000)
+val oneDay = timeNow % (24 * 60 * 60 * 1000)
+val tomorrowMillis = timeNow + oneDay // timeNow - timeNow % (24 * 60 * 60 * 1000)
 val oneWeekMillis = timeNow + 604800000 // timeNow - timeNow % (7 * 24 * 60 * 60 * 1000)
 
 

@@ -6,7 +6,7 @@ import com.synrgy.common.utils.enums.ProtectionType
 import com.synrgy.kaboor.R
 import com.synrgy.common.R as comR
 import com.synrgy.kaboor.databinding.FragmentExtraProtectionBottomSheetBinding
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.gone
 
 

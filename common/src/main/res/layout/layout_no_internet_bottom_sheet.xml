@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:lottie_rawRes="@raw/no_internet_connection"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="No Internet Connection"
+        style="@style/KaboorTextView.Title3"
+        android:layout_marginBottom="@dimen/dimen_24dp"
+        android:gravity="center_horizontal"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
