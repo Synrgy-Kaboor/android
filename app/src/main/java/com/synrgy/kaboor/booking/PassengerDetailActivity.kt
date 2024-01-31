@@ -45,7 +45,7 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
     }
 
     override fun initProcess() {
-        planeTicketAdapter.setData = ConstantDummy.roundTripPlaneTicket()
+        planeTicketAdapter.setData = ConstantDummy.roundTripPlaneFlight()
     }
 
     private fun showDetailInfo(type: DetailPassengerType) {

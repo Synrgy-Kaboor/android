@@ -19,6 +19,7 @@ import com.synrgy.common.R
 import com.synrgy.common.utils.enums.ClipboardType
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.clipboardManager
+import com.wahidabd.library.utils.exts.getCompatColor
 import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.invisible
 import com.wahidabd.library.utils.exts.onClick
@@ -107,15 +108,15 @@ fun AppCompatActivity.copyTextToClipboard(text: String, type: ClipboardType) {
 
 fun AppCompatActivity.snackbarSuccess(message: String) {
     Snackbar.make(this.window.decorView.rootView, message, Snackbar.LENGTH_LONG).apply {
-        setBackgroundTint(ContextCompat.getColor(this@snackbarSuccess, R.color.secondarySuccess))
-        setTextColor(ContextCompat.getColor(this@snackbarSuccess, R.color.neutral1))
+        setBackgroundTint(getCompatColor(R.color.secondarySuccess))
+        setTextColor(getCompatColor(R.color.neutral1))
     }.show()
 }
 
 fun AppCompatActivity.snackbarDanger(message: String) {
     Snackbar.make(this.window.decorView.rootView, message, Snackbar.LENGTH_LONG).apply {
-        setBackgroundTint(ContextCompat.getColor(this@snackbarDanger, R.color.secondaryDanger))
-        setTextColor(ContextCompat.getColor(this@snackbarDanger, R.color.neutral1))
+        setBackgroundTint(getCompatColor(R.color.secondaryDanger))
+        setTextColor(getCompatColor(R.color.neutral1))
     }.show()
 }
 

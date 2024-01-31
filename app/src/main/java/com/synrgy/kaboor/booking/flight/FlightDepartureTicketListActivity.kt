@@ -74,7 +74,7 @@ class FlightDepartureTicketListActivity :
     }
 
     override fun initProcess() {
-        planeTicketAdapter.setData = ConstantDummy.planeTicket()
+        planeTicketAdapter.setData = ConstantDummy.planeFlight()
     }
 
     override fun initObservers() {}
