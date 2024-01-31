@@ -9,4 +9,6 @@ package com.synrgy.common.utils.enums
 enum class OtpType {
     REGISTER,
     FORGOT_PASSWORD,
+    CHANGE_EMAIL,
+    CHANGE_PHONE
 }
