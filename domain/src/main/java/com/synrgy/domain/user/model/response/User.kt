@@ -15,6 +15,7 @@ data class User(
     val gender: String? = emptyString(),
     val birthday: String? = emptyString(),
     val country: String? = emptyString(),
+    val nation: String? = emptyString(),
     val city: String? = emptyString(),
     val address: String? = emptyString(),
     val email: String? = emptyString(),

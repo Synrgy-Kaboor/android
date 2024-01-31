@@ -1,6 +1,8 @@
 package com.synrgy.domain.flight.model.response
 
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
+import kotlinx.parcelize.Parcelize
 
 
 /**
@@ -9,6 +11,7 @@ import androidx.annotation.DrawableRes
  */
 
 
+@Parcelize
 data class Flight(
     val id: Int,
     val plane: String,
@@ -21,4 +24,5 @@ data class Flight(
     val date: String? = null,
     val price: Long,
     @DrawableRes val image: Int? = null
-)
+) : Parcelable
+

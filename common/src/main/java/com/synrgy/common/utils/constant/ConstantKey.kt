@@ -11,4 +11,5 @@ object ConstantKey {
     const val KEY_ROUND_TRIP = "key_round_trip"
     const val KEY_FLIGHT_PARAM = "key_plane_param"
     const val KEY_DEPARTURE_FLIGHT = "key_departure_flight"
+    const val KEY_RETURN_FLIGHT = "key_return_flight"
 }

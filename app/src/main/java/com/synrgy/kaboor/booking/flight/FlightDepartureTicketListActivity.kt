@@ -80,8 +80,8 @@ class FlightDepartureTicketListActivity :
     override fun initObservers() {}
 
     private fun handleNavigation(flight: Flight) {
-        if (isRoundTrip) FlightReturnTicketListActivity.start(this, flightParam)
-        else PassengerDetailActivity.start(this)
+        if (isRoundTrip) FlightReturnTicketListActivity.start(this, flightParam, flight)
+        else PassengerDetailActivity.start(this, flight)
     }
 
     private fun initPlaneTicket() = with(binding) {
