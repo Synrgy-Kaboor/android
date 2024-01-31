@@ -4,15 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.domain.flight.model.request.FlightParam
+import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.kaboor.booking.PassengerDetailActivity
 import com.synrgy.kaboor.booking.PriceAlertActivity
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.databinding.ActivityFlightReturnTicketListBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.common.utils.constant.ConstantKey
-import com.synrgy.domain.flight.model.response.Flight
 
 class FlightReturnTicketListActivity :
     KaboorActivity<ActivityFlightReturnTicketListBinding>() {
@@ -20,7 +21,8 @@ class FlightReturnTicketListActivity :
     companion object {
         fun start(
             context: AppCompatActivity,
-            flightParam: FlightParam?
+            flightParam: FlightParam?,
+            departureFlight: Flight
         ) {
             context.startActivity(
                 Intent(
@@ -28,11 +30,13 @@ class FlightReturnTicketListActivity :
                     FlightReturnTicketListActivity::class.java
                 ).apply {
                     putExtra(ConstantKey.KEY_FLIGHT_PARAM, flightParam)
+                    putExtra(ConstantKey.KEY_DEPARTURE_FLIGHT, departureFlight)
                 })
         }
     }
 
     private var flightParam: FlightParam? = null
+    private var departureFlight: Flight? = null
 
     private val planeTicketAdapter by lazy {
         PlaneTicketAdapter(
@@ -46,6 +50,7 @@ class FlightReturnTicketListActivity :
 
     override fun initIntent() {
         flightParam = intent.getParcelableExtra(ConstantKey.KEY_FLIGHT_PARAM)
+        departureFlight = intent.getParcelableExtra(ConstantKey.KEY_DEPARTURE_FLIGHT)
     }
 
     override fun initUI() = with(binding) {
@@ -62,6 +67,17 @@ class FlightReturnTicketListActivity :
             clazz = flightParam?.classCode.toString()
         )
 
+        departureFlight?.image?.let { imgPlane.setImageResource(it) }
+        tvPlane.text = departureFlight?.plane
+        tvClass.text = departureFlight?.typeClass
+        tvOrigin.text = departureFlight?.departure
+        tvTakeOff.text = departureFlight?.departureTime
+        tvDestination.text = departureFlight?.destination
+        tvLanding.text = departureFlight?.destinationTime
+        tvDuration.text = departureFlight?.boardingTime
+        tvDate.text = departureFlight?.date
+        tvPrice.text = departureFlight?.price?.toCurrency()
+
         initPlaneTicket()
     }
 
@@ -76,13 +92,13 @@ class FlightReturnTicketListActivity :
     }
 
     override fun initProcess() {
-        planeTicketAdapter.setData = ConstantDummy.planeTicket()
+        planeTicketAdapter.setData = ConstantDummy.planeFlight()
     }
 
     override fun initObservers() {}
 
     private fun handleNavigation(flight: Flight) {
-        PassengerDetailActivity.start(this)
+        PassengerDetailActivity.start(this, departureFlight, flight)
     }
 
     private fun initPlaneTicket() = with(binding) {

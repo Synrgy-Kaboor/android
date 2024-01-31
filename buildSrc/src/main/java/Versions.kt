@@ -12,6 +12,7 @@ object Versions {
     const val constraintlayout = "2.1.4"
     const val junit = "4.13.2"
     const val junit_ext = "1.1.5"
+    const val junit_jupiter = "5.8.1"
     const val espresso_core = "3.5.1"
     const val chucker = "4.0.0"
     const val android_navigation = "2.7.5"

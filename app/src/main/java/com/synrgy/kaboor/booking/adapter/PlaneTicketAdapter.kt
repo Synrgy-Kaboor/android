@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.synrgy.common.R
+import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.kaboor.databinding.ItemCardTicketBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
@@ -36,7 +37,7 @@ class PlaneTicketAdapter(
             tvDuration.text = data.boardingTime
             tvDestination.text = data.destination
             tvLanding.text = data.destinationTime
-            tvPrice.text = data.price.toString()
+            tvPrice.text = data.price.toCurrency()
 
             if (data.date != "") {
                 tvDate.visibility = View.VISIBLE

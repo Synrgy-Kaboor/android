@@ -17,6 +17,7 @@ data class UserDataResponse(
     val gender: String? = null,
     val birthday: String? = null,
     val country: String? = null,
+    val nation: String? = null,
     val city: String? = null,
     val address: String? = null,
     val email: String? = null,

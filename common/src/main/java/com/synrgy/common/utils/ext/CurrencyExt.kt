@@ -12,11 +12,13 @@ import java.text.NumberFormat
 fun Float.toCurrency(): String {
     val formatter = NumberFormat.getCurrencyInstance(localeIndonesia)
     formatter.minimumFractionDigits = 0
-    return formatter.format(this)
+    val formattedString = formatter.format(this)
+    return formattedString.replace("Rp", "Rp ")
 }
 
 fun Long.toCurrency(): String {
     val formatter = NumberFormat.getCurrencyInstance(localeIndonesia)
     formatter.minimumFractionDigits = 0
-    return formatter.format(this)
+    val formattedString = formatter.format(this)
+    return formattedString.replace("Rp", "Rp ")
 }
