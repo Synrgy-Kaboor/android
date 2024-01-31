@@ -4,22 +4,34 @@ import android.content.Context
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.constant.ConstantKey
+import com.synrgy.common.utils.constant.ConstantTag
 import com.synrgy.common.utils.enums.DetailPassengerType
 import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.booking.dialog.DetailPassengerBottomSheetFragment
 import com.synrgy.kaboor.databinding.ActivityPassengerDetailBinding
-import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.common.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.onClick
 
 class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>() {
 
     companion object {
-        fun start(context: Context) {
-            context.startActivity(Intent(context, PassengerDetailActivity::class.java))
+        fun start(
+            context: Context,
+            departureFlightParam: Flight?,
+            returnFlightParam: Flight? = null,
+        ) {
+            context.startActivity(Intent(context, PassengerDetailActivity::class.java).apply {
+                putExtra(ConstantKey.KEY_DEPARTURE_FLIGHT, departureFlightParam)
+                putExtra(ConstantKey.KEY_RETURN_FLIGHT, returnFlightParam)
+            })
         }
     }
+
+    private var departureFlight: Flight? = null
+    private var returnFlight: Flight? = null
+    private var listFlight: MutableList<Flight> = mutableListOf()
 
     private val planeTicketAdapter by lazy {
         PlaneTicketAdapter(
@@ -35,6 +47,14 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
         initPlaneTicket()
     }
 
+    override fun initIntent() {
+        departureFlight = intent.getParcelableExtra(ConstantKey.KEY_DEPARTURE_FLIGHT)
+        returnFlight = intent.getParcelableExtra(ConstantKey.KEY_RETURN_FLIGHT)
+
+        departureFlight?.let { listFlight.add(it) }
+        returnFlight?.let { listFlight.add(it) }
+    }
+
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
         cvBookerDetail.onClick { showDetailInfo(DetailPassengerType.BOOKER) }
@@ -45,7 +65,7 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
     }
 
     override fun initProcess() {
-        planeTicketAdapter.setData = ConstantDummy.roundTripPlaneFlight()
+        planeTicketAdapter.setData = listFlight
     }
 
     private fun showDetailInfo(type: DetailPassengerType) {
