@@ -48,7 +48,6 @@ class ChangeEmailActivity : KaboorPassiveActivity<ActivityChangeEmailBinding>() 
         btnKodeVerifikasi.onClick { validate() }
         btnKodeVerifikasi.onClick { navigateToOtpActivity() }
         appbar.setOnBackClickListener { onBackPress() }
-//
     }
 
     override fun initObservers() {

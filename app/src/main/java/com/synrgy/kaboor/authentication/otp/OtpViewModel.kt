@@ -9,6 +9,7 @@ import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.domain.auth.AuthUseCase
 import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.OtpParam
+import com.synrgy.domain.auth.model.request.PhoneParam
 import com.synrgy.domain.user.model.response.User
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.collectLatest
@@ -46,6 +47,22 @@ class OtpViewModel(
     fun resendOtp(body: EmailParam) {
         viewModelScope.launch {
             auth.resendOTP(body)
+                .collectLatest { _generic.value = it }
+        }
+    }
+
+    fun changeEmail(body: EmailParam) {
+        _generic.value = Resource.loading()
+        viewModelScope.launch {
+            auth.changeEmail(body)
+                .collectLatest { _generic.value = it }
+        }
+    }
+
+    fun changeNumber(body: PhoneParam) {
+        _generic.value = Resource.loading()
+        viewModelScope.launch {
+            auth.changePhone(body)
                 .collectLatest { _generic.value = it }
         }
     }

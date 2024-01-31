@@ -36,6 +36,7 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
     }
 
     override fun initAction() = with(binding) {
+        profileContainer.onClick { AccountDetailActivity.start(requireContext()) }
         emailContainer.onClick { ChangeEmailActivity.start(requireContext()) }
         phoneContainer.onClick { ChangePhoneNumberActivity.start(requireContext()) }
         passportContainer.onClick { }

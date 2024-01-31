@@ -1,6 +1,7 @@
 package com.synrgy.data.user.local
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -8,10 +9,12 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.synrgy.common.utils.constant.ConstDataStore
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.UserDataResponse
+import com.wahidabd.library.utils.extensions.debug
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
+import timber.log.Timber
 
 
 /**
@@ -24,10 +27,17 @@ class KaboorDataStore(context: Context) {
 
     companion object {
         private val TOKEN = stringPreferencesKey(ConstDataStore.PREF_TOKEN)
+        private val LOGIN = booleanPreferencesKey(ConstDataStore.PREF_LOGIN)
         private val FULL_NAME = stringPreferencesKey(ConstDataStore.PREF_FULL_NAME)
         private val EMAIL = stringPreferencesKey(ConstDataStore.PREF_EMAIL)
         private val PHONE = stringPreferencesKey(ConstDataStore.PREF_PHONE)
-        private val LOGIN = booleanPreferencesKey(ConstDataStore.PREF_LOGIN)
+        private val TITLE = stringPreferencesKey(ConstDataStore.PREF_title)
+        private val BIRTHDAY = stringPreferencesKey(ConstDataStore.PREF_BIRTHDAY)
+        private val NATION = stringPreferencesKey(ConstDataStore.PREF_NATION)
+        private val CITY = stringPreferencesKey(ConstDataStore.PREF_CITY)
+        private val ADDRESS = stringPreferencesKey(ConstDataStore.PREF_ADDRESS)
+        private val GENDER = stringPreferencesKey(ConstDataStore.PREF_GENDER)
+        private val WNI = stringPreferencesKey(ConstDataStore.PREF_WNI)
 
         @Volatile
         private var INSTANCE: KaboorDataStore? = null

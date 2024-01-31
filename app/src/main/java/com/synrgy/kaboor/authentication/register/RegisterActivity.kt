@@ -3,6 +3,7 @@ package com.synrgy.kaboor.authentication.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorPassiveActivity
+import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.removeErrorTextPadding
 import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.kaboor.R
@@ -10,6 +11,7 @@ import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.authentication.login.LoginPasswordActivity
 import com.synrgy.kaboor.databinding.ActivityRegisterBinding
 import com.wahidabd.library.utils.exts.observerLiveData
+import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.validation.Validation
 import com.wahidabd.library.validation.util.emailRule
 import com.wahidabd.library.validation.util.notEmptyRule
@@ -31,7 +33,8 @@ class RegisterActivity : KaboorPassiveActivity<ActivityRegisterBinding>() {
     override fun initUI() {}
 
     override fun initAction() = with(binding) {
-        btnRegister.setOnClickListener { validate() }
+        tvCreateAccount.onClick { onBackPress() }
+        btnRegister.onClick { validate() }
     }
 
     override fun initObservers() {
