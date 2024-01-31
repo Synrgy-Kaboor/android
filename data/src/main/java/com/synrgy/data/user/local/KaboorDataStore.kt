@@ -1,6 +1,7 @@
 package com.synrgy.data.user.local
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -8,10 +9,12 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.synrgy.common.utils.constant.ConstDataStore
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.UserDataResponse
+import com.wahidabd.library.utils.extensions.debug
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
+import timber.log.Timber
 
 
 /**

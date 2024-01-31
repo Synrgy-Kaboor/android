@@ -16,7 +16,6 @@ import com.synrgy.common.utils.ext.snackbarDanger
 import com.synrgy.common.utils.ext.toStringTrim
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodDetailBinding
-import com.wahidabd.library.utils.exts.getCompatDrawable
 import com.wahidabd.library.utils.exts.onClick
 
 class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBinding>() {
@@ -39,8 +38,6 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         // TODO: Remove this after API ready
         tvAccountNumber.text = "1420 2010 0098 2336"
         tvTotalPayment.text = "1.000.000"
-
-        tvTime.background = getCompatDrawable(com.synrgy.common.R.drawable.bg_gradient_rectangle_primary)
     }
 
     override fun initAction() = with(binding) {
