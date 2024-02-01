@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Devices running Android 12L (API level 32) or lower -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
@@ -24,6 +24,9 @@
         android:theme="@style/Theme.Kaboor"
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
+        <activity
+            android:name=".account.passport.PassportActivity"
+            android:exported="false" />
         <activity
             android:name=".account.help.HelpCenterActivity"
             android:exported="false" />

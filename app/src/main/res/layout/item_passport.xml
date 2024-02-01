@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/KaboorCard"
+    app:cardElevation="@dimen/dimen_0dp"
+    app:cardCornerRadius="@dimen/dimen_8dp"
+    android:layout_margin="@dimen/dimen_4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_12dp"
+        android:paddingVertical="@dimen/dimen_10dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_passport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_name"
+            app:srcCompat="@drawable/ic_passport"
+            app:tint="@color/primaryBrightViolet" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_name"
+            style="@style/KaboorTextView.Title2"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            tools:text="Abd. Wahid"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            app:layout_constraintEnd_toStartOf="@+id/img_chevron"
+            app:layout_constraintStart_toEndOf="@+id/img_passport"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_number"
+            style="@style/KaboorTextView.Body1"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/neutral6"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            app:layout_constraintEnd_toStartOf="@+id/img_chevron"
+            app:layout_constraintStart_toEndOf="@+id/img_passport"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="0000001" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_chevron"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_name"
+            app:srcCompat="@drawable/ic_chevron_right" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
