@@ -186,4 +186,5 @@
     <string name="label_list_passport">Daftar Paspor</string>
     <string name="label_passport_use">Berikut ini data paspor yang sudah dimasukkan</string>
     <string name="label_add_new_passport">Tambahkan Paspor Lainnya</string>
+    <string name="label_photo_profile">Foto Profil</string>
 </resources>

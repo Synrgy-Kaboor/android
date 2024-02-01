@@ -344,7 +344,7 @@ object ConstantDummy {
                 Bank(
                     id = 1,
                     methodName = "Bank BRI",
-                    imageUrl = "https://asset-2.tstatic.net/madura/foto/bank/images/logo-bri-dibuka-lowongan-kerja-di-bank-bri-untuk-lulusan-s1-dan-s2-untuk-september.jpg"
+                    imageUrl = "https://logowik.com/content/uploads/images/bri-20209664.logowik.com.webp"
                 )
             ),
             Selectable(
@@ -361,5 +361,12 @@ object ConstantDummy {
                     imageUrl = "https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png"
                 )
             ),
+            Selectable(
+                Bank(
+                    4,
+                    "Bank Mandiri",
+                    imageUrl = "https://logowik.com/content/uploads/images/bank-mandiri.jpg"
+                )
+            )
         )
 }
