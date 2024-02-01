@@ -9,6 +9,7 @@ import com.synrgy.domain.payment.Bank
 import com.synrgy.domain.flight.model.response.Airport
 import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.domain.user.model.response.HelpCenter
+import com.synrgy.domain.user.model.response.Passport
 
 
 /**
@@ -18,6 +19,17 @@ import com.synrgy.domain.user.model.response.HelpCenter
 
 
 object ConstantDummy {
+
+    fun passport(): List<Passport> =
+        listOf(
+            Passport(
+                1,
+                "Andre Hutson",
+                "123456789",
+                "12/12/2024",
+                "Indonesia"
+            ),
+        )
 
     fun helpCenters(): List<HelpCenter> =
         listOf(

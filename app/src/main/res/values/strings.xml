@@ -182,4 +182,8 @@
     <string name="label_most_question">Pertanyaan yang sering diajukan</string>
     <string name="label_need_more_help">Butuh bantuan lain?</string>
     <string name="label_contact_us">Hubungi Kami</string>
+    <string name="label_passport">Paspor</string>
+    <string name="label_list_passport">Daftar Paspor</string>
+    <string name="label_passport_use">Berikut ini data paspor yang sudah dimasukkan</string>
+    <string name="label_add_new_passport">Tambahkan Paspor Lainnya</string>
 </resources>
