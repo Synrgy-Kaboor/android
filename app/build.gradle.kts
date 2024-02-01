@@ -74,6 +74,7 @@ dependencies {
     implementation(Dependecies.otpview)
     implementation(platform(Dependecies.firebase_bom))
     implementation(Dependecies.circle_image)
+    implementation(Dependecies.spinner)
 
     testImplementation(Dependecies.junit_jupiter)
     testImplementation(Dependecies.mockito)

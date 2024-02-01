@@ -30,4 +30,5 @@ object Versions {
     const val datastore = "1.0.0"
     const val firebase_bom = "32.7.0"
     const val circle_image = "3.1.0"
+    const val spinner = "2.0.0"
 }

@@ -186,4 +186,12 @@
     <string name="label_list_passport">Daftar Paspor</string>
     <string name="label_passport_use">Berikut ini data paspor yang sudah dimasukkan</string>
     <string name="label_add_new_passport">Tambahkan Paspor Lainnya</string>
+    <string name="label_photo_profile">Foto Profil</string>
+    <string name="label_detail_passport">Detail Paspor</string>
+    <string name="message_detail_passport">Isi semua kolom dengan data paspor yang berlaku ya</string>
+    <string name="label_passport_number">Nomor Paspor</string>
+    <string name="label_expired_date">Tanggal Kadaluwarsa</string>
+    <string name="label_country_of_issue">Negara yang Menerbitkan</string>
+    <string name="hint_passport_number">Masukkan nomor passport</string>
+    <string name="hint_expired_date">Masukkan tanggal kadaluwarsa</string>
 </resources>

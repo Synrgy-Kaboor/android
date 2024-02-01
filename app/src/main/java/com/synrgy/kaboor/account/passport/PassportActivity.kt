@@ -28,6 +28,7 @@ class PassportActivity : KaboorActivity<ActivityPassportBinding>() {
 
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
+        llAddPassport.setOnClickListener { AddPassportActivity.start(this@PassportActivity) }
     }
 
     override fun initProcess() {
