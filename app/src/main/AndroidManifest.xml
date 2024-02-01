@@ -25,6 +25,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".account.passport.AddPassportActivity"
+            android:exported="false" />
+        <activity
             android:name=".account.passport.PassportActivity"
             android:exported="false" />
         <activity
