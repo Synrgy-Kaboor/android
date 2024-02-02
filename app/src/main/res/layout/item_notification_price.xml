@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/KaboorCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_4dp"
+    app:cardElevation="@dimen/dimen_0dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginHorizontal="@dimen/dimen_10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Surabaya (SUB)" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_tabler_plane"
+                android:layout_marginHorizontal="@dimen/dimen_4dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/KaboorTextView.Title2"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="Surabaya (SUB)" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_more"
+                android:layout_width="@dimen/dimen_32dp"
+                android:layout_height="@dimen/dimen_32dp"
+                android:paddingVertical="@dimen/dimen_4dp"
+                app:srcCompat="@drawable/ic_more"
+                android:background="@drawable/ripple_oval_white"
+                android:layout_marginHorizontal="@dimen/dimen_4dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="24 Des 2024"
+                style="@style/KaboorTextView.Title1"
+                android:textColor="@color/neutral6"
+                android:drawablePadding="@dimen/dimen_4dp"
+                app:drawableStartCompat="@drawable/ic_clarity_date"
+                app:drawableTint="@color/neutral6"
+                android:gravity="center_vertical"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_passenger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="1 Orang"
+                style="@style/KaboorTextView.Title1"
+                android:textColor="@color/neutral6"
+                app:drawableStartCompat="@drawable/ic_tabler_walk"
+                android:drawablePadding="@dimen/dimen_4dp"
+                android:layout_marginHorizontal="@dimen/dimen_4dp"
+                app:drawableTint="@color/neutral6"
+                android:gravity="center_vertical"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_seat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Ekonomi"
+                style="@style/KaboorTextView.Title1"
+                android:textColor="@color/neutral6"
+                app:drawableStartCompat="@drawable/ic_seat_outline"
+                android:drawablePadding="@dimen/dimen_4dp"
+                android:layout_marginHorizontal="@dimen/dimen_4dp"
+                app:drawableTint="@color/neutral6"
+                android:gravity="center_vertical"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1_5dp"
+            app:dividerColor="@color/neutral5"
+            android:layout_marginVertical="@dimen/dimen_10dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Rp 1.230.000 - Rp 1.500.000"
+            android:layout_marginHorizontal="@dimen/dimen_10dp"
+            style="@style/KaboorTextView.Heading1"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:textColor="@color/primaryBrightViolet"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</com.google.android.material.card.MaterialCardView>

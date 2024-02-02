@@ -21,4 +21,8 @@ data class PriceNotification(
     val clazz: String,
     val lowerPriceLimit: Long? = 0L,
     val upperPriceLimit: Long? = 0L,
-)
+){
+    fun countPassenger(): Int {
+        return (numOfAdults ?: 0) + (numOfKids ?: 0) + (numOfBabies ?: 0)
+    }
+}
