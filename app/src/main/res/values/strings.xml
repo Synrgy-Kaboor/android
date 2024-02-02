@@ -194,4 +194,5 @@
     <string name="label_country_of_issue">Negara yang Menerbitkan</string>
     <string name="hint_passport_number">Masukkan nomor passport</string>
     <string name="hint_expired_date">Masukkan tanggal kadaluwarsa</string>
+    <string name="label_more_detail">Selengkapnya</string>
 </resources>
