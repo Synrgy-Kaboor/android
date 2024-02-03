@@ -3,11 +3,12 @@ package com.synrgy.data.user.remote
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
-import com.synrgy.data.user.model.response.UserDataResponse
+import com.synrgy.data.user.model.response.PersonalInfoResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
+import retrofit2.http.Path
 
 
 /**
@@ -17,11 +18,14 @@ import retrofit2.http.PATCH
 
 
 interface UserService {
-    @GET("/api/v1/user")
-    suspend fun getUser(): Response<ResponseWrapper<UserDataResponse>>
+    @GET("/api/v1/user/{id}")
+    suspend fun getPersonalInfo(
+        @Path("id") id: Int
+    ): Response<ResponseWrapper<PersonalInfoResponse>>
 
-    @PATCH("/api/v1/user")
-    suspend fun updateUser(
+    @PATCH("/api/v1/user/{id}")
+    suspend fun updatePersonalInfo(
+        @Path("id") id: Int,
         @Body body: UpdatePersonalInfoRequest,
     ): Response<KaboorGenericResponse>
 }

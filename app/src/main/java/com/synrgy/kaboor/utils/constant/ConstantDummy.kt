@@ -11,6 +11,7 @@ import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.domain.notification.model.response.AirportCity
 import com.synrgy.domain.notification.model.response.Notification
 import com.synrgy.domain.notification.model.response.PriceNotification
+import com.synrgy.domain.flight.model.response.OrderFlight
 import com.synrgy.domain.user.model.response.HelpCenter
 import com.synrgy.domain.user.model.response.Passport
 
@@ -440,6 +441,50 @@ object ConstantDummy {
                     "Bank Mandiri",
                     imageUrl = "https://logowik.com/content/uploads/images/bank-mandiri.jpg"
                 )
+            )
+        )
+
+    fun activeOrderFlight(): List<OrderFlight> =
+        listOf(
+            OrderFlight(
+                "12122023994",
+                "Jakarta",
+                "Surabaya",
+                "Sen, 24 Des 2023",
+                "08.00 WIB",
+                "Sedang di Proses",
+                image = R.drawable.sample_img_garuda
+            ),
+            OrderFlight(
+                "12122023994",
+                "Surabaya",
+                "Jakarta",
+                "Sel, 25 Des 2023",
+                "08.00 WIB",
+                "E-Tiket Terbit",
+                image = R.drawable.sample_img_garuda
+            )
+        )
+
+    fun orderHistoryFlight(): List<OrderFlight> =
+        listOf(
+            OrderFlight(
+                "12122023994",
+                "Jakarta",
+                "Surabaya",
+                "Sen, 24 Des 2023",
+                "08.00 WIB",
+                "Selesai",
+                image = R.drawable.sample_img_garuda
+            ),
+            OrderFlight(
+                "12122023994",
+                "Surabaya",
+                "Jakarta",
+                "Sel, 25 Des 2023",
+                "08.00 WIB",
+                "Selesai",
+                image = R.drawable.sample_img_garuda
             )
         )
 }

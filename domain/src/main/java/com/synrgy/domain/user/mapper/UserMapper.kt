@@ -1,9 +1,9 @@
 package com.synrgy.domain.user.mapper
 
-import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
-import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
+import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.domain.user.model.request.UserParam
+import com.synrgy.domain.user.model.response.PersonalInfo
 
 
 /**
@@ -20,17 +20,15 @@ fun UserParam.toRequest(): UserRequest {
     )
 }
 
-fun UpdatePersonalInfoParam.toRequest(): UpdatePersonalInfoRequest {
-    return UpdatePersonalInfoRequest(
+fun PersonalInfoResponse.toDomain(): PersonalInfo {
+    return PersonalInfo(
         title = title,
         fullName = fullName,
         gender = gender,
         birthday = birthday,
-        country = country,
+        nation = nation,
         city = city,
         address = address,
-        email = email,
-        phoneNumber = phoneNumber,
-        isWni = isWni
+        isWni = isWni,
     )
 }
