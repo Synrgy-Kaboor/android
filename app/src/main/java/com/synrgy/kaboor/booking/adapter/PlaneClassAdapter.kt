@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.common.utils.Selectable
+import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.kaboor.databinding.ItemPlaneClassBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder

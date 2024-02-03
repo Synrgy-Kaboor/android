@@ -30,7 +30,8 @@
                 android:layout_centerVertical="true"
                 app:civ_border_color="@color/neutral5"
                 app:civ_border_width="@dimen/dimen_1dp"
-                tools:src="@tools:sample/avatars" />
+                android:scaleType="centerCrop"
+                tools:src="@drawable/ic_launcher_foreground" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_user_name"

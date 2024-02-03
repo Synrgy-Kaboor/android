@@ -98,7 +98,7 @@ class FlightReturnTicketListActivity :
     override fun initObservers() {}
 
     private fun handleNavigation(flight: Flight) {
-        PassengerDetailActivity.start(this, departureFlight, flight)
+        PassengerDetailActivity.start(this, departureFlight, flight, flightParam)
     }
 
     private fun initPlaneTicket() = with(binding) {

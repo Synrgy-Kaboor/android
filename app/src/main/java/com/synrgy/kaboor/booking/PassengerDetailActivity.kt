@@ -8,6 +8,7 @@ import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.constant.ConstantTag
 import com.synrgy.common.utils.enums.DetailPassengerType
 import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.booking.dialog.DetailPassengerBottomSheetFragment
@@ -21,14 +22,17 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
             context: Context,
             departureFlightParam: Flight?,
             returnFlightParam: Flight? = null,
+            flightParam: FlightParam?
         ) {
             context.startActivity(Intent(context, PassengerDetailActivity::class.java).apply {
                 putExtra(ConstantKey.KEY_DEPARTURE_FLIGHT, departureFlightParam)
                 putExtra(ConstantKey.KEY_RETURN_FLIGHT, returnFlightParam)
+                putExtra(ConstantKey.KEY_FLIGHT_PARAM, flightParam)
             })
         }
     }
 
+    private var flightParam: FlightParam? = null
     private var departureFlight: Flight? = null
     private var returnFlight: Flight? = null
     private var listFlight: MutableList<Flight> = mutableListOf()
@@ -50,6 +54,7 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
     override fun initIntent() {
         departureFlight = intent.getParcelableExtra(ConstantKey.KEY_DEPARTURE_FLIGHT)
         returnFlight = intent.getParcelableExtra(ConstantKey.KEY_RETURN_FLIGHT)
+        flightParam = intent.getParcelableExtra(ConstantKey.KEY_FLIGHT_PARAM)
 
         departureFlight?.let { listFlight.add(it) }
         returnFlight?.let { listFlight.add(it) }
@@ -58,9 +63,7 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
         cvBookerDetail.onClick { showDetailInfo(DetailPassengerType.BOOKER) }
-        ivEdit.onClick {
-            if (!btnSwitch.isChecked) showDetailInfo(DetailPassengerType.PASSENGER)
-        }
+        ivEdit.onClick { if (!btnSwitch.isChecked) showDetailInfo(DetailPassengerType.PASSENGER) }
         btnOrder.onClick { ExtraProtectionActivity.start(this@PassengerDetailActivity) }
     }
 
