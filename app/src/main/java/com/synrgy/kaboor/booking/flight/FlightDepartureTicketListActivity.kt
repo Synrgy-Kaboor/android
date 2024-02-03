@@ -81,7 +81,7 @@ class FlightDepartureTicketListActivity :
 
     private fun handleNavigation(flight: Flight) {
         if (isRoundTrip) FlightReturnTicketListActivity.start(this, flightParam, flight)
-        else PassengerDetailActivity.start(this, flight)
+        else PassengerDetailActivity.start(this, flight, null, flightParam)
     }
 
     private fun initPlaneTicket() = with(binding) {

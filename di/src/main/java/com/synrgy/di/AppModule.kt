@@ -1,13 +1,11 @@
 package com.synrgy.di
 
 import android.content.Context
-import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.synrgy.data.user.local.KaboorDataStore
+import com.synrgy.di.lib.HeaderInterceptor
 import com.wahidabd.library.data.libs.OkHttpClientFactory
-import com.wahidabd.library.data.libs.interceptor.HeaderInterceptor
-import com.wahidabd.library.utils.extensions.debug
 import okhttp3.Interceptor
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -43,12 +41,7 @@ val appModule = module {
 }
 
 private fun getHeaderInterceptor(data: KaboorDataStore): Interceptor {
-    val headers = HashMap<String, String>()
-    headers["Content-Type"] = "application/json"
-    if (data.getToken()?.isNotEmpty() == true) {
-        headers["Authorization"] = "Bearer ${data.getToken()}"
-    }
-    return HeaderInterceptor(headers)
+    return HeaderInterceptor(data)
 }
 
 private fun chuckerInterceptor(context: Context): Interceptor {

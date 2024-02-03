@@ -47,7 +47,7 @@
     <string name="udah_punya_akun_log_in_aja">Udah punya akun? Log in aja!</string>
     <string name="login_syarat">Dengan Log In kamu menyerujui Syarat, Ketentuan dan Kebijakan Privasi Kaboor</string>
     <string name="masukkan_email">Masukkan Email</string>
-    <string name="contains_regitered_account">Email was registered</string>
+    <string name="contains_regitered_account">Email was registered, please use another email!</string>
     <string name="contains_available_account">Email is available for new user</string>
     <string name="message_account_not_registered">Email ini belum terdaftar untuk Login</string>
     <string name="message_account_not_registered_description">Untuk log in menggunakan email ini, silahkan lakukan daftar akun terlebih dulu ya</string>
@@ -149,9 +149,9 @@
     <string name="message_detail_passenger">Data ini akan digunakan untuk pengiriman e-ticket dan keperluan refund/reschedule </string>
     <string name="message_ktp">*Sesuai dengan KTP</string>
     <string name="label_passenger_info">Info Penumpang</string>
-    <string name="label_mr">Mr</string>
-    <string name="label_mrs">Mrs</string>
-    <string name="label_miss">Mr</string>
+    <string name="label_mr">Mr.</string>
+    <string name="label_mrs">Mrs.</string>
+    <string name="label_miss">Miss.</string>
     <string name="label_info_passenger_detail">E-Ticket akan dikirimkan ke alamat Email ini</string>
     <string name="masukan_no_baru">Tolong masukkan nomor handphone yang baru</string>
     <string name="kode_verifikasi">Kode Verifikasi</string>
@@ -194,5 +194,12 @@
     <string name="label_country_of_issue">Negara yang Menerbitkan</string>
     <string name="hint_passport_number">Masukkan nomor passport</string>
     <string name="hint_expired_date">Masukkan tanggal kadaluwarsa</string>
+    <string name="label_one_way">Satu Arah</string>
+    <string name="label_round_trip">Pulang Pergi</string>
+    <string name="label_edit_price_notification">Edit Notifikasi Harga</string>
+    <string name="label_remove_price_notification">Hapus Notifikasi Harga</string>
+    <string name="label_detail_price_notification">Detail Notifikasi Harga</string>
+    <string name="label_schedule_notification"><![CDATA[Jadwal Keberangkatan & Harga yang Cocok]]></string>
+    <string name="format_people">%d Orang</string>
     <string name="label_more_detail">Selengkapnya</string>
 </resources>

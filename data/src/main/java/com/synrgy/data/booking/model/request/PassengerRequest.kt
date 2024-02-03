@@ -1,4 +1,4 @@
-package com.synrgy.domain.booking.model.request
+package com.synrgy.data.booking.model.request
 
 
 /**
@@ -7,9 +7,9 @@ package com.synrgy.domain.booking.model.request
  */
 
 
-data class UpdatePassengerParam(
+data class PassengerRequest(
     val fullName: String? = null,
     val title: String? = null,
-    val phone_number: String? = null,
+    val phoneNumber: String? = null,
     val email: String? = null
 )

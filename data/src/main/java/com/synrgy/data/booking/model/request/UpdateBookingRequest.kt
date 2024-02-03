@@ -8,7 +8,7 @@ package com.synrgy.data.booking.model.request
 
 
 data class UpdateBookingRequest(
-    val orderer: UpdatePassengerRequest,
-    val passengers: List<UpdatePassengerRequest>,
+    val orderer: PassengerRequest,
+    val passengers: List<PassengerRequest>,
     val addBaggage: Boolean,
 )
