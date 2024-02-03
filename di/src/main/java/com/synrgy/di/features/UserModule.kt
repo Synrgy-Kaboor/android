@@ -17,6 +17,6 @@ import retrofit2.Retrofit
 
 val userModule = module {
     single { get<Retrofit>().create(UserService::class.java) }
-    single<UserRepository> { UserDataStore(get()) }
+    single<UserRepository> { UserDataStore(get(), get(), get()) }
     single<UserUseCase> { UserInteractor(get()) }
 }
