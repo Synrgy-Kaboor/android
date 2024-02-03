@@ -1,6 +1,7 @@
 package com.synrgy.domain.flight.mapper
 
 import com.synrgy.common.model.AirportData
+import com.synrgy.data.flight.local.AirportEntity
 import com.synrgy.data.flight.model.request.FlightRequest
 import com.synrgy.data.flight.model.response.AirportResponse
 import com.synrgy.domain.flight.model.request.FlightParam
@@ -28,14 +29,45 @@ fun FlightParam.toRequest(): FlightRequest {
 
 fun AirportResponse.toDomain(): Airport {
     return Airport(
-        city = this.city,
-        airport = this.airport
+        id = id,
+        code = code,
+        name = name,
+        timezone = timezone
     )
 }
 
 fun Airport.toData(): AirportData {
     return AirportData(
-        city = this.city,
-        airport = this.airport
+        id = id,
+        code = code,
+        name = name,
+        timezone = timezone
+    )
+}
+
+fun Airport.toEntity(): AirportEntity {
+    return AirportEntity(
+        id = id,
+        code = code,
+        name = name,
+        timezone = timezone
+    )
+}
+
+fun AirportEntity.toDomain(): Airport {
+    return Airport(
+        id = id,
+        code = code,
+        name = name,
+        timezone = timezone
+    )
+}
+
+fun AirportResponse.toEntity(): AirportEntity {
+    return AirportEntity(
+        id = id,
+        code = code,
+        name = name,
+        timezone = timezone
     )
 }

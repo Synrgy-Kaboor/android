@@ -202,4 +202,5 @@
     <string name="label_schedule_notification"><![CDATA[Jadwal Keberangkatan & Harga yang Cocok]]></string>
     <string name="format_people">%d Orang</string>
     <string name="label_more_detail">Selengkapnya</string>
+    <string name="error_same_airport">Bandara asal dan bandara tujuan tidak boleh sama</string>
 </resources>

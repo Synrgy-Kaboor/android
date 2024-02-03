@@ -1,6 +1,7 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
+    kotlinKsp()
 }
 
 android {
@@ -36,4 +37,7 @@ dependencies {
     api(project(Modules.common))
 
     implementation(Dependecies.datastore)
+    implementation(Dependecies.room)
+    implementation(Dependecies.room_ktx)
+    ksp(Dependecies.room_compiler)
 }

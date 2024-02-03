@@ -18,7 +18,7 @@ class LottieBottomSheet : KaboorBottomSheet<LayoutNoInternetBottomSheetBinding>(
     companion object {
         fun newInstance(
             message: String = emptyString(),
-            isCancelable: Boolean = false,
+            isCancelable: Boolean = true,
         ): LottieBottomSheet {
             return LottieBottomSheet().apply {
                 this.message = message

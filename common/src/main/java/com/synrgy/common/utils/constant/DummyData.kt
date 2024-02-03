@@ -12,90 +12,52 @@ import com.synrgy.common.model.AirportData
 object DummyData {
 
 
-    fun departure() = AirportData("Juanda Intl", "Surabaya")
-    fun arrival() = AirportData("Soekarno Hatta Intl", "Jakarta")
+    fun departure() = AirportData(1, "SUB", "Juanda Intl", 7)
+    fun arrival() = AirportData(2, "CKG", "Soekarno Hatta Intl", 7)
 
     fun airportData(): List<AirportData> =
         listOf(
             AirportData(
+                1,
                 "Juanda Intl",
-                "Surabaya"
+                "SUB",
+                7
             ),
             AirportData(
+                2,
                 "Soekarno Hatta Intl",
-                "Jakarta"
+                "CKG",
+                7
             ),
             AirportData(
-                "Adi Sumarmo Wiryokusumo",
-                "Solo"
+                3,
+                "Adi Soemarmo Intl",
+                "SOC",
+                7
             ),
             AirportData(
-                "Husein Sastranegara Intl",
-                "Bandung"
+                4,
+                "Adi Sumarmo Intl",
+                "SOC",
+                7
             ),
             AirportData(
-                "Sultan Hasanuddin Intl",
-                "Makassar"
+                5,
+                "Adi Sumarmo Intl",
+                "SOC",
+                7
             ),
             AirportData(
-                "Ngurah Rai Intl",
-                "Denpasar"
+                6,
+                "Adi Sumarmo Intl",
+                "SOC",
+                7
             ),
             AirportData(
-                "Kualanamu Intl",
-                "Medan"
+                7,
+                "Adi Sumarmo Intl",
+                "SOC",
+                7
             ),
-            AirportData(
-                "Hang Nadim",
-                "Batam"
-            ),
-            AirportData(
-                "Halim Perdana Kusuma",
-                "Jakarta"
-            ),
-            AirportData(
-                "Sultan Syarif Kasim Ii",
-                "Pekanbaru"
-            ),
-            AirportData(
-                "Sultan Mahmud Badaruddin Ii",
-                "Palembang"
-            ),
-            AirportData(
-                "Minangkabau",
-                "Padang"
-            ),
-            AirportData(
-                "Sultan Aji Muhamad Sulaiman",
-                "Balikpapan"
-            ),
-            AirportData(
-                "Sultan Iskandarmuda",
-                "Banda Aceh"
-            ),
-            AirportData(
-                "Sultan Thaha",
-                "Jambi"
-            ),
-            AirportData(
-                "Hasanuddin Intl",
-                "Ujung Pandang"
-            ),
-            AirportData(
-                "El Tari",
-                "Kupang"
-            ),
-            AirportData(
-                "Supadio",
-                "Pontianak"
-            ),
-            AirportData(
-                "Sam Ratulangi",
-                "Manado"
-            ),
-            AirportData(
-                "Sepinggan",
-                "Balikpapan"
-            )
         )
 }

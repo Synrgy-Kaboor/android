@@ -2,7 +2,7 @@ package com.synrgy.data.user
 
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorGenericResponse
-import com.synrgy.data.user.local.KaboorDataStore
+import com.synrgy.data.db.KaboorDataStore
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.PersonalInfoResponse
