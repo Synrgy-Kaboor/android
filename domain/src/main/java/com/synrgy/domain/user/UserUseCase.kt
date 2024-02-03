@@ -1,8 +1,6 @@
 package com.synrgy.domain.user
 
 import com.synrgy.common.data.response.KaboorGenericResponse
-import com.synrgy.domain.booking.model.request.UpdateBookingParam
-import com.synrgy.domain.booking.model.response.BookingInfo
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.domain.user.model.request.UserParam
 import com.synrgy.domain.user.model.response.PersonalInfo
@@ -26,11 +24,11 @@ interface UserUseCase {
     fun getUser(): Flow<User>
 
     suspend fun getPersonalInfo(
-        id: Int
+        id: Int,
     ): Flow<Resource<PersonalInfo>>
 
     suspend fun updatePersonalInfo(
         id: Int,
-        body: UpdatePersonalInfoParam
+        body: UpdatePersonalInfoParam,
     ): Flow<Resource<KaboorGenericResponse>>
 }

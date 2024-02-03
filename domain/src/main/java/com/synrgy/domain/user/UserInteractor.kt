@@ -5,8 +5,6 @@ import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.data.user.UserRepository
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.domain.auth.mapper.toDomain
-import com.synrgy.domain.booking.mapper.toRequest
-import com.synrgy.domain.booking.model.request.UpdateBookingParam
 import com.synrgy.domain.user.mapper.toDomain
 import com.synrgy.domain.user.mapper.toRequest
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam

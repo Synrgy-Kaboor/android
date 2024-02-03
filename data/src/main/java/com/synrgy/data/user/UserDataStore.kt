@@ -2,7 +2,6 @@ package com.synrgy.data.user
 
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorGenericResponse
-import com.synrgy.data.booking.remote.BookingService
 import com.synrgy.data.user.local.KaboorDataStore
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
@@ -25,7 +24,7 @@ import kotlinx.coroutines.flow.flow
 class UserDataStore(
     private val dataStore: KaboorDataStore,
     private val api: UserService,
-    private val error: ErrorParser
+    private val error: ErrorParser,
 ) : UserRepository {
 
     override suspend fun saveToken(token: String) {
