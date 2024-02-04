@@ -6,28 +6,37 @@ import com.synrgy.common.R
 import com.synrgy.common.model.AirportData
 import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.common.utils.ext.lowerContains
-import com.synrgy.domain.booking.mapper.toData
+import com.synrgy.domain.flight.mapper.toData
 import com.synrgy.kaboor.booking.adapter.AirportAdapter
 import com.synrgy.kaboor.databinding.FragmentAirportBottomSheetBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
+import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
+import com.wahidabd.library.utils.exts.observerLiveData
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
+import org.koin.core.component.KoinComponent
 
 
 class AirportBottomSheetFragment : KaboorBottomSheet<FragmentAirportBottomSheetBinding>() {
+
+    companion object {
+        fun newInstance(
+            airportData: List<AirportData>,
+            onSelectedAirport: (AirportData) -> Unit
+        ): AirportBottomSheetFragment = AirportBottomSheetFragment().apply {
+            this.onSelectedAirport = onSelectedAirport
+            this.airportData = airportData
+        }
+    }
+
+    private var airportData = listOf<AirportData>()
 
     private val airportAdapter by lazy {
         AirportAdapter(requireContext(), ::setAirportSelected)
     }
 
     private var onSelectedAirport: (AirportData) -> Unit = {}
-
-    companion object {
-        fun newInstance(
-            onSelectedAirport: (AirportData) -> Unit
-        ): AirportBottomSheetFragment = AirportBottomSheetFragment().apply {
-            this.onSelectedAirport = onSelectedAirport
-        }
-    }
 
     override val tagName: String = ConstantTag.TAG_PASSENGER
     override fun getTitle(): String = getString(R.string.label_airport)
@@ -46,9 +55,9 @@ class AirportBottomSheetFragment : KaboorBottomSheet<FragmentAirportBottomSheetB
         }
     }
 
-    override fun initProcess() {
-        super.initProcess()
-        airportAdapter.setData = ConstantDummy.airports().map { it.toData() }
+    override fun initObservers() {
+        super.initObservers()
+        airportAdapter.setData = airportData
     }
 
     private fun setAirportSelected(data: AirportData) {
@@ -58,9 +67,9 @@ class AirportBottomSheetFragment : KaboorBottomSheet<FragmentAirportBottomSheetB
 
     private fun filter(text: String) {
         val query = ArrayList<AirportData>()
-        ConstantDummy.airports().map { it.toData() }.forEach {
-            if (it.city.lowerContains(text) ||
-                it.airport.lowerContains(text)
+        airportData.forEach {
+            if (it.code.lowerContains(text) ||
+                it.name.lowerContains(text)
             ) {
                 query.add(it)
             }

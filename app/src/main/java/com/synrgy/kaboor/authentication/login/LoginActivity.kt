@@ -2,6 +2,7 @@ package com.synrgy.kaboor.authentication.login
 
 import android.content.Context
 import android.content.Intent
+import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.kaboor.R
@@ -45,23 +46,25 @@ class LoginActivity : KaboorPassiveActivity<ActivityLoginBinding>() {
         viewModel.checkEmail.observerLiveData(
             this,
             onLoading = { showLoading() },
-            onFailure = { _, _ ->
+            onFailure = { _, message ->
                 hideLoading()
-                LoginPasswordActivity.start(this@LoginActivity, binding.etEmail.getText())
+                if (message?.contains(
+                        getString(R.string.contains_regitered_account),
+                        ignoreCase = true
+                    ) == true
+                ) {
+                    LoginPasswordActivity.start(this@LoginActivity, binding.etEmail.getText())
+                } else showErrorDialog(message.toString())
             },
             onSuccess = {
                 hideLoading()
-                handleLoginAccount(it.message)
+                handleLoginAccount(it)
             }
         )
     }
 
-    private fun handleLoginAccount(message: String?) {
-        if (message?.contains(
-                getString(R.string.contains_available_account),
-                ignoreCase = true
-            ) == true
-        ) {
+    private fun handleLoginAccount(response: KaboorGenericResponse) {
+        if (response.code == 200) {
             showAlertDialog(
                 title = getString(R.string.message_account_was_not_registered),
                 description = getString(R.string.message_account_was_not_registered_description),
@@ -70,7 +73,7 @@ class LoginActivity : KaboorPassiveActivity<ActivityLoginBinding>() {
                 primaryAction = { LoginPasswordActivity.start(this, binding.etEmail.getText()) },
             )
         } else {
-            showErrorDialog(message.toString())
+            showErrorDialog(response.message)
         }
     }
 

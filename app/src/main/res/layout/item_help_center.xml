@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="@dimen/dimen_0dp"
+    style="@style/KaboorCard"
+    android:layout_marginTop="@dimen/dimen_8dp"
+    android:layout_marginHorizontal="@dimen/dimen_16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginVertical="@dimen/dimen_10dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title"
+            style="@style/KaboorTextView.Title2"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/img_toggle"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@id/img_toggle"
+            android:gravity="center_vertical"
+            tools:text="Title" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_toggle"
+            android:layout_width="@dimen/dimen_32dp"
+            android:layout_height="@dimen/dimen_32dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ripple_oval_white"
+            android:padding="@dimen/dimen_2dp"
+            android:src="@drawable/selector_toggle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_content"
+            style="@style/KaboorTextView.SubHeading1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_toggle"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:textColor="@color/neutral8" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

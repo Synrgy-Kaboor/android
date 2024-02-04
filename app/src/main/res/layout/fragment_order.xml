@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kennyc.view.MultiStateView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/msv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:msv_errorView="@layout/layout_not_login"
     tools:context=".order.OrderFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@color/white"
+            app:tabIndicatorFullWidth="true"
+            app:tabMode="fixed"
+            app:tabPaddingStart="@dimen/dimen_0dp"
+            app:tabSelectedTextColor="@color/primaryBrightViolet"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            app:tabTextColor="@color/neutral5" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</com.kennyc.view.MultiStateView>

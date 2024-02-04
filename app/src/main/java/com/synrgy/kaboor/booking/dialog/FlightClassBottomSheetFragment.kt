@@ -6,7 +6,7 @@ import com.synrgy.common.presentation.KaboorBottomSheet
 import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.kaboor.databinding.FragmentFlightClassBottomSheetBinding
 import com.synrgy.kaboor.booking.adapter.PlaneClassAdapter
-import com.synrgy.kaboor.utils.constant.ConstantTag
+import com.synrgy.common.utils.constant.ConstantTag
 import com.wahidabd.library.utils.exts.onClick
 
 

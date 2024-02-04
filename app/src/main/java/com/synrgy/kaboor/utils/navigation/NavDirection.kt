@@ -37,6 +37,7 @@ object NavDirection {
                 activity?.let { LoginPasswordActivity.start(it, email.toString()) }
                 activity?.finish()
             }
+            else -> {}
         }
     }
 }

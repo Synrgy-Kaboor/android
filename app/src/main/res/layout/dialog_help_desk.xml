@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_10dp"
+    android:background="@drawable/bg_rectangle_stroke_white"
+    android:padding="@dimen/dimen_10dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_close"
+        android:layout_width="@dimen/dimen_30dp"
+        android:layout_height="@dimen/dimen_30dp"
+        android:background="@drawable/ripple_oval_white"
+        android:padding="@dimen/dimen_6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close"
+        app:tint="@color/neutral6" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_contact_us"
+        style="@style/KaboorTextView.Title2"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_2dp"
+        android:gravity="center_horizontal"
+        android:text="@string/span_contact_us"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_close" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_whatsapp"
+        android:layout_width="@dimen/dimen_38dp"
+        android:layout_height="@dimen/dimen_38dp"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:layout_marginBottom="@dimen/dimen_6dp"
+        android:background="@drawable/ripple_oval_white"
+        android:padding="@dimen/dimen_6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_contact_us"
+        app:srcCompat="@drawable/whatsapp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

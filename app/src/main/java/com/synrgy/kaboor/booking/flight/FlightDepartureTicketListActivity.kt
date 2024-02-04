@@ -5,14 +5,14 @@ import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.onBackPress
-import com.synrgy.domain.booking.Ticket
-import com.synrgy.domain.booking.model.request.FlightParam
+import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.kaboor.booking.PassengerDetailActivity
 import com.synrgy.kaboor.booking.PriceAlertActivity
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.databinding.ActivityFlightDepartureTicketListBinding
 import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.kaboor.utils.constant.ConstantKey
+import com.synrgy.common.utils.constant.ConstantKey
+import com.synrgy.domain.flight.model.response.Flight
 
 class FlightDepartureTicketListActivity :
     KaboorActivity<ActivityFlightDepartureTicketListBinding>() {
@@ -74,14 +74,14 @@ class FlightDepartureTicketListActivity :
     }
 
     override fun initProcess() {
-        planeTicketAdapter.setData = ConstantDummy.planeTicket()
+        planeTicketAdapter.setData = ConstantDummy.planeFlight()
     }
 
     override fun initObservers() {}
 
-    private fun handleNavigation(ticket: Ticket) {
-        if (isRoundTrip) FlightReturnTicketListActivity.start(this, flightParam)
-        else PassengerDetailActivity.start(this)
+    private fun handleNavigation(flight: Flight) {
+        if (isRoundTrip) FlightReturnTicketListActivity.start(this, flightParam, flight)
+        else PassengerDetailActivity.start(this, flight, null, flightParam)
     }
 
     private fun initPlaneTicket() = with(binding) {

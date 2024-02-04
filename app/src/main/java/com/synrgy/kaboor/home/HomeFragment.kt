@@ -1,16 +1,13 @@
 package com.synrgy.kaboor.home
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.common.utils.enums.HomeMenu
 import com.synrgy.common.utils.enums.ProductAdapterType
-import com.synrgy.common.utils.ext.requestMultiplePermission
-import com.synrgy.kaboor.MainActivity
 import com.synrgy.kaboor.R
+import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.FragmentHomeBinding
 import com.synrgy.kaboor.home.adapter.CardProductAdapter
@@ -21,11 +18,12 @@ import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.synrgy.kaboor.utils.navigation.NavDirection
 import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.extensions.debug
+import com.wahidabd.library.utils.exts.observerLiveData
 import org.koin.android.ext.android.inject
 
 class HomeFragment : KaboorFragment<FragmentHomeBinding>() {
 
-    private val viewMode: HomeViewModel by inject()
+    private val viewMode: SharedViewModel by inject()
 
     private var loginState: Boolean = false
 

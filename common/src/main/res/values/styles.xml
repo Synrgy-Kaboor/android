@@ -24,16 +24,20 @@
         <item name="cardElevation">@dimen/dimen_3dp</item>
         <item name="cardCornerRadius">@dimen/dimen_8dp</item>
         <item name="strokeWidth">@dimen/dimen_1dp</item>
-        <item name="strokeColor">@color/neutral6</item>
+        <item name="strokeColor">@color/neutral5</item>
     </style>
 
-    <style name="KaboorDatePicker" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
-        <item name="colorPrimary">@color/primaryBrightBlue</item>
-        <item name="android:backgroundTint">@color/neutral1</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+    <style name="KaboorCalendar" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="materialCalendarHeaderLayout">@style/KaboorCalendarHeader</item>
+        <item name="materialCalendarHeaderToggleButton">@style/KaboorCalendarHeaderToggleButton</item>
     </style>
 
-    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
-        <item name="cornerFamily">rounded</item>
+    <style name="KaboorCalendarHeader" parent="Widget.MaterialComponents.MaterialCalendar.HeaderLayout">
+        <item name="android:background">@color/primaryBrightBlue</item>
+    </style>
+
+    <style name="KaboorCalendarHeaderToggleButton" parent="Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton">
+        <item name="android:visibility">gone</item>
     </style>
 </resources>

@@ -54,6 +54,7 @@ dependencies {
     api(Dependecies.serialzation)
     api(Dependecies.firebase_analytics)
     api(Dependecies.firebase_crashlytics)
+    api(Dependecies.multi_state_view)
 
     debugApi(Dependecies.chucker)
     releaseApi(Dependecies.chucker_no_op)

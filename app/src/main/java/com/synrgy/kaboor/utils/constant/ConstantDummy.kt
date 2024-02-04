@@ -6,8 +6,14 @@ import com.synrgy.data.payment.model.response.Promo
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
 import com.synrgy.domain.payment.Bank
-import com.synrgy.domain.booking.Ticket
-import com.synrgy.domain.booking.model.response.Airport
+import com.synrgy.domain.flight.model.response.Airport
+import com.synrgy.domain.flight.model.response.Flight
+import com.synrgy.domain.notification.model.response.AirportCity
+import com.synrgy.domain.notification.model.response.Notification
+import com.synrgy.domain.notification.model.response.PriceNotification
+import com.synrgy.domain.flight.model.response.OrderFlight
+import com.synrgy.domain.user.model.response.HelpCenter
+import com.synrgy.domain.user.model.response.Passport
 
 
 /**
@@ -18,37 +24,129 @@ import com.synrgy.domain.booking.model.response.Airport
 
 object ConstantDummy {
 
-    fun departure(): Airport = Airport("Surabaya", "SUB")
-    fun arrival(): Airport = Airport("Jakarta", "JKT")
+    fun priceNotifications(): List<PriceNotification> =
+        listOf(
+            PriceNotification(
+                AirportCity("Surabaya", "SUB"),
+                AirportCity("Jakarta", "JKT"),
+                "20 Des 2023",
+                "21 Des 2023",
+                2,
+                1,
+                0,
+                "Ekonomi",
+                1000000,
+                2000000
+            ),
+            PriceNotification(
+                AirportCity("Surabaya", "SUB"),
+                AirportCity("Jakarta", "JKT"),
+                "20 Des 2023",
+                "21 Des 2023",
+                2,
+                1,
+                0,
+                "Ekonomi",
+                1000000,
+                2000000
+            ),
+            PriceNotification(
+                AirportCity("Surabaya", "SUB"),
+                AirportCity("Jakarta", "JKT"),
+                "20 Des 2023",
+                "21 Des 2023",
+                2,
+                1,
+                0,
+                "Ekonomi",
+                1000000,
+                2000000
+            ),
+            PriceNotification(
+                AirportCity("Surabaya", "SUB"),
+                AirportCity("Jakarta", "JKT"),
+                "20 Des 2023",
+                "21 Des 2023",
+                2,
+                1,
+                0,
+                "Ekonomi",
+                1000000,
+                2000000
+            )
+        )
 
+    fun allNotifications(): List<Notification> =
+        listOf(
+            Notification(
+                1,
+                "Pembayaran Berhasil",
+                "Tiket pesawat Lion Air Anda sudah dikonfirmasi untuk penerbangan ke Jakarta (CGK) pada tanggal 20 Des2024. Siapkan perjalanan Anda dengan semangat! \uD83C\uDF1F",
+                "20 Des",
+                R.drawable.ic_plane
+            ),
+            Notification(
+                2,
+                "Pesawat Delay",
+                "Tiket pesawat Lion Air Anda sudah dikonfirmasi untuk penerbangan ke Jakarta (CGK) pada tanggal 20 Des2024. Siapkan perjalanan Anda dengan semangat! \uD83C\uDF1F",
+                "20 Des",
+                R.drawable.ic_plane
+            )
+        )
+
+    fun passport(): List<Passport> =
+        listOf(
+            Passport(
+                1,
+                "Andre Hutson",
+                "123456789",
+                "12/12/2024",
+                "Indonesia"
+            ),
+        )
+
+    fun helpCenters(): List<HelpCenter> =
+        listOf(
+            HelpCenter(
+                "Apakah Pembayaran Sudah Diterima",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Cara Membayar Pesanan Saya",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Cara Mengubah Nomor Handphone?",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Cara Mengubah Email",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Transaksi Saya Tidak Berhasil",
+                "Lorem ipsum"
+            ),
+            HelpCenter(
+                "Pendaftaran Akun Gagal?",
+                "Lorem ipsum"
+            ),
+        )
+
+    fun departure(): Airport = Airport(1, "SUB", "Juanda Intl", 7)
+    fun arrival(): Airport = Airport(2, "CKG", "Soekarno Hatta Intl", 7)
     fun airports(): List<Airport> =
         listOf(
-            Airport("Surabaya", "SUB"),
-            Airport("Jakarta", "JKT"),
-            Airport("Bandung", "BDO"),
-            Airport("Solo", "SOC"),
-            Airport("Makassar", "UPG"),
-            Airport("Denpasar", "DPS"),
-            Airport("Medan", "KNO"),
-            Airport("Yogyakarta", "JOG"),
-            Airport("Semarang", "SRG"),
-            Airport("Palembang", "PLM"),
-            Airport("Balikpapan", "BPN"),
-            Airport("Pekanbaru", "PKU"),
-            Airport("Banjarmasin", "BDJ"),
-            Airport("Batam", "BTH"),
-            Airport("Padang", "PDG"),
-            Airport("Lombok", "LOP"),
-            Airport("Banda Aceh", "BTJ"),
-            Airport("Pekanbaru", "PKU"),
-            Airport("Bengkulu", "BKS"),
-            Airport("Tanjung Pinang", "TNJ"),
-            Airport("Tanjung Pandan", "TJQ"),
-            Airport("Tanjung Selor", "TJS"),
-            Airport("Tanjung Redeb", "BEJ"),
-            Airport("Tanjung Warukin", "TJG"),
-            Airport("Tanjung Karang", "TKG"),
-            Airport("Gorontalo", "GTO"),
+            Airport(1, "Surabaya", "SUB", 7),
+            Airport(2, "Jakarta", "CGK", 7),
+            Airport(3, "Bali", "DPS", 7),
+            Airport(4, "Yogyakarta", "JOG", 7),
+            Airport(5, "Bandung", "BDO", 7),
+            Airport(6, "Semarang", "SRG", 7),
+            Airport(7, "Medan", "KNO", 7),
+            Airport(8, "Palembang", "PLM", 7),
+            Airport(9, "Pekanbaru", "PKU", 7),
+            Airport(10, "Balikpapan", "BPN", 7),
         )
 
     fun vouchers(): List<Promo> =
@@ -186,9 +284,9 @@ object ConstantDummy {
             ),
         )
 
-    fun planeTicket(): List<Ticket> =
+    fun planeFlight(): List<Flight> =
         listOf(
-            Ticket(
+            Flight(
                 1,
                 "Garuda Indonesia",
                 "Ekonomi",
@@ -201,7 +299,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_garuda
             ),
-            Ticket(
+            Flight(
                 2,
                 "Lion Air",
                 "Ekonomi",
@@ -214,7 +312,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_lion_air
             ),
-            Ticket(
+            Flight(
                 3,
                 "Batik Air",
                 "Ekonomi",
@@ -227,7 +325,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_batik_air
             ),
-            Ticket(
+            Flight(
                 4,
                 "Garuda Indonesia",
                 "Ekonomi",
@@ -240,7 +338,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_garuda
             ),
-            Ticket(
+            Flight(
                 5,
                 "Lion Air",
                 "Ekonomi",
@@ -253,7 +351,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_lion_air
             ),
-            Ticket(
+            Flight(
                 6,
                 "Batik Air",
                 "Ekonomi",
@@ -268,9 +366,9 @@ object ConstantDummy {
             )
         )
 
-    fun roundTripPlaneTicket(): List<Ticket> =
+    fun roundTripPlaneFlight(): List<Flight> =
         listOf(
-            Ticket(
+            Flight(
                 1,
                 "Garuda Indonesia",
                 "Ekonomi",
@@ -283,7 +381,7 @@ object ConstantDummy {
                 1274000,
                 image = R.drawable.sample_img_garuda
             ),
-            Ticket(
+            Flight(
                 2,
                 "Lion Air",
                 "Ekonomi",
@@ -304,7 +402,7 @@ object ConstantDummy {
                 Bank(
                     id = 1,
                     methodName = "Bank BRI",
-                    imageUrl = "https://asset-2.tstatic.net/madura/foto/bank/images/logo-bri-dibuka-lowongan-kerja-di-bank-bri-untuk-lulusan-s1-dan-s2-untuk-september.jpg"
+                    imageUrl = "https://logowik.com/content/uploads/images/bri-20209664.logowik.com.webp"
                 )
             ),
             Selectable(
@@ -321,5 +419,56 @@ object ConstantDummy {
                     imageUrl = "https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png"
                 )
             ),
+            Selectable(
+                Bank(
+                    4,
+                    "Bank Mandiri",
+                    imageUrl = "https://logowik.com/content/uploads/images/bank-mandiri.jpg"
+                )
+            )
+        )
+
+    fun activeOrderFlight(): List<OrderFlight> =
+        listOf(
+            OrderFlight(
+                "12122023994",
+                "Jakarta",
+                "Surabaya",
+                "Sen, 24 Des 2023",
+                "08.00 WIB",
+                "Sedang di Proses",
+                image = R.drawable.sample_img_garuda
+            ),
+            OrderFlight(
+                "12122023994",
+                "Surabaya",
+                "Jakarta",
+                "Sel, 25 Des 2023",
+                "08.00 WIB",
+                "E-Tiket Terbit",
+                image = R.drawable.sample_img_garuda
+            )
+        )
+
+    fun orderHistoryFlight(): List<OrderFlight> =
+        listOf(
+            OrderFlight(
+                "12122023994",
+                "Jakarta",
+                "Surabaya",
+                "Sen, 24 Des 2023",
+                "08.00 WIB",
+                "Selesai",
+                image = R.drawable.sample_img_garuda
+            ),
+            OrderFlight(
+                "12122023994",
+                "Surabaya",
+                "Jakarta",
+                "Sel, 25 Des 2023",
+                "08.00 WIB",
+                "Selesai",
+                image = R.drawable.sample_img_garuda
+            )
         )
 }

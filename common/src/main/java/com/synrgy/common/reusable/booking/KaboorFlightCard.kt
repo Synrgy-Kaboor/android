@@ -7,7 +7,6 @@ import com.google.android.material.card.MaterialCardView
 import com.synrgy.common.R
 import com.synrgy.common.databinding.LayoutFlightCardBinding
 import com.synrgy.common.model.AirportData
-import com.synrgy.common.utils.constant.DummyData
 import com.synrgy.common.utils.ext.onGroupClick
 import com.wahidabd.library.utils.exts.onClick
 
@@ -26,9 +25,9 @@ class KaboorFlightCard @JvmOverloads constructor(
 
     private var binding: LayoutFlightCardBinding
 
-    private var departure: AirportData? = null
+    var departure: AirportData? = null
         private set
-    private var arrival: AirportData? = null
+    var arrival: AirportData? = null
         private set
 
     private var setOnDepartureListener: (() -> Unit)? = {}
@@ -41,8 +40,8 @@ class KaboorFlightCard @JvmOverloads constructor(
 
     private fun setupView() = with(binding) {
         tvDeparture.text =
-            context.getString(R.string.format_airport, departure?.city, departure?.airport)
-        tvArrival.text = context.getString(R.string.format_airport, arrival?.city, arrival?.airport)
+            context.getString(R.string.format_airport, departure?.code, departure?.name)
+        tvArrival.text = context.getString(R.string.format_airport, arrival?.code, arrival?.name)
 
         btnSwitch.onClick { switch() }
         groupDeparture.onGroupClick { setOnDepartureListener?.invoke() }
@@ -61,13 +60,13 @@ class KaboorFlightCard @JvmOverloads constructor(
     fun setDeparture(departure: AirportData?) {
         this.departure = departure
         binding.tvDeparture.text =
-            context.getString(R.string.format_airport, departure?.city, departure?.airport)
+            context.getString(R.string.format_airport, departure?.code, departure?.name)
     }
 
     fun setArrival(arrival: AirportData?) {
         this.arrival = arrival
         binding.tvArrival.text =
-            context.getString(R.string.format_airport, arrival?.city, arrival?.airport)
+            context.getString(R.string.format_airport, arrival?.code, arrival?.name)
     }
 
     fun setOnDepartureListener(listener: () -> Unit) {

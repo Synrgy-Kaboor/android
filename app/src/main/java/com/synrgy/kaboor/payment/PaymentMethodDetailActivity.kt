@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.enums.ClipboardType
 import com.synrgy.common.utils.ext.PermissionExt
+import com.synrgy.common.utils.ext.chuckedString
 import com.synrgy.common.utils.ext.copyTextToClipboard
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.requestMultiplePermission
@@ -36,7 +37,7 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
 
     override fun initUI() = with(binding) {
         // TODO: Remove this after API ready
-        tvAccountNumber.text = "1420 2010 0098 2336"
+        tvAccountNumber.text = "1420201000982336".chuckedString()
         tvTotalPayment.text = "1.000.000"
     }
 

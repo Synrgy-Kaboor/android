@@ -40,17 +40,14 @@ android {
         create(AppConfig.flavorDev){
             dimension = AppConfig.flavorDimensions
             applicationIdSuffix = AppConfig.applicationIdSuffixDev
-            buildConfigField("String", "base_url", env.getProperty("base_url_dev") as String)
         }
         create(AppConfig.flavorStaging){
             dimension = AppConfig.flavorDimensions
             applicationIdSuffix = AppConfig.applicationIdSuffixStaging
-            buildConfigField("String", "base_url", env.getProperty("base_url_staging") as String)
         }
         create(AppConfig.flavorProduction){
             dimension = AppConfig.flavorDimensions
             applicationIdSuffix = AppConfig.applicationIdSuffixProduction
-            buildConfigField("String", "base_url", env.getProperty("base_url_production") as String)
         }
     }
 
@@ -77,7 +74,11 @@ dependencies {
     implementation(Dependecies.otpview)
     implementation(platform(Dependecies.firebase_bom))
     implementation(Dependecies.circle_image)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(Dependecies.spinner)
+
+    testImplementation(Dependecies.junit_jupiter)
+    testImplementation(Dependecies.mockito)
+    testImplementation(Dependecies.mockito_inline)
+    testImplementation(Dependecies.core_testing)
+    testImplementation(Dependecies.coroutines_test)
 }

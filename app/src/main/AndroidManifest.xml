@@ -24,12 +24,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".history.DetailHistoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".booking.status.PaymentStatusActivity"
-            android:exported="false" />
-        <activity
             android:name=".booking.PriceAlertActivity"
             android:exported="false" />
         <activity
