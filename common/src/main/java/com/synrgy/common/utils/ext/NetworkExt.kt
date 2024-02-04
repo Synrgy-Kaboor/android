@@ -3,13 +3,13 @@ package com.synrgy.common.utils.ext
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
-import android.net.NetworkCapabilities
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 
@@ -44,3 +44,5 @@ fun AppCompatActivity.observeNetwork(state: (Boolean) -> Unit) {
         }
     }
 }
+
+fun<T> Flow<T>.flowDispatcherIO() = this.flowOn(Dispatchers.IO)
