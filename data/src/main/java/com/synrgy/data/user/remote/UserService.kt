@@ -18,14 +18,12 @@ import retrofit2.http.Path
 
 
 interface UserService {
-    @GET("/api/v1/user/{id}")
+    @GET("/api/v1/user")
     suspend fun getPersonalInfo(
-        @Path("id") id: Int
     ): Response<ResponseWrapper<PersonalInfoResponse>>
 
-    @PATCH("/api/v1/user/{id}")
+    @PATCH("/api/v1/user")
     suspend fun updatePersonalInfo(
-        @Path("id") id: Int,
         @Body body: UpdatePersonalInfoRequest,
     ): Response<KaboorGenericResponse>
 }

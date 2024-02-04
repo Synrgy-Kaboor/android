@@ -24,12 +24,9 @@ interface UserRepository {
     fun getLogin(): Flow<Boolean>
     suspend fun setUser(data: UserRequest)
     fun getUser(): Flow<UserDataResponse>
-    suspend fun getPersonalInfo(
-        id: Int,
-    ): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>>
+    suspend fun getPersonalInfo(): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>>
 
     suspend fun updatePersonalInfo(
-        id: Int,
         body: UpdatePersonalInfoRequest,
     ): Flow<Resource<KaboorGenericResponse>>
 

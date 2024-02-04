@@ -34,7 +34,7 @@ class KaboorDataStore(context: Context) {
         private val CITY = stringPreferencesKey(ConstDataStore.PREF_CITY)
         private val ADDRESS = stringPreferencesKey(ConstDataStore.PREF_ADDRESS)
         private val GENDER = stringPreferencesKey(ConstDataStore.PREF_GENDER)
-        private val WNI = stringPreferencesKey(ConstDataStore.PREF_WNI)
+        private val WNI = booleanPreferencesKey(ConstDataStore.PREF_WNI)
 
         @Volatile
         private var INSTANCE: KaboorDataStore? = null
@@ -83,9 +83,16 @@ class KaboorDataStore(context: Context) {
 
     suspend fun setUser(data: UserRequest) {
         dataStore.edit { preferences ->
-            preferences[FULL_NAME] = data.fullName
-            preferences[EMAIL] = data.email
-            preferences[PHONE] = data.phoneNumber
+            preferences[FULL_NAME] = data.fullName.orEmpty()
+            preferences[EMAIL] = data.email.orEmpty()
+            preferences[PHONE] = data.phoneNumber.orEmpty()
+            preferences[TITLE] = data.title.orEmpty()
+            preferences[BIRTHDAY] = data.birthday.orEmpty()
+            preferences[NATION] = data.nation.orEmpty()
+            preferences[CITY] = data.city.orEmpty()
+            preferences[ADDRESS] = data.address.orEmpty()
+            preferences[GENDER] = data.gender.orEmpty()
+            preferences[WNI] = data.isWni ?: false
         }
     }
 

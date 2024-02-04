@@ -4,6 +4,7 @@ import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.domain.user.model.request.UserParam
 import com.synrgy.domain.user.model.response.PersonalInfo
+import com.synrgy.domain.user.model.response.User
 
 
 /**
@@ -22,6 +23,19 @@ fun UserParam.toRequest(): UserRequest {
 
 fun PersonalInfoResponse.toDomain(): PersonalInfo {
     return PersonalInfo(
+        title = title,
+        fullName = fullName,
+        gender = gender,
+        birthday = birthday,
+        nation = nation,
+        city = city,
+        address = address,
+        isWni = isWni,
+    )
+}
+
+fun PersonalInfoResponse.toUser(): User {
+    return User(
         title = title,
         fullName = fullName,
         gender = gender,

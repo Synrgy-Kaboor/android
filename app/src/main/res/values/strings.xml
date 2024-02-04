@@ -193,6 +193,7 @@
     <string name="label_expired_date">Tanggal Kadaluwarsa</string>
     <string name="label_country_of_issue">Negara yang Menerbitkan</string>
     <string name="hint_passport_number">Masukkan nomor passport</string>
+    SaveInfoUser.start(this, email.toString())
     <string name="hint_expired_date">Masukkan tanggal kadaluwarsa</string>
     <string name="label_one_way">Satu Arah</string>
     <string name="label_round_trip">Pulang Pergi</string>
@@ -203,4 +204,7 @@
     <string name="format_people">%d Orang</string>
     <string name="label_more_detail">Selengkapnya</string>
     <string name="error_same_airport">Bandara asal dan bandara tujuan tidak boleh sama</string>
+    <string name="title_login_success">Login berhasil</string>
+    <string name="message_login_success">Login berhasil! Pesan tiket dan nikmati liburan anda!!</string>
+    <string name="label_continue">Lanjutkan</string>
 </resources>

@@ -4,7 +4,6 @@ import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.data.db.KaboorDataStore
 import com.synrgy.common.utils.ext.flowDispatcherIO
-import com.synrgy.data.user.local.KaboorDataStore
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.PersonalInfoResponse
@@ -53,23 +52,16 @@ class UserDataStore(
         return dataStore.getUser()
     }
 
-    override suspend fun getPersonalInfo(
-        id: Int,
-    ): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>> = flow {
+    override suspend fun getPersonalInfo(): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>> = flow {
         enqueue(
-            id,
             error::convertGenericError,
             api::getPersonalInfo,
             onEmit = { data -> emit(data) }
         )
     }.flowDispatcherIO()
 
-    override suspend fun updatePersonalInfo(
-        id: Int,
-        body: UpdatePersonalInfoRequest,
-    ): Flow<Resource<KaboorGenericResponse>> = flow {
+    override suspend fun updatePersonalInfo(body: UpdatePersonalInfoRequest): Flow<Resource<KaboorGenericResponse>> = flow {
         enqueue(
-            id,
             body,
             error::convertGenericError,
             api::updatePersonalInfo,
