@@ -2,6 +2,7 @@ package com.synrgy.data.booking
 
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.utils.ext.flowDispatcherIO
 import com.synrgy.data.booking.model.request.BookingRequest
 import com.synrgy.data.booking.model.request.UpdateAdditionalBookingRequest
 import com.synrgy.data.booking.model.request.UpdateBookingRequest
@@ -38,7 +39,7 @@ class BookingDataStore(
             api::createBooking,
             onEmit = { data -> emit(data) }
         )
-    }
+    }.flowDispatcherIO()
 
     override suspend fun getBookingInfo(
         id: Int
@@ -49,7 +50,7 @@ class BookingDataStore(
             api::getBookingInfo,
             onEmit = { data -> emit(data) }
         )
-    }
+    }.flowDispatcherIO()
 
     override suspend fun updateBooking(
         id: Int,
@@ -62,7 +63,7 @@ class BookingDataStore(
             api::updateBooking,
             onEmit = { data -> emit(data) }
         )
-    }
+    }.flowDispatcherIO()
 
     override suspend fun updateAdditionalService(
         id: Int,
@@ -75,7 +76,7 @@ class BookingDataStore(
             api::updateAdditionalService,
             onEmit = { data -> emit(data) }
         )
-    }
+    }.flowDispatcherIO()
 
     override suspend fun updatePayment(
         id: Int,
@@ -88,7 +89,7 @@ class BookingDataStore(
             api::updatePayment,
             onEmit = { data -> emit(data) }
         )
-    }
+    }.flowDispatcherIO()
 
     override suspend fun getPaymentDetail(
         id: Int
@@ -99,7 +100,7 @@ class BookingDataStore(
             api::getPaymentDetail,
             onEmit = { data -> emit(data) }
         )
-    }
+    }.flowDispatcherIO()
 
     override suspend fun getBookingStatus(
         id: Int
@@ -110,5 +111,5 @@ class BookingDataStore(
             api::getBookingStatus,
             onEmit = { data -> emit(data) }
         )
-    }
+    }.flowDispatcherIO()
 }

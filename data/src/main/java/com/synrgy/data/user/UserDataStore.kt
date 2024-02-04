@@ -3,6 +3,8 @@ package com.synrgy.data.user
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorGenericResponse
 import com.synrgy.data.db.KaboorDataStore
+import com.synrgy.common.utils.ext.flowDispatcherIO
+import com.synrgy.data.user.local.KaboorDataStore
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.PersonalInfoResponse
@@ -60,7 +62,7 @@ class UserDataStore(
             api::getPersonalInfo,
             onEmit = { data -> emit(data) }
         )
-    }
+    }.flowDispatcherIO()
 
     override suspend fun updatePersonalInfo(
         id: Int,
@@ -73,6 +75,5 @@ class UserDataStore(
             api::updatePersonalInfo,
             onEmit = { data -> emit(data) }
         )
-    }
-
+    }.flowDispatcherIO()
 }
