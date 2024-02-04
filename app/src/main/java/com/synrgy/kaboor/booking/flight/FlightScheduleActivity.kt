@@ -5,30 +5,29 @@ import android.content.Intent
 import com.synrgy.common.model.AirportData
 import com.synrgy.common.model.PassengerData
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.constant.ConstantKey
+import com.synrgy.common.utils.constant.ConstantTag
 import com.synrgy.common.utils.enums.AirportType
 import com.synrgy.common.utils.enums.PlaneClassType
-import com.synrgy.common.utils.ext.showDatePicker
-import com.synrgy.common.utils.ext.timeNow
 import com.synrgy.common.utils.ext.oneDay
+import com.synrgy.common.utils.ext.showDatePicker
+import com.synrgy.common.utils.ext.snackbarDanger
+import com.synrgy.common.utils.ext.timeNow
 import com.synrgy.common.utils.ext.toDateFormatMonth
 import com.synrgy.domain.flight.mapper.toData
 import com.synrgy.domain.flight.model.request.FlightParam
+import com.synrgy.kaboor.R
 import com.synrgy.kaboor.booking.dialog.AirportBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.FlightClassBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.PassengerBottomSheetFragment
+import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
 import com.synrgy.kaboor.databinding.ActivityFlightScheduleBinding
-import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.common.utils.constant.ConstantTag
+import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
+import org.koin.android.ext.android.inject
 import com.synrgy.common.R as comR
 
 class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
-
-    private var passengerData = PassengerData()
-    private var departure: AirportData? = ConstantDummy.departure().toData()
-    private var arrival: AirportData? = ConstantDummy.arrival().toData()
-    private var planeClassType: PlaneClassType = PlaneClassType.EKONOMI
-
 
     companion object {
         fun start(context: Context) {
@@ -36,15 +35,18 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         }
     }
 
+    private val flightViewModel: FlightViewModel by inject()
+
+    private var airports = mutableListOf<AirportData>()
+    private var passengerData = PassengerData()
+    private var planeClassType: PlaneClassType = PlaneClassType.EKONOMI
+
     override fun getViewBinding(): ActivityFlightScheduleBinding =
         ActivityFlightScheduleBinding.inflate(layoutInflater)
 
     override fun initUI() = with(binding) {
         tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count())
         tvClass.text = planeClassType.label
-
-        kaboorFlight.setDeparture(departure)
-        kaboorFlight.setArrival(arrival)
     }
 
     override fun initAction() = with(binding) {
@@ -57,11 +59,45 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         btnSubmit.onClick { handleNavigation() }
     }
 
+    override fun initProcess() {
+        super.initProcess()
+        flightViewModel.getAirports()
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+        flightViewModel.airports.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = { res ->
+                hideLoading()
+                airports.addAll(res.map { it.toData() })
+                setAirport()
+            }
+        )
+    }
+
+    private fun setAirport() = with(binding){
+        val departure = airports.find { it.code == ConstantKey.KEY_AIRPORT_SUB }
+        val arrival = airports.find { it.code == ConstantKey.KEY_AIRPORT_CGK }
+
+        kaboorFlight.setDeparture(departure)
+        kaboorFlight.setArrival(arrival)
+    }
+
     private fun handleNavigation() = with(binding) {
-        val roundTrip = binding.kaboorSchedule.getRoundTrip()
+        if (kaboorFlight.departure == kaboorFlight.arrival){
+            snackbarDanger(getString(R.string.error_same_airport))
+            return
+        }
+
+        val roundTrip = kaboorSchedule.getRoundTrip()
         val flightParam = FlightParam(
-            originCity = departure?.airport.orEmpty(),
-            destinationCity = arrival?.airport.orEmpty(),
+            originCity = kaboorFlight.departure?.code.orEmpty(),
+            destinationCity = kaboorFlight.arrival?.code.orEmpty(),
             departureDate = kaboorSchedule.departure.toDateFormatMonth(),
             returnDate = if (roundTrip) kaboorSchedule.getComingHome()
                 .toDateFormatMonth() else null,
@@ -69,8 +105,8 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
             numOfBabies = passengerData.baby,
             numOfAdults = passengerData.mature,
             classCode = planeClassType.code,
-            departureData = departure,
-            arrivalData = arrival,
+            departureData = kaboorFlight.departure,
+            arrivalData = kaboorFlight.arrival,
         )
 
         FlightDepartureTicketListActivity.start(this@FlightScheduleActivity, roundTrip, flightParam)
@@ -90,17 +126,10 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     }
 
     private fun showAirportDialog(type: AirportType) {
-        AirportBottomSheetFragment.newInstance { airportData ->
+        AirportBottomSheetFragment.newInstance(airports) { airportData ->
             when (type) {
-                AirportType.DEPARTURE -> {
-                    departure = airportData
-                    binding.kaboorFlight.setDeparture(airportData)
-                }
-
-                AirportType.ARRIVAL -> {
-                    arrival = airportData
-                    binding.kaboorFlight.setArrival(airportData)
-                }
+                AirportType.DEPARTURE -> binding.kaboorFlight.setDeparture(airportData)
+                AirportType.ARRIVAL -> binding.kaboorFlight.setArrival(airportData)
             }
         }.show(supportFragmentManager, ConstantTag.TAG_AIRPORT)
     }

@@ -23,12 +23,9 @@ interface UserUseCase {
     suspend fun setUser(data: UserParam)
     fun getUser(): Flow<User>
 
-    suspend fun getPersonalInfo(
-        id: Int,
-    ): Flow<Resource<PersonalInfo>>
+    suspend fun getPersonalInfo(): Flow<Resource<User>>
 
     suspend fun updatePersonalInfo(
-        id: Int,
         body: UpdatePersonalInfoParam,
     ): Flow<Resource<KaboorGenericResponse>>
 }

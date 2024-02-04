@@ -3,7 +3,8 @@ package com.synrgy.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.synrgy.data.user.local.KaboorDataStore
+import com.synrgy.data.db.KaboorDataStore
+import com.synrgy.data.db.KaboorDatabase
 import com.synrgy.di.lib.HeaderInterceptor
 import com.wahidabd.library.data.libs.OkHttpClientFactory
 import okhttp3.Interceptor
@@ -35,6 +36,8 @@ val appModule = module {
             certificatePinner = null
         )
     }
+
+    single { KaboorDatabase.getDatabase(get()) }
 
     single(named(BASE_URL)) { BuildConfig.base_url }
     single(named(NODE_BASE_URL)) { BuildConfig.node_base_url }

@@ -22,7 +22,11 @@ import com.synrgy.kaboor.booking.dialog.PassengerBottomSheetFragment
 import com.synrgy.kaboor.databinding.ActivityPriceAlertBinding
 import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.constant.ConstantTag
+import com.synrgy.domain.flight.mapper.toData
+import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
+import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
+import org.koin.android.ext.android.inject
 import com.synrgy.common.R as comR
 
 class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
@@ -37,6 +41,9 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
             })
         }
     }
+
+    private val flightViewModel: FlightViewModel by inject()
+    private var airports = mutableListOf<AirportData>()
 
     private var flightParam: FlightParam? = null
     private var passengerData = PassengerData()
@@ -86,6 +93,35 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
         cardClass.onClick { showPlaneClassDialog() }
     }
 
+    override fun initProcess() {
+        super.initProcess()
+        flightViewModel.getAirports()
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+        flightViewModel.airports.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = { res ->
+                hideLoading()
+                airports.addAll(res.map { it.toData() })
+                setAirport()
+            }
+        )
+    }
+
+    private fun setAirport() = with(binding){
+        val departure = airports.find { it.code == ConstantKey.KEY_AIRPORT_SUB }
+        val arrival = airports.find { it.code == ConstantKey.KEY_AIRPORT_CGK }
+
+        kaboorFlight.setDeparture(departure)
+        kaboorFlight.setArrival(arrival)
+    }
+
     private fun rangeFormatSlider() {
         binding.rangeSlider.setLabelFormatter { value ->
             value.toCurrency()
@@ -106,17 +142,10 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
     }
 
     private fun showAirportDialog(type: AirportType) {
-        AirportBottomSheetFragment.newInstance { airportData ->
+        AirportBottomSheetFragment.newInstance(airports) { airportData ->
             when (type) {
-                AirportType.DEPARTURE -> {
-                    departure = airportData
-                    binding.kaboorFlight.setDeparture(airportData)
-                }
-
-                AirportType.ARRIVAL -> {
-                    arrival = airportData
-                    binding.kaboorFlight.setArrival(airportData)
-                }
+                AirportType.DEPARTURE -> binding.kaboorFlight.setDeparture(airportData)
+                AirportType.ARRIVAL -> binding.kaboorFlight.setArrival(airportData)
             }
         }.show(supportFragmentManager, ConstantTag.TAG_AIRPORT)
     }

@@ -1,6 +1,6 @@
 package com.synrgy.di.lib
 
-import com.synrgy.data.user.local.KaboorDataStore
+import com.synrgy.data.db.KaboorDataStore
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response

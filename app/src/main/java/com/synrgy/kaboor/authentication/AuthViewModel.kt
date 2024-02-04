@@ -11,6 +11,7 @@ import com.synrgy.domain.auth.model.request.LoginParam
 import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.domain.auth.model.response.Login
 import com.synrgy.domain.user.UserUseCase
+import com.synrgy.domain.user.mapper.toParam
 import com.synrgy.domain.user.model.response.User
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.collectLatest
@@ -48,6 +49,12 @@ class AuthViewModel(
         }
     }
 
+    fun saveUserInfo(data: User){
+        viewModelScope.launch {
+            user.setUser(data.toParam())
+        }
+    }
+
     fun clearToken() {
         _userData.value = Resource.loading()
         viewModelScope.launch {
@@ -56,7 +63,6 @@ class AuthViewModel(
             _logout.value = Resource.success(Unit)
         }
     }
-
 
     fun checkEmail(body: EmailParam) {
         _checkEmail.value = Resource.loading()
@@ -67,7 +73,6 @@ class AuthViewModel(
     }
 
     fun login(body: LoginParam) {
-        _jwt.value = Resource.loading()
         viewModelScope.launch {
             auth.login(body)
                 .collectLatest {
@@ -80,6 +85,14 @@ class AuthViewModel(
         _jwt.value = Resource.loading()
         viewModelScope.launch {
             auth.register(body)
+                .collectLatest { _userData.value = it }
+        }
+    }
+
+    fun getUser() {
+        _userData.value = Resource.loading()
+        viewModelScope.launch {
+            user.getPersonalInfo()
                 .collectLatest { _userData.value = it }
         }
     }

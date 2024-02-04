@@ -8,6 +8,8 @@ package com.synrgy.domain.flight.model.response
 
 
 data class Airport(
-    val city: String,
-    val airport: String
+    val id: Int,
+    val code: String,
+    val name: String,
+    val timezone: Int
 )
