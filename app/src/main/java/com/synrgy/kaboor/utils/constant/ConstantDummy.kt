@@ -8,6 +8,9 @@ import com.synrgy.domain.home.model.Product
 import com.synrgy.domain.payment.Bank
 import com.synrgy.domain.flight.model.response.Airport
 import com.synrgy.domain.flight.model.response.Flight
+import com.synrgy.domain.notification.model.response.AirportCity
+import com.synrgy.domain.notification.model.response.Notification
+import com.synrgy.domain.notification.model.response.PriceNotification
 import com.synrgy.domain.flight.model.response.OrderFlight
 import com.synrgy.domain.user.model.response.HelpCenter
 import com.synrgy.domain.user.model.response.Passport
@@ -20,6 +23,76 @@ import com.synrgy.domain.user.model.response.Passport
 
 
 object ConstantDummy {
+
+    fun priceNotifications(): List<PriceNotification> =
+        listOf(
+            PriceNotification(
+                AirportCity("Surabaya", "SUB"),
+                AirportCity("Jakarta", "JKT"),
+                "20 Des 2023",
+                "21 Des 2023",
+                2,
+                1,
+                0,
+                "Ekonomi",
+                1000000,
+                2000000
+            ),
+            PriceNotification(
+                AirportCity("Surabaya", "SUB"),
+                AirportCity("Jakarta", "JKT"),
+                "20 Des 2023",
+                "21 Des 2023",
+                2,
+                1,
+                0,
+                "Ekonomi",
+                1000000,
+                2000000
+            ),
+            PriceNotification(
+                AirportCity("Surabaya", "SUB"),
+                AirportCity("Jakarta", "JKT"),
+                "20 Des 2023",
+                "21 Des 2023",
+                2,
+                1,
+                0,
+                "Ekonomi",
+                1000000,
+                2000000
+            ),
+            PriceNotification(
+                AirportCity("Surabaya", "SUB"),
+                AirportCity("Jakarta", "JKT"),
+                "20 Des 2023",
+                "21 Des 2023",
+                2,
+                1,
+                0,
+                "Ekonomi",
+                1000000,
+                2000000
+            )
+        )
+
+    fun allNotifications(): List<Notification> =
+        listOf(
+            Notification(
+                1,
+                "Pembayaran Berhasil",
+                "Tiket pesawat Lion Air Anda sudah dikonfirmasi untuk penerbangan ke Jakarta (CGK) pada tanggal 20 Des2024. Siapkan perjalanan Anda dengan semangat! \uD83C\uDF1F",
+                "20 Des",
+                R.drawable.ic_plane
+            ),
+            Notification(
+                2,
+                "Pesawat Delay",
+                "Tiket pesawat Lion Air Anda sudah dikonfirmasi untuk penerbangan ke Jakarta (CGK) pada tanggal 20 Des2024. Siapkan perjalanan Anda dengan semangat! \uD83C\uDF1F",
+                "20 Des",
+                R.drawable.ic_plane
+            )
+        )
 
     fun passport(): List<Passport> =
         listOf(

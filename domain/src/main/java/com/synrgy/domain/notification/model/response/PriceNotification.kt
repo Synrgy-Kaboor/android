@@ -1,6 +1,8 @@
 package com.synrgy.domain.notification.model.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 
 /**
@@ -9,6 +11,7 @@ import com.google.gson.annotations.SerializedName
  */
 
 
+@Parcelize
 data class PriceNotification(
     val originCity: AirportCity,
     val destinationCity: AirportCity,
@@ -21,4 +24,8 @@ data class PriceNotification(
     val clazz: String,
     val lowerPriceLimit: Long? = 0L,
     val upperPriceLimit: Long? = 0L,
-)
+) : Parcelable {
+    fun countPassenger(): Int {
+        return (numOfAdults ?: 0) + (numOfKids ?: 0) + (numOfBabies ?: 0)
+    }
+}

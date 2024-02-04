@@ -53,7 +53,7 @@ fun BookingStatusResponse.toDomain(): BookingStatus {
 fun PassengerResponse.toDomain(): Passenger {
     return Passenger(
         fullName = fullName,
-        phone_number = phone_number,
+        phoneNumber = phoneNumber,
         title = title,
         email = email
     )
