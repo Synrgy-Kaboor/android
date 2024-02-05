@@ -4,15 +4,18 @@ import android.content.Context
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.common.utils.ext.snackbarSuccess
 import com.synrgy.domain.flight.model.request.FlightParam
+import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.kaboor.booking.PassengerDetailActivity
 import com.synrgy.kaboor.booking.PriceAlertActivity
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
+import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
 import com.synrgy.kaboor.databinding.ActivityFlightDepartureTicketListBinding
-import com.synrgy.kaboor.utils.constant.ConstantDummy
-import com.synrgy.common.utils.constant.ConstantKey
-import com.synrgy.domain.flight.model.response.Flight
+import com.wahidabd.library.utils.exts.observerLiveData
+import org.koin.android.ext.android.inject
 
 class FlightDepartureTicketListActivity :
     KaboorActivity<ActivityFlightDepartureTicketListBinding>() {
@@ -32,10 +35,12 @@ class FlightDepartureTicketListActivity :
         }
     }
 
+    private val viewModel: FlightViewModel by inject()
+
     private var flightParam: FlightParam? = null
     private var isRoundTrip = false
     private val planeTicketAdapter by lazy {
-        PlaneTicketAdapter(this, ::handleNavigation)
+        PlaneTicketAdapter(this, flightParam, ::handleNavigation)
     }
 
     override fun getViewBinding(): ActivityFlightDepartureTicketListBinding =
@@ -74,10 +79,26 @@ class FlightDepartureTicketListActivity :
     }
 
     override fun initProcess() {
-        planeTicketAdapter.setData = ConstantDummy.planeFlight()
+        viewModel.getFlight(flightParam!!)
     }
 
-    override fun initObservers() {}
+    override fun initObservers() {
+        viewModel.flights.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onEmpty = {
+                hideLoading()
+                snackbarSuccess("KOSOOOONG!!")
+            },
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = { flights ->
+                hideLoading()
+                planeTicketAdapter.setData = flights
+            }
+        )
+    }
 
     private fun handleNavigation(flight: Flight) {
         if (isRoundTrip) FlightReturnTicketListActivity.start(this, flightParam, flight)

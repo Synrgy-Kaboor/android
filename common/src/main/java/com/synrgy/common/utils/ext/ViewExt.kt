@@ -127,6 +127,8 @@ fun View.showHideToggle() {
     else this.visible()
 }
 
+fun <T> mutableListCapacity(size: Int): MutableList<T> = ArrayList(size)
+
 inline fun MultiStateView.showLoginState(crossinline action: () -> Unit){
     this.viewState = MultiStateView.ViewState.ERROR
     this.getView(MultiStateView.ViewState.ERROR)?.findViewById<View>(R.id.btn_msv_login)?.onClick {
