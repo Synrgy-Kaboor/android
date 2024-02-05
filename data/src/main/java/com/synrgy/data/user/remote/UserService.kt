@@ -8,7 +8,6 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
-import retrofit2.http.Path
 
 
 /**
@@ -19,8 +18,7 @@ import retrofit2.http.Path
 
 interface UserService {
     @GET("/api/v1/user")
-    suspend fun getPersonalInfo(
-    ): Response<ResponseWrapper<PersonalInfoResponse>>
+    suspend fun getPersonalInfo(): Response<ResponseWrapper<PersonalInfoResponse>>
 
     @PATCH("/api/v1/user")
     suspend fun updatePersonalInfo(
