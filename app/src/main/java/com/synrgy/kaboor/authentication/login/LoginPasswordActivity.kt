@@ -78,7 +78,6 @@ class LoginPasswordActivity : KaboorPassiveActivity<ActivityLoginPasswordBinding
             onSuccess = { user ->
                 hideLoading()
 
-                debug { "LOGIN --> $user" }
                 val data = User(
                     email = email.toString(),
                     fullName = user.fullName,
@@ -93,7 +92,7 @@ class LoginPasswordActivity : KaboorPassiveActivity<ActivityLoginPasswordBinding
                     isWni = user.isWni,
                     verified = user.verified
                 )
-                debug { "LOGIN DATA --> $data" }
+
                 viewModel.saveUserInfo(data)
                 MainActivity.start(this)
                 finishAffinity()

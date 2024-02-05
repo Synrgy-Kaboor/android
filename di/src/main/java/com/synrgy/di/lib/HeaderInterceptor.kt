@@ -35,7 +35,7 @@ class HeaderInterceptor(
 
     private fun getAccessToken(): String {
         val token = user.getToken()
-        return if (token?.isNotEmpty() == true) "Bearer $token" else ""
+        return if (token?.isNotEmpty() == true && user.getLoginInfo() != false) "Bearer $token" else ""
     }
 
 

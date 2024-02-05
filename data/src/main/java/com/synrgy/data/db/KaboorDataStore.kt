@@ -81,6 +81,12 @@ class KaboorDataStore(context: Context) {
         }.first()
     }
 
+    fun getLoginInfo(): Boolean? = runBlocking {
+        dataStore.data.map { preferences ->
+            preferences[LOGIN]
+        }.first()
+    }
+
     suspend fun setUser(data: UserRequest) {
         dataStore.edit { preferences ->
             preferences[FULL_NAME] = data.fullName.orEmpty()
