@@ -207,4 +207,6 @@
     <string name="title_login_success">Login berhasil</string>
     <string name="message_login_success">Login berhasil! Pesan tiket dan nikmati liburan anda!!</string>
     <string name="label_continue">Lanjutkan</string>
+    <string name="message_not_empty">Harap isi semua data</string>
+    <string name="format_title_name">%s %s</string>
 </resources>

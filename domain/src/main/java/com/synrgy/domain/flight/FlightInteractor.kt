@@ -3,10 +3,15 @@ package com.synrgy.domain.flight
 import com.synrgy.common.data.ResponseListWrapper
 import com.synrgy.data.flight.FlightRepository
 import com.synrgy.data.flight.model.response.AirportResponse
+import com.synrgy.data.flight.model.response.FlightResponse
 import com.synrgy.domain.flight.mapper.toDomain
 import com.synrgy.domain.flight.mapper.toEntity
+import com.synrgy.domain.flight.mapper.toRequest
+import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.domain.flight.model.response.Airport
+import com.synrgy.domain.flight.model.response.Flight
 import com.wahidabd.library.data.Resource
+import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
 import com.wahidabd.library.utils.coroutine.boundResource.NetworkBoundResource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -43,6 +48,18 @@ class FlightInteractor(
                 repository.saveAirport(data.data.map { it.toEntity() })
             }
 
+        }.asFlow()
+    }
+
+    override suspend fun getFlights(body: FlightParam): Flow<Resource<List<Flight>>> {
+        return object : InternetBoundResource<List<Flight>, ResponseListWrapper<FlightResponse>>() {
+            override suspend fun createCall(): Flow<Resource<ResponseListWrapper<FlightResponse>>> {
+                return repository.getFlights(body.toRequest())
+            }
+
+            override suspend fun saveCallRequest(data: ResponseListWrapper<FlightResponse>): List<Flight> {
+                return data.data.map { it.toDomain() }
+            }
         }.asFlow()
     }
 

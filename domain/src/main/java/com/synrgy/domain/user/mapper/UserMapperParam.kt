@@ -24,6 +24,7 @@ fun User.toParam(): UserParam {
     return UserParam(
         title = title,
         fullName = fullName,
+        email = email,
         gender = gender,
         birthday = birthday,
         nation = nation,
