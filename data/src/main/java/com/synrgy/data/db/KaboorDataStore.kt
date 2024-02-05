@@ -99,9 +99,15 @@ class KaboorDataStore(context: Context) {
     fun getUser(): Flow<UserDataResponse> {
         return dataStore.data.map { preferences ->
             UserDataResponse(
-                preferences[FULL_NAME].orEmpty(),
-                preferences[EMAIL].orEmpty(),
-                preferences[PHONE].orEmpty()
+                fullName = preferences[FULL_NAME].orEmpty(),
+                email = preferences[EMAIL].orEmpty(),
+                phoneNumber = preferences[PHONE].orEmpty(),
+                title = preferences[TITLE].orEmpty(),
+                birthday = preferences[BIRTHDAY].orEmpty(),
+                nation = preferences[NATION].orEmpty(),
+                city = preferences[CITY].orEmpty(),
+                address = preferences[ADDRESS].orEmpty(),
+                isWni = preferences[WNI] ?: false,
             )
         }
     }

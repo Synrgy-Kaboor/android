@@ -11,22 +11,22 @@ data class FlightRequest(
     val originCity: String,
     val destinationCity: String,
     val departureDate: String,
-    val returnDate: String? = null,
+    val returnDate: String,
     val numOfKids: Int? = 0,
     val numOfBabies: Int? = 0,
     val numOfAdults: Int? = 0,
     val classCode: String,
+    val isReturn: Boolean = false
 ){
-    fun toMap(): Map<String, Any?> {
+    fun toMap(): Map<String, String> {
         return mapOf(
-            "originCity" to originCity,
-            "destinationCity" to destinationCity,
-            "departureDate" to departureDate,
-            "returnDate" to returnDate,
-            "numOfKids" to numOfKids,
-            "numOfBabies" to numOfBabies,
-            "numOfAdults" to numOfAdults,
-            "classCode" to classCode
+            "originAirportCode" to if (!isReturn) originCity else destinationCity,
+            "destinationAirportCode" to if (!isReturn) destinationCity else originCity,
+            "numOfAdults" to numOfAdults.toString(),
+            "numOfChildren" to numOfKids.toString(),
+            "numOfBabies" to numOfBabies.toString(),
+            "classCode" to classCode,
+            "date" to if (!isReturn) departureDate else returnDate
         )
     }
 }

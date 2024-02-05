@@ -1,9 +1,12 @@
 package com.synrgy.data.flight
 
 import com.synrgy.common.data.ResponseListWrapper
+import com.synrgy.common.utils.ext.flowDispatcherIO
 import com.synrgy.data.db.KaboorDatabase
 import com.synrgy.data.flight.local.AirportEntity
+import com.synrgy.data.flight.model.request.FlightRequest
 import com.synrgy.data.flight.model.response.AirportResponse
+import com.synrgy.data.flight.model.response.FlightResponse
 import com.synrgy.data.flight.remote.FlightService
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.enqueue
@@ -41,6 +44,17 @@ class FlightDataStore(
                 api::getAirports,
                 onEmit = { data -> emit(data) }
             )
-        }.flowOn(Dispatchers.IO)
+        }.flowDispatcherIO()
+
+    override suspend fun getFlights(
+        body: FlightRequest
+    ): Flow<Resource<ResponseListWrapper<FlightResponse>>> = flow {
+        enqueue(
+            body.toMap(),
+            error::convertGenericError,
+            api::getFlights,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowDispatcherIO()
 
 }

@@ -9,11 +9,12 @@ import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.constant.ConstantTag
 import com.synrgy.common.utils.enums.AirportType
 import com.synrgy.common.utils.enums.PlaneClassType
-import com.synrgy.common.utils.ext.oneDay
+import com.synrgy.common.utils.ext.oneDayMillis
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.snackbarDanger
 import com.synrgy.common.utils.ext.timeNow
 import com.synrgy.common.utils.ext.toDateFormatMonth
+import com.synrgy.common.utils.ext.toGreeting
 import com.synrgy.domain.flight.mapper.toData
 import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.kaboor.R
@@ -21,6 +22,7 @@ import com.synrgy.kaboor.booking.dialog.AirportBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.FlightClassBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.PassengerBottomSheetFragment
 import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
+import com.synrgy.kaboor.booking.viewmodel.PassengerViewModel
 import com.synrgy.kaboor.databinding.ActivityFlightScheduleBinding
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -36,6 +38,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     }
 
     private val flightViewModel: FlightViewModel by inject()
+    private val passengerViewModel: PassengerViewModel by inject()
 
     private var airports = mutableListOf<AirportData>()
     private var passengerData = PassengerData()
@@ -62,10 +65,14 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     override fun initProcess() {
         super.initProcess()
         flightViewModel.getAirports()
+        passengerViewModel.getUser()
     }
 
     override fun initObservers() {
         super.initObservers()
+        passengerViewModel.user.observe(this) {
+            binding.tvUserName.text = it.fullName?.toGreeting()
+        }
         flightViewModel.airports.observerLiveData(
             this,
             onLoading = ::showLoading,
@@ -80,7 +87,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         )
     }
 
-    private fun setAirport() = with(binding){
+    private fun setAirport() = with(binding) {
         val departure = airports.find { it.code == ConstantKey.KEY_AIRPORT_SUB }
         val arrival = airports.find { it.code == ConstantKey.KEY_AIRPORT_CGK }
 
@@ -89,7 +96,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     }
 
     private fun handleNavigation() = with(binding) {
-        if (kaboorFlight.departure == kaboorFlight.arrival){
+        if (kaboorFlight.departure == kaboorFlight.arrival) {
             snackbarDanger(getString(R.string.error_same_airport))
             return
         }
@@ -143,8 +150,8 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
 
     private fun showDatePicker(type: AirportType) = with(binding) {
         val startDate = when (type) {
-            AirportType.DEPARTURE -> timeNow - oneDay
-            AirportType.ARRIVAL -> kaboorSchedule.departure + oneDay
+            AirportType.DEPARTURE -> timeNow - oneDayMillis
+            AirportType.ARRIVAL -> kaboorSchedule.departure + oneDayMillis
         }
         showDatePicker(startDate) { date ->
             when (type) {

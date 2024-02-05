@@ -12,5 +12,6 @@ import com.synrgy.common.R
 
 enum class DetailPassengerType(@StringRes val label: Int){
     BOOKER(R.string.label_booker_detail),
-    PASSENGER(R.string.label_passenger_detail)
+    PASSENGER(R.string.label_passenger_detail),
+    PASSENGER_BOOKER(R.string.label_passenger_detail)
 }
