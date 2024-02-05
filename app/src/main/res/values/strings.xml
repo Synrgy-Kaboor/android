@@ -31,6 +31,14 @@
     <string name="error_empty_email">Email tidak boleh kosong</string>
     <string name="error_empty_phone">Nomor Hp tidak boleh kosong</string>
     <string name="error_empty_password">Kata sandi tidak boleh kosong</string>
+    <string name="error_empty_title">Title tidak boleh kosong</string>
+    <string name="error_empty_nik">NIK tidak boleh kosong</string>
+    <string name="error_empty_gender">Jenis Kelamin tidak boleh kosong</string>
+    <string name="error_empty_birthday">Tanggal Lahir tidak boleh kosong</string>
+    <string name="error_empty_country">Negara tidak boleh kosong</string>
+    <string name="error_empty_city">Kota tidak boleh kosong</string>
+    <string name="error_empty_address">Alamat tidak boleh kosong</string>
+    <string name="error_empty_citizenship">Kewarganegaraan tidak boleh kosong</string>
     <string name="label_passenger_detail">Detail Penumpang</string>
     <string name="label_booker_detail">Detail Pemesan</string>
     <string name="label_passenger">Detail Penumpang</string>
@@ -209,4 +217,7 @@
     <string name="label_continue">Lanjutkan</string>
     <string name="message_not_empty">Harap isi semua data</string>
     <string name="format_title_name">%s %s</string>
+    <string name="message_wni">WNI</string>
+    <string name="message_wna">WNA</string>
+    <string name="message_update_data_success">Data berhasil di update!</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.synrgy.kaboor.utils.di
 
+import com.synrgy.kaboor.account.AccountViewModel
 import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.authentication.forgot.ForgotPasswordViewModel
 import com.synrgy.kaboor.authentication.otp.OtpViewModel
@@ -22,5 +23,6 @@ val viewModelModule = module {
     viewModel { ForgotPasswordViewModel(get()) }
     viewModel { SharedViewModel(get()) }
     viewModel { FlightViewModel(get()) }
+    viewModel { AccountViewModel(get()) }
     viewModel { PassengerViewModel(get()) }
 }
