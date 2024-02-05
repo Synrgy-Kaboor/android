@@ -47,7 +47,7 @@
     <string name="udah_punya_akun_log_in_aja">Udah punya akun? Log in aja!</string>
     <string name="login_syarat">Dengan Log In kamu menyerujui Syarat, Ketentuan dan Kebijakan Privasi Kaboor</string>
     <string name="masukkan_email">Masukkan Email</string>
-    <string name="contains_regitered_account">Email was registered, please use another email!</string>
+    <string name="contains_regitered_account">Email was registered</string>
     <string name="contains_available_account">Email is available for new user</string>
     <string name="message_account_not_registered">Email ini belum terdaftar untuk Login</string>
     <string name="message_account_not_registered_description">Untuk log in menggunakan email ini, silahkan lakukan daftar akun terlebih dulu ya</string>
