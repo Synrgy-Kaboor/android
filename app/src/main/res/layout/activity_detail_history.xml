@@ -255,7 +255,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_13dp"
                 android:orientation="horizontal">
-                
+
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -267,9 +267,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_dewasa"/>
-                
+
             </androidx.appcompat.widget.LinearLayoutCompat>
-            
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -554,6 +554,7 @@
         app:layout_constraintTop_toBottomOf="@id/card_perlindungan"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
         android:paddingHorizontal="@dimen/dimen_16dp">
 
         <com.google.android.material.button.MaterialButton

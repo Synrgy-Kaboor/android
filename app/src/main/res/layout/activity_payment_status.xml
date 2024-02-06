@@ -250,6 +250,7 @@
         app:layout_constraintTop_toBottomOf="@id/card"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
         android:paddingHorizontal="@dimen/dimen_16dp">
 
         <com.google.android.material.button.MaterialButton
