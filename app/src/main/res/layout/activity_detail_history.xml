@@ -14,7 +14,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:kaboorAppbar_title="@string/id_12122023994"/>
+        app:kaboorAppbar_title="ID 12122023994"/>
 
 
     <com.google.android.material.card.MaterialCardView
@@ -104,7 +104,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ekonomi"
+                android:text="@string/ekonomi"
                 style="@style/KaboorTextView.Title2"
                 android:textColor="@color/neutral6"/>
 
@@ -242,7 +242,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/penumpang"/>
+                android:text="Penumpang"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -283,7 +283,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/bagasi_kabin_7_kg"
+                    android:text="Bagasi Kabin 7 Kg"
                     android:textColor="@color/neutral6"
                     android:layout_marginLeft="4dp"
                     style="@style/KaboorTextView.Title1"/>
@@ -304,7 +304,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/bagasi_tambahan"
+                    android:text="Bagasi Tambahan"
                     android:textColor="@color/neutral6"
                     android:layout_marginLeft="4dp"
                     style="@style/KaboorTextView.Title1"/>
@@ -362,7 +362,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Mr. Andre Hutshon"
+                    android:text="@string/mr_andre_hutshon"
                     style="@style/KaboorTextView.Title2"/>
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -385,7 +385,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bagasi Kabin 7 kg"
+                    android:text="@string/bagasi_kabin_7_kg"
                     android:textColor="@color/neutral6"
                     android:layout_marginLeft="4dp"
                     style="@style/KaboorTextView.Title1"/>

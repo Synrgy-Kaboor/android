@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_6dp"
                     android:layout_weight="0.5"
-                    android:text="@string/_09_00_wib"
+                    android:text="@string/_9_00_wib"
                     android:textStyle="bold"
                     android:layout_gravity="start"/>
 
@@ -258,7 +258,7 @@
             android:layout_height="wrap_content"
             style="@style/KaboorButton.Gradient"
             android:layout_marginTop="@dimen/dimen_120dp"
-            android:text="Kembali ke Beranda" />
+            android:text="@string/kembali_ke_beranda" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

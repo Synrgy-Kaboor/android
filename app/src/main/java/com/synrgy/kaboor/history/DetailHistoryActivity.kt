@@ -5,12 +5,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.synrgy.common.presentation.KaboorActivity
-import com.synrgy.domain.booking.model.request.FlightParam
+
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.booking.PriceAlertActivity
 import com.synrgy.kaboor.databinding.ActivityDetailHistoryBinding
 import com.synrgy.kaboor.databinding.ActivityPriceAlertBinding
-import com.synrgy.kaboor.utils.constant.ConstantKey
 
 class DetailHistoryActivity : KaboorActivity<ActivityDetailHistoryBinding>() {
 
