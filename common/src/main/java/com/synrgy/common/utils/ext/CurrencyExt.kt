@@ -22,3 +22,13 @@ fun Long.toCurrency(): String {
     val formattedString = formatter.format(this)
     return formattedString.replace("Rp", "Rp ")
 }
+
+fun calculatePlanePrice(vararg data: Pair<Long, Int>): Long {
+    var result = 0L
+    for (i in data) {
+        val times = i.first * i.second
+        result += times
+    }
+
+    return result
+}

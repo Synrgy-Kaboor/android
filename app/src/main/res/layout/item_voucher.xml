@@ -38,7 +38,7 @@
                 android:layout_marginStart="@dimen/dimen_8dp"
                 android:layout_weight="1"
                 android:textColor="@color/color_white_disable"
-                tools:text="Voucher Promo" />
+                android:text="@string/label_voucher_promo" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.divider.MaterialDivider
@@ -55,7 +55,8 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/bg_rounded_success"
             android:backgroundTint="@color/color_success_disable"
-            android:padding="@dimen/dimen_3dp"
+            android:paddingVertical="@dimen/dimen_3dp"
+            android:paddingHorizontal="@dimen/dimen_6dp"
             android:textColor="@color/neutral1"
             tools:text="Hemat IDR 26.000" />
 

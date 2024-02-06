@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 app:cardCornerRadius="@dimen/dimen_8dp"
-                app:cardElevation="@dimen/dimen_2dp"
+                app:cardElevation="@dimen/dimen_0dp"
                 app:cardBackgroundColor="@color/neutral1">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -247,11 +247,12 @@
                 android:text="@string/label_extra_facilities" />
 
             <com.synrgy.common.reusable.KaboorAddonsCard
+                android:id="@+id/baggage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 app:cardCornerRadius="@dimen/dimen_8dp"
-                app:kaboorAddons_price="160000"
+                app:kaboorAddons_price="65000"
                 app:kaboorAddons_description="@string/body_baggage"
                 app:kaboorAddons_footer="@string/price_add_baggage"
                 app:kaboorAddons_label="@string/label_baggage" />

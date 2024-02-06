@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.synrgy.data.payment.model.response.Promo
+import com.synrgy.common.utils.ext.toCurrency
+import com.synrgy.common.utils.ext.toPromoDate
+import com.synrgy.domain.promo.model.response.Voucher
 import com.synrgy.kaboor.databinding.ItemVoucherBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
@@ -18,7 +20,7 @@ import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHol
 
 class VoucherAdapter(
     private val context: Context,
-) : BaseAsyncRecyclerAdapter<Promo, VoucherAdapter.VoucherViewHolder>() {
+) : BaseAsyncRecyclerAdapter<Voucher, VoucherAdapter.VoucherViewHolder>() {
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding {
         return ItemVoucherBinding.inflate(LayoutInflater.from(context), parent, false)
     }
@@ -30,14 +32,13 @@ class VoucherAdapter(
         return VoucherViewHolder(getViewBinding(parent, viewType))
     }
 
-    inner class VoucherViewHolder(binding: ViewBinding) : BaseAsyncItemViewHolder<Promo>(binding) {
-        override fun bind(data: Promo) = with(binding as ItemVoucherBinding) {
-            tvVoucherType.text = data.type
+    inner class VoucherViewHolder(binding: ViewBinding) : BaseAsyncItemViewHolder<Voucher>(binding) {
+        override fun bind(data: Voucher) = with(binding as ItemVoucherBinding) {
             tvTitle.text = data.title
             tvDescription.text = data.description
-            tvSave.text = data.saveUpTo.toString()
-            tvCode.text = data.voucherCode.uppercase()
-            tvEndDate.text = data.voucherEnded.toString()
+            tvSave.text = data.maximumDiscount.toCurrency()
+            tvCode.text = data.code
+            tvEndDate.text = data.expiredTime.toPromoDate()
         }
     }
 }

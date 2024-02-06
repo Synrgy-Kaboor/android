@@ -1,4 +1,4 @@
-package com.synrgy.domain.payment
+package com.synrgy.domain.promo.model.response
 
 data class Bank(
     val id: Int,

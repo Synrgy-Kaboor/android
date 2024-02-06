@@ -2,12 +2,11 @@ package com.synrgy.kaboor.utils.constant
 
 import com.synrgy.common.R
 import com.synrgy.common.utils.Selectable
-import com.synrgy.data.payment.model.response.Promo
+import com.synrgy.domain.promo.model.response.Voucher
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
-import com.synrgy.domain.payment.Bank
+import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.domain.flight.model.response.Airport
-import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.domain.notification.model.response.AirportCity
 import com.synrgy.domain.notification.model.response.Notification
 import com.synrgy.domain.notification.model.response.PriceNotification
@@ -149,41 +148,41 @@ object ConstantDummy {
             Airport(10, "Balikpapan", "BPN", 7),
         )
 
-    fun vouchers(): List<Promo> =
-        listOf(
-            Promo(
-                "Voucher Promo",
-                "Voucher Promo",
-                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
-                "TEMANKABOOR",
-                100000,
-                26000,
-            ),
-            Promo(
-                "Voucher Promo",
-                "Voucher Promo",
-                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
-                "TEMANKABOOR",
-                100000,
-                26000,
-            ),
-            Promo(
-                "Voucher Promo",
-                "Voucher Promo",
-                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
-                "TEMANKABOOR",
-                100000,
-                26000,
-            ),
-            Promo(
-                "Voucher Promo",
-                "Voucher Promo",
-                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
-                "TEMANKABOOR",
-                100000,
-                26000,
-            ),
-        )
+//    fun vouchers(): List<Voucher> =
+//        listOf(
+//            Voucher(
+//                "Voucher Promo",
+//                "Voucher Promo",
+//                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
+//                "TEMANKABOOR",
+//                100000,
+//                26000,
+//            ),
+//            Voucher(
+//                "Voucher Promo",
+//                "Voucher Promo",
+//                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
+//                "TEMANKABOOR",
+//                100000,
+//                26000,
+//            ),
+//            Voucher(
+//                "Voucher Promo",
+//                "Voucher Promo",
+//                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
+//                "TEMANKABOOR",
+//                100000,
+//                26000,
+//            ),
+//            Voucher(
+//                "Voucher Promo",
+//                "Voucher Promo",
+//                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
+//                "TEMANKABOOR",
+//                100000,
+//                26000,
+//            ),
+//        )
 
     fun promos(): List<Int> =
         listOf(

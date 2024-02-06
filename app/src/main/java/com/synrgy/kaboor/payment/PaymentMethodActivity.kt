@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.onBackPress
-import com.synrgy.domain.payment.Bank
+import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodBinding
 import com.synrgy.kaboor.payment.adapter.PaymentMethodAdapter
 import com.synrgy.kaboor.promo.VoucherBottomSheetFragment
@@ -66,7 +66,7 @@ class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
 
     private fun showVoucher() {
         VoucherBottomSheetFragment.newInstance { voucher ->
-            binding.tvVoucherCode.text = voucher.voucherCode
+            binding.tvVoucherCode.text = voucher.code
         }.show(supportFragmentManager, ConstantTag.TAG_VOUCHER)
     }
 }

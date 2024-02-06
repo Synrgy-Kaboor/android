@@ -1,7 +1,5 @@
 package com.synrgy.domain.flight
 
-import com.synrgy.common.data.ResponseListWrapper
-import com.synrgy.data.flight.model.response.AirportResponse
 import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.domain.flight.model.response.Airport
 import com.synrgy.domain.flight.model.response.Flight

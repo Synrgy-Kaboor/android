@@ -151,7 +151,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
     private fun showDatePicker(type: AirportType) = with(binding) {
         val startDate = when (type) {
             AirportType.DEPARTURE -> timeNow - oneDayMillis
-            AirportType.ARRIVAL -> kaboorSchedule.departure + oneDayMillis
+            AirportType.ARRIVAL -> kaboorSchedule.departure
         }
         showDatePicker(startDate) { date ->
             when (type) {

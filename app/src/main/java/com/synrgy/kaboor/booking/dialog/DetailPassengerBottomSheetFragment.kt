@@ -10,6 +10,7 @@ import com.synrgy.common.utils.ext.visibleIf
 import com.synrgy.domain.booking.model.response.Passenger
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.FragementDetailPassengerBottomSheetBinding
+import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.exts.onClick
 
@@ -26,17 +27,20 @@ class DetailPassengerBottomSheetFragment :
     companion object {
         fun newInstance(
             type: DetailPassengerType,
+            passenger: Passenger,
             onSave: ((Passenger) -> Unit)? = null,
         ): DetailPassengerBottomSheetFragment {
             return DetailPassengerBottomSheetFragment().apply {
                 this.type = type
+                this.passenger = passenger
                 this.onSave = onSave
             }
         }
     }
 
+    private var passenger: Passenger = Passenger()
     private var onSave: ((Passenger) -> Unit)? = null
-    private var title: String = ""
+    private var title: String = emptyString()
 
     private var type: DetailPassengerType = DetailPassengerType.PASSENGER
 
@@ -54,6 +58,11 @@ class DetailPassengerBottomSheetFragment :
             tvPassengerInfo.visibleIf { type != DetailPassengerType.BOOKER }
             bottomContainer.goneIf { type != DetailPassengerType.BOOKER }
             tvMessageTop.goneIf { type != DetailPassengerType.BOOKER }
+
+            etFullName.setText(passenger.fullName.toString())
+            etEmail.setText(passenger.email.toString())
+            etContact.setText(passenger.phoneNumber.toString())
+            setCheckDefaultValue(passenger.title.toString())
         }
     }
 
@@ -72,33 +81,53 @@ class DetailPassengerBottomSheetFragment :
         }
     }
 
+    private fun setCheckDefaultValue(defaultValue: String) = with(contentBinding) {
+        val mr = rbMr.text.toString()
+        val mrs = rbMrs.text.toString()
+        val ms = rbMiss.text.toString()
+
+        when (defaultValue) {
+            mr -> {
+                rbMr.isChecked = true
+                title = mr
+            }
+            mrs -> {
+                rbMrs.isChecked = true
+                title = mrs
+            }
+            ms -> {
+                rbMr.isChecked = true
+                title = ms
+            }
+        }
+    }
+
     private fun handleData() = with(contentBinding) {
-        val fullName = etFullName.getText()
-        val email = etEmail.getText()
-        val phone = etContact.getText()
-
-        if ((type == DetailPassengerType.PASSENGER || type == DetailPassengerType.PASSENGER_BOOKER) && title.isEmpty() && fullName.isEmpty()) {
+        if (!validate()) {
             showToast(getString(R.string.message_not_empty))
-            return@with
+            return
         }
-
-        if (type == DetailPassengerType.BOOKER && title.isEmpty() && fullName.isEmpty() && email.isEmpty() && phone.isEmpty()) {
-            showToast(getString(R.string.message_not_empty))
-            return@with
-        }
-
-        if (type == DetailPassengerType.PASSENGER) {
-
-        }
-
         val passenger = Passenger(
-            fullName = fullName,
-            email = email,
-            phoneNumber = phone,
+            fullName = etFullName.getText(),
+            email = etEmail.getText(),
+            phoneNumber = etContact.getText(),
             title = title
         )
         onSave?.invoke(passenger)
         dismiss()
+    }
+
+    private fun validate(): Boolean {
+        val fullName = contentBinding.etFullName.getText()
+        val email = contentBinding.etEmail.getText()
+        val contact = contentBinding.etContact.getText()
+
+        when (type) {
+            DetailPassengerType.PASSENGER -> if (title.isEmpty() || fullName.isEmpty()) return false
+            DetailPassengerType.BOOKER -> if (title.isEmpty() || fullName.isEmpty() || email.isEmpty() || contact.isEmpty()) return false
+            DetailPassengerType.PASSENGER_BOOKER -> if (title.isEmpty() || fullName.isEmpty()) return false
+        }
+        return true
     }
 
 }

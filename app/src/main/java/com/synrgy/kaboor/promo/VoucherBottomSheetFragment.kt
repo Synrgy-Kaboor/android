@@ -2,7 +2,7 @@ package com.synrgy.kaboor.promo
 
 import android.view.LayoutInflater
 import com.synrgy.common.presentation.KaboorBottomSheet
-import com.synrgy.data.payment.model.response.Promo
+import com.synrgy.domain.promo.model.response.Voucher
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.FragmentVoucherBottomSheetBinding
 import com.synrgy.kaboor.promo.adapter.VoucherAdapter
@@ -20,13 +20,13 @@ class VoucherBottomSheetFragment : KaboorBottomSheet<FragmentVoucherBottomSheetB
 
     companion object {
         fun newInstance(
-            onSelectedPromo: (Promo) -> Unit
+            onSelectedPromo: (Voucher) -> Unit
         ): VoucherBottomSheetFragment = VoucherBottomSheetFragment().apply {
             this.onSelectedPromo = onSelectedPromo
         }
     }
 
-    private var onSelectedPromo: (Promo) -> Unit = {}
+    private var onSelectedPromo: (Voucher) -> Unit = {}
 
     private val promoAdapter by lazy {
         VoucherAdapter(requireContext())
@@ -50,7 +50,6 @@ class VoucherBottomSheetFragment : KaboorBottomSheet<FragmentVoucherBottomSheetB
     }
 
     override fun initProcess() {
-        promoAdapter.setData = ConstantDummy.vouchers()
     }
 
 

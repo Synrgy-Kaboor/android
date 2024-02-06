@@ -23,7 +23,6 @@
             android:layout_weight="1"
             android:maxLines="1"
             android:hint="@string/label_full_name"
-            android:textColorHint="@color/neutral6"
             android:textColor="@color/neutral9" />
 
         <androidx.appcompat.widget.AppCompatImageView

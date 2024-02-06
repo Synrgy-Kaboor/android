@@ -10,6 +10,7 @@ import com.synrgy.domain.booking.model.request.UpdateAdditionalBookingParam
 import com.synrgy.domain.booking.model.request.UpdateBookingParam
 import com.synrgy.domain.booking.model.request.PassengerParam
 import com.synrgy.domain.booking.model.request.UpdatePaymentMethodParam
+import com.synrgy.domain.booking.model.response.Passenger
 
 
 /**
@@ -64,5 +65,14 @@ fun PassengerParam.toRequest(): PassengerRequest {
 fun UpdatePaymentMethodParam.toRequest(): UpdatePaymentMethodRequest {
     return UpdatePaymentMethodRequest(
         paymentMethod = paymentMethod
+    )
+}
+
+fun Passenger.toParam(): PassengerParam {
+    return PassengerParam(
+        fullName = fullName,
+        title = title,
+        phoneNumber = phoneNumber,
+        email = email
     )
 }
