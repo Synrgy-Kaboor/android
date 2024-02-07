@@ -86,14 +86,16 @@ class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
             },
             onSuccess = {
                 hideLoading()
+                PaymentMethodDetailActivity.start(this, it.bookingId ?: 0, selectedPaymentMethod)
             }
         )
     }
 
     private fun handleSelectedPayment(bank: Bank) = with(binding) {
         tvVoucherCode.text = ""
-        tvTotalPrice.text = price.toCurrency()
+        tvPrice.text = price.toCurrency()
         selectedPaymentMethod = bank
+        btnPay.enable()
     }
 
     private fun handlePayment() {

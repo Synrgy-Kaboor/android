@@ -222,4 +222,6 @@
     <string name="message_update_data_success">Data berhasil di update!</string>
     <string name="message_empty_passenger_data">Data penumpang tidak lengkap</string>
     <string name="label_voucher_promo">Voucher Promo</string>
+    <string name="format_bullet_point">• %s</string>
+    <string name="label_finish">Selesai</string>
 </resources>

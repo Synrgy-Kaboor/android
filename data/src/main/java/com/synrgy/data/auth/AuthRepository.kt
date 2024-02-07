@@ -1,6 +1,6 @@
 package com.synrgy.data.auth
 
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.data.auth.model.request.EmailRequest
 import com.synrgy.data.auth.model.request.LoginRequest
@@ -22,20 +22,20 @@ import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
 
-    suspend fun resendOTP(body: EmailRequest): Flow<Resource<KaboorGenericResponse>>
+    suspend fun resendOTP(body: EmailRequest): Flow<Resource<KaboorResponse>>
     suspend fun verifiedOTP(body: OtpRequest): Flow<Resource<ResponseWrapper<UserResponse>>>
     suspend fun login(body: LoginRequest): Flow<Resource<ResponseWrapper<LoginResponse>>>
     suspend fun register(body: RegisterRequest): Flow<Resource<ResponseWrapper<UserResponse>>>
-    suspend fun forgetPassword(body: EmailRequest): Flow<Resource<KaboorGenericResponse>>
-    suspend fun verifyOtpResetPassword(body: OtpRequest): Flow<Resource<KaboorGenericResponse>>
-    suspend fun changePassword(body: NewPasswordRequest): Flow<Resource<KaboorGenericResponse>>
-    suspend fun checkEmail(body: EmailRequest): Flow<Resource<KaboorGenericResponse>>
+    suspend fun forgetPassword(body: EmailRequest): Flow<Resource<KaboorResponse>>
+    suspend fun verifyOtpResetPassword(body: OtpRequest): Flow<Resource<KaboorResponse>>
+    suspend fun changePassword(body: NewPasswordRequest): Flow<Resource<KaboorResponse>>
+    suspend fun checkEmail(body: EmailRequest): Flow<Resource<KaboorResponse>>
 
-    suspend fun changeEmail(body: EmailRequest): Flow<Resource<KaboorGenericResponse>>
+    suspend fun changeEmail(body: EmailRequest): Flow<Resource<KaboorResponse>>
 
-    suspend fun verifyOtpEmail(body: OtpRequest): Flow<Resource<KaboorGenericResponse>>
+    suspend fun verifyOtpEmail(body: OtpRequest): Flow<Resource<KaboorResponse>>
 
-    suspend fun changeNumber(body: PhoneRequest): Flow<Resource<KaboorGenericResponse>>
+    suspend fun changeNumber(body: PhoneRequest): Flow<Resource<KaboorResponse>>
 
-    suspend fun verifyOtpNumber(body: OtpRequest): Flow<Resource<KaboorGenericResponse>>
+    suspend fun verifyOtpNumber(body: OtpRequest): Flow<Resource<KaboorResponse>>
 }

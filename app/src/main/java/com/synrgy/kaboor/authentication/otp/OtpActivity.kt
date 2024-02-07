@@ -18,7 +18,6 @@ import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityOtpBinding
 import com.synrgy.kaboor.utils.navigation.NavDirection
 import com.wahidabd.library.utils.common.emptyString
-import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.exts.getCompatColor
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -34,7 +33,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
 
     private val countDown = setTimer(
         Constant.OTP_TIMER,
-        Constant.OTP_INTERVAL,
+        Constant.TIMER_INTERVAL,
         onTick = { setSpannableCountDown(it.toSeconds()) },
         onFinish = {
             binding.btnVerification.isEnabled = false

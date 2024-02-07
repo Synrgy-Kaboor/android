@@ -1,7 +1,7 @@
 package com.synrgy.data.notification.remote
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.notification.model.request.PriceNotificationRequest
 import com.synrgy.data.notification.model.response.PriceNotificationResponse
 import retrofit2.Response
@@ -27,16 +27,16 @@ interface NotificationService {
     @POST("/api/v1/priceNotification")
     suspend fun createPriceNotification(
         @Body body: PriceNotificationRequest
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 
     @PATCH("/api/v1/priceNotification/{id}")
     suspend fun updatePriceNotification(
         @Path("id") id: Int,
         @Body body: PriceNotificationRequest
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 
     @DELETE("/api/v1/priceNotification/{id}")
     suspend fun deletePriceNotification(
         @Path("id") id: Int
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 }

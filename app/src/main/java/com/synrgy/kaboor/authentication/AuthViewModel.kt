@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.domain.auth.AuthUseCase
 import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.LoginParam
@@ -35,8 +35,8 @@ class AuthViewModel(
     private val _jwt = MutableLiveData<Resource<Login>>()
     val jwt: LiveData<Resource<Login>> get() = _jwt
 
-    private val _checkEmail = MutableLiveData<Resource<KaboorGenericResponse>>()
-    val checkEmail: LiveData<Resource<KaboorGenericResponse>> get() = _checkEmail
+    private val _checkEmail = MutableLiveData<Resource<KaboorResponse>>()
+    val checkEmail: LiveData<Resource<KaboorResponse>> get() = _checkEmail
 
     private val _logout = MutableLiveData<Resource<Unit>>()
     val logout: LiveData<Resource<Unit>> get() = _logout

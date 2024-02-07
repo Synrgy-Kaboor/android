@@ -2,15 +2,13 @@ package com.synrgy.kaboor.utils.constant
 
 import com.synrgy.common.R
 import com.synrgy.common.utils.Selectable
-import com.synrgy.domain.promo.model.response.Voucher
+import com.synrgy.domain.flight.model.response.OrderFlight
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
-import com.synrgy.domain.promo.model.response.Bank
-import com.synrgy.domain.flight.model.response.Airport
 import com.synrgy.domain.notification.model.response.AirportCity
 import com.synrgy.domain.notification.model.response.Notification
 import com.synrgy.domain.notification.model.response.PriceNotification
-import com.synrgy.domain.flight.model.response.OrderFlight
+import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.domain.user.model.response.HelpCenter
 import com.synrgy.domain.user.model.response.Passport
 
@@ -238,7 +236,10 @@ object ConstantDummy {
                     id = 1,
                     code = "BRI",
                     methodName = "Bank BRI",
-                    imageUrl = "https://logowik.com/content/uploads/images/bri-20209664.logowik.com.webp"
+                    imageUrl = "https://logowik.com/content/uploads/images/bri-20209664.logowik.com.webp",
+                    atm = R.array.atm_bri,
+                    internet = R.array.internet_bri,
+                    mobile = R.array.mobile_bri
                 )
             ),
             Selectable(
@@ -246,7 +247,10 @@ object ConstantDummy {
                     2,
                     code = "BNI",
                     methodName = "Bank BNI",
-                    imageUrl ="https://logowik.com/content/uploads/images/bni-bank-negara-indonesia8078.logowik.com.webp"
+                    imageUrl = "https://logowik.com/content/uploads/images/bni-bank-negara-indonesia8078.logowik.com.webp",
+                    atm = R.array.atm_bni,
+                    internet = R.array.internet_bni,
+                    mobile = R.array.mobile_bni
                 )
             ),
             Selectable(
@@ -254,7 +258,10 @@ object ConstantDummy {
                     3,
                     code = "BCA",
                     methodName = "Bank BCA",
-                    imageUrl = "https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png"
+                    imageUrl = "https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png",
+                    atm = R.array.atm_bca,
+                    internet = R.array.internet_bca,
+                    mobile = R.array.mobile_bca
                 )
             ),
             Selectable(
@@ -262,7 +269,10 @@ object ConstantDummy {
                     4,
                     code = "Mandiri",
                     methodName = "Bank Mandiri",
-                    imageUrl = "https://logowik.com/content/uploads/images/bank-mandiri.jpg"
+                    imageUrl = "https://logowik.com/content/uploads/images/bank-mandiri.jpg",
+                    atm = R.array.atm_mandiri,
+                    internet = R.array.internet_mandiri,
+                    mobile = R.array.mobile_mandiri
                 )
             )
         )

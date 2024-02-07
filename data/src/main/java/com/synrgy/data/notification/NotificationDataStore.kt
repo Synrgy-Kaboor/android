@@ -1,7 +1,7 @@
 package com.synrgy.data.notification
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.notification.model.request.PriceNotificationRequest
 import com.synrgy.data.notification.model.response.PriceNotificationResponse
 import com.synrgy.data.notification.remote.NotificationService
@@ -34,7 +34,7 @@ class NotificationDataStore(
 
     override suspend fun createPriceNotification(
         body: PriceNotificationRequest
-    ): Flow<Resource<KaboorGenericResponse>> = flow {
+    ): Flow<Resource<KaboorResponse>> = flow {
         enqueue(
             body,
             error::convertGenericError,
@@ -46,7 +46,7 @@ class NotificationDataStore(
     override suspend fun updatePriceNotification(
         id: Int,
         body: PriceNotificationRequest
-    ): Flow<Resource<KaboorGenericResponse>> = flow {
+    ): Flow<Resource<KaboorResponse>> = flow {
         enqueue(
             id,
             body,
@@ -58,7 +58,7 @@ class NotificationDataStore(
 
     override suspend fun deletePriceNotification(
         id: Int
-    ): Flow<Resource<KaboorGenericResponse>> = flow {
+    ): Flow<Resource<KaboorResponse>> = flow {
         enqueue(
             id,
             error::convertGenericError,

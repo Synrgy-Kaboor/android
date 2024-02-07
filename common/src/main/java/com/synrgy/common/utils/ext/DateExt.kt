@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-import kotlin.time.Duration.Companion.milliseconds
+import java.util.TimeZone
 
 
 /**
@@ -55,7 +55,7 @@ fun Int.toGmtFormat(date: String): String {
     }
 }
 
-fun convertToDuration(start: String, end: String): String{
+fun convertToDuration(start: String, end: String): String {
     val format = dateFormat
     val startTime = format.parse(start)!!
     val endTime = format.parse(end)!!
@@ -100,4 +100,12 @@ fun String.toGreeting(): String {
         in 15..18 -> "Selamat Sore, $this"
         else -> "Selamat Malam, $this"
     }
+}
+
+fun String.toCountDownGmt7(): Long {
+    val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", localeIndonesia)
+    formatter.timeZone = TimeZone.getTimeZone("UTC") // Set UTC time zone
+    val utcDate = formatter.parse(this)!! // Parse UTC date
+
+    return utcDate.time - timeNow
 }

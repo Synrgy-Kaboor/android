@@ -1,16 +1,21 @@
 package com.synrgy.domain.booking
 
 import com.synrgy.common.data.ResponseWrapper
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.booking.BookingRepository
 import com.synrgy.data.booking.model.response.BookingResponse
 import com.synrgy.data.booking.model.response.BookingStatusResponse
 import com.synrgy.data.booking.model.response.PaymentDetailResponse
+import com.synrgy.data.booking.model.response.UploadProofResponse
 import com.synrgy.domain.booking.mapper.toDomain
 import com.synrgy.domain.booking.mapper.toRequest
 import com.synrgy.domain.booking.model.request.BookingParam
+import com.synrgy.domain.booking.model.request.ProofParam
+import com.synrgy.domain.booking.model.request.UpdateProofParam
 import com.synrgy.domain.booking.model.response.Booking
 import com.synrgy.domain.booking.model.response.BookingStatus
 import com.synrgy.domain.booking.model.response.PaymentDetail
+import com.synrgy.domain.booking.model.response.UploadProof
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
 import kotlinx.coroutines.flow.Flow
@@ -68,5 +73,24 @@ class BookingInteractor(
                 return data.data.toDomain()
             }
         }.asFlow()
+    }
+
+    override suspend fun uploadProof(body: ProofParam): Flow<Resource<UploadProof>> {
+        return object : InternetBoundResource<UploadProof, ResponseWrapper<UploadProofResponse>>(){
+            override suspend fun createCall(): Flow<Resource<ResponseWrapper<UploadProofResponse>>> {
+                return bookingRepository.uploadProof(body.toRequest())
+            }
+
+            override suspend fun saveCallRequest(data: ResponseWrapper<UploadProofResponse>): UploadProof {
+                return data.data.toDomain()
+            }
+        }.asFlow()
+    }
+
+    override suspend fun updateProof(
+        id: Int,
+        body: UpdateProofParam
+    ): Flow<Resource<KaboorResponse>> {
+        return bookingRepository.updateProof(id, body.toRequest())
     }
 }
