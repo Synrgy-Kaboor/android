@@ -63,7 +63,17 @@ class ExtraProtectionActivity : KaboorActivity<ActivityExtraProtectionBinding>()
             setOnAddonClickList { isSelected -> calculateInsurance(isSelected) }
             setOnLoadMoreClickListener { showProtectionDialog(ProtectionType.DELAY) }
         }
-        btnPay.onClick { PaymentMethodActivity.start(this@ExtraProtectionActivity) }
+        btnPay.onClick { handleInsurance() }
+    }
+
+    private fun handleInsurance() = with(binding){
+        val body = bookingParam?.copy(
+            addDelayProtection = delayProtection.isSelected,
+            addBaggageInsurance = baggageInsurance.isSelected,
+            addTravelInsurance = travelInsurance.isSelected
+        )
+
+        PaymentMethodActivity.start(this@ExtraProtectionActivity, price, body)
     }
 
     private fun showProtectionDialog(type: ProtectionType) {

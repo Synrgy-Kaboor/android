@@ -32,6 +32,7 @@ fun BookingParam.toRequest(): BookingRequest {
         addBaggage = addBaggage,
         addTravelInsurance = addTravelInsurance,
         addDelayProtection = addDelayProtection,
+        addBaggageInsurance = addBaggageInsurance,
         paymentMethod = paymentMethod,
         voucherId = voucherId
     )

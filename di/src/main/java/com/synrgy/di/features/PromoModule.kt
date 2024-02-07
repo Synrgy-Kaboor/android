@@ -3,6 +3,7 @@ package com.synrgy.di.features
 import com.synrgy.data.promo.PromoDataStore
 import com.synrgy.data.promo.PromoRepository
 import com.synrgy.domain.promo.PromoInteractor
+import com.synrgy.domain.promo.PromoUseCase
 import org.koin.dsl.module
 
 
@@ -14,5 +15,5 @@ import org.koin.dsl.module
 
 val promoModule = module {
     single<PromoRepository> { PromoDataStore(get(), get()) }
-    single<PromoInteractor> { PromoInteractor(get()) }
+    single<PromoUseCase> { PromoInteractor(get()) }
 }

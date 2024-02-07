@@ -24,6 +24,7 @@ data class BookingParam(
     val addBaggage: Boolean = false,
     val addTravelInsurance: Boolean = false,
     val addDelayProtection: Boolean = false,
+    val addBaggageInsurance: Boolean = false,
     val paymentMethod: String? = null,
     val voucherId: Int? = null
 ): Parcelable

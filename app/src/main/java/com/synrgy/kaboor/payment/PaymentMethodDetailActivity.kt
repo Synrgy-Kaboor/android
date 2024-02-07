@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.enums.ClipboardType
 import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.chuckedString
@@ -14,19 +15,30 @@ import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showHideToggle
 import com.synrgy.common.utils.ext.snackbarDanger
+import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.common.utils.ext.toStringTrim
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodDetailBinding
+import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
+import org.koin.android.ext.android.inject
 
 class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBinding>() {
 
     companion object {
-        fun start(context: Context) {
-            context.startActivity(Intent(context, PaymentMethodDetailActivity::class.java))
+        fun start(
+            context: Context,
+            bookingId: Int,
+        ) {
+            context.startActivity(Intent(context, PaymentMethodDetailActivity::class.java).apply {
+                putExtra(ConstantKey.KEY_BOOKING_ID, bookingId)
+            })
         }
     }
 
+    private val viewModel: BookingViewModel by inject()
+
+    private var bookingId: Int = 0
     private var atmState = false
     private var internetBankingState = false
     private var mobileBankingState = false
@@ -35,11 +47,13 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         return ActivityPaymentMethodDetailBinding.inflate(layoutInflater)
     }
 
-    override fun initUI() = with(binding) {
-        // TODO: Remove this after API ready
-        tvAccountNumber.text = "1420201000982336".chuckedString()
-        tvTotalPayment.text = "1.000.000"
+    override fun initIntent() {
+        super.initIntent()
+
+        bookingId = intent.getIntExtra(ConstantKey.KEY_BOOKING_ID, 0)
     }
+
+    override fun initUI() = with(binding) {}
 
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
@@ -77,6 +91,30 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
 
         uploadReceipt.setOnSelectImage { requestPermissions() }
         uploadReceipt.setOnRemoveImage { showAlertRemoveImage() }
+    }
+
+    override fun initProcess() {
+        super.initProcess()
+        viewModel.getPaymentDetail(bookingId)
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+
+        viewModel.payment.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = {_, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = { data ->
+                hideLoading()
+                with(binding) {
+                    tvAccountNumber.text = data.accountNumber?.chuckedString()
+                    tvTotalPayment.text = data.totalPrice?.toCurrency(false)
+                }
+            }
+        )
     }
 
     private fun showAlertRemoveImage() {

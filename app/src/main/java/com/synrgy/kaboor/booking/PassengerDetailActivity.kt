@@ -84,7 +84,7 @@ class PassengerDetailActivity : KaboorActivity<ActivityPassengerDetailBinding>()
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
         cvBookerDetail.onClick { showDetailInfo(DetailPassengerType.BOOKER) }
-        ivEdit.onClick { if (!btnSwitch.isChecked) showDetailInfo(DetailPassengerType.PASSENGER_BOOKER) }
+        ivEdit.onClick { showDetailInfo(DetailPassengerType.PASSENGER_BOOKER) }
         btnSwitch.setOnCheckedChangeListener { _, checked ->
             if (checked) tvPassengerName.text =
                 getString(R.string.format_title_name, passenger.title, passenger.fullName)

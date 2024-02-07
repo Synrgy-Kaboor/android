@@ -30,29 +30,6 @@ interface BookingService {
         @Body body: BookingRequest
     ): Response<ResponseWrapper<BookingResponse>>
 
-    @GET("/api/v1/booking/{id}")
-    suspend fun getBookingInfo(
-        @Path("id") id: Int
-    ): Response<ResponseWrapper<BookingInfoResponse>>
-
-    @PATCH("/api/v1/booking/{id}/ordererDetails")
-    suspend fun updateBooking(
-        @Path("id") id: Int,
-        @Body body: UpdateBookingRequest
-    ): Response<KaboorGenericResponse>
-
-    @PATCH("/api/v1/booking/{id}/additionalService")
-    suspend fun updateAdditionalService(
-        @Path("id") id: Int,
-        @Body body: UpdateAdditionalBookingRequest
-    ): Response<KaboorGenericResponse>
-
-    @PATCH("/api/v1/booking/{id}/payment")
-    suspend fun updatePayment(
-        @Path("id") id: Int,
-        @Body body: UpdatePaymentMethodRequest
-    ): Response<KaboorGenericResponse>
-
     @GET("/api/v1/booking/{id}/payment")
     suspend fun getPaymentDetail(
         @Path("id") id: Int

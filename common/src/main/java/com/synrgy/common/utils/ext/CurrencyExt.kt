@@ -16,11 +16,13 @@ fun Float.toCurrency(): String {
     return formattedString.replace("Rp", "Rp ")
 }
 
-fun Long.toCurrency(): String {
+fun Long.toCurrency(isFormat: Boolean = true): String {
     val formatter = NumberFormat.getCurrencyInstance(localeIndonesia)
     formatter.minimumFractionDigits = 0
     val formattedString = formatter.format(this)
-    return formattedString.replace("Rp", "Rp ")
+
+    return if (isFormat) formattedString.replace("Rp", "Rp ")
+    else formattedString.replace("Rp", "")
 }
 
 fun calculatePlanePrice(vararg data: Pair<Long, Int>): Long {

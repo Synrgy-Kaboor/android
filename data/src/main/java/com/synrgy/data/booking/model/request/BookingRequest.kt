@@ -19,6 +19,7 @@ data class BookingRequest(
     val addBaggage: Boolean = false,
     val addTravelInsurance: Boolean = false,
     val addDelayProtection: Boolean = false,
+    val addBaggageInsurance: Boolean = false,
     val paymentMethod: String? = null,
     val voucherId: Int? = null
 )

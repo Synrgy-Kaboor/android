@@ -14,5 +14,6 @@ data class Voucher(
     val description: String,
     val eligiblePaymentMethods: List<String>,
     val maximumDiscount: Long,
-    val expiredTime: String
+    val expiredTime: String,
+    var isEligible: Boolean = false
 )
