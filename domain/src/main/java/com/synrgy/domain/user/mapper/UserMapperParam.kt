@@ -11,11 +11,9 @@ fun UpdatePersonalInfoParam.toRequest(): UpdatePersonalInfoRequest {
         fullName = fullName,
         gender = gender,
         birthday = birthday,
-        country = country,
+        nation = nation,
         city = city,
         address = address,
-        email = email,
-        phoneNumber = phoneNumber,
         isWni = isWni
     )
 }
@@ -24,6 +22,7 @@ fun User.toParam(): UserParam {
     return UserParam(
         title = title,
         fullName = fullName,
+        email = email,
         gender = gender,
         birthday = birthday,
         nation = nation,

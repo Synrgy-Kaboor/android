@@ -60,7 +60,9 @@ class UserDataStore(
         )
     }.flowDispatcherIO()
 
-    override suspend fun updatePersonalInfo(body: UpdatePersonalInfoRequest): Flow<Resource<KaboorGenericResponse>> = flow {
+    override suspend fun updatePersonalInfo(
+        body: UpdatePersonalInfoRequest,
+    ): Flow<Resource<KaboorGenericResponse>> = flow {
         enqueue(
             body,
             error::convertGenericError,

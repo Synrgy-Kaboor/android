@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import com.google.android.material.card.MaterialCardView
 import com.synrgy.common.databinding.LayoutScheduleCardBinding
 import com.synrgy.common.utils.ext.onGroupClick
+import com.synrgy.common.utils.ext.oneDayMillis
 import com.synrgy.common.utils.ext.oneWeekMillis
-import com.synrgy.common.utils.ext.oneDay
 import com.synrgy.common.utils.ext.timeNow
 import com.synrgy.common.utils.ext.toFullDateFormat
 import com.wahidabd.library.utils.exts.gone
@@ -55,12 +55,14 @@ class KaboorScheduleCard @JvmOverloads constructor(
     }
 
     fun setDeparture(departure: Long) {
+        com.wahidabd.library.utils.extensions.debug { "departure --> $departure ${departure.toFullDateFormat()}" }
         this.departure = departure
-        if (departure >= comingHome) setComingHome(departure + oneDay)
         binding.tvDeparture.text = departure.toFullDateFormat()
+        if (departure > comingHome) setComingHome(this.departure + oneDayMillis)
     }
 
     fun setComingHome(comingHome: Long) {
+        com.wahidabd.library.utils.extensions.debug { "cominghome --> $comingHome ${comingHome.toFullDateFormat()}" }
         this.comingHome = comingHome
         binding.tvArrival.text = comingHome.toFullDateFormat()
     }

@@ -284,117 +284,117 @@ object ConstantDummy {
             ),
         )
 
-    fun planeFlight(): List<Flight> =
-        listOf(
-            Flight(
-                1,
-                "Garuda Indonesia",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "",
-                1274000,
-                image = R.drawable.sample_img_garuda
-            ),
-            Flight(
-                2,
-                "Lion Air",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "",
-                1274000,
-                image = R.drawable.sample_img_lion_air
-            ),
-            Flight(
-                3,
-                "Batik Air",
-                "Ekonomi",
-                "Surabaya",
-                "07.00 WIB",
-                "Jakarta",
-                "10.05 WIB",
-                "Durasi 4 Jam 5 Menit",
-                "",
-                1274000,
-                image = R.drawable.sample_img_batik_air
-            ),
-            Flight(
-                4,
-                "Garuda Indonesia",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "",
-                1274000,
-                image = R.drawable.sample_img_garuda
-            ),
-            Flight(
-                5,
-                "Lion Air",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "",
-                1274000,
-                image = R.drawable.sample_img_lion_air
-            ),
-            Flight(
-                6,
-                "Batik Air",
-                "Ekonomi",
-                "Surabaya",
-                "07.00 WIB",
-                "Jakarta",
-                "10.05 WIB",
-                "Durasi 4 Jam 5 Menit",
-                "",
-                1274000,
-                image = R.drawable.sample_img_batik_air
-            )
-        )
+//    fun planeFlight(): List<Flight> =
+//        listOf(
+//            Flight(
+//                1,
+//                "Garuda Indonesia",
+//                "Ekonomi",
+//                "Surabaya",
+//                "05.00 WIB",
+//                "Jakarta",
+//                "09.00 WIB",
+//                "Durasi 4 Jam",
+//                "",
+//                1274000,
+//                image = R.drawable.sample_img_garuda
+//            ),
+//            Flight(
+//                2,
+//                "Lion Air",
+//                "Ekonomi",
+//                "Surabaya",
+//                "05.00 WIB",
+//                "Jakarta",
+//                "09.00 WIB",
+//                "Durasi 4 Jam",
+//                "",
+//                1274000,
+//                image = R.drawable.sample_img_lion_air
+//            ),
+//            Flight(
+//                3,
+//                "Batik Air",
+//                "Ekonomi",
+//                "Surabaya",
+//                "07.00 WIB",
+//                "Jakarta",
+//                "10.05 WIB",
+//                "Durasi 4 Jam 5 Menit",
+//                "",
+//                1274000,
+//                image = R.drawable.sample_img_batik_air
+//            ),
+//            Flight(
+//                4,
+//                "Garuda Indonesia",
+//                "Ekonomi",
+//                "Surabaya",
+//                "05.00 WIB",
+//                "Jakarta",
+//                "09.00 WIB",
+//                "Durasi 4 Jam",
+//                "",
+//                1274000,
+//                image = R.drawable.sample_img_garuda
+//            ),
+//            Flight(
+//                5,
+//                "Lion Air",
+//                "Ekonomi",
+//                "Surabaya",
+//                "05.00 WIB",
+//                "Jakarta",
+//                "09.00 WIB",
+//                "Durasi 4 Jam",
+//                "",
+//                1274000,
+//                image = R.drawable.sample_img_lion_air
+//            ),
+//            Flight(
+//                6,
+//                "Batik Air",
+//                "Ekonomi",
+//                "Surabaya",
+//                "07.00 WIB",
+//                "Jakarta",
+//                "10.05 WIB",
+//                "Durasi 4 Jam 5 Menit",
+//                "",
+//                1274000,
+//                image = R.drawable.sample_img_batik_air
+//            )
+//        )
 
-    fun roundTripPlaneFlight(): List<Flight> =
-        listOf(
-            Flight(
-                1,
-                "Garuda Indonesia",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "Sen, 24 Des 2023",
-                1274000,
-                image = R.drawable.sample_img_garuda
-            ),
-            Flight(
-                2,
-                "Lion Air",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "Sel, 25 Des 2023",
-                1274000,
-                image = R.drawable.sample_img_lion_air
-            )
-        )
+//    fun roundTripPlaneFlight(): List<Flight> =
+//        listOf(
+//            Flight(
+//                1,
+//                "Garuda Indonesia",
+//                "Ekonomi",
+//                "Surabaya",
+//                "05.00 WIB",
+//                "Jakarta",
+//                "09.00 WIB",
+//                "Durasi 4 Jam",
+//                "Sen, 24 Des 2023",
+//                1274000,
+//                image = R.drawable.sample_img_garuda
+//            ),
+//            Flight(
+//                2,
+//                "Lion Air",
+//                "Ekonomi",
+//                "Surabaya",
+//                "05.00 WIB",
+//                "Jakarta",
+//                "09.00 WIB",
+//                "Durasi 4 Jam",
+//                "Sel, 25 Des 2023",
+//                1274000,
+//                image = R.drawable.sample_img_lion_air
+//            )
+//        )
 
     fun bankPaymentMethod(): List<Selectable<Bank>> =
         listOf(

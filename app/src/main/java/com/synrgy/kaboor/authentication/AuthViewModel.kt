@@ -45,12 +45,12 @@ class AuthViewModel(
         _userData.value = Resource.loading()
         viewModelScope.launch {
             user.saveToken(token)
-            user.setLogin(true)
         }
     }
 
     fun saveUserInfo(data: User){
         viewModelScope.launch {
+            user.setLogin(true)
             user.setUser(data.toParam())
         }
     }
