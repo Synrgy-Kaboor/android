@@ -8,6 +8,7 @@ import com.synrgy.di.features.authModule
 import com.synrgy.di.features.bookingModule
 import com.synrgy.di.features.flightModule
 import com.synrgy.di.features.notificationModule
+import com.synrgy.di.features.promoModule
 import com.synrgy.di.features.userModule
 import com.synrgy.di.retrofitModule
 import com.synrgy.kaboor.utils.di.viewModelModule
@@ -32,6 +33,7 @@ class App : BaseApplication() {
             bookingModule,
             notificationModule,
             flightModule,
+            promoModule,
             viewModelModule, // make sure this module is still at the bottom of the features module
         )
 

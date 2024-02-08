@@ -4,12 +4,17 @@ import com.synrgy.data.booking.model.request.BookingRequest
 import com.synrgy.data.booking.model.request.UpdateAdditionalBookingRequest
 import com.synrgy.data.booking.model.request.UpdateBookingRequest
 import com.synrgy.data.booking.model.request.PassengerRequest
+import com.synrgy.data.booking.model.request.ProofRequest
 import com.synrgy.data.booking.model.request.UpdatePaymentMethodRequest
+import com.synrgy.data.booking.model.request.UpdateProofRequest
 import com.synrgy.domain.booking.model.request.BookingParam
 import com.synrgy.domain.booking.model.request.UpdateAdditionalBookingParam
 import com.synrgy.domain.booking.model.request.UpdateBookingParam
 import com.synrgy.domain.booking.model.request.PassengerParam
+import com.synrgy.domain.booking.model.request.ProofParam
 import com.synrgy.domain.booking.model.request.UpdatePaymentMethodParam
+import com.synrgy.domain.booking.model.request.UpdateProofParam
+import com.synrgy.domain.booking.model.response.Passenger
 
 
 /**
@@ -31,6 +36,7 @@ fun BookingParam.toRequest(): BookingRequest {
         addBaggage = addBaggage,
         addTravelInsurance = addTravelInsurance,
         addDelayProtection = addDelayProtection,
+        addBaggageInsurance = addBaggageInsurance,
         paymentMethod = paymentMethod,
         voucherId = voucherId
     )
@@ -64,5 +70,26 @@ fun PassengerParam.toRequest(): PassengerRequest {
 fun UpdatePaymentMethodParam.toRequest(): UpdatePaymentMethodRequest {
     return UpdatePaymentMethodRequest(
         paymentMethod = paymentMethod
+    )
+}
+
+fun Passenger.toParam(): PassengerParam {
+    return PassengerParam(
+        fullName = fullName,
+        title = title,
+        phoneNumber = phoneNumber,
+        email = email
+    )
+}
+
+fun ProofParam.toRequest(): ProofRequest {
+    return ProofRequest(
+        file = file
+    )
+}
+
+fun UpdateProofParam.toRequest(): UpdateProofRequest {
+    return UpdateProofRequest(
+        fileName = fileName
     )
 }

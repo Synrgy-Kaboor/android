@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
  */
 
 
-data class ResponseListWrapper<T>(
+data class ListWrapper<T>(
     @SerializedName("code")
     val code: Int,
     @SerializedName("message")

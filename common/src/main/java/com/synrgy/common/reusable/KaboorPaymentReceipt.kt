@@ -28,9 +28,7 @@ class KaboorPaymentReceipt @JvmOverloads constructor(
     private val binding = LayoutPaymentReceiptBinding.inflate(LayoutInflater.from(context), this)
     private var setOnSelectImage: () -> Unit = {}
     private var setOnRemoveImage: () -> Unit = {}
-
-    var imageFile: File? = null
-        private set
+    private var isUploaded = false
 
     init {
         setupView()
@@ -44,7 +42,7 @@ class KaboorPaymentReceipt @JvmOverloads constructor(
     }
 
     private fun showContainer() = with(binding) {
-        if (imageFile == null) {
+        if (!isUploaded) {
             selectReceiptContainer.visible()
             receiptContainer.gone()
         } else {
@@ -53,18 +51,17 @@ class KaboorPaymentReceipt @JvmOverloads constructor(
         }
     }
 
-    fun setImageFile(uri: Uri) {
-        val file = Uri.parse(uri.toString())
-        this.imageFile = File(file.path.toString())
-        showContainer()
-    }
 
     fun setOnSelectImage(listener: () -> Unit) {
         this.setOnSelectImage = listener
     }
 
     fun removeImageFile() {
-        this.imageFile = null
+        isUploaded = false
+        showContainer()
+    }
+    fun setUploaded(isUploaded: Boolean) {
+        this.isUploaded = isUploaded
         showContainer()
     }
 
@@ -72,4 +69,7 @@ class KaboorPaymentReceipt @JvmOverloads constructor(
         this.setOnRemoveImage = listener
     }
 
+    fun setImage(uri: Uri) {
+        binding.imgSelectFile.setImageURI(uri)
+    }
 }

@@ -1,5 +1,7 @@
 package com.synrgy.domain.booking.model.response
 
+import com.wahidabd.library.utils.common.emptyString
+
 
 /**
  * Created by wahid on 1/29/2024.
@@ -8,8 +10,8 @@ package com.synrgy.domain.booking.model.response
 
 
 data class Passenger(
-    val fullName: String? = null,
-    val title: String? = null,
-    val phoneNumber: String? = null,
-    val email: String? = null
+    val fullName: String? = emptyString(),
+    val title: String? = emptyString(),
+    val phoneNumber: String? = emptyString(),
+    val email: String? = emptyString()
 )

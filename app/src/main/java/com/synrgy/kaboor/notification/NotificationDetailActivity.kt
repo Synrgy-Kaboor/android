@@ -6,6 +6,7 @@ import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.toCurrency
+import com.synrgy.domain.notification.mapper.toFlightParam
 import com.synrgy.domain.notification.model.response.PriceNotification
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
@@ -25,7 +26,7 @@ class NotificationDetailActivity : KaboorActivity<ActivityNotificationDetailBind
     private var notification: PriceNotification? = null
 
     private val flightAdapter by lazy {
-        PlaneTicketAdapter(this) {}
+        PlaneTicketAdapter(this, notification?.toFlightParam())
     }
 
     override fun getViewBinding(): ActivityNotificationDetailBinding {
@@ -60,7 +61,7 @@ class NotificationDetailActivity : KaboorActivity<ActivityNotificationDetailBind
     override fun initProcess() {
         super.initProcess()
 
-        flightAdapter.setData = ConstantDummy.planeFlight()
+//        flightAdapter.setData = ConstantDummy.planeFlight()
     }
 
 

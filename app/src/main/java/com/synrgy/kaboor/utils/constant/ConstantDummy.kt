@@ -2,16 +2,13 @@ package com.synrgy.kaboor.utils.constant
 
 import com.synrgy.common.R
 import com.synrgy.common.utils.Selectable
-import com.synrgy.data.payment.model.response.Promo
+import com.synrgy.domain.flight.model.response.OrderFlight
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
-import com.synrgy.domain.payment.Bank
-import com.synrgy.domain.flight.model.response.Airport
-import com.synrgy.domain.flight.model.response.Flight
 import com.synrgy.domain.notification.model.response.AirportCity
 import com.synrgy.domain.notification.model.response.Notification
 import com.synrgy.domain.notification.model.response.PriceNotification
-import com.synrgy.domain.flight.model.response.OrderFlight
+import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.domain.user.model.response.HelpCenter
 import com.synrgy.domain.user.model.response.Passport
 
@@ -133,58 +130,6 @@ object ConstantDummy {
             ),
         )
 
-    fun departure(): Airport = Airport(1, "SUB", "Juanda Intl", 7)
-    fun arrival(): Airport = Airport(2, "CKG", "Soekarno Hatta Intl", 7)
-    fun airports(): List<Airport> =
-        listOf(
-            Airport(1, "Surabaya", "SUB", 7),
-            Airport(2, "Jakarta", "CGK", 7),
-            Airport(3, "Bali", "DPS", 7),
-            Airport(4, "Yogyakarta", "JOG", 7),
-            Airport(5, "Bandung", "BDO", 7),
-            Airport(6, "Semarang", "SRG", 7),
-            Airport(7, "Medan", "KNO", 7),
-            Airport(8, "Palembang", "PLM", 7),
-            Airport(9, "Pekanbaru", "PKU", 7),
-            Airport(10, "Balikpapan", "BPN", 7),
-        )
-
-    fun vouchers(): List<Promo> =
-        listOf(
-            Promo(
-                "Voucher Promo",
-                "Voucher Promo",
-                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
-                "TEMANKABOOR",
-                100000,
-                26000,
-            ),
-            Promo(
-                "Voucher Promo",
-                "Voucher Promo",
-                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
-                "TEMANKABOOR",
-                100000,
-                26000,
-            ),
-            Promo(
-                "Voucher Promo",
-                "Voucher Promo",
-                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
-                "TEMANKABOOR",
-                100000,
-                26000,
-            ),
-            Promo(
-                "Voucher Promo",
-                "Voucher Promo",
-                "Discount Hingga Rp 100.000 Buat Keliling Indonesia",
-                "TEMANKABOOR",
-                100000,
-                26000,
-            ),
-        )
-
     fun promos(): List<Int> =
         listOf(
             R.drawable.sample_img_promo,
@@ -284,146 +229,50 @@ object ConstantDummy {
             ),
         )
 
-    fun planeFlight(): List<Flight> =
-        listOf(
-            Flight(
-                1,
-                "Garuda Indonesia",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "",
-                1274000,
-                image = R.drawable.sample_img_garuda
-            ),
-            Flight(
-                2,
-                "Lion Air",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "",
-                1274000,
-                image = R.drawable.sample_img_lion_air
-            ),
-            Flight(
-                3,
-                "Batik Air",
-                "Ekonomi",
-                "Surabaya",
-                "07.00 WIB",
-                "Jakarta",
-                "10.05 WIB",
-                "Durasi 4 Jam 5 Menit",
-                "",
-                1274000,
-                image = R.drawable.sample_img_batik_air
-            ),
-            Flight(
-                4,
-                "Garuda Indonesia",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "",
-                1274000,
-                image = R.drawable.sample_img_garuda
-            ),
-            Flight(
-                5,
-                "Lion Air",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "",
-                1274000,
-                image = R.drawable.sample_img_lion_air
-            ),
-            Flight(
-                6,
-                "Batik Air",
-                "Ekonomi",
-                "Surabaya",
-                "07.00 WIB",
-                "Jakarta",
-                "10.05 WIB",
-                "Durasi 4 Jam 5 Menit",
-                "",
-                1274000,
-                image = R.drawable.sample_img_batik_air
-            )
-        )
-
-    fun roundTripPlaneFlight(): List<Flight> =
-        listOf(
-            Flight(
-                1,
-                "Garuda Indonesia",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "Sen, 24 Des 2023",
-                1274000,
-                image = R.drawable.sample_img_garuda
-            ),
-            Flight(
-                2,
-                "Lion Air",
-                "Ekonomi",
-                "Surabaya",
-                "05.00 WIB",
-                "Jakarta",
-                "09.00 WIB",
-                "Durasi 4 Jam",
-                "Sel, 25 Des 2023",
-                1274000,
-                image = R.drawable.sample_img_lion_air
-            )
-        )
-
     fun bankPaymentMethod(): List<Selectable<Bank>> =
         listOf(
             Selectable(
                 Bank(
                     id = 1,
+                    code = "BRI",
                     methodName = "Bank BRI",
-                    imageUrl = "https://logowik.com/content/uploads/images/bri-20209664.logowik.com.webp"
+                    imageUrl = "https://logowik.com/content/uploads/images/bri-20209664.logowik.com.webp",
+                    atm = R.array.atm_bri,
+                    internet = R.array.internet_bri,
+                    mobile = R.array.mobile_bri
                 )
             ),
             Selectable(
                 Bank(
                     2,
-                    "Bank BNI",
-                    imageUrl ="https://logowik.com/content/uploads/images/bni-bank-negara-indonesia8078.logowik.com.webp"
+                    code = "BNI",
+                    methodName = "Bank BNI",
+                    imageUrl = "https://logowik.com/content/uploads/images/bni-bank-negara-indonesia8078.logowik.com.webp",
+                    atm = R.array.atm_bni,
+                    internet = R.array.internet_bni,
+                    mobile = R.array.mobile_bni
                 )
             ),
             Selectable(
                 Bank(
                     3,
-                    "Bank BCA",
-                    imageUrl = "https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png"
+                    code = "BCA",
+                    methodName = "Bank BCA",
+                    imageUrl = "https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png",
+                    atm = R.array.atm_bca,
+                    internet = R.array.internet_bca,
+                    mobile = R.array.mobile_bca
                 )
             ),
             Selectable(
                 Bank(
                     4,
-                    "Bank Mandiri",
-                    imageUrl = "https://logowik.com/content/uploads/images/bank-mandiri.jpg"
+                    code = "Mandiri",
+                    methodName = "Bank Mandiri",
+                    imageUrl = "https://logowik.com/content/uploads/images/bank-mandiri.jpg",
+                    atm = R.array.atm_mandiri,
+                    internet = R.array.internet_mandiri,
+                    mobile = R.array.mobile_mandiri
                 )
             )
         )

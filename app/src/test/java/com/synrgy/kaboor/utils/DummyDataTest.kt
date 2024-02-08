@@ -1,7 +1,7 @@
 package com.synrgy.kaboor.utils
 
 import androidx.lifecycle.MutableLiveData
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.domain.auth.model.request.LoginParam
 import com.synrgy.domain.auth.model.response.Login
@@ -28,11 +28,11 @@ object DummyDataTest {
     val loginParam = LoginParam(validEmail, validPassword)
     val emailParam = EmailParam(validEmail)
 
-    fun flowGenericSuccess(): Resource<KaboorGenericResponse> {
-        return Resource.success(KaboorGenericResponse(200, "success"))
+    fun flowGenericSuccess(): Resource<KaboorResponse> {
+        return Resource.success(KaboorResponse(200, "success"))
     }
 
-    fun flowGenericError(): Resource<KaboorGenericResponse> {
+    fun flowGenericError(): Resource<KaboorResponse> {
         return Resource.fail("error")
     }
 
@@ -42,8 +42,8 @@ object DummyDataTest {
         else Resource.fail("error")
     }
 
-    fun checkEmailResponse(): MutableLiveData<Resource<KaboorGenericResponse>> {
-        val response = MutableLiveData<Resource<KaboorGenericResponse>>()
+    fun checkEmailResponse(): MutableLiveData<Resource<KaboorResponse>> {
+        val response = MutableLiveData<Resource<KaboorResponse>>()
         response.value = flowGenericSuccess()
         return response
     }

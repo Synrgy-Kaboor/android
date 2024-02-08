@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     style="@style/KaboorCard"
     app:cardElevation="@dimen/dimen_0dp"
-    android:layout_margin="@dimen/dimen_4dp">
+    android:layout_marginVertical="@dimen/dimen_4dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -23,7 +23,6 @@
             android:layout_weight="1"
             android:maxLines="1"
             android:hint="@string/label_full_name"
-            android:textColorHint="@color/neutral6"
             android:textColor="@color/neutral9" />
 
         <androidx.appcompat.widget.AppCompatImageView

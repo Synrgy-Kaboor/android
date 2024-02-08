@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 app:cardCornerRadius="@dimen/dimen_8dp"
-                app:cardElevation="@dimen/dimen_2dp"
+                app:cardElevation="@dimen/dimen_0dp"
                 app:cardBackgroundColor="@color/neutral1">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -79,7 +79,7 @@
                             android:layout_marginBottom="@dimen/dimen_4dp"
                             android:layout_weight="1"
                             android:maxLines="1"
-                            android:text="Mr. Moh. Syaifudin"
+                            tools:text="Mr. Moh. Syaifudin"
                             android:textColor="@color/neutral9" />
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -110,7 +110,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/dimen_2dp"
                             android:maxLines="1"
-                            android:text="+62 89676174709"
+                            android:hint="@string/label_phone_number"
                             android:textColor="@color/neutral6" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -133,7 +133,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
-                            android:text="msyaifuidn640@gmail.com"
+                            android:hint="@string/label_email"
                             android:textColor="@color/neutral6" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -151,9 +151,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
-                app:cardCornerRadius="@dimen/dimen_8dp"
-                app:cardElevation="@dimen/dimen_2dp"
-                app:cardBackgroundColor="@color/neutral1">
+                style="@style/KaboorCard"
+                app:cardElevation="@dimen/dimen_0dp">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -207,6 +206,7 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_passenger_name"
                             style="@style/KaboorTextView.Title3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -214,7 +214,7 @@
                             android:layout_marginBottom="@dimen/dimen_10dp"
                             android:layout_weight="1"
                             android:maxLines="1"
-                            android:text="Mr. Moh. Syaifudin"
+                            android:hint="@string/label_full_name"
                             android:textColor="@color/neutral9" />
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -227,9 +227,17 @@
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_pen" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_passenger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_passenger"
+                tools:itemCount="2"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginTop="@dimen/dimen_4dp"/>
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/KaboorTextView.Title3"
@@ -239,11 +247,12 @@
                 android:text="@string/label_extra_facilities" />
 
             <com.synrgy.common.reusable.KaboorAddonsCard
+                android:id="@+id/baggage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 app:cardCornerRadius="@dimen/dimen_8dp"
-                app:kaboorAddons_price="160000"
+                app:kaboorAddons_price="65000"
                 app:kaboorAddons_description="@string/body_baggage"
                 app:kaboorAddons_footer="@string/price_add_baggage"
                 app:kaboorAddons_label="@string/label_baggage" />

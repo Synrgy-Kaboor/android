@@ -1,7 +1,7 @@
 package com.synrgy.domain.notification
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.notification.NotificationRepository
 import com.synrgy.data.notification.model.response.PriceNotificationResponse
 import com.synrgy.domain.notification.mapper.toDomain
@@ -11,7 +11,6 @@ import com.synrgy.domain.notification.model.response.PriceNotification
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 
 
 /**
@@ -39,20 +38,20 @@ class NotificationInteractor(
 
     override suspend fun createPriceNotification(
         body: PriceNotificationParam
-    ): Flow<Resource<KaboorGenericResponse>> {
+    ): Flow<Resource<KaboorResponse>> {
         return repository.createPriceNotification(body.toRequest())
     }
 
     override suspend fun updatePriceNotification(
         id: Int,
         body: PriceNotificationParam
-    ): Flow<Resource<KaboorGenericResponse>> {
+    ): Flow<Resource<KaboorResponse>> {
         return repository.updatePriceNotification(id, body.toRequest())
     }
 
     override suspend fun deletePriceNotification(
         id: Int
-    ): Flow<Resource<KaboorGenericResponse>> {
+    ): Flow<Resource<KaboorResponse>> {
         return repository.deletePriceNotification(id)
     }
 }

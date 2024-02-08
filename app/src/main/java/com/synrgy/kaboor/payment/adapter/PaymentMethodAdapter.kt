@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.synrgy.common.utils.Selectable
-import com.synrgy.domain.payment.Bank
+import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.kaboor.databinding.ItemPaymentMethodBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder

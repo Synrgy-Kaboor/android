@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.synrgy.domain.booking.model.response.Passenger
+import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ItemPassengerBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
+import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.onClick
 
 
@@ -21,6 +23,7 @@ class PassengerAdapter(
     private val context: Context,
     private val onEditClick: (Int) -> Unit,
 ) : BaseAsyncRecyclerAdapter<Passenger, PassengerAdapter.PassengerViewHolder>() {
+
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding {
         return ItemPassengerBinding.inflate(LayoutInflater.from(context), parent, false)
     }
@@ -35,7 +38,8 @@ class PassengerAdapter(
     inner class PassengerViewHolder(binding: ViewBinding) :
         BaseAsyncItemViewHolder<Passenger>(binding) {
         override fun bind(data: Passenger) = with(binding as ItemPassengerBinding) {
-            tvName.text = data.fullName
+            tvName.text = if (data.fullName?.isEmpty() == true) emptyString()
+            else context.getString(R.string.format_title_name, data.title, data.fullName)
 
             ivEdit.onClick { onEditClick.invoke(bindingAdapterPosition) }
         }

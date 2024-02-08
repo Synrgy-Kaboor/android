@@ -5,11 +5,13 @@ import com.synrgy.data.booking.model.response.BookingResponse
 import com.synrgy.data.booking.model.response.BookingStatusResponse
 import com.synrgy.data.booking.model.response.PassengerResponse
 import com.synrgy.data.booking.model.response.PaymentDetailResponse
+import com.synrgy.data.booking.model.response.UploadProofResponse
 import com.synrgy.domain.booking.model.response.Booking
 import com.synrgy.domain.booking.model.response.BookingInfo
 import com.synrgy.domain.booking.model.response.BookingStatus
 import com.synrgy.domain.booking.model.response.Passenger
 import com.synrgy.domain.booking.model.response.PaymentDetail
+import com.synrgy.domain.booking.model.response.UploadProof
 
 
 /**
@@ -66,5 +68,12 @@ fun PaymentDetailResponse.toDomain(): PaymentDetail {
         totalPrice = totalPrice,
         paymentCompleted = paymentCompleted,
         expiredTime = expiredTime
+    )
+}
+
+fun UploadProofResponse.toDomain(): UploadProof {
+    return UploadProof(
+        fileName = fileName,
+        fileUrl = fileUrl
     )
 }

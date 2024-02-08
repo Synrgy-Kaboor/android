@@ -29,13 +29,14 @@ class HeaderInterceptor(
 
         requestBuilder.addHeader("Authorization", getAccessToken())
         requestBuilder.addHeader("Content-Type", "application/json")
+        requestBuilder.addHeader("Content-Type", "application/x-www-form-urlencoded")
 
         return requestBuilder.build()
     }
 
     private fun getAccessToken(): String {
         val token = user.getToken()
-        return if (token?.isNotEmpty() == true) "Bearer $token" else ""
+        return if (token?.isNotEmpty() == true && user.getLoginInfo() != false) "Bearer $token" else ""
     }
 
 
