@@ -1,16 +1,15 @@
 package com.synrgy.data.booking
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.common.utils.ext.flowDispatcherIO
 import com.synrgy.data.booking.model.request.BookingRequest
-import com.synrgy.data.booking.model.request.UpdateAdditionalBookingRequest
-import com.synrgy.data.booking.model.request.UpdateBookingRequest
-import com.synrgy.data.booking.model.request.UpdatePaymentMethodRequest
-import com.synrgy.data.booking.model.response.BookingInfoResponse
+import com.synrgy.data.booking.model.request.ProofRequest
+import com.synrgy.data.booking.model.request.UpdateProofRequest
 import com.synrgy.data.booking.model.response.BookingResponse
 import com.synrgy.data.booking.model.response.BookingStatusResponse
 import com.synrgy.data.booking.model.response.PaymentDetailResponse
+import com.synrgy.data.booking.model.response.UploadProofResponse
 import com.synrgy.data.booking.remote.BookingService
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.enqueue
@@ -41,56 +40,6 @@ class BookingDataStore(
         )
     }.flowDispatcherIO()
 
-    override suspend fun getBookingInfo(
-        id: Int
-    ): Flow<Resource<ResponseWrapper<BookingInfoResponse>>> = flow {
-        enqueue(
-            id,
-            error::convertGenericError,
-            api::getBookingInfo,
-            onEmit = { data -> emit(data) }
-        )
-    }.flowDispatcherIO()
-
-    override suspend fun updateBooking(
-        id: Int,
-        body: UpdateBookingRequest
-    ): Flow<Resource<KaboorGenericResponse>> = flow {
-        enqueue(
-            id,
-            body,
-            error::convertGenericError,
-            api::updateBooking,
-            onEmit = { data -> emit(data) }
-        )
-    }.flowDispatcherIO()
-
-    override suspend fun updateAdditionalService(
-        id: Int,
-        body: UpdateAdditionalBookingRequest
-    ): Flow<Resource<KaboorGenericResponse>> = flow {
-        enqueue(
-            id,
-            body,
-            error::convertGenericError,
-            api::updateAdditionalService,
-            onEmit = { data -> emit(data) }
-        )
-    }.flowDispatcherIO()
-
-    override suspend fun updatePayment(
-        id: Int,
-        body: UpdatePaymentMethodRequest
-    ): Flow<Resource<KaboorGenericResponse>> = flow {
-        enqueue(
-            id,
-            body,
-            error::convertGenericError,
-            api::updatePayment,
-            onEmit = { data -> emit(data) }
-        )
-    }.flowDispatcherIO()
-
     override suspend fun getPaymentDetail(
         id: Int
     ): Flow<Resource<ResponseWrapper<PaymentDetailResponse>>> = flow {
@@ -109,6 +58,30 @@ class BookingDataStore(
             id,
             error::convertGenericError,
             api::getBookingStatus,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowDispatcherIO()
+
+    override suspend fun uploadProof(
+        body: ProofRequest
+    ): Flow<Resource<ResponseWrapper<UploadProofResponse>>> = flow {
+        enqueue(
+            body.toMultiPart(),
+            error::convertGenericError,
+            api::uploadProof,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowDispatcherIO()
+
+    override suspend fun updateProof(
+        id: Int,
+        body: UpdateProofRequest
+    ): Flow<Resource<KaboorResponse>> = flow {
+        enqueue(
+            id,
+            body,
+            error::convertGenericError,
+            api::updateProof,
             onEmit = { data -> emit(data) }
         )
     }.flowDispatcherIO()

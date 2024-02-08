@@ -4,13 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.synrgy.common.utils.Selectable
-import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.domain.booking.model.response.Passenger
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ItemPassengerBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
+import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.onClick
 
 
@@ -36,12 +35,11 @@ class PassengerAdapter(
         return PassengerViewHolder(getViewBinding(parent, viewType))
     }
 
-
-
     inner class PassengerViewHolder(binding: ViewBinding) :
         BaseAsyncItemViewHolder<Passenger>(binding) {
         override fun bind(data: Passenger) = with(binding as ItemPassengerBinding) {
-            tvName.text = context.getString(R.string.format_title_name, data.title, data.fullName)
+            tvName.text = if (data.fullName?.isEmpty() == true) emptyString()
+            else context.getString(R.string.format_title_name, data.title, data.fullName)
 
             ivEdit.onClick { onEditClick.invoke(bindingAdapterPosition) }
         }

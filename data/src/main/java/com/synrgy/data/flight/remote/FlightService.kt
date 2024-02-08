@@ -1,6 +1,6 @@
 package com.synrgy.data.flight.remote
 
-import com.synrgy.common.data.ResponseListWrapper
+import com.synrgy.common.data.ListWrapper
 import com.synrgy.data.flight.model.response.AirportResponse
 import com.synrgy.data.flight.model.response.FlightResponse
 import com.wahidabd.library.data.WebApi
@@ -16,15 +16,15 @@ import retrofit2.http.QueryMap
  */
 
 
-interface FlightService : WebApi {
+interface FlightService {
 
     @GET("/api/v1/airport")
-    suspend fun getAirports(): Response<ResponseListWrapper<AirportResponse>>
+    suspend fun getAirports(): Response<ListWrapper<AirportResponse>>
 
     @GET("/api/v1/flight")
     suspend fun getFlights(
         @QueryMap query: Map<String, String>
-    ): Response<ResponseListWrapper<FlightResponse>>
+    ): Response<ListWrapper<FlightResponse>>
 
     @GET("/api/v1/flights/{id}")
     suspend fun getFlightById(

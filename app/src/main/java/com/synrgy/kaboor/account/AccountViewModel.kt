@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.domain.user.UserUseCase
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.domain.user.model.response.User
@@ -19,8 +19,8 @@ class AccountViewModel(
     private val _getPersonalInfo = MutableLiveData<Resource<User>>()
     val getPersonalInfo: LiveData<Resource<User>> get() = _getPersonalInfo
 
-    private val _updatePersonalInfo = MutableLiveData<Resource<KaboorGenericResponse>>()
-    val updatePersonalInfo: LiveData<Resource<KaboorGenericResponse>> get() = _updatePersonalInfo
+    private val _updatePersonalInfo = MutableLiveData<Resource<KaboorResponse>>()
+    val updatePersonalInfo: LiveData<Resource<KaboorResponse>> get() = _updatePersonalInfo
 
     fun getPersonalInfo() {
         _getPersonalInfo.value = Resource.loading()

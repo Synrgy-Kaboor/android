@@ -103,6 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:kaboorEditText_end_icon="@drawable/ic_book"
+            app:kaboorEditText_type="phone"
             app:kaboorEditText_hint="@string/label_phone_number"
             app:kaboorEditText_label="@string/label_phone_number" />
 

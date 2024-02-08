@@ -1,7 +1,7 @@
 package com.synrgy.data.notification
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.notification.model.request.PriceNotificationRequest
 import com.synrgy.data.notification.model.response.PriceNotificationResponse
 import com.wahidabd.library.data.Resource
@@ -20,14 +20,14 @@ interface NotificationRepository {
 
     suspend fun createPriceNotification(
         body: PriceNotificationRequest
-    ): Flow<Resource<KaboorGenericResponse>>
+    ): Flow<Resource<KaboorResponse>>
 
     suspend fun updatePriceNotification(
         id: Int,
         body: PriceNotificationRequest
-    ): Flow<Resource<KaboorGenericResponse>>
+    ): Flow<Resource<KaboorResponse>>
 
     suspend fun deletePriceNotification(
         id: Int
-    ): Flow<Resource<KaboorGenericResponse>>
+    ): Flow<Resource<KaboorResponse>>
 }

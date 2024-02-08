@@ -1,6 +1,6 @@
 package com.synrgy.domain.flight
 
-import com.synrgy.common.data.ResponseListWrapper
+import com.synrgy.common.data.ListWrapper
 import com.synrgy.data.flight.FlightRepository
 import com.synrgy.data.flight.model.response.AirportResponse
 import com.synrgy.data.flight.model.response.FlightResponse
@@ -29,8 +29,8 @@ class FlightInteractor(
 
     override suspend fun getAirports(): Flow<Resource<List<Airport>>> {
         return object :
-            NetworkBoundResource<List<Airport>, ResponseListWrapper<AirportResponse>>() {
-            override suspend fun createCall(): Flow<Resource<ResponseListWrapper<AirportResponse>>> {
+            NetworkBoundResource<List<Airport>, ListWrapper<AirportResponse>>() {
+            override suspend fun createCall(): Flow<Resource<ListWrapper<AirportResponse>>> {
                 return repository.getAirports()
             }
 
@@ -44,7 +44,7 @@ class FlightInteractor(
                 return data.isNullOrEmpty()
             }
 
-            override suspend fun saveCallRequest(data: ResponseListWrapper<AirportResponse>) {
+            override suspend fun saveCallRequest(data: ListWrapper<AirportResponse>) {
                 repository.saveAirport(data.data.map { it.toEntity() })
             }
 
@@ -52,12 +52,12 @@ class FlightInteractor(
     }
 
     override suspend fun getFlights(body: FlightParam): Flow<Resource<List<Flight>>> {
-        return object : InternetBoundResource<List<Flight>, ResponseListWrapper<FlightResponse>>() {
-            override suspend fun createCall(): Flow<Resource<ResponseListWrapper<FlightResponse>>> {
+        return object : InternetBoundResource<List<Flight>, ListWrapper<FlightResponse>>() {
+            override suspend fun createCall(): Flow<Resource<ListWrapper<FlightResponse>>> {
                 return repository.getFlights(body.toRequest())
             }
 
-            override suspend fun saveCallRequest(data: ResponseListWrapper<FlightResponse>): List<Flight> {
+            override suspend fun saveCallRequest(data: ListWrapper<FlightResponse>): List<Flight> {
                 return data.data.map { it.toDomain() }
             }
         }.asFlow()

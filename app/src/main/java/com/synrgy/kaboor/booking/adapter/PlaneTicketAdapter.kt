@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.synrgy.common.utils.enums.PlaneClassType
+import com.synrgy.common.utils.ext.calculatePlanePrice
 import com.synrgy.common.utils.ext.convertToDuration
 import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.common.utils.ext.toGmtFormat
@@ -43,9 +44,11 @@ class PlaneTicketAdapter(
             tvLanding.text = data.destinationAirport.timezone.toGmtFormat(data.arrivalDatetime)
             tvClass.text = PlaneClassType.getByCode(param?.classCode).label
 
-            val price = (data.adultPrice * param?.numOfAdults.orZero()) +
-                    (data.childPrice * param?.numOfKids.orZero()) +
-                    (data.babyPrice * param?.numOfBabies.orZero())
+            val price = calculatePlanePrice(
+                Pair(data.adultPrice.orZero(), param?.numOfAdults.orZero()),
+                Pair(data.childPrice.orZero(), param?.numOfKids.orZero()),
+                Pair(data.babyPrice.orZero(), param?.numOfBabies.orZero())
+            )
             tvPrice.text = price.toCurrency()
 
 //            if (data.date != "") {

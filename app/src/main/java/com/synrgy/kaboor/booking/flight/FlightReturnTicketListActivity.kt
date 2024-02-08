@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.enums.PlaneClassType
+import com.synrgy.common.utils.ext.calculatePlanePrice
 import com.synrgy.common.utils.ext.convertToDuration
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.toCurrency
@@ -126,9 +127,11 @@ class FlightReturnTicketListActivity :
         tvLanding.text = data?.destinationAirport?.timezone?.toGmtFormat(data.arrivalDatetime)
         tvClass.text = PlaneClassType.getByCode(flightParam?.classCode).label
 
-        val price = (data?.adultPrice.orZero() * flightParam?.numOfAdults.orZero()) +
-                (data?.childPrice.orZero() * flightParam?.numOfKids.orZero()) +
-                (data?.babyPrice.orZero() * flightParam?.numOfBabies.orZero())
+        val price = calculatePlanePrice(
+            Pair(data?.adultPrice.orZero(), flightParam?.numOfAdults.orZero()),
+            Pair(data?.childPrice.orZero(), flightParam?.numOfKids.orZero()),
+            Pair(data?.babyPrice.orZero(), flightParam?.numOfBabies.orZero())
+        )
         tvPrice.text = price.toCurrency()
     }
 

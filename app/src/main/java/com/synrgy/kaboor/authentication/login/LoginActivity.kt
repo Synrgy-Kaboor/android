@@ -2,7 +2,7 @@ package com.synrgy.kaboor.authentication.login
 
 import android.content.Context
 import android.content.Intent
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.kaboor.R
@@ -63,7 +63,7 @@ class LoginActivity : KaboorPassiveActivity<ActivityLoginBinding>() {
         )
     }
 
-    private fun handleLoginAccount(response: KaboorGenericResponse) {
+    private fun handleLoginAccount(response: KaboorResponse) {
         if (response.code == 200) {
             showAlertDialog(
                 title = getString(R.string.message_account_was_not_registered),

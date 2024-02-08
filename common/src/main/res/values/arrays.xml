@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="atm_bri">
+        <item>Masukkan kartu ATM BRI Anda ke mesin ATM.</item>
+        <item>Masukkan PIN ATM Anda.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening BRI".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Konfirmasi detail transaksi Anda.</item>
+        <item>Ambil struk dan pastikan transaksi selesai.</item>
+    </string-array>
+    <string-array name="mobile_bri">
+        <item>Buka aplikasi m-Banking BRI pada ponsel Anda.</item>
+        <item>Masukkan PIN atau lakukan otentikasi sesuai dengan instruksi aplikasi.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Konfirmasi detail transaksi Anda.</item>
+        <item>Tunggu hingga transaksi selesai dan Anda akan menerima notifikasi.</item>
+    </string-array>
+    <string-array name="internet_bri">
+        <item>Akses situs web i-Banking BRI dari perangkat Anda.</item>
+        <item>Masukkan ID pengguna dan kata sandi Anda.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Konfirmasi detail transaksi Anda.</item>
+        <item>Tunggu hingga transaksi selesai dan pastikan Anda menerima konfirmasi transaksi.</item>
+    </string-array>
+
+    <string-array name="atm_mandiri">
+        <item>Masukkan kartu ATM Mandiri Anda ke mesin ATM.</item>
+        <item>Masukkan PIN ATM Anda.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening Mandiri".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Ambil struk dan pastikan transaksi selesai.</item>
+    </string-array>
+    <string-array name="mobile_mandiri">
+        <item>Buka aplikasi m-Banking Mandiri pada ponsel Anda.</item>
+        <item>Masukkan PIN atau lakukan otentikasi sesuai dengan instruksi aplikasi.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Konfirmasi detail transaksi Anda.</item>
+        <item>Tunggu hingga transaksi selesai dan Anda akan menerima notifikasi.</item>
+    </string-array>
+    <string-array name="internet_mandiri">
+        <item>Akses situs web i-Banking Mandiri dari perangkat Anda.</item>
+        <item>Masukkan ID pengguna dan kata sandi Anda.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Konfirmasi detail transaksi Anda.</item>
+        <item>Tunggu hingga transaksi selesai dan pastikan Anda menerima konfirmasi transaksi.</item>
+    </string-array>
+
+    <string-array name="atm_bca">
+        <item>Masukkan kartu ATM BCA Anda ke mesin ATM.</item>
+        <item>Masukkan PIN ATM Anda.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening BCA".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Ambil struk dan pastikan transaksi selesai.</item>
+    </string-array>
+    <string-array name="mobile_bca">
+        <item>Buka aplikasi m-Banking BCA pada ponsel Anda.</item>
+        <item>Masukkan PIN atau lakukan otentikasi sesuai dengan instruksi aplikasi.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Konfirmasi detail transaksi Anda.</item>
+        <item>Tunggu hingga transaksi selesai dan Anda akan menerima notifikasi.</item>
+    </string-array>
+    <string-array name="internet_bca">
+        <item>Akses situs web i-Banking BCA dari perangkat Anda.</item>
+        <item>Masukkan ID pengguna dan kata sandi Anda.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Konfirmasi detail transaksi Anda.</item>
+        <item>Tunggu hingga transaksi selesai dan pastikan Anda menerima konfirmasi transaksi.</item>
+    </string-array>
+
+    <string-array name="atm_bni">
+        <item>Masukkan kartu ATM BNI Anda ke mesin ATM.</item>
+        <item>Masukkan PIN ATM Anda.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening BNI".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Ambil struk dan pastikan transaksi selesai.</item>
+    </string-array>
+    <string-array name="mobile_bni">
+        <item>Buka aplikasi m-Banking BNI pada ponsel Anda.</item>
+        <item>Masukkan PIN atau lakukan otentikasi sesuai dengan instruksi aplikasi.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Konfirmasi detail transaksi Anda.</item>
+        <item>Tunggu hingga transaksi selesai dan Anda akan menerima notifikasi.</item>
+    </string-array>
+    <string-array name="internet_bni">
+        <item>Akses situs web i-Banking BNI dari perangkat Anda.</item>
+        <item>Masukkan ID pengguna dan kata sandi Anda.</item>
+        <item>Pilih menu "Transfer" atau "Transfer antar rekening".</item>
+        <item>Masukkan nomor rekening tujuan.</item>
+        <item>Masukkan jumlah yang ingin Anda transfer.</item>
+        <item>Konfirmasi detail transaksi Anda.</item>
+        <item>Tunggu hingga transaksi selesai dan pastikan Anda menerima konfirmasi transaksi.</item>
+    </string-array>
+</resources>
