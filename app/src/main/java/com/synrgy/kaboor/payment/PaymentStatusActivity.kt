@@ -1,11 +1,8 @@
-package com.synrgy.kaboor.booking.status
+package com.synrgy.kaboor.payment
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.synrgy.common.presentation.KaboorActivity
-import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityPaymentStatusBinding
 
 class PaymentStatusActivity : KaboorActivity<ActivityPaymentStatusBinding>() {

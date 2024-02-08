@@ -2,12 +2,10 @@ package com.synrgy.kaboor.payment
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.CountDownTimer
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.net.toFile
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.constant.Constant
 import com.synrgy.common.utils.constant.ConstantKey
@@ -29,12 +27,12 @@ import com.synrgy.domain.booking.model.request.ProofParam
 import com.synrgy.domain.booking.model.request.UpdateProofParam
 import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.kaboor.R
+import com.synrgy.kaboor.base.MainActivity
+import com.synrgy.kaboor.booking.flight.FlightScheduleActivity
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodDetailBinding
-import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import org.koin.android.ext.android.inject
-import java.io.File
 
 class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBinding>() {
 
@@ -58,6 +56,7 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
     private var atmState = false
     private var internetBankingState = false
     private var mobileBankingState = false
+    private var isPaymentComplete = false
 
     private lateinit var countDown: CountDownTimer
 
@@ -78,7 +77,14 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
             val internet = resources.getStringArray(bank?.internet ?: 0)
             val mobile = resources.getStringArray(bank?.mobile ?: 0)
 
-            atm.forEach { tvAtmInstruction.append(getString(R.string.format_bullet_point, "$it\n")) }
+            atm.forEach {
+                tvAtmInstruction.append(
+                    getString(
+                        R.string.format_bullet_point,
+                        "$it\n"
+                    )
+                )
+            }
             mobile.forEach {
                 tvMobileInstruction.append(
                     getString(
@@ -132,6 +138,7 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
             toggleMobile.isSelected = mobileBankingState
         }
 
+        btnShowOrder.onClick { handleNavigation() }
         uploadReceipt.setOnSelectImage { requestPermissions() }
         uploadReceipt.setOnRemoveImage { showAlertRemoveImage() }
     }
@@ -157,6 +164,8 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
                     tvTotalPayment.text = data.totalPrice?.toCurrency(false)
                     uploadReceipt.setUploaded(data.paymentCompleted ?: false)
                     initCountDown(timer = data.expiredTime?.toCountDownGmt7() ?: 0L)
+                    isPaymentComplete = data.paymentCompleted ?: false
+                    if (isPaymentComplete) btnShowOrder.text = getString(R.string.label_finish)
                 }
             }
         )
@@ -188,6 +197,16 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
     override fun onDestroy() {
         super.onDestroy()
         if (::countDown.isInitialized) countDown.cancel()
+    }
+
+    private fun handleNavigation() {
+        if (isPaymentComplete) {
+            MainActivity.start(this)
+            finishAffinity()
+        } else {
+            FlightScheduleActivity.start(this)
+            finishAffinity()
+        }
     }
 
     private fun initCountDown(timer: Long) {
