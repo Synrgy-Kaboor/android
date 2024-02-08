@@ -1,15 +1,12 @@
 package com.synrgy.common.utils.ext
 
 import android.content.ClipData
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.Network
+import android.net.Uri
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import androidx.core.content.ContextCompat
-import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -25,7 +22,9 @@ import com.wahidabd.library.utils.exts.invisible
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.onTextChange
 import com.wahidabd.library.utils.exts.visible
-import kotlinx.coroutines.flow.callbackFlow
+import java.io.File
+import java.io.FileOutputStream
+import java.util.UUID
 
 
 /**
@@ -120,18 +119,39 @@ fun AppCompatActivity.snackbarDanger(message: String) {
     }.show()
 }
 
-fun String.chuckedString(): String = this.chunked(4).joinToString(" ")
+fun String.chuckedString(): String = this.replaceChar().chunked(4).joinToString(" ")
+
+fun String.replaceChar(): String = this.replace(" ", "").replace("-", "")
 
 fun View.showHideToggle() {
     if (this.visibility == View.VISIBLE) this.gone()
     else this.visible()
 }
 
-fun <T> mutableListCapacity(size: Int): MutableList<T> = ArrayList(size)
-
-inline fun MultiStateView.showLoginState(crossinline action: () -> Unit){
+inline fun MultiStateView.showLoginState(crossinline action: () -> Unit) {
     this.viewState = MultiStateView.ViewState.ERROR
     this.getView(MultiStateView.ViewState.ERROR)?.findViewById<View>(R.id.btn_msv_login)?.onClick {
         action.invoke()
     }
+}
+
+fun AppCompatActivity.getImageFile(uri: Uri): File {
+    val imageUri = Uri.parse(uri.toString())
+    val contentResolver = this.contentResolver
+    val inputStream = contentResolver.openInputStream(imageUri)!!
+
+    val uuid = UUID.randomUUID().toString()
+    val outputFile = File(this.filesDir, "$uuid.jpg")
+    val outputStream = FileOutputStream(outputFile)
+
+    val buffer = ByteArray(1024)
+    var bytesRead: Int
+    while (inputStream.read(buffer).also { bytesRead = it } != -1) {
+        outputStream.write(buffer, 0, bytesRead)
+    }
+
+    inputStream.close()
+    outputStream.close()
+
+    return outputFile
 }

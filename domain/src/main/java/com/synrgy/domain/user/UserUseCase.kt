@@ -1,9 +1,8 @@
 package com.synrgy.domain.user
 
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.domain.user.model.request.UserParam
-import com.synrgy.domain.user.model.response.PersonalInfo
 import com.synrgy.domain.user.model.response.User
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.Flow
@@ -27,5 +26,5 @@ interface UserUseCase {
 
     suspend fun updatePersonalInfo(
         body: UpdatePersonalInfoParam,
-    ): Flow<Resource<KaboorGenericResponse>>
+    ): Flow<Resource<KaboorResponse>>
 }

@@ -35,13 +35,15 @@ class KaboorAddonsCard @JvmOverloads constructor(
     private var addonLabel2 = emptyString()
     private var description: String = emptyString()
     private var footer: String = emptyString()
-    private var price: Float = 0F
     private var type: AddonsType = AddonsType.NORMAL
+
+    var price: Float = 0F
+        private set
     var isSelectedItem: Boolean = false
         private set
 
     private var onLoadMoreClickListener: () -> Unit = {}
-    private var onAddonClickList: () -> Unit = {}
+    private var onAddonClickList: (Boolean) -> Unit = {}
 
     init {
         binding = LayoutAddonsCardBinding.inflate(LayoutInflater.from(context), this)
@@ -91,9 +93,14 @@ class KaboorAddonsCard @JvmOverloads constructor(
     private fun checkAddon() {
         isSelectedItem = !isSelectedItem
         binding.imgAddon.isSelected = isSelectedItem
+        onAddonClickList.invoke(isSelectedItem)
     }
 
     fun setOnLoadMoreClickListener(listener: () -> Unit) {
         onLoadMoreClickListener = listener
+    }
+
+    fun setOnAddonClickList(listener: (Boolean) -> Unit) {
+        onAddonClickList = listener
     }
 }

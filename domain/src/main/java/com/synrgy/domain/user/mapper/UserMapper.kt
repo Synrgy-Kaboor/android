@@ -2,6 +2,7 @@ package com.synrgy.domain.user.mapper
 
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.PersonalInfoResponse
+import com.synrgy.domain.booking.model.response.Passenger
 import com.synrgy.domain.user.model.request.UserParam
 import com.synrgy.domain.user.model.response.PersonalInfo
 import com.synrgy.domain.user.model.response.User
@@ -44,5 +45,14 @@ fun PersonalInfoResponse.toUser(): User {
         city = city,
         address = address,
         isWni = isWni,
+    )
+}
+
+fun User.toPassenger(): Passenger {
+    return Passenger(
+        fullName = fullName,
+        email = email,
+        phoneNumber = phoneNumber,
+        title = title
     )
 }

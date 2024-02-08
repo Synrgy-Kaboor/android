@@ -1,6 +1,9 @@
 package com.synrgy.domain.booking.model.request
 
+import android.os.Parcelable
 import com.synrgy.data.booking.model.request.PassengerRequest
+import com.wahidabd.library.utils.common.emptyString
+import kotlinx.parcelize.Parcelize
 
 
 /**
@@ -8,7 +11,7 @@ import com.synrgy.data.booking.model.request.PassengerRequest
  * Github github.com/wahidabd.
  */
 
-
+@Parcelize
 data class BookingParam(
     val outboundFlightId: Int,
     val returnFlightId: Int? = null,
@@ -21,6 +24,7 @@ data class BookingParam(
     val addBaggage: Boolean = false,
     val addTravelInsurance: Boolean = false,
     val addDelayProtection: Boolean = false,
-    val paymentMethod: String,
+    val addBaggageInsurance: Boolean = false,
+    val paymentMethod: String? = null,
     val voucherId: Int? = null
-)
+): Parcelable

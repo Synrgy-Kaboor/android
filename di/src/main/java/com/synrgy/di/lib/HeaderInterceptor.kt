@@ -29,6 +29,7 @@ class HeaderInterceptor(
 
         requestBuilder.addHeader("Authorization", getAccessToken())
         requestBuilder.addHeader("Content-Type", "application/json")
+        requestBuilder.addHeader("Content-Type", "application/x-www-form-urlencoded")
 
         return requestBuilder.build()
     }

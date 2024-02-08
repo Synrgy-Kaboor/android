@@ -55,7 +55,7 @@
                 app:kaboorAddons_icon="@drawable/ic_shopping_bag"
                 app:kaboorAddons_header="@string/title_baggage_insurance"
                 app:kaboorAddons_assurance_label_1="@string/label_baggage_insurance"
-                app:kaboorAddons_price="15000"/>
+                app:kaboorAddons_price="65000"/>
 
             <com.synrgy.common.reusable.KaboorAddonsCard
                 android:id="@+id/delay_protection"
@@ -67,7 +67,7 @@
                 app:kaboorAddons_icon="@drawable/ic_clock"
                 app:kaboorAddons_header="@string/title_delay_protection"
                 app:kaboorAddons_assurance_label_1="@string/label_delay_protection"
-                app:kaboorAddons_price="10000"
+                app:kaboorAddons_price="65000"
                 android:layout_marginBottom="@dimen/dimen_20dp"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
@@ -96,6 +96,7 @@
                 android:textColor="@color/neutral6" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_total_price"
                 style="@style/KaboorTextView.Heading2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -7,7 +7,7 @@ package com.synrgy.common.data.response
  */
 
 
-data class KaboorGenericResponse(
+data class KaboorResponse(
     val code: Int,
     val message: String
 )

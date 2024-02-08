@@ -1,7 +1,7 @@
 package com.synrgy.data.auth
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.common.utils.ext.flowDispatcherIO
 import com.synrgy.data.auth.model.request.EmailRequest
 import com.synrgy.data.auth.model.request.LoginRequest
@@ -30,7 +30,7 @@ class AuthDataStore(
     private val error: ErrorParser
 ) : AuthRepository {
 
-    override suspend fun resendOTP(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun resendOTP(body: EmailRequest): Flow<Resource<KaboorResponse>> =
         flow {
             enqueue(
                 body,
@@ -66,7 +66,7 @@ class AuthDataStore(
                 onEmit = { data -> emit(data) })
         }.flowDispatcherIO()
 
-    override suspend fun forgetPassword(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun forgetPassword(body: EmailRequest): Flow<Resource<KaboorResponse>> =
         flow {
             enqueue(
                 body,
@@ -76,7 +76,7 @@ class AuthDataStore(
             )
         }.flowDispatcherIO()
 
-    override suspend fun verifyOtpResetPassword(body: OtpRequest): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun verifyOtpResetPassword(body: OtpRequest): Flow<Resource<KaboorResponse>> =
         flow {
             enqueue(
                 body,
@@ -88,7 +88,7 @@ class AuthDataStore(
 
     override suspend fun changePassword(
         body: NewPasswordRequest
-    ): Flow<Resource<KaboorGenericResponse>> = flow {
+    ): Flow<Resource<KaboorResponse>> = flow {
         enqueue(
             body,
             error::convertGenericError,
@@ -97,7 +97,7 @@ class AuthDataStore(
         )
     }.flowDispatcherIO()
 
-    override suspend fun checkEmail(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun checkEmail(body: EmailRequest): Flow<Resource<KaboorResponse>> =
         flow {
             enqueue(
                 body,
@@ -107,7 +107,7 @@ class AuthDataStore(
             )
         }.flowDispatcherIO()
 
-    override suspend fun changeEmail(body: EmailRequest): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun changeEmail(body: EmailRequest): Flow<Resource<KaboorResponse>> =
         flow {
             enqueue(
                 body,
@@ -117,7 +117,7 @@ class AuthDataStore(
             )
         }.flowDispatcherIO()
 
-    override suspend fun verifyOtpEmail(body: OtpRequest): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun verifyOtpEmail(body: OtpRequest): Flow<Resource<KaboorResponse>> =
         flow {
             enqueue(
                 body,
@@ -127,7 +127,7 @@ class AuthDataStore(
             )
         }.flowDispatcherIO()
 
-    override suspend fun changeNumber(body: PhoneRequest): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun changeNumber(body: PhoneRequest): Flow<Resource<KaboorResponse>> =
         flow {
             enqueue(
                 body,
@@ -137,7 +137,7 @@ class AuthDataStore(
             )
         }.flowDispatcherIO()
 
-    override suspend fun verifyOtpNumber(body: OtpRequest): Flow<Resource<KaboorGenericResponse>> =
+    override suspend fun verifyOtpNumber(body: OtpRequest): Flow<Resource<KaboorResponse>> =
         flow {
             enqueue(
                 body,

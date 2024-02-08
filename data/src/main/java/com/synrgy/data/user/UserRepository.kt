@@ -1,7 +1,7 @@
 package com.synrgy.data.user
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.PersonalInfoResponse
@@ -28,6 +28,6 @@ interface UserRepository {
 
     suspend fun updatePersonalInfo(
         body: UpdatePersonalInfoRequest,
-    ): Flow<Resource<KaboorGenericResponse>>
+    ): Flow<Resource<KaboorResponse>>
 
 }

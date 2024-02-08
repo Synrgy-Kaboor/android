@@ -1,6 +1,6 @@
 package com.synrgy.data.auth.remote
 
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.data.auth.model.request.EmailRequest
 import com.synrgy.data.auth.model.request.LoginRequest
@@ -12,8 +12,6 @@ import com.synrgy.data.auth.model.response.LoginResponse
 import com.synrgy.data.user.model.response.UserResponse
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 /**
@@ -27,7 +25,7 @@ interface AuthService {
     @POST("/api/v1/auth/otp/resend")
     suspend fun resendOTP(
         @Body body: EmailRequest
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 
 
     @POST("/api/v1/auth/otp/verify")
@@ -48,41 +46,41 @@ interface AuthService {
     @POST("/api/v1/auth/password/forget")
     suspend fun forgetPassword(
         @Body body: EmailRequest
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 
     @POST("/api/v1/auth/password/otp/verify")
     suspend fun verifyOtpResetPassword(
        @Body body: OtpRequest
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 
     @POST("/api/v1/auth/password/change")
     suspend fun changePassword(
         @Body body: NewPasswordRequest
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 
     @POST("/api/v1/auth/check/email")
     suspend fun checkEmail(
         @Body body: EmailRequest
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 
     @POST("/api/v1/auth/change/email")
     suspend fun changeEmail(
         @Body body: EmailRequest
-    ):Response<KaboorGenericResponse>
+    ):Response<KaboorResponse>
 
     @POST("/api/v1/auth/email/otp/verify")
     suspend fun verifyOtpEmail(
         @Body body: OtpRequest
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 
     @POST("/api/v1/auth/change/number")
     suspend fun changeNumber(
         @Body body: PhoneRequest
-    ):Response<KaboorGenericResponse>
+    ):Response<KaboorResponse>
 
     @POST("/api/v1/auth/number/otp/verify")
     suspend fun verifyOtpNumber(
         @Body body: OtpRequest
-    ): Response<KaboorGenericResponse>
+    ): Response<KaboorResponse>
 
 }

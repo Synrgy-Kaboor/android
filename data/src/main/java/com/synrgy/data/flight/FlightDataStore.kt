@@ -1,6 +1,6 @@
 package com.synrgy.data.flight
 
-import com.synrgy.common.data.ResponseListWrapper
+import com.synrgy.common.data.ListWrapper
 import com.synrgy.common.utils.ext.flowDispatcherIO
 import com.synrgy.data.db.KaboorDatabase
 import com.synrgy.data.flight.local.AirportEntity
@@ -11,10 +11,8 @@ import com.synrgy.data.flight.remote.FlightService
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.enqueue
 import com.wahidabd.library.utils.coroutine.handler.ErrorParser
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 
 
 /**
@@ -37,7 +35,7 @@ class FlightDataStore(
         return db.flightDao().getList()
     }
 
-    override suspend fun getAirports(): Flow<Resource<ResponseListWrapper<AirportResponse>>> =
+    override suspend fun getAirports(): Flow<Resource<ListWrapper<AirportResponse>>> =
         flow {
             enqueue(
                 error::convertGenericError,
@@ -48,7 +46,7 @@ class FlightDataStore(
 
     override suspend fun getFlights(
         body: FlightRequest
-    ): Flow<Resource<ResponseListWrapper<FlightResponse>>> = flow {
+    ): Flow<Resource<ListWrapper<FlightResponse>>> = flow {
         enqueue(
             body.toMap(),
             error::convertGenericError,

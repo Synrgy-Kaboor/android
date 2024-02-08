@@ -55,14 +55,12 @@ class KaboorScheduleCard @JvmOverloads constructor(
     }
 
     fun setDeparture(departure: Long) {
-        com.wahidabd.library.utils.extensions.debug { "departure --> $departure ${departure.toFullDateFormat()}" }
         this.departure = departure
         binding.tvDeparture.text = departure.toFullDateFormat()
-        if (departure > comingHome) setComingHome(this.departure + oneDayMillis)
+        if (departure > comingHome) setComingHome(this.departure)
     }
 
     fun setComingHome(comingHome: Long) {
-        com.wahidabd.library.utils.extensions.debug { "cominghome --> $comingHome ${comingHome.toFullDateFormat()}" }
         this.comingHome = comingHome
         binding.tvArrival.text = comingHome.toFullDateFormat()
     }

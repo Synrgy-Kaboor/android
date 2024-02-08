@@ -1,22 +1,21 @@
 package com.synrgy.domain.booking
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.booking.BookingRepository
-import com.synrgy.data.booking.model.response.BookingInfoResponse
 import com.synrgy.data.booking.model.response.BookingResponse
 import com.synrgy.data.booking.model.response.BookingStatusResponse
 import com.synrgy.data.booking.model.response.PaymentDetailResponse
+import com.synrgy.data.booking.model.response.UploadProofResponse
 import com.synrgy.domain.booking.mapper.toDomain
 import com.synrgy.domain.booking.mapper.toRequest
 import com.synrgy.domain.booking.model.request.BookingParam
-import com.synrgy.domain.booking.model.request.UpdateAdditionalBookingParam
-import com.synrgy.domain.booking.model.request.UpdateBookingParam
-import com.synrgy.domain.booking.model.request.UpdatePaymentMethodParam
+import com.synrgy.domain.booking.model.request.ProofParam
+import com.synrgy.domain.booking.model.request.UpdateProofParam
 import com.synrgy.domain.booking.model.response.Booking
-import com.synrgy.domain.booking.model.response.BookingInfo
 import com.synrgy.domain.booking.model.response.BookingStatus
 import com.synrgy.domain.booking.model.response.PaymentDetail
+import com.synrgy.domain.booking.model.response.UploadProof
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
 import kotlinx.coroutines.flow.Flow
@@ -46,45 +45,11 @@ class BookingInteractor(
         }.asFlow()
     }
 
-    override suspend fun getBookingInfo(
-        id: Int
-    ): Flow<Resource<BookingInfo>> {
-        return object : InternetBoundResource<BookingInfo, ResponseWrapper<BookingInfoResponse>>() {
-            override suspend fun createCall(): Flow<Resource<ResponseWrapper<BookingInfoResponse>>> {
-                return bookingRepository.getBookingInfo(id)
-            }
-
-            override suspend fun saveCallRequest(data: ResponseWrapper<BookingInfoResponse>): BookingInfo {
-                return data.data.toDomain()
-            }
-        }.asFlow()
-    }
-
-    override suspend fun updateBooking(
-        id: Int,
-        body: UpdateBookingParam
-    ): Flow<Resource<KaboorGenericResponse>> {
-        return bookingRepository.updateBooking(id, body.toRequest())
-    }
-
-    override suspend fun updateAdditionalService(
-        id: Int,
-        body: UpdateAdditionalBookingParam
-    ): Flow<Resource<KaboorGenericResponse>> {
-        return bookingRepository.updateAdditionalService(id, body.toRequest())
-    }
-
-    override suspend fun updatePayment(
-        id: Int,
-        body: UpdatePaymentMethodParam
-    ): Flow<Resource<KaboorGenericResponse>> {
-        return bookingRepository.updatePayment(id, body.toRequest())
-    }
-
     override suspend fun getPaymentDetail(
         id: Int
     ): Flow<Resource<PaymentDetail>> {
-        return object : InternetBoundResource<PaymentDetail, ResponseWrapper<PaymentDetailResponse>>(){
+        return object :
+            InternetBoundResource<PaymentDetail, ResponseWrapper<PaymentDetailResponse>>() {
             override suspend fun createCall(): Flow<Resource<ResponseWrapper<PaymentDetailResponse>>> {
                 return bookingRepository.getPaymentDetail(id)
             }
@@ -98,7 +63,8 @@ class BookingInteractor(
     override suspend fun getBookingStatus(
         id: Int
     ): Flow<Resource<BookingStatus>> {
-        return object : InternetBoundResource<BookingStatus, ResponseWrapper<BookingStatusResponse>>(){
+        return object :
+            InternetBoundResource<BookingStatus, ResponseWrapper<BookingStatusResponse>>() {
             override suspend fun createCall(): Flow<Resource<ResponseWrapper<BookingStatusResponse>>> {
                 return bookingRepository.getBookingStatus(id)
             }
@@ -107,5 +73,24 @@ class BookingInteractor(
                 return data.data.toDomain()
             }
         }.asFlow()
+    }
+
+    override suspend fun uploadProof(body: ProofParam): Flow<Resource<UploadProof>> {
+        return object : InternetBoundResource<UploadProof, ResponseWrapper<UploadProofResponse>>(){
+            override suspend fun createCall(): Flow<Resource<ResponseWrapper<UploadProofResponse>>> {
+                return bookingRepository.uploadProof(body.toRequest())
+            }
+
+            override suspend fun saveCallRequest(data: ResponseWrapper<UploadProofResponse>): UploadProof {
+                return data.data.toDomain()
+            }
+        }.asFlow()
+    }
+
+    override suspend fun updateProof(
+        id: Int,
+        body: UpdateProofParam
+    ): Flow<Resource<KaboorResponse>> {
+        return bookingRepository.updateProof(id, body.toRequest())
     }
 }

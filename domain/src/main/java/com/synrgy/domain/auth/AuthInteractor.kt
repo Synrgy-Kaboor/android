@@ -1,7 +1,7 @@
 package com.synrgy.domain.auth
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.auth.AuthRepository
 import com.synrgy.data.auth.model.response.LoginResponse
 import com.synrgy.data.user.model.response.UserResponse
@@ -28,7 +28,7 @@ import kotlinx.coroutines.flow.Flow
 
 class AuthInteractor(private val repository: AuthRepository) : AuthUseCase {
 
-    override suspend fun resendOTP(body: EmailParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun resendOTP(body: EmailParam): Flow<Resource<KaboorResponse>> {
         return repository.resendOTP(body.toRequest())
     }
 
@@ -71,35 +71,35 @@ class AuthInteractor(private val repository: AuthRepository) : AuthUseCase {
         }.asFlow()
     }
 
-    override suspend fun forgetPassword(body: EmailParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun forgetPassword(body: EmailParam): Flow<Resource<KaboorResponse>> {
         return repository.forgetPassword(body.toRequest())
     }
 
-    override suspend fun verifyOtpResetPassword(body: OtpParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun verifyOtpResetPassword(body: OtpParam): Flow<Resource<KaboorResponse>> {
         return repository.verifyOtpResetPassword(body.toRequest())
     }
 
-    override suspend fun changePassword(body: NewPasswordParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun changePassword(body: NewPasswordParam): Flow<Resource<KaboorResponse>> {
         return repository.changePassword(body.toRequest())
     }
 
-    override suspend fun checkEmail(body: EmailParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun checkEmail(body: EmailParam): Flow<Resource<KaboorResponse>> {
         return repository.checkEmail(body.toRequest())
     }
 
-    override suspend fun changeEmail(body: EmailParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun changeEmail(body: EmailParam): Flow<Resource<KaboorResponse>> {
         return repository.changeEmail(body.toRequest())
     }
 
-    override suspend fun verifyOtpChangeEmail(body: OtpParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun verifyOtpChangeEmail(body: OtpParam): Flow<Resource<KaboorResponse>> {
         return repository.verifyOtpEmail(body.toRequest())
     }
 
-    override suspend fun changePhone(body: PhoneParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun changePhone(body: PhoneParam): Flow<Resource<KaboorResponse>> {
         return repository.changeNumber(body.toRequest())
     }
 
-    override suspend fun verifyOtpChangePhone(body: OtpParam): Flow<Resource<KaboorGenericResponse>> {
+    override suspend fun verifyOtpChangePhone(body: OtpParam): Flow<Resource<KaboorResponse>> {
         return repository.verifyOtpNumber(body.toRequest())
     }
 }

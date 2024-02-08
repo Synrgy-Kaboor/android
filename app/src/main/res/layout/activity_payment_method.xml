@@ -55,7 +55,7 @@
                 android:layout_weight="1"
                 android:hint="@string/label_input_voucher_code"
                 android:maxLines="1"
-                android:textColor="@color/neutral8" />
+                android:textColor="@color/neutral9" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_ticket_vouchers"

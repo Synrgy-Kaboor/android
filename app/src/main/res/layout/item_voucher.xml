@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/card"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="@dimen/dimen_8dp"
-    app:cardBackgroundColor="@color/neutral1"
-    app:cardCornerRadius="@dimen/dimen_8dp"
+    style="@style/KaboorCard"
     app:cardElevation="@dimen/dimen_0dp"
-    app:strokeColor="@color/neutral5"
-    app:strokeWidth="@dimen/dimen_1_5dp">
+    app:rippleColor="@color/rippleCard">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -20,11 +20,12 @@
             android:id="@+id/header_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/secondary01"
+            android:background="@color/color_secondary_disable"
             android:paddingHorizontal="@dimen/dimen_12dp"
             android:paddingVertical="@dimen/dimen_10dp">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_discount"
@@ -38,7 +39,7 @@
                 android:layout_marginStart="@dimen/dimen_8dp"
                 android:layout_weight="1"
                 android:textColor="@color/color_white_disable"
-                tools:text="Voucher Promo" />
+                android:text="@string/label_voucher_promo" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.divider.MaterialDivider
@@ -55,7 +56,8 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/bg_rounded_success"
             android:backgroundTint="@color/color_success_disable"
-            android:padding="@dimen/dimen_3dp"
+            android:paddingVertical="@dimen/dimen_3dp"
+            android:paddingHorizontal="@dimen/dimen_6dp"
             android:textColor="@color/neutral1"
             tools:text="Hemat IDR 26.000" />
 
