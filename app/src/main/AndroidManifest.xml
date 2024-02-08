@@ -4,11 +4,15 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Devices running Android 12L (API level 32) or lower -->
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" /> <!-- Devices running Android 13 (API level 33) or higher -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- To handle the reselection within the app on Android 14 (API level 34) -->
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:name=".App"
@@ -24,6 +28,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".history.DetailHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notification.NotificationDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".account.passport.PassportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.change.ChangeEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.change.ChangePhoneNumberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".account.help.HelpCenterActivity"
+            android:exported="false" />
+        <activity
             android:name=".booking.PriceAlertActivity"
             android:exported="false" />
         <activity
@@ -31,13 +53,7 @@
             android:exported="false" />
         <activity
             android:name=".payment.PaymentMethodDetailActivity"
-            android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".account.AccountDetailActivity"
             android:exported="false" />
@@ -99,7 +115,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
+                android:resource="@xml/file_paths"/>
         </provider>
     </application>
 

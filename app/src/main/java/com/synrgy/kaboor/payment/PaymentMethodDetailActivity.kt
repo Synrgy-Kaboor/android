@@ -28,7 +28,6 @@ import com.synrgy.domain.booking.model.request.UpdateProofParam
 import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.base.MainActivity
-import com.synrgy.kaboor.booking.flight.FlightScheduleActivity
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodDetailBinding
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -200,13 +199,8 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
     }
 
     private fun handleNavigation() {
-        if (isPaymentComplete) {
-            MainActivity.start(this)
-            finishAffinity()
-        } else {
-            FlightScheduleActivity.start(this)
-            finishAffinity()
-        }
+        MainActivity.start(this)
+        finishAffinity()
     }
 
     private fun initCountDown(timer: Long) {

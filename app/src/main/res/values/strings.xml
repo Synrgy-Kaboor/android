@@ -252,7 +252,6 @@
     <string name="inv3473843429ui">inv3473843429ui</string>
     <string name="metode_pembayaran">Metode Pembayaran</string>
     <string name="nomor_faktur">Nomor Faktur</string>
-    <string name="message_wni">WNI</string>
-    <string name="message_wna">WNA</string>
-    <string name="message_update_data_success">Data berhasil di update!</string>
+    <string name="label_change_image_profile">Ganti Foto Profil</string>
+    <string name="format_percentage_profile">Informasi pribadi %d%% lengkap</string>
 </resources>

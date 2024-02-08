@@ -38,8 +38,8 @@ class AuthViewModel(
     private val _checkEmail = MutableLiveData<Resource<KaboorResponse>>()
     val checkEmail: LiveData<Resource<KaboorResponse>> get() = _checkEmail
 
-    private val _logout = MutableLiveData<Resource<Unit>>()
-    val logout: LiveData<Resource<Unit>> get() = _logout
+
+
 
     fun saveToken(token: String) {
         _userData.value = Resource.loading()
@@ -52,15 +52,6 @@ class AuthViewModel(
     fun saveUserInfo(data: User){
         viewModelScope.launch {
             user.setUser(data.toParam())
-        }
-    }
-
-    fun clearToken() {
-        _userData.value = Resource.loading()
-        viewModelScope.launch {
-            user.clearToken()
-            user.setLogin(false)
-            _logout.value = Resource.success(Unit)
         }
     }
 

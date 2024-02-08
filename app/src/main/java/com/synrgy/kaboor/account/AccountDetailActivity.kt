@@ -2,29 +2,43 @@ package com.synrgy.kaboor.account
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
+import android.os.Environment
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.ext.PermissionExt
+import com.synrgy.common.utils.ext.getImageFile
 import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.common.utils.ext.replaceSpace
 import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.snackbarDanger
 import com.synrgy.common.utils.ext.toDateFormat
+import com.synrgy.domain.user.model.request.ImageProfileParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityAccountDetailBinding
+import com.synrgy.kaboor.databinding.DialogSelectImageBinding
+import com.wahidabd.library.utils.exts.getCompatDrawable
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
+import com.wahidabd.library.utils.exts.setImageUrl
 import com.wahidabd.library.validation.Validation
 import com.wahidabd.library.validation.util.notEmptyRule
 import org.koin.android.ext.android.inject
+import java.io.File
 import java.util.Locale
+import com.synrgy.common.R as comR
 
 
 class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding>() {
@@ -35,6 +49,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
     private var isWni: Boolean = false
     private var selectedTitle: String = ""
     private var selectedGender: String = ""
+    private var imageUri: Uri? = null
 
     companion object {
         fun start(context: Context) {
@@ -71,9 +86,12 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         appbar.setOnBackClickListener { onBackPress() }
         llDateOfBirth.setOnClickListener { showDatePicker() }
         btnSave.onClick { validate() }
+        imgCamera.onClick { requestPermissions() }
     }
 
-    override fun initProcess() {}
+    override fun initProcess() {
+        viewModel.getProfile()
+    }
 
     override fun initObservers() {
         viewModel.updatePersonalInfo.observerLiveData(
@@ -93,6 +111,25 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                 onBackPress()
             }
         )
+
+        viewModel.imageProfile.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = {
+                hideLoading()
+                viewModel.setProfile(it.imageUrl.replaceSpace())
+                viewModel.getProfile()
+            }
+        )
+
+        viewModel.profile.observe(this){profile ->
+            if (profile.isNotEmpty()){
+                binding.imgProfile.setImageUrl(this, profile)
+            }
+        }
     }
 
     override fun onValidationSuccess() = with(binding) {
@@ -224,20 +261,52 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         }
     }
 
-    private fun handleTakeAndSelectImage() {
+    private fun initRequest(uri: Uri) {
+        val body = ImageProfileParam(getImageFile(uri))
+        viewModel.uploadImage(body)
+    }
 
+    private fun handleTakeAndSelectImage() {
+        val dialogBinding = DialogSelectImageBinding.inflate(LayoutInflater.from(this))
+        val dialog = MaterialAlertDialogBuilder(this)
+            .setView(dialogBinding.root)
+            .setBackground(getCompatDrawable(comR.drawable.bg_rectangle_stroke_white))
+            .create()
+
+        dialogBinding.imgCamera.onClick {
+            val imageFile = File.createTempFile(
+                "IMG_",
+                ".jpg",
+                getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            )
+
+            imageUri = FileProvider.getUriForFile(
+                this,
+                "${this.packageName}.provider",
+                imageFile
+            )
+
+            launchCamera.launch(imageUri)
+            dialog.dismiss()
+        }
+        dialogBinding.imgGalley.onClick {
+            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-            if (uri != null) // TODO
+            if (uri != null) initRequest(uri)
             else snackbarDanger(getString(R.string.message_failed_select_image))
         }
 
     private val launchCamera = registerForActivityResult(
         ActivityResultContracts.TakePicture()
     ) { isSuccess ->
-        if (isSuccess) // TODO
+        if (isSuccess && imageUri != null) initRequest(imageUri!!)
         else snackbarDanger(getString(R.string.message_failed_select_image))
     }
 
@@ -245,20 +314,20 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             requestMultiplePermission(
                 permissions = PermissionExt.takeCapturePermission14,
-                requestCode = PermissionExt.IMAGE_REQUEST_CODE,
-                doIfGranted = {}
+                requestCode = PermissionExt.CAPTURE_REQUEST_CODE,
+                doIfGranted = ::handleTakeAndSelectImage
             )
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             requestMultiplePermission(
                 permissions = PermissionExt.takeCapturePermission13,
-                requestCode = PermissionExt.IMAGE_REQUEST_CODE,
-                doIfGranted = {}
+                requestCode = PermissionExt.CAPTURE_REQUEST_CODE,
+                doIfGranted = ::handleTakeAndSelectImage
             )
         } else {
             requestMultiplePermission(
                 permissions = PermissionExt.takeCapturePermission12L,
-                requestCode = PermissionExt.IMAGE_REQUEST_CODE,
-                doIfGranted = { }
+                requestCode = PermissionExt.CAPTURE_REQUEST_CODE,
+                doIfGranted = ::handleTakeAndSelectImage
             )
         }
     }

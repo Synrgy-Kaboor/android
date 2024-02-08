@@ -25,6 +25,7 @@ class KaboorDataStore(context: Context) {
     companion object {
         private val TOKEN = stringPreferencesKey(ConstDataStore.PREF_TOKEN)
         private val LOGIN = booleanPreferencesKey(ConstDataStore.PREF_LOGIN)
+        private val PROFILE = stringPreferencesKey(ConstDataStore.PREF_PROFILE)
         private val FULL_NAME = stringPreferencesKey(ConstDataStore.PREF_FULL_NAME)
         private val EMAIL = stringPreferencesKey(ConstDataStore.PREF_EMAIL)
         private val PHONE = stringPreferencesKey(ConstDataStore.PREF_PHONE)
@@ -57,7 +58,7 @@ class KaboorDataStore(context: Context) {
         }
     }
 
-    fun getLogin(): Flow<Boolean>{
+    fun getLogin(): Flow<Boolean> {
         return dataStore.data.map { preferences ->
             preferences[LOGIN] ?: false
         }
@@ -69,7 +70,7 @@ class KaboorDataStore(context: Context) {
         }
     }
 
-    suspend fun clearToken(){
+    suspend fun clearToken() {
         dataStore.edit { preferences ->
             preferences.remove(TOKEN)
         }
@@ -85,6 +86,31 @@ class KaboorDataStore(context: Context) {
         dataStore.data.map { preferences ->
             preferences[LOGIN]
         }.first()
+    }
+
+    fun getPercentageProfile(): Int {
+        var isFill = 0F
+        val values = getInfoList()
+
+        values.forEach { value ->
+            if (value.isNotEmpty()) {
+                isFill++
+            }
+        }
+
+        return ((isFill / values.size) * 100).toInt()
+    }
+
+    suspend fun setProfile(profile: String) {
+        dataStore.edit { preferences ->
+            preferences[PROFILE] = profile
+        }
+    }
+
+    fun getProfile(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[PROFILE].orEmpty()
+        }
     }
 
     suspend fun setUser(data: UserRequest) {
@@ -116,5 +142,24 @@ class KaboorDataStore(context: Context) {
                 isWni = preferences[WNI] ?: false,
             )
         }
+    }
+
+    private fun getInfoList(): List<String> = runBlocking {
+        val values = mutableListOf<String>()
+        dataStore.data.map { preferences ->
+            values.add(preferences[PROFILE].orEmpty())
+            values.add(preferences[FULL_NAME].orEmpty())
+            values.add(preferences[EMAIL].orEmpty())
+            values.add(preferences[PHONE].orEmpty())
+            values.add(preferences[TITLE].orEmpty())
+            values.add(preferences[BIRTHDAY].orEmpty())
+            values.add(preferences[NATION].orEmpty())
+            values.add(preferences[CITY].orEmpty())
+            values.add(preferences[ADDRESS].orEmpty())
+            values.add(preferences[GENDER].orEmpty())
+            values.add(if (preferences[WNI] == true) "WNI" else "")
+        }.first()
+
+        return@runBlocking values
     }
 }

@@ -62,7 +62,8 @@ object PermissionExt {
 
     val takeCapturePermission12L = arrayOf(
         android.Manifest.permission.CAMERA,
-        android.Manifest.permission.READ_EXTERNAL_STORAGE
+        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
@@ -70,17 +71,16 @@ object PermissionExt {
         android.Manifest.permission.CAMERA,
         android.Manifest.permission.READ_EXTERNAL_STORAGE,
         android.Manifest.permission.READ_MEDIA_IMAGES,
-        android.Manifest.permission.READ_MEDIA_IMAGES,
         android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
     )
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     val takeCapturePermission13 = arrayOf(
         android.Manifest.permission.CAMERA,
-        android.Manifest.permission.READ_EXTERNAL_STORAGE,
         android.Manifest.permission.READ_MEDIA_IMAGES
     )
 
     const val NOTIFICATION_REQUEST_CODE = 112233
     const val IMAGE_REQUEST_CODE = 112234
+    const val CAPTURE_REQUEST_CODE = 112235
 }

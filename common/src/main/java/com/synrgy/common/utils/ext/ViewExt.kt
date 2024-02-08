@@ -123,6 +123,8 @@ fun String.chuckedString(): String = this.replaceChar().chunked(4).joinToString(
 
 fun String.replaceChar(): String = this.replace(" ", "").replace("-", "")
 
+fun String.replaceSpace(): String = this.replace(" ", "")
+
 fun View.showHideToggle() {
     if (this.visibility == View.VISIBLE) this.gone()
     else this.visible()
