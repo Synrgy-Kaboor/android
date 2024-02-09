@@ -21,4 +21,5 @@ object ConstDataStore {
     const val PREF_ADDRESS = "address"
     const val PREF_GENDER = "gender"
     const val PREF_WNI = "wni"
+    const val PREF_PROFILE = "profile"
 }

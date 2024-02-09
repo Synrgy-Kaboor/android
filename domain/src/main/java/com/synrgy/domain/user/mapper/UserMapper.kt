@@ -1,9 +1,11 @@
 package com.synrgy.domain.user.mapper
 
 import com.synrgy.data.user.model.request.UserRequest
+import com.synrgy.data.user.model.response.ImageProfileResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.domain.booking.model.response.Passenger
 import com.synrgy.domain.user.model.request.UserParam
+import com.synrgy.domain.user.model.response.ImageProfile
 import com.synrgy.domain.user.model.response.PersonalInfo
 import com.synrgy.domain.user.model.response.User
 
@@ -28,10 +30,13 @@ fun PersonalInfoResponse.toDomain(): PersonalInfo {
         fullName = fullName,
         gender = gender,
         birthday = birthday,
+        nik = nik,
         nation = nation,
         city = city,
         address = address,
         isWni = isWni,
+        imageName = imageName,
+        imageUrl = imageUrl,
     )
 }
 
@@ -41,10 +46,13 @@ fun PersonalInfoResponse.toUser(): User {
         fullName = fullName,
         gender = gender,
         birthday = birthday,
+        nik = nik,
         nation = nation,
         city = city,
         address = address,
         isWni = isWni,
+        imageName = imageName,
+        imageUrl = imageUrl,
     )
 }
 
@@ -54,5 +62,12 @@ fun User.toPassenger(): Passenger {
         email = email,
         phoneNumber = phoneNumber,
         title = title
+    )
+}
+
+fun ImageProfileResponse.toDomain(): ImageProfile {
+    return ImageProfile(
+        imageName = imageName,
+        imageUrl = imageUrl
     )
 }

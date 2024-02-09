@@ -29,4 +29,5 @@ val viewModelModule = module {
     viewModel { PassengerViewModel(get()) }
     viewModel { PromoViewModel(get()) }
     viewModel { BookingViewModel(get()) }
+    viewModel { AccountViewModel(get()) }
 }
