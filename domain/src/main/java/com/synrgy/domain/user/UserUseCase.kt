@@ -4,7 +4,6 @@ import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.domain.user.model.request.ImageProfileParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.domain.user.model.request.UserParam
-import com.synrgy.domain.user.model.response.ImageProfile
 import com.synrgy.domain.user.model.response.User
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.Flow
@@ -34,6 +33,10 @@ interface UserUseCase {
     ): Flow<Resource<KaboorResponse>>
 
     suspend fun uploadImage(
-        body: ImageProfileParam
-    ): Flow<Resource<ImageProfile>>
+        body: ImageProfileParam,
+    ): Flow<Resource<KaboorResponse>>
+
+//    suspend fun uploadImage(
+//        body: ImageProfileParam
+//    ): Flow<Resource<ImageProfile>>
 }

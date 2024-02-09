@@ -30,10 +30,13 @@ fun PersonalInfoResponse.toDomain(): PersonalInfo {
         fullName = fullName,
         gender = gender,
         birthday = birthday,
+        nik = nik,
         nation = nation,
         city = city,
         address = address,
         isWni = isWni,
+        imageName = imageName,
+        imageUrl = imageUrl,
     )
 }
 
@@ -43,10 +46,13 @@ fun PersonalInfoResponse.toUser(): User {
         fullName = fullName,
         gender = gender,
         birthday = birthday,
+        nik = nik,
         nation = nation,
         city = city,
         address = address,
         isWni = isWni,
+        imageName = imageName,
+        imageUrl = imageUrl,
     )
 }
 

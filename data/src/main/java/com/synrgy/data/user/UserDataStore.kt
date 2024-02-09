@@ -7,7 +7,6 @@ import com.synrgy.data.db.KaboorDataStore
 import com.synrgy.data.user.model.request.ImageProfileRequest
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
-import com.synrgy.data.user.model.response.ImageProfileResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.data.user.model.response.UserDataResponse
 import com.synrgy.data.user.remote.UserService
@@ -87,8 +86,8 @@ class UserDataStore(
     }.flowDispatcherIO()
 
     override suspend fun uploadImage(
-        body: ImageProfileRequest
-    ): Flow<Resource<ImageProfileResponse>> = flow {
+        body: ImageProfileRequest,
+    ): Flow<Resource<KaboorResponse>> = flow {
         enqueue(
             body.toMultiPart(),
             error::convertGenericError,
@@ -96,4 +95,16 @@ class UserDataStore(
             onEmit = { data -> emit(data) }
         )
     }.flowDispatcherIO()
+
+//    override suspend fun uploadImage(
+//        body: ImageProfileRequest
+//    ): Flow<Resource<ImageProfileResponse>> = flow {
+//        enqueue(
+//            body.toMultiPart(),
+//            error::convertGenericError,
+//            api::uploadImage,
+//            onEmit = { data -> emit(data) }
+//        )
+//    }.flowDispatcherIO()
+
 }

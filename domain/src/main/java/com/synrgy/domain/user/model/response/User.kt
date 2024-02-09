@@ -14,6 +14,7 @@ data class User(
     val fullName: String? = emptyString(),
     val gender: String? = emptyString(),
     val birthday: String? = emptyString(),
+    val nik: String? = emptyString(),
     val country: String? = emptyString(),
     val nation: String? = emptyString(),
     val city: String? = emptyString(),
@@ -22,4 +23,6 @@ data class User(
     val phoneNumber: String? = emptyString(),
     val isWni: Boolean? = false,
     val verified: Boolean = false,
+    val imageName: String? = emptyString(),
+    val imageUrl: String? = emptyString()
 )

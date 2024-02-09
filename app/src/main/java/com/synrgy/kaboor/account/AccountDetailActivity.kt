@@ -19,7 +19,6 @@ import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.getImageFile
 import com.synrgy.common.utils.ext.onBackPress
-import com.synrgy.common.utils.ext.replaceSpace
 import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.snackbarDanger
@@ -33,8 +32,6 @@ import com.wahidabd.library.utils.exts.getCompatDrawable
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.setImageUrl
-import com.wahidabd.library.validation.Validation
-import com.wahidabd.library.validation.util.notEmptyRule
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.util.Locale
@@ -50,6 +47,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
     private var selectedTitle: String = ""
     private var selectedGender: String = ""
     private var imageUri: Uri? = null
+    private var imageName: String = ""
 
     companion object {
         fun start(context: Context) {
@@ -62,13 +60,12 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
 
     override fun initUI() = with(binding) {
         initDataUser()
-        imgProfile.setImageResource(R.drawable.ic_launcher_foreground)
 
         titleList = ArrayList(
-            listOf("Mr.", "Mrs.", "Miss.")
+            listOf("Mr", "Mrs", "Miss")
         )
         genderList = ArrayList(
-            listOf("Laki-Laki", "Perempuan")
+            listOf("L", "P")
         )
         spinnerTitle.item = titleList as List<String>
         spinnerGender.item = genderList as List<String>
@@ -89,10 +86,6 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         imgCamera.onClick { requestPermissions() }
     }
 
-    override fun initProcess() {
-        viewModel.getProfile()
-    }
-
     override fun initObservers() {
         viewModel.updatePersonalInfo.observerLiveData(
             this,
@@ -108,7 +101,6 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                     getString(R.string.message_update_data_success),
                     LENGTH_SHORT
                 ).show()
-                onBackPress()
             }
         )
 
@@ -120,81 +112,36 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
             },
             onSuccess = {
                 hideLoading()
-                viewModel.setProfile(it.imageUrl.replaceSpace())
-                viewModel.getProfile()
+                Toast.makeText(
+                    this,
+                    getString(R.string.message_update_data_success),
+                    LENGTH_SHORT
+                ).show()
+//                viewModel.setProfile(it.imageUrl.replaceSpace())
             }
         )
-
-        viewModel.profile.observe(this){profile ->
-            if (profile.isNotEmpty()){
-                binding.imgProfile.setImageUrl(this, profile)
-            }
-        }
     }
+
+    override fun setupValidation() {}
 
     override fun onValidationSuccess() = with(binding) {
         val citizenship = etCitizenship.getText().lowercase(Locale.ROOT)
 
-        if (citizenship == "indo" || citizenship == "indonesia") {
-            isWni = true
-        }
+        isWni = citizenship == "indo" || citizenship == "indonesia"
 
         val body = UpdatePersonalInfoParam(
             title = selectedTitle,
             fullName = etFullname.getText(),
             gender = selectedGender,
             birthday = tvDateOfBirth.text.toString(),
+            nik = etNik.getText(),
             nation = etCountry.getText(),
             city = etCity.getText(),
             address = etFullAddress.text.toString(),
-            isWni = isWni
+            isWni = isWni,
+            imageName = imageName
         )
         viewModel.updatePersonalInfo(body)
-    }
-
-    override fun setupValidation() = with(binding) {
-        addValidation(
-            Validation(
-                etFullname.textInput, listOf(
-                    notEmptyRule(getString(R.string.error_required_full_name))
-                )
-            )
-        )
-        addValidation(
-            Validation(
-                tvDateOfBirth, listOf(
-                    notEmptyRule(getString(R.string.error_empty_birthday))
-                )
-            )
-        )
-        addValidation(
-            Validation(
-                etCountry.textInput, listOf(
-                    notEmptyRule(getString(R.string.error_empty_country))
-                )
-            )
-        )
-        addValidation(
-            Validation(
-                etCity.textInput, listOf(
-                    notEmptyRule(getString(R.string.error_empty_city))
-                )
-            )
-        )
-        addValidation(
-            Validation(
-                etFullAddress, listOf(
-                    notEmptyRule(getString(R.string.error_empty_address))
-                )
-            )
-        )
-        addValidation(
-            Validation(
-                etCitizenship, listOf(
-                    notEmptyRule(getString(R.string.error_empty_citizenship))
-                )
-            )
-        )
     }
 
     private fun initDataUser() = with(binding) {
@@ -228,14 +175,17 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                 }
                 etFullname.setText(it.fullName.toString())
                 tvDateOfBirth.text = it.birthday.toString()
+                etNik.setText(it.nik.toString())
                 etCountry.setText(it.nation.toString())
                 etCity.setText(it.city.toString())
                 etFullAddress.setText(it.address.toString())
+                imgProfile.setImageUrl(this@AccountDetailActivity, it.imageUrl.toString())
+                imageName = it.imageName.toString()
             }
         )
     }
 
-    fun setupSpinnerListener(
+    private fun setupSpinnerListener(
         spinner: Spinner,
         itemList: List<String>,
         onItemSelected: (String) -> Unit,
@@ -263,7 +213,27 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
 
     private fun initRequest(uri: Uri) {
         val body = ImageProfileParam(getImageFile(uri))
+        Toast.makeText(
+            this,
+            "INIT REQUEST",
+            LENGTH_SHORT
+        ).show()
         viewModel.uploadImage(body)
+        viewModel.imageProfile.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = {
+                hideLoading()
+                Toast.makeText(
+                    this,
+                    getString(R.string.message_update_data_success),
+                    LENGTH_SHORT
+                ).show()
+            }
+        )
     }
 
     private fun handleTakeAndSelectImage() {

@@ -11,12 +11,14 @@ fun UpdatePersonalInfoParam.toRequest(): UpdatePersonalInfoRequest {
     return UpdatePersonalInfoRequest(
         title = title,
         fullName = fullName,
+        nik = nik,
         gender = gender,
         birthday = birthday,
         nation = nation,
         city = city,
         address = address,
-        isWni = isWni
+        isWni = isWni,
+        imageName = imageName
     )
 }
 
