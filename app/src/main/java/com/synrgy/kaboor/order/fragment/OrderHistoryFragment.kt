@@ -1,10 +1,13 @@
-package com.synrgy.kaboor.order
+package com.synrgy.kaboor.order.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorFragment
+import com.synrgy.common.utils.enums.OrderType
 import com.synrgy.kaboor.databinding.FragmentOrderHistoryBinding
+import com.synrgy.kaboor.order.DetailHistoryActivity
+import com.synrgy.kaboor.order.OrderViewModel
 import com.synrgy.kaboor.order.adapter.OrderAdapter
 import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.extensions.showDefaultState
@@ -18,7 +21,7 @@ class OrderHistoryFragment : KaboorFragment<FragmentOrderHistoryBinding>() {
     private val viewModel: OrderViewModel by inject()
 
     private val orderAdapter by lazy {
-        OrderAdapter(requireContext())
+        OrderAdapter(requireContext(), true, ::handleOrderClick)
     }
 
     override fun getViewBinding(
@@ -54,6 +57,10 @@ class OrderHistoryFragment : KaboorFragment<FragmentOrderHistoryBinding>() {
                 orderAdapter.setData = it
             }
         )
+    }
+
+    private fun handleOrderClick(data: Pair<Int, String>, type: OrderType) {
+//        DetailHistoryActivity.start(requireContext(), data)
     }
 
     private fun initOrderHistoryFlight() = with(binding) {

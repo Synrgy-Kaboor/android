@@ -64,6 +64,10 @@ class KaboorAppbar @JvmOverloads constructor(
         imgNotification.onClick { onNotificationListener.invoke() }
     }
 
+    fun setTitle(title: String){
+        binding.tvTitle.text = title
+    }
+
     fun setTicketTitle(title: Pair<String, String>) = with(binding) {
         tvDeparture.text = title.first
         tvArrival.text = title.second

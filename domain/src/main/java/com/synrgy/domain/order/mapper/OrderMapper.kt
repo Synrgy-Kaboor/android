@@ -2,9 +2,12 @@ package com.synrgy.domain.order.mapper
 
 import com.synrgy.data.order.model.response.FlightOrderResponse
 import com.synrgy.data.order.model.response.OrderResponse
+import com.synrgy.data.order.model.response.TicketDetailResponse
+import com.synrgy.domain.booking.mapper.toDomain
 import com.synrgy.domain.flight.mapper.toDomain
 import com.synrgy.domain.order.model.response.FlightOrder
 import com.synrgy.domain.order.model.response.Order
+import com.synrgy.domain.order.model.response.TicketDetail
 
 
 /**
@@ -31,5 +34,20 @@ fun OrderResponse.toDomain(): Order {
         uploadedProofOfPayment = uploadedProofOfPayment,
         paymentCompleted = paymentCompleted,
         type = type
+    )
+}
+
+fun TicketDetailResponse.toDomain(): TicketDetail {
+    return TicketDetail(
+        id = id,
+        bookingCode = bookingCode,
+        flight = flight.toDomain(),
+        uploadedProofOfPayment = uploadedProofOfPayment,
+        paymentCompleted = paymentCompleted,
+        passengers = passengers.map { it.toDomain() },
+        addBaggage = addBaggage,
+        addTravelInsurance = addTravelInsurance,
+        addBaggageInsurance = addBaggageInsurance,
+        addDelayProtection = addDelayProtection
     )
 }

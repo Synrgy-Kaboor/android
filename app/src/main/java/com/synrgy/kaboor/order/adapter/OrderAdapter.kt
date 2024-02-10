@@ -13,11 +13,13 @@ import com.synrgy.kaboor.databinding.ItemCardOrderHistoryBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
 import com.wahidabd.library.utils.exts.getCompatDrawable
+import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.setImageUrl
 
 class OrderAdapter(
     private val context: Context,
-    private val isCompleted: Boolean = false
+    private val isCompleted: Boolean = false,
+    private val listener: (Pair<Int, String>, OrderType) -> Unit,
 ) : BaseAsyncRecyclerAdapter<Order, OrderAdapter.OrderViewHolder>() {
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding =
         ItemCardOrderHistoryBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -44,6 +46,10 @@ class OrderAdapter(
             )
             tvOrderStatus.text = order.label
             tvOrderStatus.background = context.getCompatDrawable(order.background)
+
+            root.onClick {
+                listener.invoke(Pair(data.id, data.type), order)
+            }
         }
     }
 }

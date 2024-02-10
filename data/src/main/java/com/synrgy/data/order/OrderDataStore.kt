@@ -1,9 +1,10 @@
 package com.synrgy.data.order
 
 import com.synrgy.common.data.ListWrapper
+import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.utils.ext.flowDispatcherIO
-import com.synrgy.data.order.model.response.FlightOrderResponse
 import com.synrgy.data.order.model.response.OrderResponse
+import com.synrgy.data.order.model.response.TicketDetailResponse
 import com.synrgy.data.order.remote.OrderService
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.enqueue
@@ -38,5 +39,25 @@ class OrderDataStore(
             onEmit = { data -> emit(data) }
         )
     }.flowDispatcherIO()
+
+    override suspend fun getOutbound(id: Int): Flow<Resource<ResponseWrapper<TicketDetailResponse>>> =
+        flow {
+            enqueue(
+                id,
+                error::convertGenericError,
+                api::getOutbound,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
+
+    override suspend fun getReturn(id: Int): Flow<Resource<ResponseWrapper<TicketDetailResponse>>> =
+        flow {
+            enqueue(
+                id,
+                error::convertGenericError,
+                api::getReturn,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
 
 }

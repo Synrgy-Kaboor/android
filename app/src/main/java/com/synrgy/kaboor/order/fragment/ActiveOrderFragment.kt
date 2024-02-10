@@ -1,11 +1,15 @@
-package com.synrgy.kaboor.order
+package com.synrgy.kaboor.order.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorFragment
+import com.synrgy.common.utils.enums.OrderType
 import com.synrgy.kaboor.databinding.FragmentActiveOrderBinding
+import com.synrgy.kaboor.order.DetailHistoryActivity
+import com.synrgy.kaboor.order.OrderViewModel
 import com.synrgy.kaboor.order.adapter.OrderAdapter
+import com.synrgy.kaboor.payment.PaymentMethodDetailActivity
 import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.extensions.showDefaultState
 import com.wahidabd.library.utils.extensions.showEmptyState
@@ -18,7 +22,7 @@ class ActiveOrderFragment : KaboorFragment<FragmentActiveOrderBinding>() {
     private val viewModel: OrderViewModel by inject()
 
     private val orderAdapter by lazy {
-        OrderAdapter(requireContext())
+        OrderAdapter(requireContext(), false, ::handleOrderClick)
     }
 
     override fun getViewBinding(
@@ -53,6 +57,16 @@ class ActiveOrderFragment : KaboorFragment<FragmentActiveOrderBinding>() {
                 orderAdapter.setData = it
             }
         )
+    }
+
+    // NEED ADJUST FOR NAVIGATION
+    private fun handleOrderClick(data: Pair<Int, String>, type: OrderType) {
+        when(type){
+            OrderType.PROCESS -> PaymentMethodDetailActivity.start(requireContext(), data.first)
+            OrderType.NOT_COMPLETED -> PaymentMethodDetailActivity.start(requireContext(), data.first)
+            OrderType.E_TICKET -> DetailHistoryActivity.start(requireContext(), data)
+            OrderType.COMPLETED -> DetailHistoryActivity.start(requireContext(), data)
+        }
     }
 
     private fun initActiveOrderFlight() = with(binding) {

@@ -1,10 +1,13 @@
 package com.synrgy.domain.order
 
 import com.synrgy.common.data.ListWrapper
+import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.data.order.OrderRepository
 import com.synrgy.data.order.model.response.OrderResponse
+import com.synrgy.data.order.model.response.TicketDetailResponse
 import com.synrgy.domain.order.mapper.toDomain
 import com.synrgy.domain.order.model.response.Order
+import com.synrgy.domain.order.model.response.TicketDetail
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
 import kotlinx.coroutines.flow.Flow
@@ -41,6 +44,30 @@ class OrderInteractor(private val repository: OrderRepository) : OrderUseCase {
                 return data.data.map { it.toDomain() }
             }
 
+        }.asFlow()
+    }
+
+    override suspend fun getOutbound(id: Int): Flow<Resource<TicketDetail>> {
+        return object : InternetBoundResource<TicketDetail, ResponseWrapper<TicketDetailResponse>>(){
+            override suspend fun createCall(): Flow<Resource<ResponseWrapper<TicketDetailResponse>>> {
+                return repository.getOutbound(id)
+            }
+
+            override suspend fun saveCallRequest(data: ResponseWrapper<TicketDetailResponse>): TicketDetail {
+                return data.data.toDomain()
+            }
+        }.asFlow()
+    }
+
+    override suspend fun getReturn(id: Int): Flow<Resource<TicketDetail>> {
+        return object : InternetBoundResource<TicketDetail, ResponseWrapper<TicketDetailResponse>>(){
+            override suspend fun createCall(): Flow<Resource<ResponseWrapper<TicketDetailResponse>>> {
+                return repository.getReturn(id)
+            }
+
+            override suspend fun saveCallRequest(data: ResponseWrapper<TicketDetailResponse>): TicketDetail {
+                return data.data.toDomain()
+            }
         }.asFlow()
     }
 }

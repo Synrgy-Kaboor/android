@@ -1,15 +1,19 @@
-package com.synrgy.domain.promo.model.response
+package com.synrgy.common.model
 
-import android.os.Parcelable
 import androidx.annotation.ArrayRes
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class Bank(
+
+/**
+ * Created by wahid on 2/10/2024.
+ * Github github.com/wahidabd.
+ */
+
+
+data class BankData(
     val methodName: String,
     val code: String,
     val imageUrl: String,
     @ArrayRes val atm: Int,
     @ArrayRes val internet: Int,
     @ArrayRes val mobile: Int
-): Parcelable
+)

@@ -233,7 +233,6 @@ object ConstantDummy {
         listOf(
             Selectable(
                 Bank(
-                    id = 1,
                     code = "BRI",
                     methodName = "Bank BRI",
                     imageUrl = "https://logowik.com/content/uploads/images/bri-20209664.logowik.com.webp",
@@ -244,7 +243,6 @@ object ConstantDummy {
             ),
             Selectable(
                 Bank(
-                    2,
                     code = "BNI",
                     methodName = "Bank BNI",
                     imageUrl = "https://logowik.com/content/uploads/images/bni-bank-negara-indonesia8078.logowik.com.webp",
@@ -255,7 +253,6 @@ object ConstantDummy {
             ),
             Selectable(
                 Bank(
-                    3,
                     code = "BCA",
                     methodName = "Bank BCA",
                     imageUrl = "https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png",
@@ -266,7 +263,6 @@ object ConstantDummy {
             ),
             Selectable(
                 Bank(
-                    4,
                     code = "Mandiri",
                     methodName = "Bank Mandiri",
                     imageUrl = "https://logowik.com/content/uploads/images/bank-mandiri.jpg",

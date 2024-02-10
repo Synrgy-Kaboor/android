@@ -14,6 +14,7 @@ import com.synrgy.kaboor.booking.PriceAlertActivity
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
 import com.synrgy.kaboor.databinding.ActivityFlightDepartureTicketListBinding
+import com.wahidabd.library.utils.extensions.showEmptyState
 import com.wahidabd.library.utils.exts.observerLiveData
 import org.koin.android.ext.android.inject
 
@@ -86,15 +87,12 @@ class FlightDepartureTicketListActivity :
         viewModel.flights.observerLiveData(
             this,
             onLoading = ::showLoading,
-            onEmpty = {
-                hideLoading()
-                snackbarSuccess("KOSOOOONG!!")
-            },
             onFailure = { _, message ->
                 showErrorDialog(message.toString())
             },
             onSuccess = { flights ->
                 hideLoading()
+                if (flights.isEmpty()) binding.msv.showEmptyState()
                 planeTicketAdapter.setData = flights
             }
         )

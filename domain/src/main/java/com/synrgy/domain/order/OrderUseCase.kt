@@ -1,6 +1,7 @@
 package com.synrgy.domain.order
 
 import com.synrgy.domain.order.model.response.Order
+import com.synrgy.domain.order.model.response.TicketDetail
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.Flow
 
@@ -14,4 +15,6 @@ import kotlinx.coroutines.flow.Flow
 interface OrderUseCase {
     suspend fun getActive(): Flow<Resource<List<Order>>>
     suspend fun getFinished(): Flow<Resource<List<Order>>>
+    suspend fun getOutbound(id: Int): Flow<Resource<TicketDetail>>
+    suspend fun getReturn(id: Int): Flow<Resource<TicketDetail>>
 }

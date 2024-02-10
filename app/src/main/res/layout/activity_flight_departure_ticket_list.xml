@@ -22,9 +22,17 @@
         android:text="@string/label_choose_departure"
         android:textColor="@color/neutral9" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_ticket"
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/msv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_card_ticket" />
+        android:layout_height="match_parent"
+        app:msv_loadingView="@layout/layout_loading"
+        app:msv_emptyView="@layout/layout_empty">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_card_ticket" />
+    </com.kennyc.view.MultiStateView>
 </androidx.appcompat.widget.LinearLayoutCompat>

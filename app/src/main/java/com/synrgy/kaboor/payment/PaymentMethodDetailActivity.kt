@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.constant.Constant
 import com.synrgy.common.utils.constant.ConstantKey
+import com.synrgy.common.utils.enums.BankType
 import com.synrgy.common.utils.enums.ClipboardType
 import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.chuckedString
@@ -25,6 +26,7 @@ import com.synrgy.common.utils.ext.toMinutes
 import com.synrgy.common.utils.ext.toStringTrim
 import com.synrgy.domain.booking.model.request.ProofParam
 import com.synrgy.domain.booking.model.request.UpdateProofParam
+import com.synrgy.domain.promo.mapper.toDomain
 import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.base.MainActivity
@@ -39,18 +41,15 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         fun start(
             context: Context,
             bookingId: Int,
-            bank: Bank?
         ) {
             context.startActivity(Intent(context, PaymentMethodDetailActivity::class.java).apply {
                 putExtra(ConstantKey.KEY_BOOKING_ID, bookingId)
-                putExtra(ConstantKey.KEY_BANK, bank)
             })
         }
     }
 
     private val viewModel: BookingViewModel by inject()
 
-    private var bank: Bank? = null
     private var bookingId: Int = 0
     private var atmState = false
     private var internetBankingState = false
@@ -67,44 +66,15 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         super.initIntent()
 
         bookingId = intent.getIntExtra(ConstantKey.KEY_BOOKING_ID, 0)
-        bank = intent.getParcelableExtra(ConstantKey.KEY_BANK)
     }
 
-    override fun initUI() {
-        with(binding) {
-            val atm = resources.getStringArray(bank?.atm ?: 0)
-            val internet = resources.getStringArray(bank?.internet ?: 0)
-            val mobile = resources.getStringArray(bank?.mobile ?: 0)
-
-            atm.forEach {
-                tvAtmInstruction.append(
-                    getString(
-                        R.string.format_bullet_point,
-                        "$it\n"
-                    )
-                )
-            }
-            mobile.forEach {
-                tvMobileInstruction.append(
-                    getString(
-                        R.string.format_bullet_point,
-                        "$it\n"
-                    )
-                )
-            }
-            internet.forEach {
-                tvInternetInstruction.append(
-                    getString(
-                        R.string.format_bullet_point,
-                        "$it\n"
-                    )
-                )
-            }
-        }
-    }
+    override fun initUI() {}
 
     override fun initAction() = with(binding) {
-        appbar.setOnBackClickListener { onBackPress() }
+        appbar.setOnBackClickListener {
+            MainActivity.start(this@PaymentMethodDetailActivity)
+            finishAffinity()
+        }
         imgCopyAccountNumber.onClick {
             copyTextToClipboard(
                 tvAccountNumber.toStringTrim(),
@@ -165,6 +135,9 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
                     initCountDown(timer = data.expiredTime?.toCountDownGmt7() ?: 0L)
                     isPaymentComplete = data.paymentCompleted ?: false
                     if (isPaymentComplete) btnShowOrder.text = getString(R.string.label_finish)
+
+                    val bank = BankType.getBankType(data.methodName.toString()).bank.toDomain()
+                    handleInstructionBank(bank)
                 }
             }
         )
@@ -253,6 +226,39 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
                 requestCode = PermissionExt.IMAGE_REQUEST_CODE,
                 doIfGranted = ::launchPickMedia
             )
+        }
+    }
+
+    private fun handleInstructionBank(bank: Bank){
+        with(binding) {
+            val atm = resources.getStringArray(bank.atm)
+            val internet = resources.getStringArray(bank.internet)
+            val mobile = resources.getStringArray(bank.mobile)
+
+            atm.forEach {
+                tvAtmInstruction.append(
+                    getString(
+                        R.string.format_bullet_point,
+                        "$it\n"
+                    )
+                )
+            }
+            mobile.forEach {
+                tvMobileInstruction.append(
+                    getString(
+                        R.string.format_bullet_point,
+                        "$it\n"
+                    )
+                )
+            }
+            internet.forEach {
+                tvInternetInstruction.append(
+                    getString(
+                        R.string.format_bullet_point,
+                        "$it\n"
+                    )
+                )
+            }
         }
     }
 }
