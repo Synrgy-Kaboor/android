@@ -5,6 +5,7 @@ import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.user.model.request.ImageProfileRequest
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
+import com.synrgy.data.user.model.response.ImageProfileResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.data.user.model.response.UserDataResponse
 import com.wahidabd.library.data.Resource
@@ -36,10 +37,6 @@ interface UserRepository {
     ): Flow<Resource<KaboorResponse>>
 
     suspend fun uploadImage(
-        body: ImageProfileRequest,
-    ): Flow<Resource<KaboorResponse>>
-
-//    suspend fun uploadImage(
-//        body: ImageProfileRequest
-//    ): Flow<Resource<ImageProfileResponse>>
+        body: ImageProfileRequest
+    ): Flow<Resource<ImageProfileResponse>>
 }
