@@ -6,9 +6,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.kaboor.databinding.FragmentOrderHistoryBinding
 import com.synrgy.kaboor.order.adapter.OrderAdapter
-import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.wahidabd.library.utils.common.showToast
+import com.wahidabd.library.utils.extensions.showDefaultState
+import com.wahidabd.library.utils.extensions.showEmptyState
+import com.wahidabd.library.utils.extensions.showLoadingState
+import com.wahidabd.library.utils.exts.observerLiveData
+import org.koin.android.ext.android.inject
 
 class OrderHistoryFragment : KaboorFragment<FragmentOrderHistoryBinding>() {
+
+    private val viewModel: OrderViewModel by inject()
 
     private val orderAdapter by lazy {
         OrderAdapter(requireContext())
@@ -28,10 +35,26 @@ class OrderHistoryFragment : KaboorFragment<FragmentOrderHistoryBinding>() {
     override fun initAction() {}
 
     override fun initProcess() {
-        orderAdapter.setData = ConstantDummy.orderHistoryFlight()
+        super.initProcess()
+        viewModel.getFinished()
     }
 
-    override fun initObservers() {}
+    override fun initObservers() {
+        super.initObservers()
+        viewModel.order.observerLiveData(
+            viewLifecycleOwner,
+            onLoading = { binding.msv.showLoadingState() },
+            onFailure = { _, message ->
+                binding.msv.showDefaultState()
+                showToast(message.toString())
+            },
+            onSuccess = {
+                binding.msv.showDefaultState()
+                if (it.isEmpty()) binding.msv.showEmptyState()
+                orderAdapter.setData = it
+            }
+        )
+    }
 
     private fun initOrderHistoryFlight() = with(binding) {
         val layoutManager =

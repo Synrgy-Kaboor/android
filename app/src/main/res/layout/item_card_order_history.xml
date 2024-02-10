@@ -35,8 +35,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_plane"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dimen_42dp"
+            android:layout_height="@dimen/dimen_30dp"
             android:adjustViewBounds="true"
             android:src="@drawable/sample_img_garuda"
             app:layout_constraintBottom_toTopOf="@+id/ll_detail_city"

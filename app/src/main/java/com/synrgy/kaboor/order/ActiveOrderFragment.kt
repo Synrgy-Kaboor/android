@@ -6,9 +6,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.kaboor.databinding.FragmentActiveOrderBinding
 import com.synrgy.kaboor.order.adapter.OrderAdapter
-import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.wahidabd.library.utils.common.showToast
+import com.wahidabd.library.utils.extensions.showDefaultState
+import com.wahidabd.library.utils.extensions.showEmptyState
+import com.wahidabd.library.utils.extensions.showLoadingState
+import com.wahidabd.library.utils.exts.observerLiveData
+import org.koin.android.ext.android.inject
 
 class ActiveOrderFragment : KaboorFragment<FragmentActiveOrderBinding>() {
+
+    private val viewModel: OrderViewModel by inject()
 
     private val orderAdapter by lazy {
         OrderAdapter(requireContext())
@@ -28,10 +35,25 @@ class ActiveOrderFragment : KaboorFragment<FragmentActiveOrderBinding>() {
     override fun initAction() {}
 
     override fun initProcess() {
-        orderAdapter.setData = ConstantDummy.activeOrderFlight()
+        super.initProcess()
+        viewModel.getActive()
     }
 
-    override fun initObservers() {}
+    override fun initObservers() {
+        viewModel.order.observerLiveData(
+            viewLifecycleOwner,
+            onLoading = { binding.msv.showLoadingState() },
+            onFailure = { _, message ->
+                binding.msv.showDefaultState()
+                showToast(message.toString())
+            },
+            onSuccess = {
+                binding.msv.showDefaultState()
+                if (it.isEmpty()) binding.msv.showEmptyState()
+                orderAdapter.setData = it
+            }
+        )
+    }
 
     private fun initActiveOrderFlight() = with(binding) {
         val layoutManager =
