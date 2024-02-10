@@ -19,6 +19,7 @@ import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.getImageFile
 import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.common.utils.ext.replaceSpace
 import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.snackbarDanger
@@ -32,6 +33,8 @@ import com.wahidabd.library.utils.exts.getCompatDrawable
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.setImageUrl
+import com.wahidabd.library.validation.Validation
+import com.wahidabd.library.validation.util.notEmptyRule
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.util.Locale
@@ -86,6 +89,10 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         imgCamera.onClick { requestPermissions() }
     }
 
+    override fun initProcess() {
+        viewModel.getProfile()
+    }
+
     override fun initObservers() {
         viewModel.updatePersonalInfo.observerLiveData(
             this,
@@ -117,12 +124,62 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                     getString(R.string.message_update_data_success),
                     LENGTH_SHORT
                 ).show()
-//                viewModel.setProfile(it.imageUrl.replaceSpace())
+                viewModel.setProfile(it.imageUrl.replaceSpace())
+                viewModel.getProfile()
             }
         )
+
+        viewModel.profile.observe(this){profile ->
+            if (profile.isNotEmpty()){
+                binding.imgProfile.setImageUrl(this, profile)
+            }
+        }
     }
 
-    override fun setupValidation() {}
+    override fun setupValidation() = with(binding) {
+        addValidation(
+            Validation(
+                etFullname.textInput, listOf(
+                    notEmptyRule(getString(R.string.error_required_full_name))
+                )
+            )
+        )
+        addValidation(
+            Validation(
+                etNik.textInput, listOf(
+                    notEmptyRule(getString(R.string.error_empty_nik))
+                )
+            )
+        )
+        addValidation(
+            Validation(
+                etCountry.textInput, listOf(
+                    notEmptyRule(getString(R.string.error_empty_country))
+                )
+            )
+        )
+        addValidation(
+            Validation(
+                etCity.textInput, listOf(
+                    notEmptyRule(getString(R.string.error_empty_city))
+                )
+            )
+        )
+        addValidation(
+            Validation(
+                tilFullAddress, listOf(
+                    notEmptyRule(getString(R.string.error_empty_city))
+                )
+            )
+        )
+        addValidation(
+            Validation(
+                etCitizenship.textInput, listOf(
+                    notEmptyRule(getString(R.string.error_empty_citizenship))
+                )
+            )
+        )
+    }
 
     override fun onValidationSuccess() = with(binding) {
         val citizenship = etCitizenship.getText().lowercase(Locale.ROOT)
@@ -213,27 +270,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
 
     private fun initRequest(uri: Uri) {
         val body = ImageProfileParam(getImageFile(uri))
-        Toast.makeText(
-            this,
-            "INIT REQUEST",
-            LENGTH_SHORT
-        ).show()
         viewModel.uploadImage(body)
-        viewModel.imageProfile.observerLiveData(
-            this,
-            onLoading = ::showLoading,
-            onFailure = { _, message ->
-                showErrorDialog(message.toString())
-            },
-            onSuccess = {
-                hideLoading()
-                Toast.makeText(
-                    this,
-                    getString(R.string.message_update_data_success),
-                    LENGTH_SHORT
-                ).show()
-            }
-        )
     }
 
     private fun handleTakeAndSelectImage() {

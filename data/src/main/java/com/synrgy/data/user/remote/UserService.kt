@@ -3,6 +3,7 @@ package com.synrgy.data.user.remote
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
+import com.synrgy.data.user.model.response.ImageProfileResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -30,10 +31,5 @@ interface UserService {
     @POST("api/v1/user/image")
     suspend fun uploadImage(
         @Body body: MultipartBody,
-    ): Response<KaboorResponse>
-
-//    @POST("api/v1/user/image")
-//    suspend fun uploadImage(
-//        @Body body: MultipartBody,
-//    ): Response<ImageProfileResponse>
+    ): Response<ImageProfileResponse>
 }
