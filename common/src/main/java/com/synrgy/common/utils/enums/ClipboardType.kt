@@ -13,4 +13,5 @@ import com.synrgy.common.R
 enum class ClipboardType(@StringRes val message: Int) {
     ACCOUNT_NUMBER(R.string.copy_account_number),
     TOTAL_PAYMENT(R.string.copy_total_payment),
+    BOOKING_CODE(R.string.copy_booking_code),
 }

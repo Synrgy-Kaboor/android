@@ -59,7 +59,6 @@ class ActiveOrderFragment : KaboorFragment<FragmentActiveOrderBinding>() {
         )
     }
 
-    // NEED ADJUST FOR NAVIGATION
     private fun handleOrderClick(data: Pair<Int, String>, type: OrderType) {
         when(type){
             OrderType.PROCESS -> PaymentMethodDetailActivity.start(requireContext(), data.first)

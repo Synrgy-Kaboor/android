@@ -81,4 +81,5 @@
     <string name="span_contact_us">Hubungi Customer Service __Kaboor__ Melalui :</string>
     <string name="message_no_internet_connection">Tidak ada koneksi internet</string>
     <string name="format_order_id">ID Pemesanan : %s</string>
+    <string name="copy_booking_code">Kode booking berhasil disalin</string>
 </resources>

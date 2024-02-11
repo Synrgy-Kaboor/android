@@ -15,7 +15,6 @@ import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.chuckedString
 import com.synrgy.common.utils.ext.copyTextToClipboard
 import com.synrgy.common.utils.ext.getImageFile
-import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.setTimer
 import com.synrgy.common.utils.ext.showHideToggle
@@ -55,6 +54,7 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
     private var internetBankingState = false
     private var mobileBankingState = false
     private var isPaymentComplete = false
+    private var canUploadProof = true
 
     private lateinit var countDown: CountDownTimer
 
@@ -108,8 +108,11 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         }
 
         btnShowOrder.onClick { handleNavigation() }
-        uploadReceipt.setOnSelectImage { requestPermissions() }
         uploadReceipt.setOnRemoveImage { showAlertRemoveImage() }
+        uploadReceipt.setOnSelectImage {
+            if (canUploadProof) requestPermissions()
+            else snackbarDanger(getString(R.string.message_expired_time))
+        }
     }
 
     override fun initProcess() {
@@ -181,6 +184,10 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
             millisTimer = timer,
             interval = Constant.TIMER_INTERVAL,
             onTick = { binding.tvTime.text = it.toMinutes() },
+            onFinish = {
+                binding.tvTime.text = "00:00:00"
+                canUploadProof = false
+            }
         )
         countDown.start()
     }
@@ -229,7 +236,7 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         }
     }
 
-    private fun handleInstructionBank(bank: Bank){
+    private fun handleInstructionBank(bank: Bank) {
         with(binding) {
             val atm = resources.getStringArray(bank.atm)
             val internet = resources.getStringArray(bank.internet)

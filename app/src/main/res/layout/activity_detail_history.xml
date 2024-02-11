@@ -53,7 +53,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_12dp"
                         android:layout_marginTop="@dimen/dimen_4dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/tv_booking_code"
@@ -63,6 +64,7 @@
                             tools:text="@string/zx65c" />
 
                         <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_copy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen_12dp"
@@ -256,16 +258,15 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_perlindungan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimen_16dp"
                 android:layout_marginTop="@dimen/dimen_16dp"
-                android:background="@color/white"
-                app:cardBackgroundColor="@color/neutral1"
+                style="@style/KaboorCard"
                 app:cardCornerRadius="@dimen/dimen_8dp"
-                app:cardElevation="@dimen/dimen_2dp">
+                app:cardElevation="@dimen/dimen_0dp">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -313,8 +314,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_checked"
-                            app:tint="@color/color_success_disable"/>
+                            android:src="@drawable/selector_checked"/>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -345,8 +345,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_checked"
-                            app:tint="@color/color_success_disable"/>
+                            android:src="@drawable/selector_checked"/>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -379,12 +378,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_checked"
-                            app:tint="@color/color_success_disable"/>
+                            android:src="@drawable/selector_checked"/>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_ticket"

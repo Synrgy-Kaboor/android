@@ -257,4 +257,5 @@
     <string name="format_order_id">ID Pemesanan : %s</string>
     <string name="label_e_ticket">E-Tiket</string>
     <string name="format_string">%s %s</string>
+    <string name="message_expired_time">Waktu habis! Tidak dapat menggunggah bukti transfer!</string>
 </resources>

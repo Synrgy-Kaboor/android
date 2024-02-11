@@ -31,7 +31,7 @@ object ConstantDummy {
                 2,
                 1,
                 0,
-                "Ekonomi",
+                "E",
                 1000000,
                 2000000
             ),
@@ -43,7 +43,7 @@ object ConstantDummy {
                 2,
                 1,
                 0,
-                "Ekonomi",
+                "F",
                 1000000,
                 2000000
             ),
@@ -55,7 +55,7 @@ object ConstantDummy {
                 2,
                 1,
                 0,
-                "Ekonomi",
+                "B",
                 1000000,
                 2000000
             ),
@@ -67,7 +67,7 @@ object ConstantDummy {
                 2,
                 1,
                 0,
-                "Ekonomi",
+                "EP",
                 1000000,
                 2000000
             )

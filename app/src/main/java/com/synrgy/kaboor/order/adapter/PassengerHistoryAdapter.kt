@@ -37,7 +37,7 @@ class PassengerHistoryAdapter(
     inner class PassengerHistoryViewHolder(binding: ViewBinding) :
         BaseAsyncItemViewHolder<Passenger>(binding) {
         override fun bind(data: Passenger) = with(binding as ItemPassengerHistoryBinding) {
-            tvIndex.text = bindingAdapterPosition.toString()
+            tvIndex.text = bindingAdapterPosition.plus(1).toString()
             tvName.text = "${data.title} ${data.fullName}"
             tvExtraBaggage.goneIf { !extraBaggage }
         }

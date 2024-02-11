@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
+import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.domain.notification.model.response.PriceNotification
 import com.synrgy.kaboor.databinding.ItemNotificationPriceBinding
@@ -42,7 +43,7 @@ class PriceNotificationAdapter(
             tvDate.text = data.departureDate
             tvPrice.text = "${data.lowerPriceLimit?.toCurrency()} - ${data.upperPriceLimit?.toCurrency()}"
             tvPassenger.text = data.countPassenger().toString()
-            tvSeat.text = data.clazz
+            tvSeat.text = PlaneClassType.getByCode(data.clazz).label
             imgMore.onClick { onMoreClick(data) }
             container.onClick { onItemClick(data) }
         }
