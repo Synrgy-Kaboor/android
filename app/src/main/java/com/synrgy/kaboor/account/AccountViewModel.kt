@@ -59,7 +59,8 @@ class AccountViewModel(
         }
     }
 
-    fun uploadImage(body: ImageProfileParam){
+    fun uploadImage(body: ImageProfileParam) {
+        _imageProfile.value = Resource.loading()
         viewModelScope.launch {
             user.uploadImage(body)
                 .collectLatest {
@@ -68,13 +69,13 @@ class AccountViewModel(
         }
     }
 
-    fun setProfile(data: String){
+    fun setProfile(data: String) {
         viewModelScope.launch {
             user.setProfile(data)
         }
     }
 
-    fun getProfile(){
+    fun getProfile() {
         viewModelScope.launch {
             user.getProfile().collectLatest {
                 _profile.value = it
@@ -97,7 +98,7 @@ class AccountViewModel(
         }
     }
 
-    fun getPercentage(){
+    fun getPercentage() {
         _percentage.value = user.getPercentage()
     }
 }

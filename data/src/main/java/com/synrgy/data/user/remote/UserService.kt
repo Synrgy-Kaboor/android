@@ -3,8 +3,8 @@ package com.synrgy.data.user.remote
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
-import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.data.user.model.response.ImageProfileResponse
+import com.synrgy.data.user.model.response.PersonalInfoResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body

@@ -50,6 +50,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
     private var selectedTitle: String = ""
     private var selectedGender: String = ""
     private var imageUri: Uri? = null
+    private var imageName: String = ""
 
     companion object {
         fun start(context: Context) {
@@ -62,13 +63,12 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
 
     override fun initUI() = with(binding) {
         initDataUser()
-        imgProfile.setImageResource(R.drawable.ic_launcher_foreground)
 
         titleList = ArrayList(
-            listOf("Mr.", "Mrs.", "Miss.")
+            listOf("Mr", "Mrs", "Miss")
         )
         genderList = ArrayList(
-            listOf("Laki-Laki", "Perempuan")
+            listOf("L", "P")
         )
         spinnerTitle.item = titleList as List<String>
         spinnerGender.item = genderList as List<String>
@@ -108,7 +108,6 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                     getString(R.string.message_update_data_success),
                     LENGTH_SHORT
                 ).show()
-                onBackPress()
             }
         )
 
@@ -120,6 +119,11 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
             },
             onSuccess = {
                 hideLoading()
+                Toast.makeText(
+                    this,
+                    getString(R.string.message_update_data_success),
+                    LENGTH_SHORT
+                ).show()
                 viewModel.setProfile(it.imageUrl.replaceSpace())
                 viewModel.getProfile()
             }
@@ -132,26 +136,6 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         }
     }
 
-    override fun onValidationSuccess() = with(binding) {
-        val citizenship = etCitizenship.getText().lowercase(Locale.ROOT)
-
-        if (citizenship == "indo" || citizenship == "indonesia") {
-            isWni = true
-        }
-
-        val body = UpdatePersonalInfoParam(
-            title = selectedTitle,
-            fullName = etFullname.getText(),
-            gender = selectedGender,
-            birthday = tvDateOfBirth.text.toString(),
-            nation = etCountry.getText(),
-            city = etCity.getText(),
-            address = etFullAddress.text.toString(),
-            isWni = isWni
-        )
-        viewModel.updatePersonalInfo(body)
-    }
-
     override fun setupValidation() = with(binding) {
         addValidation(
             Validation(
@@ -162,8 +146,8 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         )
         addValidation(
             Validation(
-                tvDateOfBirth, listOf(
-                    notEmptyRule(getString(R.string.error_empty_birthday))
+                etNik.textInput, listOf(
+                    notEmptyRule(getString(R.string.error_empty_nik))
                 )
             )
         )
@@ -183,18 +167,38 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         )
         addValidation(
             Validation(
-                etFullAddress, listOf(
-                    notEmptyRule(getString(R.string.error_empty_address))
+                tilFullAddress, listOf(
+                    notEmptyRule(getString(R.string.error_empty_city))
                 )
             )
         )
         addValidation(
             Validation(
-                etCitizenship, listOf(
+                etCitizenship.textInput, listOf(
                     notEmptyRule(getString(R.string.error_empty_citizenship))
                 )
             )
         )
+    }
+
+    override fun onValidationSuccess() = with(binding) {
+        val citizenship = etCitizenship.getText().lowercase(Locale.ROOT)
+
+        isWni = citizenship == "indo" || citizenship == "indonesia"
+
+        val body = UpdatePersonalInfoParam(
+            title = selectedTitle,
+            fullName = etFullname.getText(),
+            gender = selectedGender,
+            birthday = tvDateOfBirth.text.toString(),
+            nik = etNik.getText(),
+            nation = etCountry.getText(),
+            city = etCity.getText(),
+            address = etFullAddress.text.toString(),
+            isWni = isWni,
+            imageName = imageName
+        )
+        viewModel.updatePersonalInfo(body)
     }
 
     private fun initDataUser() = with(binding) {
@@ -228,14 +232,17 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                 }
                 etFullname.setText(it.fullName.toString())
                 tvDateOfBirth.text = it.birthday.toString()
+                etNik.setText(it.nik.toString())
                 etCountry.setText(it.nation.toString())
                 etCity.setText(it.city.toString())
                 etFullAddress.setText(it.address.toString())
+                imgProfile.setImageUrl(this@AccountDetailActivity, it.imageUrl.toString())
+                imageName = it.imageName.toString()
             }
         )
     }
 
-    fun setupSpinnerListener(
+    private fun setupSpinnerListener(
         spinner: Spinner,
         itemList: List<String>,
         onItemSelected: (String) -> Unit,
