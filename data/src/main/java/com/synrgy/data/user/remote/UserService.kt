@@ -1,7 +1,6 @@
 package com.synrgy.data.user.remote
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.response.ImageProfileResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
@@ -26,10 +25,10 @@ interface UserService {
     @PATCH("/api/v1/user")
     suspend fun updatePersonalInfo(
         @Body body: UpdatePersonalInfoRequest,
-    ): Response<KaboorResponse>
+    ): Response<ResponseWrapper<PersonalInfoResponse>>
 
     @POST("api/v1/user/image")
     suspend fun uploadImage(
         @Body body: MultipartBody,
-    ): Response<ImageProfileResponse>
+    ): Response<ResponseWrapper<ImageProfileResponse>>
 }

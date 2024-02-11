@@ -20,7 +20,17 @@ fun UserParam.toRequest(): UserRequest {
     return UserRequest(
         fullName = fullName,
         email = email,
-        phoneNumber = phoneNumber
+        phoneNumber = phoneNumber,
+        title = title,
+        gender = gender,
+        birthday = birthday,
+        nation = nation,
+        city = city,
+        address = address,
+        isWni = isWni,
+        imageName = imageName,
+        imageUrl = imageUrl,
+        nik = nik
     )
 }
 
@@ -37,6 +47,8 @@ fun PersonalInfoResponse.toDomain(): PersonalInfo {
         isWni = isWni,
         imageName = imageName,
         imageUrl = imageUrl,
+        email = email,
+        phoneNumber = phoneNumber
     )
 }
 
@@ -53,6 +65,8 @@ fun PersonalInfoResponse.toUser(): User {
         isWni = isWni,
         imageName = imageName,
         imageUrl = imageUrl,
+        email = email,
+        phoneNumber = phoneNumber
     )
 }
 

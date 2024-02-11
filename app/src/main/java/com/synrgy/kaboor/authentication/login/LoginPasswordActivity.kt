@@ -79,18 +79,18 @@ class LoginPasswordActivity : KaboorPassiveActivity<ActivityLoginPasswordBinding
                 hideLoading()
 
                 val data = User(
-                    email = email.toString(),
+                    email = user.email,
                     fullName = user.fullName,
                     title = user.title,
                     gender = user.gender,
                     birthday = user.birthday,
-                    country = user.country,
                     nation = user.nation,
                     city = user.city,
                     address = user.address,
                     phoneNumber = user.phoneNumber,
                     isWni = user.isWni,
-                    verified = user.verified
+                    imageName = user.imageName,
+                    imageUrl = user.imageUrl
                 )
 
                 viewModel.saveUserInfo(data)

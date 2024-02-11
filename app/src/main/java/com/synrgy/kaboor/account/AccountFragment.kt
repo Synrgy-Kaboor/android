@@ -73,6 +73,8 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
                 tvUserName.text = user.fullName
                 tvEmail.text = user.email
                 tvPhone.text = user.phoneNumber
+
+                debug { "DATA STORE --> $user" }
             }
         }
 

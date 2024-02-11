@@ -34,7 +34,6 @@ fun UserResponse.toDomain(): User {
         phoneNumber = user.phoneNumber,
         fullName = user.fullName,
         email = user.email,
-        verified = user.verified
     )
 }
 
@@ -43,7 +42,16 @@ fun UserDataResponse.toDomain(): User {
         phoneNumber = phoneNumber,
         fullName = fullName,
         email = email,
-        verified = verified
+        title = title,
+        gender = gender,
+        birthday = birthday,
+        nik = nik,
+        nation = nation,
+        city = city,
+        address = address,
+        isWni = isWni,
+        imageName = imageName,
+        imageUrl = imageUrl
     )
 }
 

@@ -108,6 +108,8 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                     getString(R.string.message_update_data_success),
                     LENGTH_SHORT
                 ).show()
+
+                viewModel.getPersonalInfo()
             }
         )
 
@@ -242,6 +244,8 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                 etCity.setText(it.city.toString())
                 etFullAddress.setText(it.address.toString())
                 imageName = it.imageName.toString()
+
+                viewModel.saveUserInfo(it)
             }
         )
     }
