@@ -1,7 +1,6 @@
 package com.synrgy.data.user
 
 import com.synrgy.common.data.ResponseWrapper
-import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.common.utils.ext.flowDispatcherIO
 import com.synrgy.data.db.KaboorDataStore
 import com.synrgy.data.user.model.request.ImageProfileRequest
@@ -88,8 +87,8 @@ class UserDataStore(
     }.flowDispatcherIO()
 
     override suspend fun uploadImage(
-        body: ImageProfileRequest
-    ): Flow<Resource<ImageProfileResponse>> = flow {
+        body: ImageProfileRequest,
+    ): Flow<Resource<ResponseWrapper<ImageProfileResponse>>> = flow {
         enqueue(
             body.toMultiPart(),
             error::convertGenericError,

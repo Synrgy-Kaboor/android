@@ -24,11 +24,8 @@ import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.snackbarDanger
 import com.synrgy.common.utils.ext.toDateFormat
-import com.synrgy.domain.user.mapper.toUser
 import com.synrgy.domain.user.model.request.ImageProfileParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
-import com.synrgy.domain.user.model.response.PersonalInfo
-import com.synrgy.domain.user.model.response.User
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityAccountDetailBinding
 import com.synrgy.kaboor.databinding.DialogSelectImageBinding
