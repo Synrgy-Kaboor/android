@@ -32,6 +32,7 @@ class UserDataStore(
 
     override suspend fun saveToken(token: String) {
         dataStore.saveToken(token)
+        dataStore.setLoginTime()
     }
 
     override suspend fun clearToken() {

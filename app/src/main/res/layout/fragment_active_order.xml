@@ -3,13 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".order.ActiveOrderFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".order.fragment.ActiveOrderFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_order"
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/msv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_8dp"
-        tools:listitem="@layout/item_card_order_history" />
+        android:layout_height="match_parent"
+        app:msv_loadingView="@layout/layout_loading"
+        app:msv_emptyView="@layout/layout_empty">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            tools:listitem="@layout/item_card_order_history" />
+    </com.kennyc.view.MultiStateView>
 </FrameLayout>

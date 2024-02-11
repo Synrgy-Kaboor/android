@@ -18,6 +18,7 @@ import com.synrgy.kaboor.booking.PriceAlertActivity
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
 import com.synrgy.kaboor.databinding.ActivityFlightReturnTicketListBinding
+import com.wahidabd.library.utils.extensions.showEmptyState
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.orZero
 import com.wahidabd.library.utils.exts.setImageUrl
@@ -101,12 +102,12 @@ class FlightReturnTicketListActivity :
         viewModel.flights.observerLiveData(
             this,
             onLoading = ::showLoading,
-            onEmpty = {},
             onFailure = { _, message ->
                 showErrorDialog(message.toString())
             },
             onSuccess = {
                 hideLoading()
+                if (it.isEmpty()) binding.msv.showEmptyState()
                 planeTicketAdapter.setData = it
             }
         )

@@ -254,4 +254,8 @@
     <string name="nomor_faktur">Nomor Faktur</string>
     <string name="label_change_image_profile">Ganti Foto Profil</string>
     <string name="format_percentage_profile">Informasi pribadi %d%% lengkap</string>
+    <string name="format_order_id">ID Pemesanan : %s</string>
+    <string name="label_e_ticket">E-Tiket</string>
+    <string name="format_string">%s %s</string>
+    <string name="message_expired_time">Waktu habis! Tidak dapat menggunggah bukti transfer!</string>
 </resources>

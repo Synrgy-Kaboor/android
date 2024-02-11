@@ -7,6 +7,7 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -118,7 +119,6 @@ fun AppCompatActivity.snackbarDanger(message: String) {
         setTextColor(getCompatColor(R.color.neutral1))
     }.show()
 }
-
 fun String.chuckedString(): String = this.replaceChar().chunked(4).joinToString(" ")
 
 fun String.replaceChar(): String = this.replace(" ", "").replace("-", "")

@@ -11,7 +11,6 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- To handle the reselection within the app on Android 14 (API level 34) -->
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
     <uses-permission android:name="android.permission.CAMERA"/>
-
     <uses-feature android:name="android.hardware.camera" />
 
     <application
@@ -28,7 +27,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".history.DetailHistoryActivity"
+            android:name=".order.DetailHistoryActivity"
             android:exported="false" />
         <activity
             android:name=".notification.NotificationDetailActivity"

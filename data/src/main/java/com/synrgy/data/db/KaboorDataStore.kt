@@ -3,11 +3,15 @@ package com.synrgy.data.db
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.synrgy.common.utils.constant.ConstDataStore
+import com.synrgy.common.utils.ext.oneDayMillis
+import com.synrgy.common.utils.ext.timeNow
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.UserDataResponse
+import com.wahidabd.library.utils.extensions.debug
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -25,6 +29,7 @@ class KaboorDataStore(context: Context) {
     companion object {
         private val TOKEN = stringPreferencesKey(ConstDataStore.PREF_TOKEN)
         private val LOGIN = booleanPreferencesKey(ConstDataStore.PREF_LOGIN)
+        private val LOGIN_TIME = longPreferencesKey(ConstDataStore.PREF_LOGIN_TIME)
         private val PROFILE = stringPreferencesKey(ConstDataStore.PREF_PROFILE)
         private val FULL_NAME = stringPreferencesKey(ConstDataStore.PREF_FULL_NAME)
         private val EMAIL = stringPreferencesKey(ConstDataStore.PREF_EMAIL)
@@ -60,7 +65,9 @@ class KaboorDataStore(context: Context) {
 
     fun getLogin(): Flow<Boolean> {
         return dataStore.data.map { preferences ->
-            preferences[LOGIN] ?: false
+            val time = preferences[LOGIN_TIME] ?: 0L
+            val login = preferences[LOGIN] ?: false
+            login && (time + oneDayMillis) > timeNow
         }
     }
 
@@ -73,6 +80,12 @@ class KaboorDataStore(context: Context) {
     suspend fun clearToken() {
         dataStore.edit { preferences ->
             preferences.remove(TOKEN)
+        }
+    }
+
+    suspend fun setLoginTime() {
+        dataStore.edit { preferences ->
+            preferences[LOGIN_TIME] = timeNow
         }
     }
 

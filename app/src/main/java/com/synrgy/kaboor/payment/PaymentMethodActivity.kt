@@ -4,11 +4,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.Selectable
 import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.constant.ConstantTag
+import com.synrgy.common.utils.enums.BankType
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.domain.booking.model.request.BookingParam
+import com.synrgy.domain.promo.mapper.toDomain
 import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.domain.promo.model.response.Voucher
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodBinding
@@ -72,7 +75,7 @@ class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
     }
 
     override fun initProcess() {
-        paymentMethodAdapter.setData = ConstantDummy.bankPaymentMethod()
+        paymentMethodAdapter.setData = BankType.entries.map { Selectable(it.bank.toDomain()) }
     }
 
     override fun initObservers() {
@@ -86,7 +89,7 @@ class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
             },
             onSuccess = {
                 hideLoading()
-                PaymentMethodDetailActivity.start(this, it.bookingId ?: 0, selectedPaymentMethod)
+                PaymentMethodDetailActivity.start(this, it.bookingId ?: 0)
             }
         )
     }

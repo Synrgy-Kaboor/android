@@ -9,6 +9,8 @@ import com.synrgy.common.utils.ext.showLoginState
 import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.FragmentOrderBinding
 import com.synrgy.kaboor.home.SharedViewModel
+import com.synrgy.kaboor.order.fragment.ActiveOrderFragment
+import com.synrgy.kaboor.order.fragment.OrderHistoryFragment
 import com.wahidabd.library.presentation.adapter.BaseViewPagerFragmentStateAdapter
 import com.wahidabd.library.presentation.fragment.BaseFragment
 import com.wahidabd.library.utils.exts.fallback

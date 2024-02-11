@@ -6,7 +6,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Bank(
-    val id: Int,
     val methodName: String,
     val code: String,
     val imageUrl: String,

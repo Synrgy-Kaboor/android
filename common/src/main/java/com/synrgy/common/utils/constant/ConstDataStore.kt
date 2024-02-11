@@ -10,6 +10,7 @@ package com.synrgy.common.utils.constant
 object ConstDataStore {
     const val KABOOR_DATA_STORE = "kaboor_data_store"
     const val PREF_LOGIN = "login"
+    const val PREF_LOGIN_TIME = "login_time"
     const val PREF_TOKEN = "token"
     const val PREF_FULL_NAME = "full_name"
     const val PREF_EMAIL = "email"
