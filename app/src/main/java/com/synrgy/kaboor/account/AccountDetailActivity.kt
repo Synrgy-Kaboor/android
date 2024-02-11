@@ -126,11 +126,12 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                 ).show()
                 viewModel.setProfile(it.imageUrl.replaceSpace())
                 viewModel.getProfile()
+                initUpdateDataUser(it.imageName)
             }
         )
 
-        viewModel.profile.observe(this){profile ->
-            if (profile.isNotEmpty()){
+        viewModel.profile.observe(this) { profile ->
+            if (profile.isNotEmpty()) {
                 binding.imgProfile.setImageUrl(this, profile)
             }
         }
@@ -181,10 +182,14 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         )
     }
 
-    override fun onValidationSuccess() = with(binding) {
+    override fun onValidationSuccess() {
+        initUpdateDataUser(imageName)
+    }
+
+    private fun initUpdateDataUser(updateImageName: String) = with(binding) {
         val citizenship = etCitizenship.getText().lowercase(Locale.ROOT)
 
-        isWni = citizenship == "indo" || citizenship == "indonesia"
+        isWni = citizenship == "indo" || citizenship == "indonesia" || citizenship == "wni"
 
         val body = UpdatePersonalInfoParam(
             title = selectedTitle,
@@ -196,7 +201,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
             city = etCity.getText(),
             address = etFullAddress.text.toString(),
             isWni = isWni,
-            imageName = imageName
+            imageName = updateImageName
         )
         viewModel.updatePersonalInfo(body)
     }
@@ -236,7 +241,6 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                 etCountry.setText(it.nation.toString())
                 etCity.setText(it.city.toString())
                 etFullAddress.setText(it.address.toString())
-                imgProfile.setImageUrl(this@AccountDetailActivity, it.imageUrl.toString())
                 imageName = it.imageName.toString()
             }
         )
