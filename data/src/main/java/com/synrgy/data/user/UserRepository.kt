@@ -34,7 +34,7 @@ interface UserRepository {
 
     suspend fun updatePersonalInfo(
         body: UpdatePersonalInfoRequest,
-    ): Flow<Resource<KaboorResponse>>
+    ): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>>
 
     suspend fun uploadImage(
         body: ImageProfileRequest

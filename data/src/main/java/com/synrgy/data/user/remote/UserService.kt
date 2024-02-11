@@ -26,7 +26,7 @@ interface UserService {
     @PATCH("/api/v1/user")
     suspend fun updatePersonalInfo(
         @Body body: UpdatePersonalInfoRequest,
-    ): Response<KaboorResponse>
+    ): Response<ResponseWrapper<PersonalInfoResponse>>
 
     @POST("api/v1/user/image")
     suspend fun uploadImage(

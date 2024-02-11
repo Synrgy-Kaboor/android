@@ -24,8 +24,11 @@ import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.snackbarDanger
 import com.synrgy.common.utils.ext.toDateFormat
+import com.synrgy.domain.user.mapper.toUser
 import com.synrgy.domain.user.model.request.ImageProfileParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
+import com.synrgy.domain.user.model.response.PersonalInfo
+import com.synrgy.domain.user.model.response.User
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityAccountDetailBinding
 import com.synrgy.kaboor.databinding.DialogSelectImageBinding
@@ -108,6 +111,8 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                     getString(R.string.message_update_data_success),
                     LENGTH_SHORT
                 ).show()
+
+                viewModel.getPersonalInfo()
             }
         )
 
@@ -242,6 +247,8 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                 etCity.setText(it.city.toString())
                 etFullAddress.setText(it.address.toString())
                 imageName = it.imageName.toString()
+
+                viewModel.saveUserInfo(it)
             }
         )
     }

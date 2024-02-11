@@ -78,7 +78,7 @@ class UserDataStore(
 
     override suspend fun updatePersonalInfo(
         body: UpdatePersonalInfoRequest,
-    ): Flow<Resource<KaboorResponse>> = flow {
+    ): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>> = flow {
         enqueue(
             body,
             error::convertGenericError,

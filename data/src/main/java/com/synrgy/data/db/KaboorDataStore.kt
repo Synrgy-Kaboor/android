@@ -41,6 +41,7 @@ class KaboorDataStore(context: Context) {
         private val ADDRESS = stringPreferencesKey(ConstDataStore.PREF_ADDRESS)
         private val GENDER = stringPreferencesKey(ConstDataStore.PREF_GENDER)
         private val WNI = booleanPreferencesKey(ConstDataStore.PREF_WNI)
+        private var NIK = stringPreferencesKey(ConstDataStore.PREF_NIK)
 
         @Volatile
         private var INSTANCE: KaboorDataStore? = null
@@ -138,6 +139,8 @@ class KaboorDataStore(context: Context) {
             preferences[ADDRESS] = data.address.orEmpty()
             preferences[GENDER] = data.gender.orEmpty()
             preferences[WNI] = data.isWni ?: false
+            preferences[PROFILE] = data.imageUrl.orEmpty()
+            preferences[NIK] = data.nik.orEmpty()
         }
     }
 
@@ -153,6 +156,9 @@ class KaboorDataStore(context: Context) {
                 city = preferences[CITY].orEmpty(),
                 address = preferences[ADDRESS].orEmpty(),
                 isWni = preferences[WNI] ?: false,
+                imageUrl = preferences[PROFILE].orEmpty(),
+                nik = preferences[NIK].orEmpty(),
+                gender = preferences[GENDER].orEmpty()
             )
         }
     }
@@ -170,6 +176,7 @@ class KaboorDataStore(context: Context) {
             values.add(preferences[CITY].orEmpty())
             values.add(preferences[ADDRESS].orEmpty())
             values.add(preferences[GENDER].orEmpty())
+            values.add(preferences[NIK].orEmpty())
             values.add(if (preferences[WNI] == true) "WNI" else "")
         }.first()
 

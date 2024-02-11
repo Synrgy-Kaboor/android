@@ -13,6 +13,7 @@ import com.synrgy.domain.user.model.request.ImageProfileParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.domain.user.model.request.UserParam
 import com.synrgy.domain.user.model.response.ImageProfile
+import com.synrgy.domain.user.model.response.PersonalInfo
 import com.synrgy.domain.user.model.response.User
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
@@ -81,8 +82,17 @@ class UserInteractor(private val repository: UserRepository) : UserUseCase {
 
     override suspend fun updatePersonalInfo(
         body: UpdatePersonalInfoParam,
-    ): Flow<Resource<KaboorResponse>> {
-        return repository.updatePersonalInfo(body.toRequest())
+    ): Flow<Resource<PersonalInfo>> {
+        return object : InternetBoundResource<PersonalInfo, ResponseWrapper<PersonalInfoResponse>>(){
+            override suspend fun createCall(): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>> {
+                return repository.updatePersonalInfo(body.toRequest())
+            }
+
+            override suspend fun saveCallRequest(data: ResponseWrapper<PersonalInfoResponse>): PersonalInfo {
+                return data.data.toDomain()
+            }
+
+        }.asFlow()
     }
 
     override suspend fun uploadImage(

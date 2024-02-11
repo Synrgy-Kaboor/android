@@ -33,6 +33,10 @@ fun User.toParam(): UserParam {
         city = city,
         address = address,
         isWni = isWni,
+        imageName = imageName,
+        nik = nik,
+        phoneNumber = phoneNumber,
+        imageUrl = imageUrl,
     )
 }
 
