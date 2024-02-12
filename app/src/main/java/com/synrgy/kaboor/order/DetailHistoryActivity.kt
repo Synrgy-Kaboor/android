@@ -5,6 +5,8 @@ import android.content.Intent
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.enums.ClipboardType
+import com.synrgy.common.utils.enums.PassengerClassType
+import com.synrgy.common.utils.enums.PlaneClassType
 import com.synrgy.common.utils.ext.convertToDuration
 import com.synrgy.common.utils.ext.copyTextToClipboard
 import com.synrgy.common.utils.ext.onBackPress
@@ -28,7 +30,7 @@ class DetailHistoryActivity : KaboorActivity<ActivityDetailHistoryBinding>() {
     companion object {
         fun start(
             context: Context,
-            key: Pair<Int, String>
+            key: Pair<Int, String>,
         ) {
             context.startActivity(Intent(context, DetailHistoryActivity::class.java).apply {
                 putExtra(ConstantKey.KEY_BOOKING_ID, key.first)
@@ -140,6 +142,7 @@ class DetailHistoryActivity : KaboorActivity<ActivityDetailHistoryBinding>() {
         tvDuration.text = convertToDuration(flight.departureDateTime, flight.arrivalDateTime)
         tvDateTime.text = flight.departureDateTime.toFullDateFormat()
         imgAirline.setImageUrl(this@DetailHistoryActivity, plane.airline?.imageUrl ?: emptyString())
+        tvClass.text = PlaneClassType.getByCode(data.classCode).label
         imgTravel.isSelected = data.addTravelInsurance
         imgBaggage.isSelected = data.addBaggage
         imgDelay.isSelected = data.addDelayProtection

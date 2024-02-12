@@ -20,4 +20,8 @@ data class TicketDetailResponse(
     val addTravelInsurance: Boolean,
     val addBaggageInsurance: Boolean,
     val addDelayProtection: Boolean,
+    val totalAdults: Int = 0,
+    val totalChildren: Int = 0,
+    val totalBabies: Int = 0,
+    val classCode: String
 )
