@@ -7,7 +7,6 @@ import com.synrgy.domain.flight.model.response.OrderFlight
 import com.synrgy.domain.home.model.LastSeen
 import com.synrgy.domain.home.model.Product
 import com.synrgy.domain.notification.model.response.AirportCity
-import com.synrgy.domain.notification.model.response.Notification
 import com.synrgy.domain.notification.model.response.PriceNotification
 import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.domain.user.model.response.HelpCenter
@@ -25,52 +24,52 @@ object ConstantDummy {
     fun priceNotifications(): List<PriceNotification> =
         listOf(
             PriceNotification(
-                AirportCity("Surabaya", "SUB"),
-                AirportCity("Jakarta", "JKT"),
-                "20 Des 2023",
-                "21 Des 2023",
+                1,
                 2,
                 1,
                 0,
                 "E",
                 1000000,
-                2000000
+                2000000,
+                "21 Des 2023",
+                AirportCity(1, "SUB", "Surabaya", 8),
+                AirportCity(1, "SUB", "Surabaya", 8),
             ),
             PriceNotification(
-                AirportCity("Surabaya", "SUB"),
-                AirportCity("Jakarta", "JKT"),
-                "20 Des 2023",
-                "21 Des 2023",
+                1,
                 2,
                 1,
                 0,
-                "F",
+                "E",
                 1000000,
-                2000000
+                2000000,
+                "21 Des 2023",
+                AirportCity(1, "SUB", "Surabaya", 8),
+                AirportCity(1, "SUB", "Surabaya", 8),
             ),
             PriceNotification(
-                AirportCity("Surabaya", "SUB"),
-                AirportCity("Jakarta", "JKT"),
-                "20 Des 2023",
-                "21 Des 2023",
+                1,
                 2,
                 1,
                 0,
-                "B",
+                "E",
                 1000000,
-                2000000
+                2000000,
+                "21 Des 2023",
+                AirportCity(1, "SUB", "Surabaya", 8),
+                AirportCity(1, "SUB", "Surabaya", 8),
             ),
             PriceNotification(
-                AirportCity("Surabaya", "SUB"),
-                AirportCity("Jakarta", "JKT"),
-                "20 Des 2023",
-                "21 Des 2023",
+                1,
                 2,
                 1,
                 0,
-                "EP",
+                "E",
                 1000000,
-                2000000
+                2000000,
+                "21 Des 2023",
+                AirportCity(1, "SUB", "Surabaya", 8),
+                AirportCity(1, "SUB", "Surabaya", 8),
             )
         )
 
