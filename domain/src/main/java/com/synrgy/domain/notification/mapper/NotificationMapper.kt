@@ -1,16 +1,16 @@
 package com.synrgy.domain.notification.mapper
 
-import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.data.notification.model.request.AirportCityRequest
 import com.synrgy.data.notification.model.request.PriceNotificationRequest
 import com.synrgy.data.notification.model.response.AirportCityResponse
+import com.synrgy.data.notification.model.response.NotificationDataResponse
 import com.synrgy.data.notification.model.response.PriceNotificationResponse
 import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.domain.notification.model.request.AirportCityParam
 import com.synrgy.domain.notification.model.request.PriceNotificationParam
 import com.synrgy.domain.notification.model.response.AirportCity
+import com.synrgy.domain.notification.model.response.Notification
 import com.synrgy.domain.notification.model.response.PriceNotification
-import com.wahidabd.library.data.Resource
 
 
 /**
@@ -73,5 +73,20 @@ fun PriceNotification.toFlightParam(): FlightParam {
         numOfKids = numOfKids,
         numOfBabies = numOfBabies,
         classCode = clazz
+    )
+}
+
+fun NotificationDataResponse.toDomain(): Notification {
+    return Notification(
+        created_at = created_at,
+        deleted_at = deleted_at,
+        detail = detail,
+        flag = flag,
+        id = id,
+        price_notification_id = price_notification_id,
+        title = title,
+        type = type,
+        updated_at = updated_at,
+        user_id = user_id
     )
 }

@@ -16,7 +16,6 @@ import retrofit2.Retrofit
 
 
 val notificationModule = module {
-    single { get<Retrofit>().create(NotificationService::class.java) }
     single<NotificationRepository> { NotificationDataStore(get(), get()) }
     single<NotificationUseCase> { NotificationInteractor(get()) }
 }

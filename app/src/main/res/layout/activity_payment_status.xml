@@ -226,25 +226,25 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_back_to_home"
+                android:id="@+id/btn_download"
                 style="@style/KaboorButton.Outline"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_40dp"
                 android:layout_marginTop="@dimen/dimen_64dp"
-                android:text="@string/kembali_ke_beranda" />
+                android:text="@string/download" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.card.MaterialCardView>
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/btn_back_to_home"-->
-<!--        style="@style/KaboorButton.Gradient"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/dimen_40dp"-->
-<!--        android:text="@string/kembali_ke_beranda"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_marginBottom="@dimen/dimen_40dp"-->
-<!--        android:layout_marginHorizontal="@dimen/dimen_16dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back_to_home"
+        style="@style/KaboorButton.Gradient"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:text="@string/kembali_ke_beranda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/dimen_40dp"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

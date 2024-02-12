@@ -1,8 +1,11 @@
 package com.synrgy.data.notification
 
+import com.synrgy.common.data.ListWrapper
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorResponse
+import com.synrgy.common.utils.ext.flowDispatcherIO
 import com.synrgy.data.notification.model.request.PriceNotificationRequest
+import com.synrgy.data.notification.model.response.NotificationResponse
 import com.synrgy.data.notification.model.response.PriceNotificationResponse
 import com.synrgy.data.notification.remote.NotificationService
 import com.wahidabd.library.data.Resource
@@ -66,4 +69,23 @@ class NotificationDataStore(
             onEmit = { data -> emit(data) }
         )
     }
+
+    override suspend fun getNotification(): Flow<Resource<ResponseWrapper<NotificationResponse>>> =
+        flow {
+            enqueue(
+                error::convertGenericError,
+                api::getNotification,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
+
+    override suspend fun markNotification(id: Int): Flow<Resource<KaboorResponse>> =
+        flow {
+            enqueue(
+                id,
+                error::convertGenericError,
+                api::markNotification,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
 }

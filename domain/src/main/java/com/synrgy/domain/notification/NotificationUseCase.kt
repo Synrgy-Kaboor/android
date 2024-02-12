@@ -3,6 +3,7 @@ package com.synrgy.domain.notification
 
 import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.domain.notification.model.request.PriceNotificationParam
+import com.synrgy.domain.notification.model.response.Notification
 import com.synrgy.domain.notification.model.response.PriceNotification
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.Flow
@@ -27,6 +28,12 @@ interface NotificationUseCase {
     ): Flow<Resource<KaboorResponse>>
 
     suspend fun deletePriceNotification(
+        id: Int
+    ): Flow<Resource<KaboorResponse>>
+
+    suspend fun getNotification(): Flow<Resource<List<Notification>>>
+
+    suspend fun markNotification(
         id: Int
     ): Flow<Resource<KaboorResponse>>
 }

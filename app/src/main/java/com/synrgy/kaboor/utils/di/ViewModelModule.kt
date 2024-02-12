@@ -7,6 +7,7 @@ import com.synrgy.kaboor.authentication.otp.OtpViewModel
 import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
 import com.synrgy.kaboor.booking.viewmodel.PassengerViewModel
 import com.synrgy.kaboor.home.SharedViewModel
+import com.synrgy.kaboor.notification.NotificationViewModel
 import com.synrgy.kaboor.order.OrderViewModel
 import com.synrgy.kaboor.payment.PaymentViewModel
 import com.synrgy.kaboor.promo.PromoViewModel
@@ -32,4 +33,5 @@ val viewModelModule = module {
     viewModel { PaymentViewModel(get(), get()) }
     viewModel { AccountViewModel(get()) }
     viewModel { OrderViewModel(get()) }
+    viewModel { NotificationViewModel(get()) }
 }

@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
+import com.synrgy.common.utils.enums.NotificationDataType
+import com.synrgy.common.utils.ext.toMonthYearFormat
 import com.synrgy.domain.notification.model.response.Notification
 import com.synrgy.kaboor.databinding.ItemNotificationBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
@@ -35,10 +37,10 @@ class AllNotificationAdapter(
         binding: ViewBinding
     ) : BaseAsyncItemViewHolder<Notification>(binding) {
         override fun bind(data: Notification) = with(binding as ItemNotificationBinding) {
-            imgIcon.setImageResource(data.icon)
+            imgIcon.setImageResource(NotificationDataType.fromLabel(data.type).icon)
             tvTitle.text = data.title
-            tvDescription.text = data.description
-            tvDate.text = data.date
+            tvDescription.text = data.detail
+            tvDate.text = data.created_at.toMonthYearFormat()
         }
     }
 }

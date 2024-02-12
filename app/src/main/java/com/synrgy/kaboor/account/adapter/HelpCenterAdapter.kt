@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.synrgy.common.utils.Selectable
+import com.synrgy.common.utils.ext.goneIf
 import com.synrgy.common.utils.ext.showHideToggle
 import com.synrgy.domain.user.model.response.HelpCenter
 import com.synrgy.kaboor.databinding.ItemHelpCenterBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
+import com.wahidabd.library.utils.exts.gone
+import com.wahidabd.library.utils.exts.isNotNull
 import com.wahidabd.library.utils.exts.onClick
 
 
@@ -41,6 +44,18 @@ class HelpCenterAdapter(
         override fun bind(data: Selectable<HelpCenter>) = with(binding as ItemHelpCenterBinding) {
             tvTitle.text = data.item.title
             tvContent.text = data.item.content
+            tvContentBottom.text = data.item.contentBottom
+
+            tvContentBottom.goneIf { data.item.contentBottom?.isEmpty() == true }
+
+            if (data.item.contentList != 0){
+                val list = context.resources.getStringArray(data.item.contentList)
+                list.forEachIndexed { i, s ->
+                    tvContentList.append("${i+1}. $s\n")
+                }
+            }else tvContentList.gone()
+
+
             setSelected(data.selected)
 
             root.onClick {
@@ -63,7 +78,7 @@ class HelpCenterAdapter(
         private fun setSelected(isSelected: Boolean) {
             with(binding as ItemHelpCenterBinding) {
                 imgToggle.isSelected = isSelected
-                tvContent.showHideToggle()
+                content.showHideToggle()
                 if (isSelected) currentSelectedIndex = bindingAdapterPosition
             }
         }
