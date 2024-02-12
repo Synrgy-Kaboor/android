@@ -19,7 +19,6 @@ import com.synrgy.kaboor.home.SharedViewModel
 import com.synrgy.kaboor.notification.adapter.AllNotificationAdapter
 import com.synrgy.kaboor.notification.adapter.ChipNotificationAdapter
 import com.synrgy.kaboor.notification.adapter.PriceNotificationAdapter
-import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.exts.getCompatDrawable
 import com.wahidabd.library.utils.exts.gone
@@ -47,14 +46,12 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
         PriceNotificationAdapter(requireContext(), ::showPopUpDialog, ::handleNavigation)
     }
 
-    private val roundTripAdapter by lazy {
-        PriceNotificationAdapter(requireContext(), ::showPopUpDialog, ::handleNavigation)
-    }
+    private lateinit var priceNotif: List<PriceNotification>
 
     override fun getViewBinding(
         layoutInflater: LayoutInflater,
         container: ViewGroup?,
-        attachRoot: Boolean
+        attachRoot: Boolean,
     ): FragmentNotificationBinding =
         FragmentNotificationBinding.inflate(layoutInflater, container, attachRoot)
 
@@ -70,6 +67,7 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
         super.initProcess()
         sharedViewModel.checkLogin()
         viewModel.getNotification()
+        viewModel.getPriceNotification()
 
         chipNotificationAdapter.setData = NotificationType.entries.map { Selectable(it) }
     }
@@ -93,6 +91,20 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
                 allNotificationAdapter.setData = it
             }
         )
+
+        viewModel.priceNotification.observerLiveData(
+            viewLifecycleOwner,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                hideLoading()
+                showToast(message.toString())
+            },
+            onSuccess = {
+                hideLoading()
+                priceNotif = it
+                oneWayAdapter.setData = it
+            }
+        )
     }
 
     private fun initNotificationAdapter(type: NotificationType = NotificationType.ALL) =
@@ -107,8 +119,7 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
                     rvAllNotification.gone()
                     priceContainer.visible()
 
-                    oneWayAdapter.setData = ConstantDummy.priceNotifications()
-                    roundTripAdapter.setData = ConstantDummy.priceNotifications()
+                    oneWayAdapter.setData = priceNotif
                 }
             }
         }
@@ -121,7 +132,6 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
 
         rvAllNotification.adapter = allNotificationAdapter
         rvOneWay.adapter = oneWayAdapter
-        rvRoundTrip.adapter = roundTripAdapter
     }
 
     private fun handleNavigation(data: PriceNotification) {
@@ -146,8 +156,7 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
         }
         dialogBinding.remove.onClick {
             viewModel.deletePriceNotification(data.id ?: 0)
-            // remove and call viewmodel above after response changed
-            // viewModel.getPriceNotification(
+            viewModel.getPriceNotification()
             dialog.dismiss()
         }
         dialog.show()

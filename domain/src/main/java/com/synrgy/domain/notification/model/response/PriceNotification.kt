@@ -1,7 +1,6 @@
 package com.synrgy.domain.notification.model.response
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 
@@ -17,7 +16,6 @@ data class PriceNotification(
     val totalAdults: Int? = 0,
     val totalChildren: Int? = 0,
     val totalBabies: Int? = 0,
-    @SerializedName("class")
     val classCode: String,
     val minimumPrice: Long? = 0L,
     val maximumPrice: Long? = 0L,

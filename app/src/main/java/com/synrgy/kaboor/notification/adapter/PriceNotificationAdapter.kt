@@ -38,8 +38,8 @@ class PriceNotificationAdapter(
     inner class PriceNotificationViewHolder(binding: ViewBinding) :
         BaseAsyncItemViewHolder<PriceNotification>(binding) {
         override fun bind(data: PriceNotification) = with(binding as ItemNotificationPriceBinding) {
-            tvOrigin.text = data.originAirport.name
-            tvDestination.text = data.destinationAirport.name
+            tvOrigin.text = data.originAirport.code
+            tvDestination.text = data.destinationAirport.code
             tvDate.text = data.date
             tvPrice.text = "${data.minimumPrice?.toCurrency()} - ${data.maximumPrice?.toCurrency()}"
             tvPassenger.text = data.countPassenger().toString()

@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface NotificationUseCase {
-    suspend fun getPriceNotification(): Flow<Resource<PriceNotification>>
+    suspend fun getPriceNotification(): Flow<Resource<List<PriceNotification>>>
 
     suspend fun createPriceNotification(
         body: PriceNotificationParam

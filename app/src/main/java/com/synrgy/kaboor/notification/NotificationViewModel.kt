@@ -55,13 +55,13 @@ class NotificationViewModel(private val useCase: NotificationUseCase) : ViewMode
         }
     }
 
-//    fun getPriceNotification(){
-//        _generic.value = Resource.Loading()
-//        viewModelScope.launch {
-//            useCase.getPriceNotification()
-//                .collectLatest { _priceNotification.value = it }
-//        }
-//    }
+    fun getPriceNotification(){
+        _priceNotification.value = Resource.Loading()
+        viewModelScope.launch {
+            useCase.getPriceNotification()
+                .collectLatest { _priceNotification.value = it }
+        }
+    }
 
     fun getNotification() {
         viewModelScope.launch {

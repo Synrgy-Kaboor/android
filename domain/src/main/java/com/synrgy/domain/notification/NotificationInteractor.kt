@@ -1,5 +1,6 @@
 package com.synrgy.domain.notification
 
+import com.synrgy.common.data.ListWrapper
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.notification.NotificationRepository
@@ -22,38 +23,38 @@ import kotlinx.coroutines.flow.Flow
 
 
 class NotificationInteractor(
-    private val repository: NotificationRepository
+    private val repository: NotificationRepository,
 ) : NotificationUseCase {
 
-    override suspend fun getPriceNotification(): Flow<Resource<PriceNotification>> {
+    override suspend fun getPriceNotification(): Flow<Resource<List<PriceNotification>>> {
         return object :
-            InternetBoundResource<PriceNotification, ResponseWrapper<PriceNotificationResponse>>() {
-            override suspend fun createCall(): Flow<Resource<ResponseWrapper<PriceNotificationResponse>>> {
+            InternetBoundResource<List<PriceNotification>, ListWrapper<PriceNotificationResponse>>() {
+            override suspend fun createCall(): Flow<Resource<ListWrapper<PriceNotificationResponse>>> {
                 return repository.getPriceNotification()
             }
 
-            override suspend fun saveCallRequest(data: ResponseWrapper<PriceNotificationResponse>): PriceNotification {
-                return data.data.toDomain()
+            override suspend fun saveCallRequest(data: ListWrapper<PriceNotificationResponse>): List<PriceNotification> {
+                return data.data.map { it.toDomain() }
             }
 
         }.asFlow()
     }
 
     override suspend fun createPriceNotification(
-        body: PriceNotificationParam
+        body: PriceNotificationParam,
     ): Flow<Resource<KaboorResponse>> {
         return repository.createPriceNotification(body.toRequest())
     }
 
     override suspend fun updatePriceNotification(
         id: Int,
-        body: PriceNotificationParam
+        body: PriceNotificationParam,
     ): Flow<Resource<KaboorResponse>> {
         return repository.updatePriceNotification(id, body.toRequest())
     }
 
     override suspend fun deletePriceNotification(
-        id: Int
+        id: Int,
     ): Flow<Resource<KaboorResponse>> {
         return repository.deletePriceNotification(id)
     }
