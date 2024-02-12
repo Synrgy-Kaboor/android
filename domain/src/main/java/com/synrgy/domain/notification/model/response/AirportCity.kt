@@ -12,6 +12,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AirportCity(
+    val id: Int,
+    val code: String,
     val name: String,
-    val code: String
+    val timezone: Int
 ): Parcelable

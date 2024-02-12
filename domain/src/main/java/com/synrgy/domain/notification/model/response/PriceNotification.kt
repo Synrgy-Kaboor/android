@@ -13,19 +13,19 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PriceNotification(
-    val originCity: AirportCity,
-    val destinationCity: AirportCity,
-    val departureDate: String,
-    val returnDate: String? = null,
-    val numOfAdults: Int? = 0,
-    val numOfKids: Int? = 0,
-    val numOfBabies: Int? = 0,
+    val id: Int? = 0,
+    val totalAdults: Int? = 0,
+    val totalChildren: Int? = 0,
+    val totalBabies: Int? = 0,
     @SerializedName("class")
-    val clazz: String,
-    val lowerPriceLimit: Long? = 0L,
-    val upperPriceLimit: Long? = 0L,
+    val classCode: String,
+    val minimumPrice: Long? = 0L,
+    val maximumPrice: Long? = 0L,
+    val date: String,
+    val originAirport: AirportCity,
+    val destinationAirport: AirportCity,
 ) : Parcelable {
     fun countPassenger(): Int {
-        return (numOfAdults ?: 0) + (numOfKids ?: 0) + (numOfBabies ?: 0)
+        return (totalAdults ?: 0) + (totalChildren ?: 0) + (totalBabies ?: 0)
     }
 }

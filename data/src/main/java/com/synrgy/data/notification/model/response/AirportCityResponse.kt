@@ -8,6 +8,8 @@ package com.synrgy.data.notification.model.response
 
 
 data class AirportCityResponse(
+    val id: Int,
+    val code: String,
     val name: String,
-    val code: String
+    val timezone: Int
 )

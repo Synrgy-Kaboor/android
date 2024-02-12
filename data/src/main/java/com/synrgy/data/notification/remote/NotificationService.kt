@@ -21,22 +21,22 @@ import retrofit2.http.Path
 
 interface NotificationService {
 
-    @GET("/api/v1/priceNotification")
+    @GET("/api/v1/user/notification/price")
     suspend fun getPriceNotification(): Response<ResponseWrapper<PriceNotificationResponse>>
 
-    @POST("/api/v1/priceNotification")
+    @POST("/api/v1/user/notification/price")
     suspend fun createPriceNotification(
-        @Body body: PriceNotificationRequest
+        @Body body: PriceNotificationRequest,
     ): Response<KaboorResponse>
 
-    @PATCH("/api/v1/priceNotification/{id}")
+    @PATCH("/api/v1/user/notification/price/{id}")
     suspend fun updatePriceNotification(
         @Path("id") id: Int,
-        @Body body: PriceNotificationRequest
+        @Body body: PriceNotificationRequest,
     ): Response<KaboorResponse>
 
-    @DELETE("/api/v1/priceNotification/{id}")
+    @DELETE("/api/v1/user/notification/price/{id}")
     suspend fun deletePriceNotification(
-        @Path("id") id: Int
+        @Path("id") id: Int,
     ): Response<KaboorResponse>
 }
