@@ -1,7 +1,5 @@
 package com.synrgy.domain.notification.model.request
 
-import com.google.gson.annotations.SerializedName
-
 
 /**
  * Created by wahid on 1/29/2024.

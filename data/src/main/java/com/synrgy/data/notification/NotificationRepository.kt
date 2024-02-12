@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface NotificationRepository {
 
-    suspend fun getPriceNotification(): Flow<Resource<ResponseWrapper<PriceNotificationResponse>>>
+    suspend fun getPriceNotification(): Flow<Resource<ListWrapper<PriceNotificationResponse>>>
 
     suspend fun createPriceNotification(
         body: PriceNotificationRequest

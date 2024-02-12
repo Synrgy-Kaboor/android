@@ -11,10 +11,12 @@ import com.synrgy.common.utils.constant.Constant
 import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.enums.BankType
 import com.synrgy.common.utils.enums.ClipboardType
+import com.synrgy.common.utils.enums.PaymentType
 import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.chuckedString
 import com.synrgy.common.utils.ext.copyTextToClipboard
 import com.synrgy.common.utils.ext.getImageFile
+import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.setTimer
 import com.synrgy.common.utils.ext.showHideToggle
@@ -40,9 +42,13 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         fun start(
             context: Context,
             bookingId: Int,
+            type: PaymentType = PaymentType.NORMAL,
+            uploadedProof: Boolean = false
         ) {
             context.startActivity(Intent(context, PaymentMethodDetailActivity::class.java).apply {
                 putExtra(ConstantKey.KEY_BOOKING_ID, bookingId)
+                putExtra(ConstantKey.KEY_PAYMENT_TYPE, type)
+                putExtra(ConstantKey.KEY_UPLOADED_PROOF, uploadedProof)
             })
         }
     }
@@ -50,6 +56,9 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
     private val viewModel: PaymentViewModel by inject()
 
     private var bookingId: Int = 0
+    private var paymentType: PaymentType = PaymentType.NORMAL
+    private var uploadedProof = false
+
     private var atmState = false
     private var internetBankingState = false
     private var mobileBankingState = false
@@ -66,15 +75,14 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         super.initIntent()
 
         bookingId = intent.getIntExtra(ConstantKey.KEY_BOOKING_ID, 0)
+        uploadedProof = intent.getBooleanExtra(ConstantKey.KEY_UPLOADED_PROOF, false)
+        paymentType = intent.getSerializableExtra(ConstantKey.KEY_PAYMENT_TYPE) as PaymentType
     }
 
     override fun initUI() {}
 
     override fun initAction() = with(binding) {
-        appbar.setOnBackClickListener {
-            MainActivity.start(this@PaymentMethodDetailActivity)
-            finishAffinity()
-        }
+        appbar.setOnBackClickListener { handleNavigation() }
         imgCopyAccountNumber.onClick {
             copyTextToClipboard(
                 tvAccountNumber.toStringTrim(),
@@ -134,10 +142,10 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
                 with(binding) {
                     tvAccountNumber.text = data.accountNumber?.chuckedString()
                     tvTotalPayment.text = data.totalPrice?.toCurrency(false)
-                    uploadReceipt.setUploaded(data.paymentCompleted ?: false)
+                    uploadReceipt.setUploaded(data.paymentCompleted ?: false || uploadedProof)
                     initCountDown(timer = data.expiredTime?.toCountDownGmt7() ?: 0L)
                     isPaymentComplete = data.paymentCompleted ?: false
-                    if (isPaymentComplete) btnShowOrder.text = getString(R.string.label_finish)
+                    if (isPaymentComplete || uploadedProof) btnShowOrder.text = getString(R.string.label_finish)
 
                     val bank = BankType.getBankType(data.methodName.toString()).bank.toDomain()
                     handleInstructionBank(bank)
@@ -175,8 +183,10 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
     }
 
     private fun handleNavigation() {
-        MainActivity.start(this)
-        finishAffinity()
+        if (paymentType == PaymentType.NORMAL) {
+            MainActivity.start(this)
+            finishAffinity()
+        } else onBackPress()
     }
 
     private fun initCountDown(timer: Long) {

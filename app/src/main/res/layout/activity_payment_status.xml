@@ -37,8 +37,7 @@
             android:background="@drawable/rounded_background"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/dimen_16dp"
-            android:paddingBottom="@dimen/dimen_22dp">
-
+            android:paddingBottom="@dimen/dimen_40dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_status"
@@ -223,15 +222,6 @@
                     android:text="@string/sukses"
                     android:textStyle="bold" />
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_download"
-                style="@style/KaboorButton.Outline"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40dp"
-                android:layout_marginTop="@dimen/dimen_64dp"
-                android:text="@string/download" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.card.MaterialCardView>
 
