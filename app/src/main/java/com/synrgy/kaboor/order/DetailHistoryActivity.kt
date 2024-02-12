@@ -5,9 +5,12 @@ import android.content.Intent
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.enums.ClipboardType
+import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.convertToDuration
 import com.synrgy.common.utils.ext.copyTextToClipboard
 import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.common.utils.ext.openPDFContent
+import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.toFullDateFormat
 import com.synrgy.common.utils.ext.toGmtFormat
 import com.synrgy.common.utils.ext.toStringTrim
@@ -70,6 +73,8 @@ class DetailHistoryActivity : KaboorActivity<ActivityDetailHistoryBinding>() {
                 ClipboardType.BOOKING_CODE
             )
         }
+
+        btnTicket.onClick { viewModel.downloadTicket(id, type) }
     }
 
     override fun initProcess() {
@@ -96,6 +101,22 @@ class DetailHistoryActivity : KaboorActivity<ActivityDetailHistoryBinding>() {
                 setView(ticket)
             }
         )
+
+        viewModel.download.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = { body ->
+                hideLoading()
+                openPDFContent(id, body.byteStream(), ::openPdfReader)
+            }
+        )
+    }
+
+    private fun openPdfReader(intent: Intent) {
+        this.startActivity(Intent.createChooser(intent, "Open PDF"))
     }
 
     private fun setView(data: TicketDetail) = with(binding) {

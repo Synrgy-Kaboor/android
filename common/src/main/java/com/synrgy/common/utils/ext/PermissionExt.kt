@@ -1,14 +1,10 @@
 package com.synrgy.common.utils.ext
 
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.synrgy.common.presentation.KaboorActivity
-import com.synrgy.common.presentation.KaboorFragment
 
 
 /**
@@ -40,6 +36,7 @@ fun AppCompatActivity.isGranted(permission: String): Boolean {
 }
 
 object PermissionExt {
+
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     val imagePermissionsAndroid13 = arrayOf(
         android.Manifest.permission.READ_MEDIA_IMAGES
