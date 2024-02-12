@@ -48,6 +48,10 @@ fun TicketDetailResponse.toDomain(): TicketDetail {
         addBaggage = addBaggage,
         addTravelInsurance = addTravelInsurance,
         addBaggageInsurance = addBaggageInsurance,
-        addDelayProtection = addDelayProtection
+        addDelayProtection = addDelayProtection,
+        totalAdults = totalAdults,
+        totalChildren = totalChildren,
+        totalBabies = totalBabies,
+        classCode = classCode
     )
 }

@@ -17,6 +17,8 @@ object ConstantKey {
     const val KEY_BOOKING_ID = "key_booking_id"
     const val KEY_PRICE_ALERT_TYPE = "key_price_alert_type"
     const val KEY_PRICE_ALERT_ID = "key_price_alert_id"
+    const val KEY_PAYMENT_TYPE = "key_payment_type"
+    const val KEY_UPLOADED_PROOF = "key_payment_id"
     const val KEY_TYPE = "key_type"
     const val KEY_BANK = "key_bank"
     const val KEY_PRICE = "key_price"
