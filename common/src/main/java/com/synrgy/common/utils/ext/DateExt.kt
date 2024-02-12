@@ -33,6 +33,11 @@ fun Long.toDayMonthFormat(): String {
     return SimpleDateFormat("dd MMM yyyy", localeIndonesia).format(this)
 }
 
+fun String.toMonthYearFormat(): String {
+    val date = this.toTimeZoneFormat()
+    return  SimpleDateFormat("MMM yyyy", localeIndonesia).format(date)
+}
+
 fun Long.toDateFormat(): String {
     return SimpleDateFormat("dd/MM/yyyy", localeIndonesia).format(this)
 }

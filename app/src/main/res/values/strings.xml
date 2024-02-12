@@ -258,4 +258,5 @@
     <string name="label_e_ticket">E-Tiket</string>
     <string name="format_string">%s %s</string>
     <string name="message_expired_time">Waktu habis! Tidak dapat menggunggah bukti transfer!</string>
+    <string name="payment_status">Status Pembayaran</string>
 </resources>

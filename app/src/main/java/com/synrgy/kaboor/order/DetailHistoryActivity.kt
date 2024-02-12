@@ -5,12 +5,10 @@ import android.content.Intent
 import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.enums.ClipboardType
-import com.synrgy.common.utils.ext.PermissionExt
 import com.synrgy.common.utils.ext.convertToDuration
 import com.synrgy.common.utils.ext.copyTextToClipboard
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.openPDFContent
-import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.toFullDateFormat
 import com.synrgy.common.utils.ext.toGmtFormat
 import com.synrgy.common.utils.ext.toStringTrim
@@ -18,6 +16,7 @@ import com.synrgy.domain.order.model.response.TicketDetail
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.databinding.ActivityDetailHistoryBinding
 import com.synrgy.kaboor.order.adapter.PassengerHistoryAdapter
+import com.synrgy.kaboor.payment.PaymentStatusActivity
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -71,6 +70,13 @@ class DetailHistoryActivity : KaboorActivity<ActivityDetailHistoryBinding>() {
             copyTextToClipboard(
                 tvBookingCode.toStringTrim(),
                 ClipboardType.BOOKING_CODE
+            )
+        }
+
+        btnStatus.onClick {
+            PaymentStatusActivity.start(
+                this@DetailHistoryActivity,
+                Pair(id, type)
             )
         }
 

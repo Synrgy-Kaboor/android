@@ -46,7 +46,7 @@ class HelpCenterActivity : KaboorActivity<ActivityHelpCenterBinding>() {
     override fun initProcess() {
         super.initProcess()
 
-        helpCenterAdapter.setData = ConstantDummy.helpCenters().map { Selectable(it) }
+        helpCenterAdapter.setData = ConstantDummy.helpCenters(this).map { Selectable(it) }
     }
 
     private fun showDialogHelpDesk() {

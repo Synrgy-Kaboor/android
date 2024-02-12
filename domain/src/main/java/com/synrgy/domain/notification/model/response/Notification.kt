@@ -1,6 +1,7 @@
 package com.synrgy.domain.notification.model.response
 
 import androidx.annotation.DrawableRes
+import com.wahidabd.library.utils.common.emptyString
 
 
 /**
@@ -10,9 +11,14 @@ import androidx.annotation.DrawableRes
 
 
 data class Notification(
-    val id: Int,
+    val created_at: String,
+    val deleted_at: String? = emptyString(),
+    val detail: String,
+    val flag: Boolean,
+    val id: String,
+    val price_notification_id: Int? = 0,
     val title: String,
-    val description: String,
-    val date: String,
-    @DrawableRes val icon: Int
+    val type: String,
+    val updated_at: String,
+    val user_id: String
 )

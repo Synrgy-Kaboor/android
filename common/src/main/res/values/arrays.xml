@@ -108,4 +108,45 @@
         <item>Konfirmasi detail transaksi Anda.</item>
         <item>Tunggu hingga transaksi selesai dan pastikan Anda menerima konfirmasi transaksi.</item>
     </string-array>
+    
+    <string-array name="how_to_pay">
+        <item>Setelah Anda memilih penerbangan yang diinginkan dan mengisi detail penumpang, Anda akan diarahkan ke halaman pembayaran.</item>
+        <item>Pilih metode pembayaran yang Anda preferensikan dari opsi yang tersedia, seperti kartu kredit/debit, transfer bank, atau dompet digital.</item>
+        <item>Masukkan detail pembayaran sesuai dengan instruksi yang diberikan.</item>
+        <item>Periksa kembali detail pesanan Anda dan pastikan semuanya benar sebelum menyelesaikan pembayaran.</item>
+        <item>Setelah pembayaran berhasil diproses, Anda akan menerima konfirmasi pembayaran melalui email atau langsung di aplikasi pemesanan kami.</item>
+    </string-array>
+    <string-array name="change_phone">
+        <item>Buka aplikasi kami dan masuk ke akun Anda.</item>
+        <item>Di menu utama, cari opsi "Pengaturan" atau "Profil Saya".</item>
+        <item>Pilih opsi yang berkaitan dengan informasi akun atau profil Anda.</item>
+        <item>Temukan bagian yang berisi informasi nomor handphone Anda saat ini.</item>
+        <item>Klik atau ketuk opsi "Ubah" atau "Edit" di sebelah nomor handphone Anda.</item>
+        <item>Masukkan nomor handphone baru Anda.</item>
+        <item>Verifikasi nomor handphone baru Anda dengan kode yang dikirimkan melalui SMS atau email, sesuai prosedur yang berlaku.</item>
+        <item>Setelah verifikasi berhasil, simpan perubahan Anda.</item>
+    </string-array>
+    <string-array name="change_email">
+        <item>Buka aplikasi kami dan masuk ke akun Anda.</item>
+        <item>Di menu utama, cari opsi "Pengaturan" atau "Profil Saya".</item>
+        <item>Pilih opsi yang berkaitan dengan informasi akun atau profil Anda.</item>
+        <item>Cari bagian yang berisi informasi alamat email Anda saat ini.</item>
+        <item>Klik atau ketuk opsi "Ubah" atau "Edit" di sebelah alamat email Anda.</item>
+        <item>Masukkan alamat email baru Anda.</item>
+        <item>Pastikan untuk memasukkan alamat email dengan cermat dan pastikan tidak ada kesalahan pengetikan.</item>
+        <item>Simpan perubahan Anda.</item>
+        <item>Anda mungkin akan diminta untuk melakukan verifikasi alamat email baru Anda. Periksa kotak masuk email Anda dan ikuti instruksi yang diberikan untuk menyelesaikan proses verifikasi.</item>
+    </string-array>
+    <string-array name="failed_transaction">
+        <item>Periksa Koneksi Internet: Pastikan koneksi internet Anda stabil dan tidak ada gangguan saat melakukan transaksi. Koneksi yang tidak stabil dapat menyebabkan gangguan dalam proses pembayaran.</item>
+        <item>Cek Saldo atau Limit Kartu: Pastikan saldo atau limit kartu pembayaran Anda mencukupi untuk melakukan transaksi. Kadang-kadang transaksi tidak berhasil karena saldo tidak mencukupi atau telah melebihi limit.</item>
+        <item>Coba Transaksi Kembali: Jika transaksi masih belum berhasil, coba ulangi proses pembayaran setelah beberapa saat. Kadang-kadang masalah teknis sementara dapat terjadi.</item>
+        <item>Hubungi Layanan Pelanggan Kami: Jika setelah langkah-langkah di atas transaksi masih tidak berhasil, jangan ragu untuk menghubungi tim dukungan pelanggan kami melalui [masukkan kontak layanan pelanggan]. Tim kami akan dengan senang hati membantu Anda menyelesaikan masalah ini.</item>
+    </string-array>
+    <string-array name="failed_register">
+        <item>Periksa Koneksi Internet: Pastikan Anda memiliki koneksi internet yang stabil saat melakukan proses pendaftaran. Koneksi yang tidak stabil bisa menjadi penyebab pendaftaran gagal.</item>
+        <item>Coba Lagi: Kadang-kadang pendaftaran gagal karena masalah teknis sementara. Cobalah untuk mendaftar kembali setelah beberapa saat.</item>
+        <item>Periksa Persyaratan: Pastikan Anda telah memenuhi semua persyaratan yang diperlukan untuk pendaftaran akun. Hal ini mungkin termasuk pengisian semua kolom yang wajib di formulir pendaftaran dan memilih kata sandi yang memenuhi kriteria keamanan.</item>
+        <item>Clear Cache dan Cookies: Jika Anda mengalami masalah saat menggunakan aplikasi di perangkat seluler atau komputer, coba hapus cache dan cookies dari browser atau aplikasi Anda. Kemudian, coba mendaftar kembali.</item>
+    </string-array>
 </resources>
