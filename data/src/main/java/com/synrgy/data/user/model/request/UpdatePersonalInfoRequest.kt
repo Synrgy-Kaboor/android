@@ -5,10 +5,10 @@ data class UpdatePersonalInfoRequest(
     val fullName: String,
     val gender: String,
     val birthday: String,
-    val country: String,
+    val nik: String,
+    val nation: String,
     val city: String,
     val address: String,
-    val email: String,
-    val phoneNumber: String,
-    val isWni: Boolean
+    val isWni: Boolean,
+    val imageName: String
 )

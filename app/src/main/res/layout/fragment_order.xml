@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.kennyc.view.MultiStateView
-    android:id="@+id/msv"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kennyc.view.MultiStateView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/msv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:msv_errorView="@layout/layout_not_login"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".order.OrderFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@color/white"
+            app:tabIndicatorFullWidth="true"
+            app:tabMode="fixed"
+            app:tabPaddingStart="@dimen/dimen_0dp"
+            app:tabSelectedTextColor="@color/primaryBrightViolet"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            app:tabTextColor="@color/neutral5" />
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </com.kennyc.view.MultiStateView>

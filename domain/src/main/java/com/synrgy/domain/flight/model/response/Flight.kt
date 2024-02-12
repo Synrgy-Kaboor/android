@@ -2,6 +2,7 @@ package com.synrgy.domain.flight.model.response
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
+import com.wahidabd.library.utils.common.emptyString
 import kotlinx.parcelize.Parcelize
 
 
@@ -13,16 +14,14 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Flight(
-    val id: Int,
-    val plane: String,
-    val typeClass: String,
-    val departure: String,
-    val departureTime: String,
-    val destination: String,
-    val destinationTime: String,
-    val boardingTime: String,
-    val date: String? = null,
-    val price: Long,
-    @DrawableRes val image: Int? = null
+    val id: Int = 0,
+    val departureDatetime: String = emptyString(),
+    val arrivalDatetime: String = emptyString(),
+    val plane: Plane,
+    val originAirport: Airport,
+    val destinationAirport: Airport,
+    val adultPrice: Long = 0L,
+    val childPrice: Long = 0L,
+    val babyPrice: Long = 0L
 ) : Parcelable
 

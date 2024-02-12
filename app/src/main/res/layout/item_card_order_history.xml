@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dimen_16dp"
+    android:layout_marginBottom="@dimen/dimen_8dp"
+    android:background="@drawable/bg_stroke_neutral_5"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_order_id"
+        style="@style/KaboorTextView.Title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        android:layout_marginVertical="@dimen/dimen_12dp"
+        android:textColor="@color/neutral7"
+        tools:text="ID Pemesanan : 12122023994" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_dash_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_8dp"
+        android:layout_marginStart="@dimen/dimen_minus_16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/dash_line" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        android:layout_marginVertical="@dimen/dimen_12dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_plane"
+            android:layout_width="@dimen/dimen_42dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/sample_img_garuda"
+            app:layout_constraintBottom_toTopOf="@+id/ll_detail_city"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_detail_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_plane">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_origin"
+                style="@style/KaboorTextView.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/neutral8"
+                tools:text="Jakarta" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/dimen_4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_arrow_right" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_destination"
+                style="@style/KaboorTextView.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/neutral8"
+                tools:text="Surabaya" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_date"
+                style="@style/KaboorTextView.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/neutral8"
+                tools:text="Sen, 23 Des 2023" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_time"
+                style="@style/KaboorTextView.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/neutral8"
+                tools:text="08.00 WIB" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        android:layout_marginBottom="@dimen/dimen_12dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_order_status"
+            style="@style/KaboorButton.FullRounded"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_24dp"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_10sp"
+            tools:text="E-Tiket Terbit" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_more_detail"
+            style="@style/KaboorTextView.Title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/label_more_detail"
+            android:textAlignment="textEnd"
+            android:textColor="@color/primaryBrightViolet" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

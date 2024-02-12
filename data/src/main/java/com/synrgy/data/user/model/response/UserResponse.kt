@@ -23,5 +23,7 @@ data class UserDataResponse(
     val email: String? = null,
     val phoneNumber: String? = null,
     val isWni: Boolean? = false,
-    val verified: Boolean = false,
+    val nik: String? = null,
+    val imageName: String? = null,
+    val imageUrl: String? = null
 )

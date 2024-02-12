@@ -5,6 +5,7 @@ import com.synrgy.data.notification.model.request.AirportCityRequest
 import com.synrgy.data.notification.model.request.PriceNotificationRequest
 import com.synrgy.data.notification.model.response.AirportCityResponse
 import com.synrgy.data.notification.model.response.PriceNotificationResponse
+import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.domain.notification.model.request.AirportCityParam
 import com.synrgy.domain.notification.model.request.PriceNotificationParam
 import com.synrgy.domain.notification.model.response.AirportCity
@@ -59,5 +60,18 @@ fun PriceNotificationParam.toRequest(): PriceNotificationRequest {
         clazz = clazz,
         lowerPriceLimit = lowerPriceLimit,
         upperPriceLimit = upperPriceLimit
+    )
+}
+
+fun PriceNotification.toFlightParam(): FlightParam {
+    return FlightParam(
+        originCity = originCity.name,
+        destinationCity = destinationCity.name,
+        departureDate = departureDate,
+        returnDate = returnDate,
+        numOfAdults = numOfAdults,
+        numOfKids = numOfKids,
+        numOfBabies = numOfBabies,
+        classCode = clazz
     )
 }

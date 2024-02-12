@@ -16,32 +16,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/img_header_home" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_search"
-                    style="@style/KaboorTextInput"
-                    android:layout_centerInParent="true"
-                    android:layout_marginHorizontal="16dp"
-                    app:hintEnabled="false"
-                    app:startIconDrawable="@drawable/ic_search">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_search"
-                        style="@style/KaboorEdittext"
-                        android:background="@drawable/bg_rectangle_search"
-                        android:hint="@string/label_search"
-                        android:imeOptions="actionSearch"
-                        android:inputType="text" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/img_header_home" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_menu"

@@ -16,7 +16,7 @@ import org.koin.android.ext.android.inject
 
 class ChangeEmailActivity : KaboorPassiveActivity<ActivityChangeEmailBinding>() {
 
-
+    private val viewModel: ChangeEmailViewModel by inject()
     companion object {
         fun start(context: Context) {
             context.startActivity(Intent(context, ChangeEmailActivity::class.java))

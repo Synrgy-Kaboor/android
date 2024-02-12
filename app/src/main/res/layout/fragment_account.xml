@@ -30,7 +30,8 @@
                 android:layout_centerVertical="true"
                 app:civ_border_color="@color/neutral5"
                 app:civ_border_width="@dimen/dimen_1dp"
-                tools:src="@tools:sample/avatars" />
+                android:scaleType="centerCrop"
+                tools:src="@drawable/img_logo" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_user_name"
@@ -109,6 +110,7 @@
                 android:textColor="@color/neutral8" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_email"
                 style="@style/KaboorTextView.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -141,6 +143,7 @@
                 android:textColor="@color/neutral8" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_phone"
                 style="@style/KaboorTextView.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

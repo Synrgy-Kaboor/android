@@ -13,8 +13,12 @@ import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.validation.Validation
 import com.wahidabd.library.validation.util.notEmptyRule
+import org.koin.android.ext.android.inject
 
 class ChangePhoneNumberActivity : KaboorPassiveActivity<ActivityChangePhoneNumberBinding>() {
+
+    private val viewModel: ChangePhoneViewModel by inject()
+
     companion object {
         fun start(context: Context) {
             context.startActivity(Intent(context, ChangePhoneNumberActivity::class.java))
@@ -41,6 +45,12 @@ class ChangePhoneNumberActivity : KaboorPassiveActivity<ActivityChangePhoneNumbe
 
     override fun initObservers() {
         super.initObservers()
+//        viewModel.generic.observerLiveData(
+////            this,
+////            onLoading = { showLoading() },
+////            onFailure = { _, message -> showErrorDialog(message.toString()) },
+////            onSuccess = { navigateToOtpActivity() }
+////        )
 
     }
 

@@ -8,9 +8,18 @@ package com.synrgy.data.booking.model.request
 
 
 data class BookingRequest(
-    val flightId: Int,
+    val outboundFlightId: Int,
+    val returnFlightId: Int? = null,
     val classCode: String,
     val totalAdult: Int,
     val totalChild: Int,
     val totalBaby: Int,
+    val orderer: PassengerRequest,
+    val passengers: List<PassengerRequest>,
+    val addBaggage: Boolean = false,
+    val addTravelInsurance: Boolean = false,
+    val addDelayProtection: Boolean = false,
+    val addBaggageInsurance: Boolean = false,
+    val paymentMethod: String? = null,
+    val voucherId: Int? = null
 )

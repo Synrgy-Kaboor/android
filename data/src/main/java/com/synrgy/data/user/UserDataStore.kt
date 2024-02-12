@@ -1,9 +1,20 @@
 package com.synrgy.data.user
 
-import com.synrgy.data.user.local.KaboorDataStore
+import com.synrgy.common.data.ResponseWrapper
+import com.synrgy.common.utils.ext.flowDispatcherIO
+import com.synrgy.data.db.KaboorDataStore
+import com.synrgy.data.user.model.request.ImageProfileRequest
+import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
+import com.synrgy.data.user.model.response.ImageProfileResponse
+import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.data.user.model.response.UserDataResponse
+import com.synrgy.data.user.remote.UserService
+import com.wahidabd.library.data.Resource
+import com.wahidabd.library.utils.coroutine.enqueue
+import com.wahidabd.library.utils.coroutine.handler.ErrorParser
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 
 /**
@@ -12,10 +23,15 @@ import kotlinx.coroutines.flow.Flow
  */
 
 
-class UserDataStore (private val dataStore: KaboorDataStore) : UserRepository {
+class UserDataStore(
+    private val dataStore: KaboorDataStore,
+    private val api: UserService,
+    private val error: ErrorParser,
+) : UserRepository {
 
     override suspend fun saveToken(token: String) {
         dataStore.saveToken(token)
+        dataStore.setLoginTime()
     }
 
     override suspend fun clearToken() {
@@ -37,4 +53,48 @@ class UserDataStore (private val dataStore: KaboorDataStore) : UserRepository {
     override fun getUser(): Flow<UserDataResponse> {
         return dataStore.getUser()
     }
+
+    override suspend fun setProfile(data: String) {
+        dataStore.setProfile(data)
+    }
+
+    override fun getProfile(): Flow<String> {
+        return dataStore.getProfile()
+    }
+
+    override fun getPercentage(): Int {
+        return dataStore.getPercentageProfile()
+    }
+
+    override suspend fun getPersonalInfo(): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>> =
+        flow {
+            enqueue(
+                error::convertGenericError,
+                api::getPersonalInfo,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
+
+    override suspend fun updatePersonalInfo(
+        body: UpdatePersonalInfoRequest,
+    ): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>> = flow {
+        enqueue(
+            body,
+            error::convertGenericError,
+            api::updatePersonalInfo,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowDispatcherIO()
+
+    override suspend fun uploadImage(
+        body: ImageProfileRequest,
+    ): Flow<Resource<ResponseWrapper<ImageProfileResponse>>> = flow {
+        enqueue(
+            body.toMultiPart(),
+            error::convertGenericError,
+            api::uploadImage,
+            onEmit = { data -> emit(data) }
+        )
+    }.flowDispatcherIO()
+
 }

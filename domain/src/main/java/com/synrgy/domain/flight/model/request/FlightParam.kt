@@ -22,6 +22,7 @@ data class FlightParam(
     val classCode: String,
     val departureData: AirportData? = null,
     val arrivalData: AirportData? = null,
+    val isReturn: Boolean = false
 ) : Parcelable {
     fun countPassenger(): Int {
         return numOfAdults?.plus(numOfKids ?: 0)?.plus(numOfBabies ?: 0) ?: 0

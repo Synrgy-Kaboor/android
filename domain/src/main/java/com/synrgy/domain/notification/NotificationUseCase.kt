@@ -1,7 +1,7 @@
 package com.synrgy.domain.notification
 
 
-import com.synrgy.common.data.response.KaboorGenericResponse
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.domain.notification.model.request.PriceNotificationParam
 import com.synrgy.domain.notification.model.response.PriceNotification
 import com.wahidabd.library.data.Resource
@@ -19,14 +19,14 @@ interface NotificationUseCase {
 
     suspend fun createPriceNotification(
         body: PriceNotificationParam
-    ): Flow<Resource<KaboorGenericResponse>>
+    ): Flow<Resource<KaboorResponse>>
 
     suspend fun updatePriceNotification(
         id: Int,
         body: PriceNotificationParam
-    ): Flow<Resource<KaboorGenericResponse>>
+    ): Flow<Resource<KaboorResponse>>
 
     suspend fun deletePriceNotification(
         id: Int
-    ): Flow<Resource<KaboorGenericResponse>>
+    ): Flow<Resource<KaboorResponse>>
 }

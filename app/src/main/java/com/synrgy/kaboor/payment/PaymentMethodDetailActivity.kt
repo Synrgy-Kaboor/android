@@ -3,45 +3,78 @@ package com.synrgy.kaboor.payment
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.CountDownTimer
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import com.synrgy.common.presentation.KaboorActivity
+import com.synrgy.common.utils.constant.Constant
+import com.synrgy.common.utils.constant.ConstantKey
+import com.synrgy.common.utils.enums.BankType
 import com.synrgy.common.utils.enums.ClipboardType
 import com.synrgy.common.utils.ext.PermissionExt
+import com.synrgy.common.utils.ext.chuckedString
 import com.synrgy.common.utils.ext.copyTextToClipboard
-import com.synrgy.common.utils.ext.onBackPress
+import com.synrgy.common.utils.ext.getImageFile
 import com.synrgy.common.utils.ext.requestMultiplePermission
+import com.synrgy.common.utils.ext.setTimer
 import com.synrgy.common.utils.ext.showHideToggle
 import com.synrgy.common.utils.ext.snackbarDanger
+import com.synrgy.common.utils.ext.toCountDownGmt7
+import com.synrgy.common.utils.ext.toCurrency
+import com.synrgy.common.utils.ext.toMinutes
 import com.synrgy.common.utils.ext.toStringTrim
+import com.synrgy.domain.booking.model.request.ProofParam
+import com.synrgy.domain.booking.model.request.UpdateProofParam
+import com.synrgy.domain.promo.mapper.toDomain
+import com.synrgy.domain.promo.model.response.Bank
 import com.synrgy.kaboor.R
+import com.synrgy.kaboor.base.MainActivity
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodDetailBinding
+import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
+import org.koin.android.ext.android.inject
 
 class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBinding>() {
 
     companion object {
-        fun start(context: Context) {
-            context.startActivity(Intent(context, PaymentMethodDetailActivity::class.java))
+        fun start(
+            context: Context,
+            bookingId: Int,
+        ) {
+            context.startActivity(Intent(context, PaymentMethodDetailActivity::class.java).apply {
+                putExtra(ConstantKey.KEY_BOOKING_ID, bookingId)
+            })
         }
     }
 
+    private val viewModel: BookingViewModel by inject()
+
+    private var bookingId: Int = 0
     private var atmState = false
     private var internetBankingState = false
     private var mobileBankingState = false
+    private var isPaymentComplete = false
+    private var canUploadProof = true
+
+    private lateinit var countDown: CountDownTimer
 
     override fun getViewBinding(): ActivityPaymentMethodDetailBinding {
         return ActivityPaymentMethodDetailBinding.inflate(layoutInflater)
     }
 
-    override fun initUI() = with(binding) {
-        // TODO: Remove this after API ready
-        tvAccountNumber.text = "1420 2010 0098 2336"
-        tvTotalPayment.text = "1.000.000"
+    override fun initIntent() {
+        super.initIntent()
+
+        bookingId = intent.getIntExtra(ConstantKey.KEY_BOOKING_ID, 0)
     }
 
+    override fun initUI() {}
+
     override fun initAction() = with(binding) {
-        appbar.setOnBackClickListener { onBackPress() }
+        appbar.setOnBackClickListener {
+            MainActivity.start(this@PaymentMethodDetailActivity)
+            finishAffinity()
+        }
         imgCopyAccountNumber.onClick {
             copyTextToClipboard(
                 tvAccountNumber.toStringTrim(),
@@ -74,8 +107,89 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
             toggleMobile.isSelected = mobileBankingState
         }
 
-        uploadReceipt.setOnSelectImage { requestPermissions() }
+        btnShowOrder.onClick { handleNavigation() }
         uploadReceipt.setOnRemoveImage { showAlertRemoveImage() }
+        uploadReceipt.setOnSelectImage {
+            if (canUploadProof) requestPermissions()
+            else snackbarDanger(getString(R.string.message_expired_time))
+        }
+    }
+
+    override fun initProcess() {
+        super.initProcess()
+        viewModel.getPaymentDetail(bookingId)
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+
+        viewModel.payment.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = { data ->
+                hideLoading()
+                with(binding) {
+                    tvAccountNumber.text = data.accountNumber?.chuckedString()
+                    tvTotalPayment.text = data.totalPrice?.toCurrency(false)
+                    uploadReceipt.setUploaded(data.paymentCompleted ?: false)
+                    initCountDown(timer = data.expiredTime?.toCountDownGmt7() ?: 0L)
+                    isPaymentComplete = data.paymentCompleted ?: false
+                    if (isPaymentComplete) btnShowOrder.text = getString(R.string.label_finish)
+
+                    val bank = BankType.getBankType(data.methodName.toString()).bank.toDomain()
+                    handleInstructionBank(bank)
+                }
+            }
+        )
+
+        viewModel.uploadProof.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = { proof ->
+                val body = UpdateProofParam(proof.fileName)
+                viewModel.updateProof(bookingId, body)
+            }
+        )
+
+        viewModel.generic.observerLiveData(
+            this,
+            onLoading = {},
+            onFailure = { _, message -> showErrorDialog(message.toString()) },
+            onSuccess = {
+                hideLoading()
+                binding.uploadReceipt.setUploaded(true)
+                binding.btnShowOrder.text = getString(R.string.label_finish)
+            }
+        )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (::countDown.isInitialized) countDown.cancel()
+    }
+
+    private fun handleNavigation() {
+        MainActivity.start(this)
+        finishAffinity()
+    }
+
+    private fun initCountDown(timer: Long) {
+        countDown = setTimer(
+            millisTimer = timer,
+            interval = Constant.TIMER_INTERVAL,
+            onTick = { binding.tvTime.text = it.toMinutes() },
+            onFinish = {
+                binding.tvTime.text = "00:00:00"
+                canUploadProof = false
+            }
+        )
+        countDown.start()
     }
 
     private fun showAlertRemoveImage() {
@@ -90,8 +204,10 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
 
     private val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-            if (uri != null) binding.uploadReceipt.setImageFile(uri)
-            else snackbarDanger(getString(R.string.message_failed_select_image))
+            if (uri != null) {
+                val file = getImageFile(uri)
+                viewModel.uploadProof(ProofParam(file))
+            } else snackbarDanger(getString(R.string.message_failed_select_image))
         }
 
     private fun launchPickMedia() {
@@ -117,6 +233,39 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
                 requestCode = PermissionExt.IMAGE_REQUEST_CODE,
                 doIfGranted = ::launchPickMedia
             )
+        }
+    }
+
+    private fun handleInstructionBank(bank: Bank) {
+        with(binding) {
+            val atm = resources.getStringArray(bank.atm)
+            val internet = resources.getStringArray(bank.internet)
+            val mobile = resources.getStringArray(bank.mobile)
+
+            atm.forEach {
+                tvAtmInstruction.append(
+                    getString(
+                        R.string.format_bullet_point,
+                        "$it\n"
+                    )
+                )
+            }
+            mobile.forEach {
+                tvMobileInstruction.append(
+                    getString(
+                        R.string.format_bullet_point,
+                        "$it\n"
+                    )
+                )
+            }
+            internet.forEach {
+                tvInternetInstruction.append(
+                    getString(
+                        R.string.format_bullet_point,
+                        "$it\n"
+                    )
+                )
+            }
         }
     }
 }

@@ -12,7 +12,7 @@
         android:layout_height="280dp"
         android:background="@drawable/img_header_flight_schedule" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_user"
         android:layout_width="@dimen/dimen_50dp"
         android:layout_height="@dimen/dimen_50dp"
@@ -20,18 +20,21 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="@dimen/dimen_32dp"
         android:layout_marginTop="@dimen/dimen_32dp"
+        app:civ_border_color="@color/neutral5"
+        app:civ_border_width="@dimen/dimen_1dp"
         android:background="@drawable/ripple_oval_white"
-        android:padding="@dimen/dimen_14dp"
-        app:srcCompat="@drawable/ic_user" />
+        android:src="@drawable/img_logo" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_user_name"
         style="@style/KaboorTextView.SubHeading1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/img_user"
         android:layout_marginStart="@dimen/dimen_8dp"
         android:layout_marginTop="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:maxLines="1"
         android:layout_toEndOf="@id/img_user"
         android:textColor="@color/neutral1"
         tools:text="Selamat pagi, Wahid" />

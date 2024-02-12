@@ -7,11 +7,13 @@ import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.removeErrorTextPadding
 import com.synrgy.common.utils.ext.setClearPaddingTextInput
 import com.synrgy.domain.auth.model.request.LoginParam
-import com.synrgy.kaboor.base.MainActivity
+import com.synrgy.domain.user.model.response.User
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.AuthViewModel
+import com.synrgy.kaboor.base.MainActivity
 import com.synrgy.kaboor.databinding.ActivityLoginPasswordBinding
 import com.wahidabd.library.utils.common.emptyString
+import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.validation.Validation
@@ -57,17 +59,56 @@ class LoginPasswordActivity : KaboorPassiveActivity<ActivityLoginPasswordBinding
 
         viewModel.jwt.observerLiveData(
             this,
-            onLoading = {
-                showLoading()
-            },
+            onLoading = ::showLoading,
             onFailure = { _, message ->
                 showErrorDialog(message.toString())
             },
             onSuccess = {
-                hideLoading()
                 viewModel.saveToken(it.jwt)
+                showDialog()
+            }
+        )
+
+        viewModel.userData.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = { user ->
+                hideLoading()
+
+                val data = User(
+                    email = user.email,
+                    fullName = user.fullName,
+                    title = user.title,
+                    gender = user.gender,
+                    birthday = user.birthday,
+                    nation = user.nation,
+                    city = user.city,
+                    address = user.address,
+                    phoneNumber = user.phoneNumber,
+                    isWni = user.isWni,
+                    imageName = user.imageName,
+                    imageUrl = user.imageUrl
+                )
+
+                viewModel.saveUserInfo(data)
                 MainActivity.start(this)
                 finishAffinity()
+            }
+        )
+    }
+
+    private fun showDialog() {
+        hideLoading()
+        showAlertDialog(
+            isCancelable = false,
+            title = getString(R.string.title_login_success),
+            description = getString(R.string.message_login_success),
+            primaryTextButton = getString(R.string.label_continue),
+            primaryAction = {
+                viewModel.getUser()
             }
         )
     }

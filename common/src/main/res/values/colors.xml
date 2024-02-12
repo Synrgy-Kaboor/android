@@ -18,6 +18,7 @@
     <color name="primaryBrightViolet">#7B52AB</color>
     <color name="primaryLightViolet">#E5CFFC</color>
     <color name="secondaryDanger">#CB3A31</color>
+    <color name="secondaryDangerS1000">#E18D88</color>
     <color name="secondaryWarning">#F1A025</color>
     <color name="secondarySuccess">#18AF5E</color>
     <color name="secondarySuccessDisable">#A0DEBD</color>

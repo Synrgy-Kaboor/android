@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".order.DetailHistoryActivity">
+
+    <com.synrgy.common.reusable.KaboorAppbar
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:kaboorAppbar_title="ID 12122023994"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                style="@style/KaboorCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_16dp"
+                android:background="@color/white"
+                app:cardElevation="@dimen/dimen_0dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/KaboorTextView.Title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_12dp"
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        android:text="@string/booking_code"
+                        android:textColor="@color/neutral6" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_12dp"
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_booking_code"
+                            style="@style/KaboorTextView.Title3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="@string/zx65c" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_copy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_12dp"
+                            android:background="@drawable/ripple_oval_white"
+                            android:src="@drawable/ic_copy" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_12dp"
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_airline"
+                            style="@style/KaboorTextView.Title3"
+                            android:layout_width="0dp"
+                            android:layout_height="29dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            tools:text="@string/garuda_indonesia_ga_168" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_airline"
+                            android:layout_width="@dimen/dimen_38dp"
+                            android:layout_height="@dimen/dimen_30dp"
+                            tools:src="@drawable/sample_img_garuda" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_class"
+                        style="@style/KaboorTextView.Title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_12dp"
+                        android:textColor="@color/neutral6"
+                        tools:text="@string/ekonomi" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_12dp"
+                        android:layout_marginBottom="@dimen/dimen_12dp">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/date_time_container"
+                            android:layout_centerVertical="true">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_origin"
+                                style="@style/KaboorTextView.Title2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:textColor="@color/neutral6"
+                                tools:text="Surabaya" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_take_off"
+                                style="@style/KaboorTextView.Title3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:textColor="@color/neutral9"
+                                tools:text="05.00 WIB" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/date_time_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_date_time"
+                                style="@style/KaboorTextView.Title2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/neutral6"
+                                tools:text="Selasa, 25 Desember 2024" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/img_picture"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen_8dp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/img_plane" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_duration"
+                                style="@style/KaboorTextView.Title2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="@dimen/dimen_6dp"
+                                android:layout_marginTop="@dimen/dimen_4dp"
+                                android:maxLines="1"
+                                android:textColor="@color/neutral6"
+                                tools:text="Durasi 4 Jam" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:gravity="end"
+                            android:layout_toEndOf="@id/date_time_container"
+                            android:layout_centerVertical="true"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_destination"
+                                style="@style/KaboorTextView.Title2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/neutral6"
+                                tools:text="Jakarta" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_landing"
+                                style="@style/KaboorTextView.Title3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/neutral9"
+                                tools:text="09.00 WIB" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/KaboorCard"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                app:cardElevation="@dimen/dimen_0dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/dimen_8dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_12dp"
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        style="@style/KaboorTextView.Title3"
+                        android:text="@string/penumpang"/>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_1dp"
+                        app:dividerColor="@color/neutral5"
+                        android:layout_marginVertical="@dimen/dimen_12dp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_passenger"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/item_passenger_history"
+                        tools:itemCount="2"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_perlindungan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                style="@style/KaboorCard"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/dimen_0dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/KaboorTextView.Title3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_12dp"
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        android:text="@string/perlindungan_ekstra" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:orientation="horizontal"
+                        android:layout_marginHorizontal="@dimen/dimen_16dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_insurance" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/KaboorTextView.Title1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_4dp"
+                            android:textColor="@color/neutral6"
+                            android:layout_weight="1"
+                            android:text="@string/asuransi_perjalanan" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_travel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/selector_checked"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginHorizontal="@dimen/dimen_16dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_bags" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/KaboorTextView.Title1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_4dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/neutral6"
+                            android:text="@string/asuransi_bagasi" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_baggage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/selector_checked"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/dimen_14dp"
+                        android:layout_marginHorizontal="@dimen/dimen_16dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dimen_16dp"
+                            android:layout_height="@dimen/dimen_16dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="-2dp"
+                            android:src="@drawable/ic_clock" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/KaboorTextView.Title1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/neutral6"
+                            android:layout_marginStart="@dimen/dimen_4dp"
+                            android:text="@string/asuransi_keterlambatan" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_delay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/selector_checked"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ticket"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40dp"
+                style="@style/KaboorButton.Gradient"
+                android:text="@string/label_e_ticket"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/dimen_50dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

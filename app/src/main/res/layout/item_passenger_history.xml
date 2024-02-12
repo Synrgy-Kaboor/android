@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_index"
+        style="@style/KaboorTextView.Title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_12dp"
+        android:textColor="@color/neutral6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1." />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_name"
+        style="@style/KaboorTextView.Title2"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_index"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Mr. Andre Hutshon" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_baggage"
+        style="@style/KaboorTextView.Title2"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/bagasi_kabin_7_kg"
+        android:textColor="@color/neutral6"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        app:drawableStartCompat="@drawable/ic_bag"
+        android:drawablePadding="@dimen/dimen_4dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_extra_baggage"
+        style="@style/KaboorTextView.Title2"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/bagasi_tambahan"
+        android:textColor="@color/neutral6"
+        app:layout_constraintTop_toBottomOf="@id/tv_baggage"
+        app:layout_constraintStart_toStartOf="@id/tv_baggage"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        app:drawableStartCompat="@drawable/ic_bag"
+        android:drawablePadding="@dimen/dimen_4dp"
+        android:layout_marginBottom="@dimen/dimen_6dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

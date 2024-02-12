@@ -9,6 +9,7 @@ import com.synrgy.common.R
 import com.synrgy.kaboor.databinding.ItemAirportBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
+import com.wahidabd.library.utils.exts.onClick
 
 
 /**
@@ -32,9 +33,10 @@ class AirportAdapter(
 
     inner class AirportViewHolder(binding: ViewBinding) : BaseAsyncItemViewHolder<AirportData>(binding) {
         override fun bind(data: AirportData) = with(binding as ItemAirportBinding) {
-            tvAirportLocation.text = context.getString(R.string.format_airport, data.city, data.airport)
+            tvCode.text = data.code
+            tvName.text = data.name
 
-            root.setOnClickListener {
+            root.onClick {
                 onItemClick.invoke(data)
             }
         }
