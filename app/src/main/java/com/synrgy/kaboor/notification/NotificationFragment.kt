@@ -7,6 +7,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.common.utils.Selectable
 import com.synrgy.common.utils.enums.NotificationType
+import com.synrgy.common.utils.enums.PriceAlertType
 import com.synrgy.common.utils.ext.showLoginState
 import com.synrgy.domain.notification.mapper.toFlightParam
 import com.synrgy.domain.notification.model.response.PriceNotification
@@ -136,11 +137,18 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
 
         dialogBinding.edit.onClick {
             PriceAlertActivity.start(
-                requireContext(),
-                data.toFlightParam()
+                context = requireContext(),
+                flightParam = data.toFlightParam(),
+                type = PriceAlertType.EDIT,
+                notificationId = data.id
             )
         }
-        dialogBinding.remove.onClick { }
+        dialogBinding.remove.onClick {
+            viewModel.deletePriceNotification(data.id ?: 0)
+            // remove and call viewmodel above after response changed
+            // viewModel.getPriceNotification(
+            dialog.dismiss()
+        }
         dialog.show()
     }
 }
