@@ -24,6 +24,8 @@ import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.snackbarDanger
 import com.synrgy.common.utils.ext.toDateFormat
+import com.synrgy.common.utils.ext.toDateFormatMonth
+import com.synrgy.common.utils.ext.toStringTrim
 import com.synrgy.domain.user.model.request.ImageProfileParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.kaboor.R
@@ -65,7 +67,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         initDataUser()
 
         titleList = ArrayList(
-            listOf("Mr", "Mrs", "Miss")
+            listOf("Mr.", "Mrs.", "Miss.")
         )
         genderList = ArrayList(
             listOf("L", "P")
@@ -197,7 +199,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
             title = selectedTitle,
             fullName = etFullname.getText(),
             gender = selectedGender,
-            birthday = tvDateOfBirth.text.toString(),
+            birthday = tvDateOfBirth.toStringTrim(),
             nik = etNik.getText(),
             nation = etCountry.getText(),
             city = etCity.getText(),
@@ -272,7 +274,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
 
     private fun showDatePicker() = with(binding) {
         showDatePicker { date ->
-            tvDateOfBirth.text = date.toDateFormat()
+            tvDateOfBirth.text = date.toDateFormatMonth()
         }
     }
 

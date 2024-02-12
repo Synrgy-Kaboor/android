@@ -48,7 +48,6 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
     override fun initProcess() {
         super.initProcess()
         sharedViewModel.checkLogin()
-        viewModel.getProfile()
         viewModel.getUser()
         viewModel.getPercentage()
     }
@@ -70,6 +69,7 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
         )
         viewModel.userData.observe(this) { user ->
             with(binding) {
+                imgProfile.setImageUrl(requireContext(), user.imageUrl.toString())
                 tvUserName.text = user.fullName
                 tvEmail.text = user.email
                 tvPhone.text = user.phoneNumber
@@ -78,15 +78,20 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
             }
         }
 
-        viewModel.profile.observe(this) { profile ->
-            binding.imgProfile.setImageUrl(requireContext(), profile)
-        }
+//        viewModel.profile.observe(this) { profile ->
+//            binding.imgProfile.setImageUrl(requireContext(), profile)
+//        }
 
         viewModel.percentage.observe(this) { percentage ->
             debug { "Percentage --> $percentage" }
             binding.tvProgress.text = getString(R.string.format_percentage_profile, percentage)
             binding.progressHorizontal.progress = percentage
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUser()
     }
 
     private fun showLogoutDialog() {

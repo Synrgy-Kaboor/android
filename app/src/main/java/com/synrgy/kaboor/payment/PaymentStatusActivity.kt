@@ -59,8 +59,6 @@ class PaymentStatusActivity : KaboorActivity<ActivityPaymentStatusBinding>() {
             MainActivity.start(this@PaymentStatusActivity)
             finishAffinity()
         }
-
-        btnDownload.onClick { viewModel.downloadTicket(id, type) }
     }
 
     override fun initProcess() {
