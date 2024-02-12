@@ -1,6 +1,7 @@
 package com.synrgy.domain.user
 
 import com.synrgy.common.data.response.KaboorResponse
+import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.domain.user.model.request.ImageProfileParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.domain.user.model.request.UserParam
@@ -27,6 +28,8 @@ interface UserUseCase {
     suspend fun setProfile(data: String)
     fun getProfile(): Flow<String>
     fun getPercentage(): Int
+
+    suspend fun register(body: RegisterParam): Flow<Resource<User>>
 
     suspend fun getPersonalInfo(): Flow<Resource<User>>
 

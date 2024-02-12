@@ -29,6 +29,10 @@ fun String.toFullDateFormat(): String {
     return SimpleDateFormat("EEEE, dd MMM yyyy", localeIndonesia).format(date as Date)
 }
 
+fun Long.toDayMonthFormat(): String {
+    return SimpleDateFormat("dd MMM yyyy", localeIndonesia).format(this)
+}
+
 fun Long.toDateFormat(): String {
     return SimpleDateFormat("dd/MM/yyyy", localeIndonesia).format(this)
 }

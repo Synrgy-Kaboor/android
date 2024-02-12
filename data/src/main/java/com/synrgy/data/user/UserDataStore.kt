@@ -2,6 +2,7 @@ package com.synrgy.data.user
 
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.utils.ext.flowDispatcherIO
+import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.db.KaboorDataStore
 import com.synrgy.data.user.model.request.ImageProfileRequest
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
@@ -9,6 +10,7 @@ import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.ImageProfileResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.data.user.model.response.UserDataResponse
+import com.synrgy.data.user.model.response.UserResponse
 import com.synrgy.data.user.remote.UserService
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.enqueue
@@ -64,6 +66,17 @@ class UserDataStore(
 
     override fun getPercentage(): Int {
         return dataStore.getPercentageProfile()
+    }
+
+    override suspend fun register(body: RegisterRequest): Flow<Resource<ResponseWrapper<UserResponse>>> {
+        return flow {
+            enqueue(
+                body,
+                error::convertGenericError,
+                api::register,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
     }
 
     override suspend fun getPersonalInfo(): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>> =

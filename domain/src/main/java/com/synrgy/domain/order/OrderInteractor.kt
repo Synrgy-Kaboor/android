@@ -11,6 +11,7 @@ import com.synrgy.domain.order.model.response.TicketDetail
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
 import kotlinx.coroutines.flow.Flow
+import okhttp3.ResponseBody
 
 
 /**
@@ -69,5 +70,13 @@ class OrderInteractor(private val repository: OrderRepository) : OrderUseCase {
                 return data.data.toDomain()
             }
         }.asFlow()
+    }
+
+    override suspend fun downloadOutboundTicket(id: Int): Flow<Resource<ResponseBody>> {
+        return repository.downloadOutboundTicket(id)
+    }
+
+    override suspend fun downloadReturnTicket(id: Int): Flow<Resource<ResponseBody>> {
+        return repository.downloadReturnTicket(id)
     }
 }

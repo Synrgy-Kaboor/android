@@ -11,6 +11,7 @@ import com.wahidabd.library.utils.coroutine.enqueue
 import com.wahidabd.library.utils.coroutine.handler.ErrorParser
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import okhttp3.ResponseBody
 
 
 /**
@@ -59,5 +60,27 @@ class OrderDataStore(
                 onEmit = { data -> emit(data) }
             )
         }.flowDispatcherIO()
+
+    override suspend fun downloadOutboundTicket(id: Int): Flow<Resource<ResponseBody>> {
+        return flow {
+            enqueue(
+                id,
+                error::convertGenericError,
+                api::downloadOutboundTicket,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
+    }
+
+    override suspend fun downloadReturnTicket(id: Int): Flow<Resource<ResponseBody>> {
+        return flow {
+            enqueue(
+                id,
+                error::convertGenericError,
+                api::downloadReturnTicket,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
+    }
 
 }

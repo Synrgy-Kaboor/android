@@ -47,7 +47,7 @@ class PaymentMethodDetailActivity : KaboorActivity<ActivityPaymentMethodDetailBi
         }
     }
 
-    private val viewModel: BookingViewModel by inject()
+    private val viewModel: PaymentViewModel by inject()
 
     private var bookingId: Int = 0
     private var atmState = false

@@ -17,7 +17,6 @@ import com.synrgy.domain.promo.model.response.Voucher
 import com.synrgy.kaboor.databinding.ActivityPaymentMethodBinding
 import com.synrgy.kaboor.payment.adapter.PaymentMethodAdapter
 import com.synrgy.kaboor.promo.VoucherBottomSheetFragment
-import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.wahidabd.library.utils.exts.enable
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -38,7 +37,7 @@ class PaymentMethodActivity : KaboorActivity<ActivityPaymentMethodBinding>() {
         }
     }
 
-    private val viewModel: BookingViewModel by inject()
+    private val viewModel: PaymentViewModel by inject()
 
     private var price: Long = 0L
     private var bookingParam: BookingParam? = null
