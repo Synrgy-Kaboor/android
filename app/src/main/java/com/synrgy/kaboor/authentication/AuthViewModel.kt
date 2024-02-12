@@ -39,8 +39,6 @@ class AuthViewModel(
     val checkEmail: LiveData<Resource<KaboorResponse>> get() = _checkEmail
 
 
-
-
     fun saveToken(token: String) {
         _userData.value = Resource.loading()
         viewModelScope.launch {
@@ -75,7 +73,7 @@ class AuthViewModel(
     fun register(body: RegisterParam) {
         _jwt.value = Resource.loading()
         viewModelScope.launch {
-            auth.register(body)
+            user.register(body)
                 .collectLatest { _userData.value = it }
         }
     }

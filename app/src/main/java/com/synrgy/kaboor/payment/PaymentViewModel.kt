@@ -10,11 +10,14 @@ import com.synrgy.domain.booking.model.request.BookingParam
 import com.synrgy.domain.booking.model.request.ProofParam
 import com.synrgy.domain.booking.model.request.UpdateProofParam
 import com.synrgy.domain.booking.model.response.Booking
+import com.synrgy.domain.booking.model.response.BookingStatus
 import com.synrgy.domain.booking.model.response.PaymentDetail
 import com.synrgy.domain.booking.model.response.UploadProof
+import com.synrgy.domain.order.OrderUseCase
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import okhttp3.ResponseBody
 
 
 /**
@@ -23,7 +26,10 @@ import kotlinx.coroutines.launch
  */
 
 
-class BookingViewModel(private val useCase: BookingUseCase) : ViewModel() {
+class PaymentViewModel(
+    private val useCase: BookingUseCase,
+    private val orderUseCase: OrderUseCase
+) : ViewModel() {
 
     private val _booking = MutableLiveData<Resource<Booking>>()
     val booking: LiveData<Resource<Booking>> = _booking
@@ -37,6 +43,12 @@ class BookingViewModel(private val useCase: BookingUseCase) : ViewModel() {
     private val _generic = MutableLiveData<Resource<KaboorResponse>>()
     val generic: LiveData<Resource<KaboorResponse>> = _generic
 
+    private val _status = MutableLiveData<Resource<BookingStatus>>()
+    val status: LiveData<Resource<BookingStatus>> = _status
+
+    private var _download = MutableLiveData<Resource<ResponseBody>>()
+    val download: LiveData<Resource<ResponseBody>> = _download
+
     fun createBooking(body: BookingParam) {
         viewModelScope.launch {
             useCase.createBooking(body)
@@ -48,6 +60,13 @@ class BookingViewModel(private val useCase: BookingUseCase) : ViewModel() {
         viewModelScope.launch {
             useCase.getPaymentDetail(id)
                 .collectLatest { _payment.value = it }
+        }
+    }
+
+    fun getPaymentStatus(id: Int){
+        viewModelScope.launch {
+            useCase.getBookingStatus(id)
+                .collectLatest { _status.value = it }
         }
     }
 
@@ -64,5 +83,6 @@ class BookingViewModel(private val useCase: BookingUseCase) : ViewModel() {
                 .collectLatest { _generic.value = it }
         }
     }
+
 
 }

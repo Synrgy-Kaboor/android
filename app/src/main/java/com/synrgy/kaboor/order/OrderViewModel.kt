@@ -10,6 +10,7 @@ import com.synrgy.domain.order.model.response.TicketDetail
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import okhttp3.ResponseBody
 
 
 /**
@@ -25,6 +26,9 @@ class OrderViewModel(private val useCase: OrderUseCase) : ViewModel() {
 
     private val _ticket = MutableLiveData<Resource<TicketDetail>>()
     val ticket: LiveData<Resource<TicketDetail>> get() = _ticket
+
+    private var _download = MutableLiveData<Resource<ResponseBody>>()
+    val download: LiveData<Resource<ResponseBody>> = _download
 
     fun getActive() {
         viewModelScope.launch {
@@ -59,6 +63,23 @@ class OrderViewModel(private val useCase: OrderUseCase) : ViewModel() {
                 .collectLatest {
                     _ticket.value = it
                 }
+        }
+    }
+
+    fun downloadTicket(id: Int, type: String){
+        _download.value = Resource.Loading()
+        viewModelScope.launch {
+            if (type == "outbound"){
+                useCase.downloadOutboundTicket(id)
+                    .collectLatest {
+                        _download.value = it
+                    }
+            } else {
+                useCase.downloadReturnTicket(id)
+                    .collectLatest {
+                        _download.value = it
+                    }
+            }
         }
     }
 }

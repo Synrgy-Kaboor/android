@@ -4,7 +4,10 @@ import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.data.user.UserRepository
 import com.synrgy.data.user.model.response.ImageProfileResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
+import com.synrgy.data.user.model.response.UserResponse
 import com.synrgy.domain.auth.mapper.toDomain
+import com.synrgy.domain.auth.mapper.toRequest
+import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.domain.user.mapper.toDomain
 import com.synrgy.domain.user.mapper.toRequest
 import com.synrgy.domain.user.mapper.toUser
@@ -64,6 +67,19 @@ class UserInteractor(private val repository: UserRepository) : UserUseCase {
 
     override fun getPercentage(): Int {
         return repository.getPercentage()
+    }
+
+    override suspend fun register(body: RegisterParam): Flow<Resource<User>> {
+        return object : InternetBoundResource<User, ResponseWrapper<UserResponse>>() {
+            override suspend fun createCall(): Flow<Resource<ResponseWrapper<UserResponse>>> {
+                return repository.register(body.toRequest())
+            }
+
+            override suspend fun saveCallRequest(data: ResponseWrapper<UserResponse>): User {
+                return data.data.toDomain()
+            }
+
+        }.asFlow()
     }
 
     override suspend fun getPersonalInfo(): Flow<Resource<User>> {

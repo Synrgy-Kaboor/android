@@ -6,6 +6,7 @@ import com.synrgy.data.order.model.response.OrderResponse
 import com.synrgy.data.order.model.response.TicketDetailResponse
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.Flow
+import okhttp3.ResponseBody
 
 
 /**
@@ -20,4 +21,6 @@ interface OrderRepository {
     suspend fun getFinished(): Flow<Resource<ListWrapper<OrderResponse>>>
     suspend fun getOutbound(id: Int): Flow<Resource<ResponseWrapper<TicketDetailResponse>>>
     suspend fun getReturn(id: Int): Flow<Resource<ResponseWrapper<TicketDetailResponse>>>
+    suspend fun downloadOutboundTicket(id: Int): Flow<Resource<ResponseBody>>
+    suspend fun downloadReturnTicket(id: Int): Flow<Resource<ResponseBody>>
 }
