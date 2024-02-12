@@ -53,7 +53,7 @@ fun String.toHeaderBookingDate(): String {
 }
 
 fun String.toEpochMillis(): Long {
-    return SimpleDateFormat("dd-mm-yyyy", localeIndonesia).parse(this)?.time!!
+    return SimpleDateFormat("yyyy-MM-dd", localeIndonesia).parse(this)?.time!!
 }
 
 fun String.toHourMinuteFormat(): String {

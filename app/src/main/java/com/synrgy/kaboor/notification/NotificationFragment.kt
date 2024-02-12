@@ -142,6 +142,7 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
                 type = PriceAlertType.EDIT,
                 notificationId = data.id
             )
+            dialog.dismiss()
         }
         dialogBinding.remove.onClick {
             viewModel.deletePriceNotification(data.id ?: 0)
