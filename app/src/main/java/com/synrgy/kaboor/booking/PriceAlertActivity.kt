@@ -9,18 +9,23 @@ import com.synrgy.common.utils.constant.ConstantKey
 import com.synrgy.common.utils.constant.ConstantTag
 import com.synrgy.common.utils.enums.AirportType
 import com.synrgy.common.utils.enums.PlaneClassType
+import com.synrgy.common.utils.enums.PriceAlertType
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.oneDayMillis
 import com.synrgy.common.utils.ext.showDatePicker
+import com.synrgy.common.utils.ext.snackbarSuccess
 import com.synrgy.common.utils.ext.timeNow
 import com.synrgy.common.utils.ext.toCurrency
+import com.synrgy.common.utils.ext.toDateFormatMonth
 import com.synrgy.domain.flight.mapper.toData
 import com.synrgy.domain.flight.model.request.FlightParam
+import com.synrgy.domain.notification.model.request.PriceNotificationParam
 import com.synrgy.kaboor.booking.dialog.AirportBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.FlightClassBottomSheetFragment
 import com.synrgy.kaboor.booking.dialog.PassengerBottomSheetFragment
 import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
 import com.synrgy.kaboor.databinding.ActivityPriceAlertBinding
+import com.synrgy.kaboor.notification.NotificationViewModel
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import org.koin.android.ext.android.inject
@@ -31,15 +36,21 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
     companion object {
         fun start(
             context: Context,
-            flightParam: FlightParam?
+            flightParam: FlightParam?,
+            type: PriceAlertType? = PriceAlertType.NEW,
+            notificationId: Int? = 0
         ) {
             context.startActivity(Intent(context, PriceAlertActivity::class.java).apply {
                 putExtra(ConstantKey.KEY_FLIGHT_PARAM, flightParam)
+                putExtra(ConstantKey.KEY_PRICE_ALERT_TYPE, type)
+                putExtra(ConstantKey.KEY_PRICE_ALERT_ID, notificationId)
             })
         }
     }
 
     private val flightViewModel: FlightViewModel by inject()
+    private val notificationViewModel: NotificationViewModel by inject()
+
     private var airports = mutableListOf<AirportData>()
 
     private var flightParam: FlightParam? = null
@@ -47,6 +58,8 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
     private var departure: AirportData? = null
     private var arrival: AirportData? = null
     private var planeClassType: PlaneClassType = PlaneClassType.EKONOMI
+    private var priceNotificationId = 0
+    private var type = PriceAlertType.NEW
 
     override fun getViewBinding(): ActivityPriceAlertBinding {
         return ActivityPriceAlertBinding.inflate(layoutInflater)
@@ -55,6 +68,8 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
     override fun initIntent() {
         super.initIntent()
 
+        type = intent.getSerializableExtra(ConstantKey.KEY_PRICE_ALERT_TYPE) as PriceAlertType
+        priceNotificationId = intent.getIntExtra(ConstantKey.KEY_PRICE_ALERT_ID, 0)
         flightParam = intent.getParcelableExtra(ConstantKey.KEY_FLIGHT_PARAM)
         departure = flightParam?.departureData
         arrival = flightParam?.arrivalData
@@ -71,23 +86,18 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
         tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count())
         tvClass.text = planeClassType.label
 
-//        kaboorFlight.setDeparture(departure)
-//        kaboorFlight.setArrival(arrival)
-//        kaboorSchedule.setRoundTrip(flightParam?.returnDate?.isNotEmpty() ?: false)
-//        kaboorSchedule.setDeparture(flightParam?.departureDate?.toEpochMillis() ?: tomorrowMillis)
-//        kaboorSchedule.setComingHome(flightParam?.returnDate?.toEpochMillis() ?: oneWeekMillis)
-
+        kaboorSchedule.disableRoundTrip()
         rangeFormatSlider()
     }
 
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
         cardPassenger.onClick { showPassengerDialog() }
+        kaboorSchedule.setOnDepartureListener { showDatePicker() }
         kaboorFlight.setOnArrivalListener { showAirportDialog(AirportType.ARRIVAL) }
-        kaboorSchedule.setOnComingHomeListener { showDatePicker(AirportType.ARRIVAL) }
-        kaboorSchedule.setOnDepartureListener { showDatePicker(AirportType.DEPARTURE) }
         kaboorFlight.setOnDepartureListener { showAirportDialog(AirportType.DEPARTURE) }
         cardClass.onClick { showPlaneClassDialog() }
+        btnSubmit.onClick { sendToObservable() }
     }
 
     override fun initProcess() {
@@ -109,6 +119,36 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
                 setAirport()
             }
         )
+
+        notificationViewModel.generic.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = {
+                hideLoading()
+                snackbarSuccess(it.message)
+                onBackPress()
+            }
+        )
+    }
+
+    private fun sendToObservable() = with(binding) {
+        val param = PriceNotificationParam(
+            totalAdults = passengerData.mature,
+            totalChildren = passengerData.kid,
+            totalBabies = passengerData.baby,
+            classCode = planeClassType.code,
+            minimumPrice = rangeSlider.values[0].toLong(),
+            maximumPrice = rangeSlider.values[1].toLong(),
+            date = kaboorSchedule.departure.toDateFormatMonth(),
+            originAirportId = kaboorFlight.departure?.id ?: 0,
+            destinationAirportId = kaboorFlight.arrival?.id ?: 0
+        )
+
+        if (type == PriceAlertType.NEW) notificationViewModel.createPriceNotification(param)
+        else notificationViewModel.updatePriceNotification(priceNotificationId, param)
     }
 
     private fun setAirport() = with(binding) {
@@ -154,16 +194,9 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
         }.show(supportFragmentManager, ConstantTag.TAG_PLANE_CLASS)
     }
 
-    private fun showDatePicker(type: AirportType) = with(binding) {
-        val startDate = when (type) {
-            AirportType.DEPARTURE -> timeNow - oneDayMillis
-            AirportType.ARRIVAL -> kaboorSchedule.departure + oneDayMillis
-        }
-        showDatePicker(startDate) { date ->
-            when (type) {
-                AirportType.DEPARTURE -> kaboorSchedule.setDeparture(date)
-                AirportType.ARRIVAL -> kaboorSchedule.setComingHome(date)
-            }
+    private fun showDatePicker() = with(binding) {
+        showDatePicker(timeNow - oneDayMillis) {
+            kaboorSchedule.setDeparture(it)
         }
     }
 }

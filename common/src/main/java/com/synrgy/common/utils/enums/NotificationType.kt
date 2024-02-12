@@ -26,3 +26,7 @@ enum class NotificationDataType(val label: String, @DrawableRes val icon: Int) {
         }
     }
 }
+
+enum class PriceAlertType {
+    NEW, EDIT
+}

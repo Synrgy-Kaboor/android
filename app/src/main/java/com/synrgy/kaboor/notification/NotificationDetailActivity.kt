@@ -11,7 +11,6 @@ import com.synrgy.domain.notification.model.response.PriceNotification
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.booking.adapter.PlaneTicketAdapter
 import com.synrgy.kaboor.databinding.ActivityNotificationDetailBinding
-import com.synrgy.kaboor.utils.constant.ConstantDummy
 
 class NotificationDetailActivity : KaboorActivity<ActivityNotificationDetailBinding>() {
 
@@ -43,13 +42,13 @@ class NotificationDetailActivity : KaboorActivity<ActivityNotificationDetailBind
         rvTicket.adapter = flightAdapter
 
         with(item) {
-            tvOrigin.text = notification?.originCity?.name
-            tvDestination.text = notification?.destinationCity?.name
-            tvDate.text = notification?.departureDate
+            tvOrigin.text = notification?.originAirport?.name
+            tvDestination.text = notification?.destinationAirport?.name
+            tvDate.text = notification?.date
             tvPassenger.text = getString(R.string.format_people, notification?.countPassenger())
-            tvSeat.text = notification?.clazz
+            tvSeat.text = notification?.classCode
             tvPrice.text =
-                "${notification?.lowerPriceLimit?.toCurrency()} - ${notification?.upperPriceLimit?.toCurrency()}"
+                "${notification?.minimumPrice?.toCurrency()} - ${notification?.maximumPrice?.toCurrency()}"
         }
     }
 

@@ -21,23 +21,25 @@ import com.synrgy.domain.notification.model.response.PriceNotification
 
 fun AirportCityResponse.toDomain(): AirportCity {
     return AirportCity(
+        id = id,
+        code = code,
         name = name,
-        code = code
+        timezone = timezone,
     )
 }
 
 fun PriceNotificationResponse.toDomain(): PriceNotification {
     return PriceNotification(
-        originCity = originCity.toDomain(),
-        destinationCity = destinationCity.toDomain(),
-        departureDate = departureDate,
-        returnDate = returnDate,
-        numOfAdults = numOfAdults,
-        numOfKids = numOfKids,
-        numOfBabies = numOfBabies,
-        clazz = clazz,
-        lowerPriceLimit = lowerPriceLimit,
-        upperPriceLimit = upperPriceLimit
+        id = id,
+        totalAdults = totalAdults,
+        totalChildren = totalChildren,
+        totalBabies = totalBabies,
+        classCode = classCode,
+        minimumPrice = minimumPrice,
+        maximumPrice = maximumPrice,
+        date = date,
+        originAirport = originAirport.toDomain(),
+        destinationAirport = destinationAirport.toDomain()
     )
 }
 
@@ -50,29 +52,28 @@ fun AirportCityParam.toRequest(): AirportCityRequest {
 
 fun PriceNotificationParam.toRequest(): PriceNotificationRequest {
     return PriceNotificationRequest(
-        originCity = originCity.toRequest(),
-        destinationCity = destinationCity.toRequest(),
-        departureDate = departureDate,
-        returnDate = returnDate,
-        numOfAdults = numOfAdults,
-        numOfKids = numOfKids,
-        numOfBabies = numOfBabies,
-        clazz = clazz,
-        lowerPriceLimit = lowerPriceLimit,
-        upperPriceLimit = upperPriceLimit
+        totalAdults = totalAdults,
+        totalChildren = totalChildren,
+        totalBabies = totalBabies,
+        classCode = classCode,
+        minimumPrice = minimumPrice,
+        maximumPrice = maximumPrice,
+        date = date,
+        originAirportId = originAirportId,
+        destinationAirportId = destinationAirportId
     )
 }
 
 fun PriceNotification.toFlightParam(): FlightParam {
     return FlightParam(
-        originCity = originCity.name,
-        destinationCity = destinationCity.name,
-        departureDate = departureDate,
-        returnDate = returnDate,
-        numOfAdults = numOfAdults,
-        numOfKids = numOfKids,
-        numOfBabies = numOfBabies,
-        classCode = clazz
+        originCity = originAirport.name,
+        destinationCity = destinationAirport.name,
+        departureDate = date,
+        returnDate = date,
+        numOfAdults = totalAdults,
+        numOfKids = totalBabies,
+        numOfBabies = totalBabies,
+        classCode = classCode
     )
 }
 

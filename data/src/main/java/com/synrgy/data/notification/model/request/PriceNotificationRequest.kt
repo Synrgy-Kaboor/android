@@ -10,15 +10,13 @@ import com.google.gson.annotations.SerializedName
 
 
 data class PriceNotificationRequest(
-    val originCity: AirportCityRequest,
-    val destinationCity: AirportCityRequest,
-    val departureDate: String,
-    val returnDate: String? = null,
-    val numOfAdults: Int? = 0,
-    val numOfKids: Int? = 0,
-    val numOfBabies: Int? = 0,
-    @SerializedName("class")
-    val clazz: String,
-    val lowerPriceLimit: Long? = 0L,
-    val upperPriceLimit: Long? = 0L,
+    val totalAdults: Int? = 0,
+    val totalChildren: Int? = 0,
+    val totalBabies: Int? = 0,
+    val classCode: String? = null,
+    val minimumPrice: Long? = 0L,
+    val maximumPrice: Long? = 0L,
+    val date: String? = null,
+    val originAirportId: Int? = 0,
+    val destinationAirportId: Int? = 0,
 )
