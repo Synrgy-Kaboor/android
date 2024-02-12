@@ -17,8 +17,8 @@ enum class NotificationType(val label: String) {
 
 enum class NotificationDataType(val label: String, @DrawableRes val icon: Int) {
     PAYMENT("approval", R.drawable.ic_notification_payment),
-    DELAY("delay", R.drawable.ic_notification_delay),
-    PRICE("price", R.drawable.ic_notification_price);
+    DELAY("flight", R.drawable.ic_notification_delay),
+    PRICE("price alert", R.drawable.ic_notification_price);
 
     companion object {
         fun fromLabel(label: String): NotificationDataType {

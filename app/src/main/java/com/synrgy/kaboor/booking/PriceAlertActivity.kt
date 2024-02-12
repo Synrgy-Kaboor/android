@@ -17,6 +17,7 @@ import com.synrgy.common.utils.ext.snackbarSuccess
 import com.synrgy.common.utils.ext.timeNow
 import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.common.utils.ext.toDateFormatMonth
+import com.synrgy.common.utils.ext.toEpochMillis
 import com.synrgy.domain.flight.mapper.toData
 import com.synrgy.domain.flight.model.request.FlightParam
 import com.synrgy.domain.notification.model.request.PriceNotificationParam
@@ -26,6 +27,7 @@ import com.synrgy.kaboor.booking.dialog.PassengerBottomSheetFragment
 import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
 import com.synrgy.kaboor.databinding.ActivityPriceAlertBinding
 import com.synrgy.kaboor.notification.NotificationViewModel
+import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import org.koin.android.ext.android.inject
@@ -86,6 +88,7 @@ class PriceAlertActivity : KaboorActivity<ActivityPriceAlertBinding>() {
         tvPassenger.text = getString(comR.string.format_passenger_count, passengerData.count())
         tvClass.text = planeClassType.label
 
+        kaboorSchedule.setDeparture(flightParam?.departureDate?.toEpochMillis() ?: 0L)
         kaboorSchedule.disableRoundTrip()
         rangeFormatSlider()
     }
