@@ -41,6 +41,6 @@ interface UserRepository {
     ): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>>
 
     suspend fun uploadImage(
-        body: ImageProfileRequest
-    ): Flow<Resource<ImageProfileResponse>>
+        body: ImageProfileRequest,
+    ): Flow<Resource<ResponseWrapper<ImageProfileResponse>>>
 }

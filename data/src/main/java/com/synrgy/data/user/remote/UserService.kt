@@ -39,5 +39,5 @@ interface UserService {
     @POST("api/v1/user/image")
     suspend fun uploadImage(
         @Body body: MultipartBody,
-    ): Response<ImageProfileResponse>
+    ): Response<ResponseWrapper<ImageProfileResponse>>
 }
