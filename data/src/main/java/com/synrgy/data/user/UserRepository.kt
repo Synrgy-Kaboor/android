@@ -2,12 +2,14 @@ package com.synrgy.data.user
 
 import com.synrgy.common.data.ResponseWrapper
 import com.synrgy.common.data.response.KaboorResponse
+import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.user.model.request.ImageProfileRequest
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.ImageProfileResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.data.user.model.response.UserDataResponse
+import com.synrgy.data.user.model.response.UserResponse
 import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.Flow
 
@@ -29,6 +31,8 @@ interface UserRepository {
     suspend fun setProfile(data: String)
     fun getProfile(): Flow<String>
     fun getPercentage(): Int
+
+    suspend fun register(body: RegisterRequest): Flow<Resource<ResponseWrapper<UserResponse>>>
 
     suspend fun getPersonalInfo(): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>>
 
