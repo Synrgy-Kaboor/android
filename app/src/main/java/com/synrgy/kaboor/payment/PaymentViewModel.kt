@@ -84,5 +84,20 @@ class PaymentViewModel(
         }
     }
 
-
+    fun downloadTicket(id: Int, type: String){
+        _download.value = Resource.Loading()
+        viewModelScope.launch {
+            if (type == "outbound"){
+                orderUseCase.downloadOutboundTicket(id)
+                    .collectLatest {
+                        _download.value = it
+                    }
+            } else {
+                orderUseCase.downloadReturnTicket(id)
+                    .collectLatest {
+                        _download.value = it
+                    }
+            }
+        }
+    }
 }

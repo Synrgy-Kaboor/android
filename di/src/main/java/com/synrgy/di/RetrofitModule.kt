@@ -2,6 +2,7 @@ package com.synrgy.di
 
 import com.synrgy.data.booking.remote.BookingService
 import com.synrgy.data.flight.remote.FlightService
+import com.synrgy.data.notification.remote.NotificationService
 import com.synrgy.data.order.remote.OrderService
 import com.synrgy.data.promo.remote.PromoService
 import com.synrgy.data.user.remote.UserService
@@ -55,6 +56,13 @@ val retrofitModule = module {
     single {
         ApiService.createService(
             OrderService::class.java,
+            get(), get(named(NODE_BASE_URL))
+        )
+    }
+
+    single {
+        ApiService.createService(
+            NotificationService::class.java,
             get(), get(named(NODE_BASE_URL))
         )
     }

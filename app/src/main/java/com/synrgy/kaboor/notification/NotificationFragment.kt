@@ -19,8 +19,10 @@ import com.synrgy.kaboor.notification.adapter.AllNotificationAdapter
 import com.synrgy.kaboor.notification.adapter.ChipNotificationAdapter
 import com.synrgy.kaboor.notification.adapter.PriceNotificationAdapter
 import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.exts.getCompatDrawable
 import com.wahidabd.library.utils.exts.gone
+import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.visible
 import org.koin.android.ext.android.inject
@@ -30,6 +32,7 @@ import com.synrgy.common.R as comR
 class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
 
     private val sharedViewModel: SharedViewModel by inject()
+    private val viewModel: NotificationViewModel by inject()
 
     private val chipNotificationAdapter by lazy {
         ChipNotificationAdapter(requireContext(), ::initNotificationAdapter)
@@ -65,8 +68,8 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
     override fun initProcess() {
         super.initProcess()
         sharedViewModel.checkLogin()
+        viewModel.getNotification()
 
-        // TODO: Remove this after API ready
         chipNotificationAdapter.setData = NotificationType.entries.map { Selectable(it) }
     }
 
@@ -76,6 +79,19 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
         sharedViewModel.login.observe(viewLifecycleOwner) { state ->
             if (!state) binding.msv.showLoginState { LoginActivity.start(requireContext()) }
         }
+
+        viewModel.notification.observerLiveData(
+            viewLifecycleOwner,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                hideLoading()
+                showToast(message.toString())
+            },
+            onSuccess = {
+                hideLoading()
+                allNotificationAdapter.setData = it
+            }
+        )
     }
 
     private fun initNotificationAdapter(type: NotificationType = NotificationType.ALL) =
@@ -84,7 +100,6 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
                 NotificationType.ALL -> {
                     rvAllNotification.visible()
                     priceContainer.gone()
-                    allNotificationAdapter.setData = ConstantDummy.allNotifications()
                 }
 
                 NotificationType.PRICE -> {

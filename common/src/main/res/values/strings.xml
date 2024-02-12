@@ -82,4 +82,11 @@
     <string name="message_no_internet_connection">Tidak ada koneksi internet</string>
     <string name="format_order_id">ID Pemesanan : %s</string>
     <string name="copy_booking_code">Kode booking berhasil disalin</string>
+    <string name="help_payment_confirmed">Biasanya, pembayaran akan segera diproses setelah Anda menyelesaikan transaksi pembelian tiket pesawat. Proses ini dapat memakan waktu beberapa saat tergantung pada metode pembayaran yang Anda gunakan. Jika pembayaran Anda telah berhasil diproses, Anda akan menerima konfirmasi melalui email atau melalui aplikasi pemesanan kami.</string>
+    <string name="help_how_to_pay">Membayar pesanan tiket pesawat Anda dengan cepat dan mudah adalah prioritas kami. Berikut langkah-langkah singkat untuk melakukan pembayaran:</string>
+    <string name="help_change_phone">ika Anda ingin mengubah nomor handphone yang terdaftar di akun Anda, ikuti langkah-langkah berikut:</string>
+    <string name="help_change_email">Jika Anda perlu mengganti alamat email yang terdaftar di akun Anda, ikuti langkah-langkah berikut:</string>
+    <string name="help_transaction_failed">Jika Anda mengalami masalah dengan transaksi Anda, berikut adalah langkah-langkah yang dapat Anda ikuti untuk mencari solusi:</string>
+    <string name="help_transaction_failed_bottom">Jangan lupa untuk menyertakan detail transaksi yang terkait, seperti nomor pemesanan atau detail pembayaran, saat menghubungi layanan pelanggan kami untuk mempercepat proses bantuan.</string>
+    <string name="help_failed_register">Jika Anda mengalami masalah saat mencoba mendaftar akun, berikut adalah beberapa langkah yang dapat Anda coba untuk menyelesaikan masalah:</string>
 </resources>

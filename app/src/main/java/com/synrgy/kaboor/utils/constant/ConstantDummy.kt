@@ -1,5 +1,6 @@
 package com.synrgy.kaboor.utils.constant
 
+import android.content.Context
 import com.synrgy.common.R
 import com.synrgy.common.utils.Selectable
 import com.synrgy.domain.flight.model.response.OrderFlight
@@ -73,23 +74,6 @@ object ConstantDummy {
             )
         )
 
-    fun allNotifications(): List<Notification> =
-        listOf(
-            Notification(
-                1,
-                "Pembayaran Berhasil",
-                "Tiket pesawat Lion Air Anda sudah dikonfirmasi untuk penerbangan ke Jakarta (CGK) pada tanggal 20 Des2024. Siapkan perjalanan Anda dengan semangat! \uD83C\uDF1F",
-                "20 Des",
-                R.drawable.ic_plane
-            ),
-            Notification(
-                2,
-                "Pesawat Delay",
-                "Tiket pesawat Lion Air Anda sudah dikonfirmasi untuk penerbangan ke Jakarta (CGK) pada tanggal 20 Des2024. Siapkan perjalanan Anda dengan semangat! \uD83C\uDF1F",
-                "20 Des",
-                R.drawable.ic_plane
-            )
-        )
 
     fun passport(): List<Passport> =
         listOf(
@@ -102,31 +86,37 @@ object ConstantDummy {
             ),
         )
 
-    fun helpCenters(): List<HelpCenter> =
+    fun helpCenters(context: Context): List<HelpCenter> =
         listOf(
             HelpCenter(
                 "Apakah Pembayaran Sudah Diterima",
-                "Lorem ipsum"
+                context.getString(R.string.help_payment_confirmed)
             ),
             HelpCenter(
                 "Cara Membayar Pesanan Saya",
-                "Lorem ipsum"
+                context.getString(R.string.help_how_to_pay),
+                R.array.how_to_pay
             ),
             HelpCenter(
                 "Cara Mengubah Nomor Handphone?",
-                "Lorem ipsum"
+                context.getString(R.string.help_change_phone),
+                R.array.change_phone
             ),
             HelpCenter(
                 "Cara Mengubah Email",
-                "Lorem ipsum"
+                context.getString(R.string.help_change_email),
+                R.array.change_email
             ),
             HelpCenter(
                 "Transaksi Saya Tidak Berhasil",
-                "Lorem ipsum"
+                context.getString(R.string.help_transaction_failed),
+                R.array.failed_transaction,
+                context.getString(R.string.help_transaction_failed_bottom)
             ),
             HelpCenter(
                 "Pendaftaran Akun Gagal?",
-                "Lorem ipsum"
+                context.getString(R.string.help_failed_register),
+                R.array.failed_register
             ),
         )
 

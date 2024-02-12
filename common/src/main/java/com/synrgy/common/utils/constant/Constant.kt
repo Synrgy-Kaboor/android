@@ -1,5 +1,7 @@
 package com.synrgy.common.utils.constant
 
+import android.content.Context
+
 
 /**
  * Created by wahid on 1/12/2024.
@@ -13,4 +15,5 @@ object Constant {
     const val TIMER_INTERVAL = 1000L
     const val INSURANCE_PRICE = 65000L
     const val regexAlphanumeric = "^[a-zA-Z0-9]{7,}\$"
+
 }

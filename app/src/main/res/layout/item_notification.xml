@@ -20,10 +20,7 @@
             android:layout_height="@dimen/dimen_32dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:background="@drawable/bg_oval_secondary"
-            android:padding="@dimen/dimen_8dp"
-            app:tint="@color/neutral1"
-            tools:srcCompat="@drawable/ic_plane" />
+            tools:srcCompat="@drawable/ic_notification_payment" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_title"

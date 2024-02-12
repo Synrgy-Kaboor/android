@@ -27,6 +27,8 @@
         android:theme="@style/Theme.Kaboor"
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
+        <activity android:name=".payment.PaymentStatusActivity"
+            android:exported="false"/>
         <activity
             android:name=".account.passport.AddPassportActivity"
             android:exported="false" />
