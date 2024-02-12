@@ -42,8 +42,8 @@ class NotificationDetailActivity : KaboorActivity<ActivityNotificationDetailBind
         rvTicket.adapter = flightAdapter
 
         with(item) {
-            tvOrigin.text = notification?.originAirport?.name
-            tvDestination.text = notification?.destinationAirport?.name
+            tvOrigin.text = notification?.originAirport?.code
+            tvDestination.text = notification?.destinationAirport?.code
             tvDate.text = notification?.date
             tvPassenger.text = getString(R.string.format_people, notification?.countPassenger())
             tvSeat.text = notification?.classCode
