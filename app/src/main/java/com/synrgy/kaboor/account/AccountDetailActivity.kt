@@ -24,6 +24,8 @@ import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.snackbarDanger
 import com.synrgy.common.utils.ext.toDateFormat
+import com.synrgy.common.utils.ext.toDateFormatMonth
+import com.synrgy.common.utils.ext.toStringTrim
 import com.synrgy.domain.user.model.request.ImageProfileParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.kaboor.R
@@ -65,7 +67,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         initDataUser()
 
         titleList = ArrayList(
-            listOf("Mr", "Mrs", "Miss")
+            listOf("Mr.", "Mrs.", "Miss.")
         )
         genderList = ArrayList(
             listOf("Laki-laki", "Perempuan")
@@ -197,7 +199,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
             title = selectedTitle,
             fullName = etFullname.getText(),
             gender = selectedGender,
-            birthday = tvDateOfBirth.text.toString(),
+            birthday = tvDateOfBirth.toStringTrim(),
             nik = etNik.getText(),
             nation = etCountry.getText(),
             city = etCity.getText(),
@@ -220,8 +222,8 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
             onSuccess = {
                 hideLoading()
 
-                val selectedItemTitle = titleList?.indexOf(it.title.toString())
-                val selectedItemGender = genderList?.indexOf(it.gender.toString())
+                val selectedItemTitle = titleList?.indexOf(it.title.orEmpty())
+                val selectedItemGender = genderList?.indexOf(it.gender.orEmpty())
                 if (selectedItemTitle != -1) {
                     if (selectedItemTitle != null) {
                         spinnerTitle.setSelection(selectedItemTitle)
@@ -237,13 +239,13 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                 } else {
                     etCitizenship.setText(getString(R.string.message_wna))
                 }
-                etFullname.setText(it.fullName.toString())
-                tvDateOfBirth.text = it.birthday.toString()
-                etNik.setText(it.nik.toString())
-                etCountry.setText(it.nation.toString())
-                etCity.setText(it.city.toString())
-                etFullAddress.setText(it.address.toString())
-                imageName = it.imageName.toString()
+                etFullname.setText(it.fullName.orEmpty())
+                tvDateOfBirth.text = it.birthday.orEmpty()
+                etNik.setText(it.nik.orEmpty())
+                etCountry.setText(it.nation.orEmpty())
+                etCity.setText(it.city.orEmpty())
+                etFullAddress.setText(it.address.orEmpty())
+                imageName = it.imageName.orEmpty()
 
                 viewModel.saveUserInfo(it)
             }
@@ -272,7 +274,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
 
     private fun showDatePicker() = with(binding) {
         showDatePicker { date ->
-            tvDateOfBirth.text = date.toDateFormat()
+            tvDateOfBirth.text = date.toDateFormatMonth()
         }
     }
 
