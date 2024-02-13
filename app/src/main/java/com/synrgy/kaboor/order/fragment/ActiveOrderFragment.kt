@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.common.utils.enums.OrderType
+import com.synrgy.common.utils.enums.PaymentType
 import com.synrgy.kaboor.databinding.FragmentActiveOrderBinding
 import com.synrgy.kaboor.order.DetailHistoryActivity
 import com.synrgy.kaboor.order.OrderViewModel
@@ -59,10 +60,15 @@ class ActiveOrderFragment : KaboorFragment<FragmentActiveOrderBinding>() {
         )
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getActive()
+    }
+
     private fun handleOrderClick(data: Pair<Int, String>, type: OrderType) {
         when(type){
-            OrderType.PROCESS -> PaymentMethodDetailActivity.start(requireContext(), data.first)
-            OrderType.NOT_COMPLETED -> PaymentMethodDetailActivity.start(requireContext(), data.first)
+            OrderType.PROCESS -> PaymentMethodDetailActivity.start(requireContext(), data.first, PaymentType.ORDER, true)
+            OrderType.NOT_COMPLETED -> PaymentMethodDetailActivity.start(requireContext(), data.first, PaymentType.ORDER)
             OrderType.E_TICKET -> DetailHistoryActivity.start(requireContext(), data)
             OrderType.COMPLETED -> DetailHistoryActivity.start(requireContext(), data)
         }

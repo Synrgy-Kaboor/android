@@ -24,7 +24,7 @@ import retrofit2.http.Path
 interface NotificationService {
 
     @GET("/api/v1/user/notification/price")
-    suspend fun getPriceNotification(): Response<ResponseWrapper<PriceNotificationResponse>>
+    suspend fun getPriceNotification(): Response<ListWrapper<PriceNotificationResponse>>
 
     @POST("/api/v1/user/notification/price")
     suspend fun createPriceNotification(

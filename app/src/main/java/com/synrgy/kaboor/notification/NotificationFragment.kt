@@ -7,6 +7,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.common.utils.Selectable
 import com.synrgy.common.utils.enums.NotificationType
+import com.synrgy.common.utils.enums.PriceAlertType
 import com.synrgy.common.utils.ext.showLoginState
 import com.synrgy.domain.notification.mapper.toFlightParam
 import com.synrgy.domain.notification.model.response.PriceNotification
@@ -18,7 +19,6 @@ import com.synrgy.kaboor.home.SharedViewModel
 import com.synrgy.kaboor.notification.adapter.AllNotificationAdapter
 import com.synrgy.kaboor.notification.adapter.ChipNotificationAdapter
 import com.synrgy.kaboor.notification.adapter.PriceNotificationAdapter
-import com.synrgy.kaboor.utils.constant.ConstantDummy
 import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.exts.getCompatDrawable
 import com.wahidabd.library.utils.exts.gone
@@ -46,14 +46,12 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
         PriceNotificationAdapter(requireContext(), ::showPopUpDialog, ::handleNavigation)
     }
 
-    private val roundTripAdapter by lazy {
-        PriceNotificationAdapter(requireContext(), ::showPopUpDialog, ::handleNavigation)
-    }
+    private lateinit var priceNotif: List<PriceNotification>
 
     override fun getViewBinding(
         layoutInflater: LayoutInflater,
         container: ViewGroup?,
-        attachRoot: Boolean
+        attachRoot: Boolean,
     ): FragmentNotificationBinding =
         FragmentNotificationBinding.inflate(layoutInflater, container, attachRoot)
 
@@ -69,6 +67,7 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
         super.initProcess()
         sharedViewModel.checkLogin()
         viewModel.getNotification()
+        viewModel.getPriceNotification()
 
         chipNotificationAdapter.setData = NotificationType.entries.map { Selectable(it) }
     }
@@ -92,6 +91,20 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
                 allNotificationAdapter.setData = it
             }
         )
+
+        viewModel.priceNotification.observerLiveData(
+            viewLifecycleOwner,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                hideLoading()
+                showToast(message.toString())
+            },
+            onSuccess = {
+                hideLoading()
+                priceNotif = it
+                oneWayAdapter.setData = it
+            }
+        )
     }
 
     private fun initNotificationAdapter(type: NotificationType = NotificationType.ALL) =
@@ -106,8 +119,7 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
                     rvAllNotification.gone()
                     priceContainer.visible()
 
-                    oneWayAdapter.setData = ConstantDummy.priceNotifications()
-                    roundTripAdapter.setData = ConstantDummy.priceNotifications()
+                    oneWayAdapter.setData = priceNotif
                 }
             }
         }
@@ -120,7 +132,6 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
 
         rvAllNotification.adapter = allNotificationAdapter
         rvOneWay.adapter = oneWayAdapter
-        rvRoundTrip.adapter = roundTripAdapter
     }
 
     private fun handleNavigation(data: PriceNotification) {
@@ -136,11 +147,18 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
 
         dialogBinding.edit.onClick {
             PriceAlertActivity.start(
-                requireContext(),
-                data.toFlightParam()
+                context = requireContext(),
+                flightParam = data.toFlightParam(),
+                type = PriceAlertType.EDIT,
+                notificationId = data.id
             )
+            dialog.dismiss()
         }
-        dialogBinding.remove.onClick { }
+        dialogBinding.remove.onClick {
+            viewModel.deletePriceNotification(data.id ?: 0)
+            viewModel.getPriceNotification()
+            dialog.dismiss()
+        }
         dialog.show()
     }
 }

@@ -80,6 +80,10 @@ class KaboorScheduleCard @JvmOverloads constructor(
 
     fun getRoundTrip(): Boolean = isRoundTrip
 
+    fun disableRoundTrip() {
+        binding.btnSwitch.gone()
+    }
+
     fun getComingHome(): Long {
         return if (isRoundTrip) comingHome else 0
     }

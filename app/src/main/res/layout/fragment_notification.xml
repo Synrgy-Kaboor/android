@@ -47,14 +47,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/dimen_16dp"
-                    android:text="@string/label_one_way"
-                    android:layout_marginTop="@dimen/dimen_4dp"
-                    style="@style/KaboorTextView.Title3" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_one_way"
                     android:layout_width="match_parent"
@@ -63,25 +55,6 @@
                     tools:itemCount="1"
                     android:paddingHorizontal="@dimen/dimen_12dp"
                     android:layout_marginTop="@dimen/dimen_8dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:clipToPadding="false"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/dimen_16dp"
-                    android:text="@string/label_round_trip"
-                    android:layout_marginTop="@dimen/dimen_14dp"
-                    style="@style/KaboorTextView.Title3" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_round_trip"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_8dp"
-                    android:paddingHorizontal="@dimen/dimen_12dp"
-                    tools:listitem="@layout/item_notification_price"
-                    tools:itemCount="1"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:clipToPadding="false"/>
             </androidx.appcompat.widget.LinearLayoutCompat>

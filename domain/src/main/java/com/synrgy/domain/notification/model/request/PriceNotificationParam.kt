@@ -1,7 +1,5 @@
 package com.synrgy.domain.notification.model.request
 
-import com.google.gson.annotations.SerializedName
-
 
 /**
  * Created by wahid on 1/29/2024.
@@ -13,7 +11,6 @@ data class PriceNotificationParam(
     val totalAdults: Int? = 0,
     val totalChildren: Int? = 0,
     val totalBabies: Int? = 0,
-    @SerializedName("class")
     val classCode: String? = null,
     val minimumPrice: Long? = 0L,
     val maximumPrice: Long? = 0L,

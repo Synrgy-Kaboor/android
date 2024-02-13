@@ -26,14 +26,14 @@ class NotificationDataStore(
     private val error: ErrorParser
 ) : NotificationRepository {
 
-    override suspend fun getPriceNotification(): Flow<Resource<ResponseWrapper<PriceNotificationResponse>>> =
+    override suspend fun getPriceNotification(): Flow<Resource<ListWrapper<PriceNotificationResponse>>> =
         flow {
             enqueue(
                 error::convertGenericError,
                 api::getPriceNotification,
                 onEmit = { data -> emit(data) }
             )
-        }
+        }.flowDispatcherIO()
 
     override suspend fun createPriceNotification(
         body: PriceNotificationRequest
