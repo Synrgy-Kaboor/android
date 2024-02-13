@@ -68,7 +68,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
             listOf("Mr", "Mrs", "Miss")
         )
         genderList = ArrayList(
-            listOf("L", "P")
+            listOf("Laki-laki", "Perempuan")
         )
         spinnerTitle.item = titleList as List<String>
         spinnerGender.item = genderList as List<String>
