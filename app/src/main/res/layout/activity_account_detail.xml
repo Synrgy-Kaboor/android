@@ -200,10 +200,11 @@
                     android:id="@+id/et_full_address"
                     style="@style/KaboorEdittext"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_96dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/bg_rectangle_search"
                     android:hint="@string/hint_full_address"
-                    android:maxLines="3" />
+                    android:maxLines="3"
+                    android:gravity="start|top"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.synrgy.common.reusable.KaboorEditText

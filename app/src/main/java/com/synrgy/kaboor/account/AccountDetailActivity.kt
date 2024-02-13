@@ -222,8 +222,8 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
             onSuccess = {
                 hideLoading()
 
-                val selectedItemTitle = titleList?.indexOf(it.title.toString())
-                val selectedItemGender = genderList?.indexOf(it.gender.toString())
+                val selectedItemTitle = titleList?.indexOf(it.title.orEmpty())
+                val selectedItemGender = genderList?.indexOf(it.gender.orEmpty())
                 if (selectedItemTitle != -1) {
                     if (selectedItemTitle != null) {
                         spinnerTitle.setSelection(selectedItemTitle)
@@ -239,13 +239,13 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
                 } else {
                     etCitizenship.setText(getString(R.string.message_wna))
                 }
-                etFullname.setText(it.fullName.toString())
-                tvDateOfBirth.text = it.birthday.toString()
-                etNik.setText(it.nik.toString())
-                etCountry.setText(it.nation.toString())
-                etCity.setText(it.city.toString())
-                etFullAddress.setText(it.address.toString())
-                imageName = it.imageName.toString()
+                etFullname.setText(it.fullName.orEmpty())
+                tvDateOfBirth.text = it.birthday.orEmpty()
+                etNik.setText(it.nik.orEmpty())
+                etCountry.setText(it.nation.orEmpty())
+                etCity.setText(it.city.orEmpty())
+                etFullAddress.setText(it.address.orEmpty())
+                imageName = it.imageName.orEmpty()
 
                 viewModel.saveUserInfo(it)
             }
