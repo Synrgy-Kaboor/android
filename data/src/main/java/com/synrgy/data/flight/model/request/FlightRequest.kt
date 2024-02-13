@@ -16,6 +16,8 @@ data class FlightRequest(
     val numOfBabies: Int? = 0,
     val numOfAdults: Int? = 0,
     val classCode: String,
+    val minimumPrice: Long? = 0,
+    val maximumPrice: Long? = 0,
     val isReturn: Boolean = false
 ){
     fun toMap(): Map<String, String> {
