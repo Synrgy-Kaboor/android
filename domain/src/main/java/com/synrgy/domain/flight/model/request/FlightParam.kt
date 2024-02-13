@@ -22,6 +22,8 @@ data class FlightParam(
     val classCode: String,
     val departureData: AirportData? = null,
     val arrivalData: AirportData? = null,
+    val minimumPrice: Long? = 0,
+    val maximumPrice: Long? = 0,
     val isReturn: Boolean = false
 ) : Parcelable {
     fun countPassenger(): Int {

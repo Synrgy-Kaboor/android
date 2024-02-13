@@ -8,13 +8,11 @@ import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.common.utils.ext.openPDFContent
 import com.synrgy.common.utils.ext.toCurrency
 import com.synrgy.common.utils.ext.toDayMonthFormat
-import com.synrgy.common.utils.ext.toFullDateFormat
 import com.synrgy.common.utils.ext.toHourMinuteFormat
 import com.synrgy.common.utils.ext.toTimeZoneFormat
 import com.synrgy.domain.booking.model.response.BookingStatus
 import com.synrgy.kaboor.base.MainActivity
 import com.synrgy.kaboor.databinding.ActivityPaymentStatusBinding
-import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import org.koin.android.ext.android.inject
@@ -24,7 +22,7 @@ class PaymentStatusActivity : KaboorActivity<ActivityPaymentStatusBinding>() {
     companion object {
         fun start(
             context: Context,
-            data: Pair<Int, String>
+            data: Pair<Int, String>,
         ) {
             context.startActivity(Intent(context, PaymentStatusActivity::class.java).apply {
                 putExtra(ConstantKey.KEY_BOOKING_ID, data.first)
@@ -36,13 +34,11 @@ class PaymentStatusActivity : KaboorActivity<ActivityPaymentStatusBinding>() {
     private val viewModel: PaymentViewModel by inject()
 
     private var id = 0
-    private var type = emptyString()
 
     override fun initIntent() {
         super.initIntent()
 
         id = intent.getIntExtra(ConstantKey.KEY_BOOKING_ID, 0)
-        type = intent.getStringExtra(ConstantKey.KEY_TYPE).orEmpty()
     }
 
     override fun getViewBinding(): ActivityPaymentStatusBinding {
@@ -98,7 +94,7 @@ class PaymentStatusActivity : KaboorActivity<ActivityPaymentStatusBinding>() {
         this.startActivity(Intent.createChooser(intent, "Open PDF"))
     }
 
-    private fun setupView(data: BookingStatus) = with(binding){
+    private fun setupView(data: BookingStatus) = with(binding) {
         tvBookingCode.text = data.invoiceNumber
         tvPayment.text = data.methodName
         tvDate.text = data.expiredTime?.toTimeZoneFormat()?.toDayMonthFormat()

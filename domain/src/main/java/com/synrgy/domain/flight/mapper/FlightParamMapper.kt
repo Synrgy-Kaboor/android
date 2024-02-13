@@ -20,6 +20,8 @@ fun FlightParam.toRequest(): FlightRequest {
         numOfBabies = this.numOfBabies,
         numOfAdults = this.numOfAdults,
         classCode = this.classCode,
+        minimumPrice = this.minimumPrice,
+        maximumPrice = this.maximumPrice,
         isReturn = isReturn
     )
 }
