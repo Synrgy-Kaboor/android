@@ -2,6 +2,7 @@ package com.synrgy.kaboor.authentication.register
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.constant.Constant
 import com.synrgy.common.utils.enums.OtpType
@@ -11,7 +12,6 @@ import com.synrgy.common.utils.ext.setClearPaddingTextInput
 import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.AuthViewModel
-import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.authentication.otp.OtpActivity
 import com.synrgy.kaboor.databinding.ActivityDetailRegisterBinding
 import com.wahidabd.library.utils.common.emptyString
@@ -46,13 +46,16 @@ class RegisterDetailActivity : KaboorPassiveActivity<ActivityDetailRegisterBindi
         email = intent.getStringExtra(EXTRA_EMAIL)
     }
 
-    override fun initUI() = with(binding){
+    override fun initUI() = with(binding) {
         etEmail.setText(email ?: emptyString())
     }
 
     override fun initAction() = with(binding) {
         appbar.setOnBackClickListener { onBackPress() }
-        btnCreateAccount.onClick { validate() }
+        btnCreateAccount.onClick {
+            validatePassword()
+            validate()
+        }
     }
 
 
@@ -124,4 +127,16 @@ class RegisterDetailActivity : KaboorPassiveActivity<ActivityDetailRegisterBindi
         )
     }
 
+    private fun validatePassword() = with(binding) {
+        val password = etPassword.getText()
+
+        if (password.length < 7) {
+            tvRulePassword.setTextColor(
+                ContextCompat.getColor(
+                    this@RegisterDetailActivity,
+                    com.wahidabd.library.R.color.colorRed
+                )
+            )
+        }
+    }
 }

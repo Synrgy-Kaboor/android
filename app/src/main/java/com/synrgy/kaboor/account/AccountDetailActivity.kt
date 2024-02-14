@@ -23,7 +23,6 @@ import com.synrgy.common.utils.ext.replaceSpace
 import com.synrgy.common.utils.ext.requestMultiplePermission
 import com.synrgy.common.utils.ext.showDatePicker
 import com.synrgy.common.utils.ext.snackbarDanger
-import com.synrgy.common.utils.ext.toDateFormat
 import com.synrgy.common.utils.ext.toDateFormatMonth
 import com.synrgy.common.utils.ext.toStringTrim
 import com.synrgy.domain.user.model.request.ImageProfileParam
@@ -67,7 +66,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         initDataUser()
 
         titleList = ArrayList(
-            listOf("Mr.", "Mrs.", "Miss.")
+            listOf("Mr", "Mrs", "Miss")
         )
         genderList = ArrayList(
             listOf("Laki-laki", "Perempuan")
@@ -173,7 +172,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         addValidation(
             Validation(
                 tilFullAddress, listOf(
-                    notEmptyRule(getString(R.string.error_empty_city))
+                    notEmptyRule(getString(R.string.error_empty_address))
                 )
             )
         )
