@@ -17,13 +17,13 @@ import org.koin.android.ext.android.inject
 
 class ChangePhoneNumberActivity : KaboorPassiveActivity<ActivityChangePhoneNumberBinding>() {
 
-    private val viewModel: ChangePhoneViewModel by inject()
-
     companion object {
         fun start(context: Context) {
             context.startActivity(Intent(context, ChangePhoneNumberActivity::class.java))
         }
     }
+
+    private val viewModel: ChangeViewModel by inject()
 
     override fun getViewBinding(): ActivityChangePhoneNumberBinding =
         ActivityChangePhoneNumberBinding.inflate(layoutInflater)
@@ -45,26 +45,29 @@ class ChangePhoneNumberActivity : KaboorPassiveActivity<ActivityChangePhoneNumbe
 
     override fun initObservers() {
         super.initObservers()
-//        viewModel.generic.observerLiveData(
-////            this,
-////            onLoading = { showLoading() },
-////            onFailure = { _, message -> showErrorDialog(message.toString()) },
-////            onSuccess = { navigateToOtpActivity() }
-////        )
+        viewModel.generic.observerLiveData(
+            this,
+            onLoading = { showLoading() },
+            onFailure = { _, message -> showErrorDialog(message.toString()) },
+            onSuccess = {
+                hideLoading()
+                viewModel.getUser()
+            }
+        )
 
+        viewModel.userData.observe(this ){
+            val user = it.copy(phoneNumber = binding.etPhone.getText())
+            viewModel.saveUserInfo(user)
+            OtpActivity.start(this, OtpType.CHANGE_PHONE)
+        }
     }
 
-    private fun navigateToOtpActivity() {
-        hideLoading()
-        OtpActivity.start(this, OtpType.FORGOT_PASSWORD, binding.etPhone.getText())
-    }
 
-    override fun initUI() {
-
-    }
+    override fun initUI() {}
 
     override fun onValidationSuccess() {
         val body = PhoneParam(binding.etPhone.getText())
+        viewModel.changePhone(body)
     }
 
 

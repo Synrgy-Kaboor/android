@@ -96,9 +96,11 @@ class KaboorDataStore(context: Context) {
         }.first()
     }
 
-    fun getLoginInfo(): Boolean? = runBlocking {
+    fun getLoginInfo(): Boolean = runBlocking {
         dataStore.data.map { preferences ->
-            preferences[LOGIN]
+            val time = preferences[LOGIN_TIME] ?: 0L
+            val login = preferences[LOGIN] ?: false
+            login && (time + oneDayMillis) > timeNow
         }.first()
     }
 

@@ -9,5 +9,6 @@ package com.synrgy.data.auth.model.request
 
 data class NewPasswordRequest(
     val email: String,
-    val newPassword: String
+    val password: String,
+    val rePassword: String
 )

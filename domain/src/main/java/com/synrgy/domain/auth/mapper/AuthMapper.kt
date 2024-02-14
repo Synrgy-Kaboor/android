@@ -74,7 +74,8 @@ fun LoginParam.toRequest(): LoginRequest {
 fun NewPasswordParam.toRequest(): NewPasswordRequest{
     return NewPasswordRequest(
         email = email,
-        newPassword = newPassword
+        password = password,
+        rePassword = rePassword
     )
 }
 
@@ -86,13 +87,14 @@ fun EmailParam.toRequest(): EmailRequest {
 
 fun OtpParam.toRequest(): OtpRequest {
     return OtpRequest(
+        email = email,
         otp = otp
     )
 }
 
 fun PhoneParam.toRequest(): PhoneRequest {
     return PhoneRequest(
-        phoneNumber = number
+        noHp = noHp
     )
 }
 

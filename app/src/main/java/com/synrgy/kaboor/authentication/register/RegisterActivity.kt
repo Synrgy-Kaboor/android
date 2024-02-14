@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.ext.onBackPress
-import com.synrgy.common.utils.ext.removeErrorTextPadding
 import com.synrgy.domain.auth.model.request.EmailParam
 import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.AuthViewModel
@@ -38,7 +37,7 @@ class RegisterActivity : KaboorPassiveActivity<ActivityRegisterBinding>() {
     }
 
     override fun initObservers() {
-        viewModel.checkEmail.observerLiveData(
+        viewModel.generic.observerLiveData(
             this,
             onLoading = { showLoading() },
             onFailure = { _, message ->

@@ -31,7 +31,7 @@
                 app:civ_border_color="@color/neutral5"
                 app:civ_border_width="@dimen/dimen_1dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/img_logo" />
+                android:src="@drawable/img_logo" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_user_name"

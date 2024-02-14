@@ -43,7 +43,7 @@ class LoginActivity : KaboorPassiveActivity<ActivityLoginBinding>() {
     override fun initObservers() {
         super.initObservers()
 
-        viewModel.checkEmail.observerLiveData(
+        viewModel.generic.observerLiveData(
             this,
             onLoading = { showLoading() },
             onFailure = { _, message ->

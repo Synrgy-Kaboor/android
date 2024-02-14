@@ -32,8 +32,6 @@ interface UserRepository {
     fun getProfile(): Flow<String>
     fun getPercentage(): Int
 
-    suspend fun register(body: RegisterRequest): Flow<Resource<ResponseWrapper<UserResponse>>>
-
     suspend fun getPersonalInfo(): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>>
 
     suspend fun updatePersonalInfo(

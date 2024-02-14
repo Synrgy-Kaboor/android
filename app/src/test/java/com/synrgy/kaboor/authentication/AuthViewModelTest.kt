@@ -61,7 +61,7 @@ class AuthViewModelTest {
         `when`(authUseCase.checkEmail(request)).thenReturn(flowOf(DummyDataTest.flowGenericSuccess()))
         viewModel.checkEmail(request)
 
-        Assert.assertEquals(expectedResponse.value, viewModel.checkEmail.value)
+        Assert.assertEquals(expectedResponse.value, viewModel.generic.value)
     }
 
     @Test
@@ -72,7 +72,7 @@ class AuthViewModelTest {
         `when`(authUseCase.checkEmail(request)).thenReturn(flowOf(DummyDataTest.flowGenericError()))
         viewModel.checkEmail(request)
 
-        Assert.assertNotEquals(expectedResponse.value, viewModel.checkEmail.value)
+        Assert.assertNotEquals(expectedResponse.value, viewModel.generic.value)
     }
 
     @Test

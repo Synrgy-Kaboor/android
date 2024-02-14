@@ -69,19 +69,6 @@ class UserInteractor(private val repository: UserRepository) : UserUseCase {
         return repository.getPercentage()
     }
 
-    override suspend fun register(body: RegisterParam): Flow<Resource<User>> {
-        return object : InternetBoundResource<User, ResponseWrapper<UserResponse>>() {
-            override suspend fun createCall(): Flow<Resource<ResponseWrapper<UserResponse>>> {
-                return repository.register(body.toRequest())
-            }
-
-            override suspend fun saveCallRequest(data: ResponseWrapper<UserResponse>): User {
-                return data.data.toDomain()
-            }
-
-        }.asFlow()
-    }
-
     override suspend fun getPersonalInfo(): Flow<Resource<User>> {
         return object :
             InternetBoundResource<User, ResponseWrapper<PersonalInfoResponse>>() {

@@ -2,6 +2,7 @@ package com.synrgy.kaboor.utils.di
 
 import com.synrgy.kaboor.account.AccountViewModel
 import com.synrgy.kaboor.authentication.AuthViewModel
+import com.synrgy.kaboor.authentication.change.ChangeViewModel
 import com.synrgy.kaboor.authentication.forgot.ForgotPasswordViewModel
 import com.synrgy.kaboor.authentication.otp.OtpViewModel
 import com.synrgy.kaboor.booking.viewmodel.FlightViewModel
@@ -34,4 +35,5 @@ val viewModelModule = module {
     viewModel { AccountViewModel(get()) }
     viewModel { OrderViewModel(get()) }
     viewModel { NotificationViewModel(get()) }
+    viewModel { ChangeViewModel(get(), get()) }
 }

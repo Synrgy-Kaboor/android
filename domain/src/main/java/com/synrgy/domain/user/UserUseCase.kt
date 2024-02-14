@@ -29,8 +29,6 @@ interface UserUseCase {
     fun getProfile(): Flow<String>
     fun getPercentage(): Int
 
-    suspend fun register(body: RegisterParam): Flow<Resource<User>>
-
     suspend fun getPersonalInfo(): Flow<Resource<User>>
 
     suspend fun updatePersonalInfo(

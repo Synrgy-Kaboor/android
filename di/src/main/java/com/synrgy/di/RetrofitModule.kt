@@ -1,11 +1,6 @@
 package com.synrgy.di
 
-import com.synrgy.data.booking.remote.BookingService
-import com.synrgy.data.flight.remote.FlightService
-import com.synrgy.data.notification.remote.NotificationService
-import com.synrgy.data.order.remote.OrderService
-import com.synrgy.data.promo.remote.PromoService
-import com.synrgy.data.user.remote.UserService
+import com.synrgy.data.auth.remote.LoginService
 import com.wahidabd.library.data.libs.ApiService
 import com.wahidabd.library.utils.coroutine.handler.ErrorParser
 import org.koin.core.qualifier.named
@@ -21,49 +16,14 @@ import org.koin.dsl.module
 val retrofitModule = module {
     single {
         ApiService.createService(
+            get(), get(named(NODE_BASE_URL))
+        )
+    }
+
+    single {
+        ApiService.createService(
+            LoginService::class.java,
             get(), get(named(BASE_URL))
-        )
-    }
-
-    single {
-        ApiService.createService(
-            BookingService::class.java,
-            get(), get(named(NODE_BASE_URL))
-        )
-    }
-
-    single {
-        ApiService.createService(
-            FlightService::class.java,
-            get(), get(named(NODE_BASE_URL))
-        )
-    }
-
-    single {
-        ApiService.createService(
-            UserService::class.java,
-            get(), get(named(NODE_BASE_URL))
-        )
-    }
-
-    single {
-        ApiService.createService(
-            PromoService::class.java,
-            get(), get(named(NODE_BASE_URL))
-        )
-    }
-
-    single {
-        ApiService.createService(
-            OrderService::class.java,
-            get(), get(named(NODE_BASE_URL))
-        )
-    }
-
-    single {
-        ApiService.createService(
-            NotificationService::class.java,
-            get(), get(named(NODE_BASE_URL))
         )
     }
 

@@ -17,6 +17,6 @@ import retrofit2.Retrofit
 
 val authModule = module {
     single { get<Retrofit>().create(AuthService::class.java) }
-    single<AuthRepository> { AuthDataStore(get(), get()) }
+    single<AuthRepository> { AuthDataStore(get(), get(), get()) }
     single<AuthUseCase> { AuthInteractor(get()) }
 }

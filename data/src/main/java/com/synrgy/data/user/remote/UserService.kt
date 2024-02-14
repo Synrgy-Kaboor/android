@@ -23,11 +23,6 @@ import retrofit2.http.POST
 
 interface UserService {
 
-    @POST("/api/v1/auth/register/user")
-    suspend fun register(
-        @Body body: RegisterRequest
-    ): Response<ResponseWrapper<UserResponse>>
-
     @GET("/api/v1/user")
     suspend fun getPersonalInfo(): Response<ResponseWrapper<PersonalInfoResponse>>
 

@@ -68,17 +68,6 @@ class UserDataStore(
         return dataStore.getPercentageProfile()
     }
 
-    override suspend fun register(body: RegisterRequest): Flow<Resource<ResponseWrapper<UserResponse>>> {
-        return flow {
-            enqueue(
-                body,
-                error::convertGenericError,
-                api::register,
-                onEmit = { data -> emit(data) }
-            )
-        }.flowDispatcherIO()
-    }
-
     override suspend fun getPersonalInfo(): Flow<Resource<ResponseWrapper<PersonalInfoResponse>>> =
         flow {
             enqueue(

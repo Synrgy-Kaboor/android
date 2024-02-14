@@ -33,37 +33,33 @@ class OtpViewModel(
     val generic: LiveData<Resource<KaboorResponse>> get() = _generic
 
 
-    fun verifyOtp(body: OtpParam, type: OtpType?) {
+    fun verifyOtp(body: OtpParam, type: OtpType) {
+        _generic.value = Resource.loading()
         viewModelScope.launch {
             when (type) {
-                OtpType.REGISTER -> auth.verifiedOTP(body).collectLatest { _user.value = it }
+                OtpType.REGISTER -> auth.verifiedOTP(body).collectLatest { _generic.value = it }
                 OtpType.FORGOT_PASSWORD -> auth.verifyOtpResetPassword(body)
                     .collectLatest { _generic.value = it }
-                else -> _generic.value = Resource.fail("Unknown Error")
+
+                OtpType.CHANGE_EMAIL -> auth.verifyOtpChangeEmail(body)
+                    .collectLatest { _generic.value = it }
+
+                OtpType.CHANGE_PHONE -> auth.verifyOtpChangePhone(body)
+                    .collectLatest { _generic.value = it }
             }
         }
     }
 
-    fun resendOtp(body: EmailParam) {
-        viewModelScope.launch {
-            auth.resendOTP(body)
-                .collectLatest { _generic.value = it }
-        }
-    }
-
-    fun changeEmail(body: EmailParam) {
+    fun resendOtp(body: EmailParam? = null, type: OtpType) {
         _generic.value = Resource.loading()
         viewModelScope.launch {
-            auth.changeEmail(body)
-                .collectLatest { _generic.value = it }
-        }
-    }
-
-    fun changeNumber(body: PhoneParam) {
-        _generic.value = Resource.loading()
-        viewModelScope.launch {
-            auth.changePhone(body)
-                .collectLatest { _generic.value = it }
+            when (type) {
+                OtpType.REGISTER -> auth.resendOTP(body!!).collectLatest { _generic.value = it }
+                OtpType.FORGOT_PASSWORD -> auth.resendOtpPassword(body!!)
+                    .collectLatest { _generic.value = it }
+                OtpType.CHANGE_EMAIL -> auth.resendOtpEmail().collectLatest { _generic.value = it }
+                OtpType.CHANGE_PHONE -> auth.resendOtpNumber().collectLatest { _generic.value = it }
+            }
         }
     }
 }

@@ -23,19 +23,19 @@ import kotlinx.coroutines.flow.Flow
 interface AuthRepository {
 
     suspend fun resendOTP(body: EmailRequest): Flow<Resource<KaboorResponse>>
-    suspend fun verifiedOTP(body: OtpRequest): Flow<Resource<ResponseWrapper<UserResponse>>>
+    suspend fun verifiedOTP(body: OtpRequest): Flow<Resource<KaboorResponse>>
     suspend fun login(body: LoginRequest): Flow<Resource<ResponseWrapper<LoginResponse>>>
-    suspend fun register(body: RegisterRequest): Flow<Resource<ResponseWrapper<UserResponse>>>
+    suspend fun register(body: RegisterRequest): Flow<Resource<KaboorResponse>>
     suspend fun forgetPassword(body: EmailRequest): Flow<Resource<KaboorResponse>>
     suspend fun verifyOtpResetPassword(body: OtpRequest): Flow<Resource<KaboorResponse>>
     suspend fun changePassword(body: NewPasswordRequest): Flow<Resource<KaboorResponse>>
+    suspend fun resendOtpPassword(body: EmailRequest): Flow<Resource<KaboorResponse>>
     suspend fun checkEmail(body: EmailRequest): Flow<Resource<KaboorResponse>>
 
     suspend fun changeEmail(body: EmailRequest): Flow<Resource<KaboorResponse>>
-
     suspend fun verifyOtpEmail(body: OtpRequest): Flow<Resource<KaboorResponse>>
-
     suspend fun changeNumber(body: PhoneRequest): Flow<Resource<KaboorResponse>>
-
     suspend fun verifyOtpNumber(body: OtpRequest): Flow<Resource<KaboorResponse>>
+    suspend fun resendOtpNumber(): Flow<Resource<KaboorResponse>>
+    suspend fun resendOtpEmail(): Flow<Resource<KaboorResponse>>
 }
