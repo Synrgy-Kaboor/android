@@ -66,9 +66,20 @@ class ActiveOrderFragment : KaboorFragment<FragmentActiveOrderBinding>() {
     }
 
     private fun handleOrderClick(data: Pair<Int, String>, type: OrderType) {
-        when(type){
-            OrderType.PROCESS -> PaymentMethodDetailActivity.start(requireContext(), data.first, PaymentType.ORDER, true)
-            OrderType.NOT_COMPLETED -> PaymentMethodDetailActivity.start(requireContext(), data.first, PaymentType.ORDER)
+        when (type) {
+            OrderType.PROCESS -> PaymentMethodDetailActivity.start(
+                requireContext(),
+                data.first,
+                PaymentType.ORDER,
+                true
+            )
+
+            OrderType.NOT_COMPLETED -> PaymentMethodDetailActivity.start(
+                requireContext(),
+                data.first,
+                PaymentType.ORDER
+            )
+
             OrderType.E_TICKET -> DetailHistoryActivity.start(requireContext(), data)
             OrderType.COMPLETED -> DetailHistoryActivity.start(requireContext(), data)
         }

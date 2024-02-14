@@ -1,5 +1,6 @@
 package com.synrgy.di.features
 
+import com.synrgy.data.auth.remote.AuthService
 import com.synrgy.data.user.UserDataStore
 import com.synrgy.data.user.UserRepository
 import com.synrgy.data.user.remote.UserService
@@ -16,6 +17,7 @@ import retrofit2.Retrofit
 
 
 val userModule = module {
+    single { get<Retrofit>().create(UserService::class.java) }
     single<UserRepository> { UserDataStore(get(), get(), get()) }
     single<UserUseCase> { UserInteractor(get()) }
 }

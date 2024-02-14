@@ -1,20 +1,22 @@
 package com.synrgy.domain.user
 
 import com.synrgy.common.data.ResponseWrapper
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.data.user.UserRepository
 import com.synrgy.data.user.model.response.ImageProfileResponse
+import com.synrgy.data.user.model.response.PassportDataResponse
+import com.synrgy.data.user.model.response.PassportResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
-import com.synrgy.data.user.model.response.UserResponse
 import com.synrgy.domain.auth.mapper.toDomain
-import com.synrgy.domain.auth.mapper.toRequest
-import com.synrgy.domain.auth.model.request.RegisterParam
 import com.synrgy.domain.user.mapper.toDomain
 import com.synrgy.domain.user.mapper.toRequest
 import com.synrgy.domain.user.mapper.toUser
 import com.synrgy.domain.user.model.request.ImageProfileParam
+import com.synrgy.domain.user.model.request.PassportParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.domain.user.model.request.UserParam
 import com.synrgy.domain.user.model.response.ImageProfile
+import com.synrgy.domain.user.model.response.Passport
 import com.synrgy.domain.user.model.response.PersonalInfo
 import com.synrgy.domain.user.model.response.User
 import com.wahidabd.library.data.Resource
@@ -69,19 +71,6 @@ class UserInteractor(private val repository: UserRepository) : UserUseCase {
         return repository.getPercentage()
     }
 
-    override suspend fun register(body: RegisterParam): Flow<Resource<User>> {
-        return object : InternetBoundResource<User, ResponseWrapper<UserResponse>>() {
-            override suspend fun createCall(): Flow<Resource<ResponseWrapper<UserResponse>>> {
-                return repository.register(body.toRequest())
-            }
-
-            override suspend fun saveCallRequest(data: ResponseWrapper<UserResponse>): User {
-                return data.data.toDomain()
-            }
-
-        }.asFlow()
-    }
-
     override suspend fun getPersonalInfo(): Flow<Resource<User>> {
         return object :
             InternetBoundResource<User, ResponseWrapper<PersonalInfoResponse>>() {
@@ -121,6 +110,41 @@ class UserInteractor(private val repository: UserRepository) : UserUseCase {
             }
 
             override suspend fun saveCallRequest(data: ResponseWrapper<ImageProfileResponse>): ImageProfile {
+                return data.data.toDomain()
+            }
+        }.asFlow()
+    }
+
+    override suspend fun addPassport(body: PassportParam): Flow<Resource<KaboorResponse>> {
+        return repository.addPassport(body.toRequest())
+    }
+
+    override suspend fun getAllPassport(): Flow<Resource<List<Passport>>> {
+        return object : InternetBoundResource<List<Passport>, ResponseWrapper<PassportResponse>>() {
+            override suspend fun createCall(): Flow<Resource<ResponseWrapper<PassportResponse>>> {
+                return repository.getAllPassport()
+            }
+
+            override suspend fun saveCallRequest(data: ResponseWrapper<PassportResponse>): List<Passport> {
+                return data.data.passport.map { it.toDomain() }
+            }
+        }.asFlow()
+    }
+
+    override suspend fun deletePassport(id: String): Flow<Resource<KaboorResponse>> {
+        return repository.deletePassport(id)
+    }
+
+    override suspend fun updatePassport(
+        id: String,
+        body: PassportParam
+    ): Flow<Resource<Passport>> {
+        return object : InternetBoundResource<Passport, ResponseWrapper<PassportDataResponse>>() {
+            override suspend fun createCall(): Flow<Resource<ResponseWrapper<PassportDataResponse>>> {
+                return repository.updatePassport(id, body.toRequest())
+            }
+
+            override suspend fun saveCallRequest(data: ResponseWrapper<PassportDataResponse>): Passport {
                 return data.data.toDomain()
             }
         }.asFlow()

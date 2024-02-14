@@ -6,6 +6,7 @@ import com.synrgy.common.utils.enums.HomeMenu
 import com.synrgy.common.utils.enums.OtpType
 import com.synrgy.kaboor.authentication.forgot.ForgotNewPasswordActivity
 import com.synrgy.kaboor.authentication.login.LoginPasswordActivity
+import com.synrgy.kaboor.base.MainActivity
 import com.synrgy.kaboor.booking.flight.FlightScheduleActivity
 import com.wahidabd.library.utils.common.emptyString
 
@@ -29,15 +30,22 @@ object NavDirection {
     fun navOtpDirection(
         type: OtpType,
         email: String? = emptyString(),
-        activity: Activity? = null
+        activity: Activity
     ) {
         when (type) {
-            OtpType.FORGOT_PASSWORD -> activity?.let { ForgotNewPasswordActivity.start(it, email.toString()) }
+            OtpType.FORGOT_PASSWORD -> ForgotNewPasswordActivity.start(activity, email.toString())
             OtpType.REGISTER -> {
-                activity?.let { LoginPasswordActivity.start(it, email.toString()) }
-                activity?.finish()
+                LoginPasswordActivity.start(activity, email.toString())
+                activity.finishAffinity()
             }
-            else -> {}
+            OtpType.CHANGE_EMAIL -> {
+                MainActivity.start(activity)
+                activity.finish()
+            }
+            OtpType.CHANGE_PHONE -> {
+                MainActivity.start(activity)
+                activity.finish()
+            }
         }
     }
 }

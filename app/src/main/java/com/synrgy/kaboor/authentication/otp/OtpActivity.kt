@@ -26,7 +26,7 @@ import org.koin.android.ext.android.inject
 class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
 
     private val viewModel: OtpViewModel by inject()
-    private var otpType: OtpType? = null
+    private var otpType: OtpType = OtpType.REGISTER
 
     private var otp: String? = emptyString()
     private var email: String? = emptyString()
@@ -44,7 +44,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
     companion object {
         private const val EXTRA_DATA = "extra_data"
         private const val EXTRA_EMAIL = "email"
-        fun start(context: Context, type: OtpType, email: String) {
+        fun start(context: Context, type: OtpType, email: String? = null) {
             context.startActivity(Intent(context, OtpActivity::class.java).apply {
                 putExtra(EXTRA_DATA, type)
                 putExtra(EXTRA_EMAIL, email)
@@ -74,7 +74,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
     }
 
     override fun initObservers() {
-        viewModel.user.observerLiveData(
+        viewModel.generic.observerLiveData(
             this,
             onLoading = { showLoading() },
             onFailure = { _, message -> showErrorDialog(message.toString()) },
@@ -99,11 +99,11 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
 
     private fun resendOtp(){
         val body = EmailParam(email.toString())
-        viewModel.resendOtp(body)
+        viewModel.resendOtp(body, type = otpType)
     }
 
     private fun verifyOtp(){
-        val body = OtpParam(otp.toString())
+        val body = OtpParam(email.toString(), otp.toString())
         viewModel.verifyOtp(body, otpType)
     }
 
@@ -118,7 +118,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
     }
 
     private fun navigate() {
-        otpType?.let { NavDirection.navOtpDirection(it,  email, this) }
+        otpType.let { NavDirection.navOtpDirection(it,  email, this) }
     }
 
     private fun setSpannableCountDown(time: String) {

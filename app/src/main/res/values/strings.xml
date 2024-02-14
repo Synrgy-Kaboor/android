@@ -164,7 +164,7 @@
     <string name="masukan_no_baru">Tolong masukkan nomor handphone yang baru</string>
     <string name="kode_verifikasi">Kode Verifikasi</string>
     <string name="email_baru">Email Baru</string>
-    <string name="hint_gmail">ucop@gmail.com</string>
+    <string name="hint_gmail">kaboor@mail.com</string>
     <string name="nomor_hp">Nomor HP</string>
     <string name="sesuai_dengan_ktp">*Sesuai dengan KTP</string>
     <string name="detail_penumpang">Detail Penumpang</string>
@@ -259,4 +259,7 @@
     <string name="format_string">%s %s</string>
     <string name="message_expired_time">Waktu habis! Tidak dapat menggunggah bukti transfer!</string>
     <string name="payment_status">Status Pembayaran</string>
+    <string name="error_required_passport">Nomor passport tidak boleh kosong</string>
+    <string name="error_required_date">Tanggal penerbitan passport tidak boleh kosong</string>
+    <string name="error_required_country">Negara tidak boleh kosong</string>
 </resources>

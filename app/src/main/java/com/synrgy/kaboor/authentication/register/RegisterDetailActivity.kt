@@ -57,7 +57,7 @@ class RegisterDetailActivity : KaboorPassiveActivity<ActivityDetailRegisterBindi
 
 
     override fun initObservers() {
-        viewModel.userData.observerLiveData(
+        viewModel.generic.observerLiveData(
             this,
             onLoading = { showLoading() },
             onFailure = { _, message ->

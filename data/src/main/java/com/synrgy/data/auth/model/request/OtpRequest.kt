@@ -8,5 +8,6 @@ package com.synrgy.data.auth.model.request
 
 
 data class OtpRequest(
+    val email: String? = null,
     val otp: String
 )

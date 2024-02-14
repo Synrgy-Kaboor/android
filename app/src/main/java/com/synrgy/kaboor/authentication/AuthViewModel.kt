@@ -35,8 +35,9 @@ class AuthViewModel(
     private val _jwt = MutableLiveData<Resource<Login>>()
     val jwt: LiveData<Resource<Login>> get() = _jwt
 
-    private val _checkEmail = MutableLiveData<Resource<KaboorResponse>>()
-    val checkEmail: LiveData<Resource<KaboorResponse>> get() = _checkEmail
+    private val _generic = MutableLiveData<Resource<KaboorResponse>>()
+    val generic: LiveData<Resource<KaboorResponse>> get() = _generic
+
 
 
     fun saveToken(token: String) {
@@ -54,10 +55,10 @@ class AuthViewModel(
     }
 
     fun checkEmail(body: EmailParam) {
-        _checkEmail.value = Resource.loading()
+        _generic.value = Resource.loading()
         viewModelScope.launch {
             auth.checkEmail(body)
-                .collectLatest { _checkEmail.value = it }
+                .collectLatest { _generic.value = it }
         }
     }
 
@@ -71,10 +72,10 @@ class AuthViewModel(
     }
 
     fun register(body: RegisterParam) {
-        _jwt.value = Resource.loading()
+        _generic.value = Resource.loading()
         viewModelScope.launch {
-            user.register(body)
-                .collectLatest { _userData.value = it }
+            auth.register(body)
+                .collectLatest { _generic.value = it }
         }
     }
 

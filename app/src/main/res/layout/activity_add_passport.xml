@@ -49,7 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_16dp"
             app:kaboorEditText_hint="@string/hint_passport_number"
-            app:kaboorEditText_label="@string/label_passport_number" />
+            app:kaboorEditText_label="@string/label_passport_number"
+            app:kaboorEditText_type="number" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/label_expired_date"

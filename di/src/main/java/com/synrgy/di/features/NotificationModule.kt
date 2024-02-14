@@ -1,5 +1,6 @@
 package com.synrgy.di.features
 
+import com.synrgy.data.auth.remote.AuthService
 import com.synrgy.data.notification.NotificationDataStore
 import com.synrgy.data.notification.NotificationRepository
 import com.synrgy.data.notification.remote.NotificationService
@@ -16,6 +17,7 @@ import retrofit2.Retrofit
 
 
 val notificationModule = module {
+    single { get<Retrofit>().create(NotificationService::class.java) }
     single<NotificationRepository> { NotificationDataStore(get(), get()) }
     single<NotificationUseCase> { NotificationInteractor(get()) }
 }

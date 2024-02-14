@@ -6,8 +6,10 @@ import com.synrgy.common.presentation.KaboorPassiveActivity
 import com.synrgy.common.utils.constant.Constant
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.domain.auth.model.request.NewPasswordParam
+import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.databinding.ActivityForgotNewPasswordBinding
 import com.wahidabd.library.utils.common.emptyString
+import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.validation.Validation
 import com.wahidabd.library.validation.util.customRule
@@ -51,14 +53,26 @@ class ForgotNewPasswordActivity : KaboorPassiveActivity<ActivityForgotNewPasswor
     override fun initObservers() {
         super.initObservers()
 
-
+        viewModel.generic.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = {_, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = {
+                hideLoading()
+                LoginActivity.start(this)
+                finishAffinity()
+            }
+        )
     }
 
     override fun onValidationSuccess() {
         binding.tvRule.setTextColor(getColor(commonR.color.neutral6))
 
         val password = binding.etPassword.getText()
-        val data = NewPasswordParam(email.toString(), password)
+        val rePassword = binding.etConfirmPassword.getText()
+        val data = NewPasswordParam(email.toString(), password, rePassword)
         viewModel.newPassword(data)
     }
 

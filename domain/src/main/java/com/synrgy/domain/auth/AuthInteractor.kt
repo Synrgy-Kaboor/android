@@ -32,17 +32,8 @@ class AuthInteractor(private val repository: AuthRepository) : AuthUseCase {
         return repository.resendOTP(body.toRequest())
     }
 
-    override suspend fun verifiedOTP(body: OtpParam): Flow<Resource<User>> {
-        return object : InternetBoundResource<User, ResponseWrapper<UserResponse>>() {
-            override suspend fun createCall(): Flow<Resource<ResponseWrapper<UserResponse>>> {
-                return repository.verifiedOTP(body.toRequest())
-            }
-
-            override suspend fun saveCallRequest(data: ResponseWrapper<UserResponse>): User {
-                return data.data.toDomain()
-            }
-
-        }.asFlow()
+    override suspend fun verifiedOTP(body: OtpParam): Flow<Resource<KaboorResponse>> {
+        return repository.verifiedOTP(body.toRequest())
     }
 
     override suspend fun login(body: LoginParam): Flow<Resource<Login>> {
@@ -58,17 +49,8 @@ class AuthInteractor(private val repository: AuthRepository) : AuthUseCase {
         }.asFlow()
     }
 
-    override suspend fun register(body: RegisterParam): Flow<Resource<User>> {
-        return object : InternetBoundResource<User, ResponseWrapper<UserResponse>>() {
-            override suspend fun createCall(): Flow<Resource<ResponseWrapper<UserResponse>>> {
-                return repository.register(body.toRequest())
-            }
-
-            override suspend fun saveCallRequest(data: ResponseWrapper<UserResponse>): User {
-                return data.data.toDomain()
-            }
-
-        }.asFlow()
+    override suspend fun register(body: RegisterParam): Flow<Resource<KaboorResponse>> {
+        return repository.register(body.toRequest())
     }
 
     override suspend fun forgetPassword(body: EmailParam): Flow<Resource<KaboorResponse>> {
@@ -77,6 +59,10 @@ class AuthInteractor(private val repository: AuthRepository) : AuthUseCase {
 
     override suspend fun verifyOtpResetPassword(body: OtpParam): Flow<Resource<KaboorResponse>> {
         return repository.verifyOtpResetPassword(body.toRequest())
+    }
+
+    override suspend fun resendOtpPassword(body: EmailParam): Flow<Resource<KaboorResponse>> {
+        return repository.resendOtpPassword(body.toRequest())
     }
 
     override suspend fun changePassword(body: NewPasswordParam): Flow<Resource<KaboorResponse>> {
@@ -101,5 +87,13 @@ class AuthInteractor(private val repository: AuthRepository) : AuthUseCase {
 
     override suspend fun verifyOtpChangePhone(body: OtpParam): Flow<Resource<KaboorResponse>> {
         return repository.verifyOtpNumber(body.toRequest())
+    }
+
+    override suspend fun resendOtpNumber(): Flow<Resource<KaboorResponse>> {
+        return repository.resendOtpNumber()
+    }
+
+    override suspend fun resendOtpEmail(): Flow<Resource<KaboorResponse>> {
+        return repository.resendOtpEmail()
     }
 }

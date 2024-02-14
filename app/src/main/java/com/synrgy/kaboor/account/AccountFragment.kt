@@ -13,6 +13,7 @@ import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.base.SplashActivity
 import com.synrgy.kaboor.databinding.FragmentAccountBinding
 import com.synrgy.kaboor.home.SharedViewModel
+import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -69,21 +70,17 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
         )
         viewModel.userData.observe(this) { user ->
             with(binding) {
-                imgProfile.setImageUrl(requireContext(), user.imageUrl.toString())
                 tvUserName.text = user.fullName
                 tvEmail.text = user.email
                 tvPhone.text = user.phoneNumber
 
-                debug { "DATA STORE --> $user" }
+                if (user.imageUrl?.isNotEmpty() == true) {
+                    imgProfile.setImageUrl(requireContext(), user.imageUrl.toString())
+                }
             }
         }
 
-//        viewModel.profile.observe(this) { profile ->
-//            binding.imgProfile.setImageUrl(requireContext(), profile)
-//        }
-
         viewModel.percentage.observe(this) { percentage ->
-            debug { "Percentage --> $percentage" }
             binding.tvProgress.text = getString(R.string.format_percentage_profile, percentage)
             binding.progressHorizontal.progress = percentage
         }
