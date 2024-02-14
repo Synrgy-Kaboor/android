@@ -10,9 +10,9 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dimen_12dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_chip"
@@ -20,44 +20,47 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingHorizontal="@dimen/dimen_12dp"
-            tools:itemCount="1"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="1"
             tools:listitem="@layout/item_chip_notification" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_all_notification"
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/msv_all"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_notification"
-            android:layout_marginHorizontal="@dimen/dimen_12dp"
-            android:paddingVertical="@dimen/dimen_12dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:clipToPadding="false" />
+            android:layout_height="match_parent"
+            app:msv_emptyView="@layout/layout_empty"
+            app:msv_loadingView="@layout/layout_loading">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/price_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="@dimen/dimen_12dp"
-            android:clipToPadding="false"
-            android:visibility="gone">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_all_notification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginHorizontal="@dimen/dimen_12dp"
+                android:clipToPadding="false"
+                android:paddingVertical="@dimen/dimen_12dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_notification" />
+        </com.kennyc.view.MultiStateView>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_one_way"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_notification_price"
-                    tools:itemCount="1"
-                    android:paddingHorizontal="@dimen/dimen_12dp"
-                    android:layout_marginTop="@dimen/dimen_8dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:clipToPadding="false"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.core.widget.NestedScrollView>
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/msv_price"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:msv_emptyView="@layout/layout_empty"
+            app:msv_loadingView="@layout/layout_loading">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_one_way"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:clipToPadding="false"
+                android:paddingHorizontal="@dimen/dimen_12dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_notification_price" />
+        </com.kennyc.view.MultiStateView>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 </com.kennyc.view.MultiStateView>

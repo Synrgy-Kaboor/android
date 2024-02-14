@@ -20,6 +20,9 @@ import com.synrgy.kaboor.notification.adapter.AllNotificationAdapter
 import com.synrgy.kaboor.notification.adapter.ChipNotificationAdapter
 import com.synrgy.kaboor.notification.adapter.PriceNotificationAdapter
 import com.wahidabd.library.utils.common.showToast
+import com.wahidabd.library.utils.extensions.showDefaultState
+import com.wahidabd.library.utils.extensions.showEmptyState
+import com.wahidabd.library.utils.extensions.showLoadingState
 import com.wahidabd.library.utils.exts.getCompatDrawable
 import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.observerLiveData
@@ -72,37 +75,38 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
         chipNotificationAdapter.setData = NotificationType.entries.map { Selectable(it) }
     }
 
-    override fun initObservers() {
+    override fun initObservers() = with(binding) {
         super.initObservers()
 
         sharedViewModel.login.observe(viewLifecycleOwner) { state ->
-            if (!state) binding.msv.showLoginState { LoginActivity.start(requireContext()) }
+            if (!state) msv.showLoginState { LoginActivity.start(requireContext()) }
         }
 
         viewModel.notification.observerLiveData(
             viewLifecycleOwner,
-            onLoading = ::showLoading,
+            onLoading = { msvAll.showLoadingState() },
             onFailure = { _, message ->
-                hideLoading()
+                msvAll.showDefaultState()
                 showToast(message.toString())
             },
             onSuccess = {
-                hideLoading()
-                allNotificationAdapter.setData = it
+                msvAll.showDefaultState()
+                if (it.isEmpty()) msvAll.showEmptyState()
+                else allNotificationAdapter.setData = it
             }
         )
 
         viewModel.priceNotification.observerLiveData(
             viewLifecycleOwner,
-            onLoading = ::showLoading,
+            onLoading = { msvPrice.showLoadingState() },
             onFailure = { _, message ->
-                hideLoading()
+                msvPrice.showDefaultState()
                 showToast(message.toString())
             },
             onSuccess = {
-                hideLoading()
-                priceNotif = it
-                oneWayAdapter.setData = it
+                msvPrice.showDefaultState()
+                if (it.isEmpty()) msvPrice.showEmptyState()
+                else oneWayAdapter.setData = it
             }
         )
     }
@@ -111,15 +115,13 @@ class NotificationFragment : KaboorFragment<FragmentNotificationBinding>() {
         with(binding) {
             when (type) {
                 NotificationType.ALL -> {
-                    rvAllNotification.visible()
-                    priceContainer.gone()
+                    msvAll.visible()
+                    msvPrice.gone()
                 }
 
                 NotificationType.PRICE -> {
-                    rvAllNotification.gone()
-                    priceContainer.visible()
-
-                    oneWayAdapter.setData = priceNotif
+                    msvAll.gone()
+                    msvPrice.visible()
                 }
             }
         }
