@@ -1,5 +1,7 @@
 package com.synrgy.domain.user.model.response
 
+import com.wahidabd.library.utils.common.emptyString
+
 
 /**
  * Created by wahid on 2/1/2024.
@@ -8,9 +10,13 @@ package com.synrgy.domain.user.model.response
 
 
 data class Passport(
-    val id: Int,
-    val fullName: String,
-    val passportNumber: String,
+    val createdAt: String,
+    val deletedAt: String? = emptyString(),
     val expiredDate: String,
-    val nation: String
+    val fullName: String,
+    val id: String,
+    val nation: String,
+    val passportNumber: String,
+    val updatedAt: String,
+    val userId: String
 )

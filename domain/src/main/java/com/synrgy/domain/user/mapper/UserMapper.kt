@@ -2,10 +2,12 @@ package com.synrgy.domain.user.mapper
 
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.ImageProfileResponse
+import com.synrgy.data.user.model.response.PassportDataResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.domain.booking.model.response.Passenger
 import com.synrgy.domain.user.model.request.UserParam
 import com.synrgy.domain.user.model.response.ImageProfile
+import com.synrgy.domain.user.model.response.Passport
 import com.synrgy.domain.user.model.response.PersonalInfo
 import com.synrgy.domain.user.model.response.User
 
@@ -83,5 +85,19 @@ fun ImageProfileResponse.toDomain(): ImageProfile {
     return ImageProfile(
         imageName = imageName,
         imageUrl = imageUrl
+    )
+}
+
+fun PassportDataResponse.toDomain(): Passport {
+    return Passport(
+        createdAt = createdAt,
+        deletedAt = deletedAt,
+        expiredDate = expiredDate,
+        fullName = fullName,
+        id = id,
+        nation = nation,
+        passportNumber = passportNumber,
+        updatedAt = updatedAt,
+        userId = userId
     )
 }

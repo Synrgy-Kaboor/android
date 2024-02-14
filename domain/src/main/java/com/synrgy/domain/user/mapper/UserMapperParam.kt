@@ -1,8 +1,10 @@
 package com.synrgy.domain.user.mapper
 
 import com.synrgy.data.user.model.request.ImageProfileRequest
+import com.synrgy.data.user.model.request.PassportRequest
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.domain.user.model.request.ImageProfileParam
+import com.synrgy.domain.user.model.request.PassportParam
 import com.synrgy.domain.user.model.request.UpdatePersonalInfoParam
 import com.synrgy.domain.user.model.request.UserParam
 import com.synrgy.domain.user.model.response.User
@@ -43,5 +45,14 @@ fun User.toParam(): UserParam {
 fun ImageProfileParam.toRequest(): ImageProfileRequest {
     return ImageProfileRequest(
         file = file
+    )
+}
+
+fun PassportParam.toRequest(): PassportRequest {
+    return PassportRequest(
+        expiredDate = expiredDate,
+        fullName = fullName,
+        nation = nation,
+        passportNumber = passportNumber
     )
 }

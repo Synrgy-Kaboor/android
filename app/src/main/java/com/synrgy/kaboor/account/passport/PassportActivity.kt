@@ -6,7 +6,8 @@ import com.synrgy.common.presentation.KaboorActivity
 import com.synrgy.common.utils.ext.onBackPress
 import com.synrgy.kaboor.account.adapter.PassportAdapter
 import com.synrgy.kaboor.databinding.ActivityPassportBinding
-import com.synrgy.kaboor.utils.constant.ConstantDummy
+import com.wahidabd.library.utils.exts.observerLiveData
+import org.koin.android.ext.android.inject
 
 class PassportActivity : KaboorActivity<ActivityPassportBinding>() {
 
@@ -15,6 +16,8 @@ class PassportActivity : KaboorActivity<ActivityPassportBinding>() {
             context.startActivity(Intent(context, PassportActivity::class.java))
         }
     }
+
+    private val viewModel: PassportViewModel by inject()
 
     private val passportAdapter by lazy { PassportAdapter(this) }
 
@@ -33,7 +36,27 @@ class PassportActivity : KaboorActivity<ActivityPassportBinding>() {
 
     override fun initProcess() {
         super.initProcess()
-        passportAdapter.setData = ConstantDummy.passport()
+        viewModel.getPassports()
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+        viewModel.passports.observerLiveData(
+            this,
+            onLoading = ::showLoading,
+            onFailure = { _, message ->
+                showErrorDialog(message.toString())
+            },
+            onSuccess = { passports ->
+                hideLoading()
+                passportAdapter.setData = passports
+            }
+        )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getPassports()
     }
 
 }

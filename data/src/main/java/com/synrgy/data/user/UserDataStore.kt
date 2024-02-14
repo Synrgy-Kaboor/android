@@ -1,13 +1,16 @@
 package com.synrgy.data.user
 
 import com.synrgy.common.data.ResponseWrapper
+import com.synrgy.common.data.response.KaboorResponse
 import com.synrgy.common.utils.ext.flowDispatcherIO
-import com.synrgy.data.auth.model.request.RegisterRequest
 import com.synrgy.data.db.KaboorDataStore
 import com.synrgy.data.user.model.request.ImageProfileRequest
+import com.synrgy.data.user.model.request.PassportRequest
 import com.synrgy.data.user.model.request.UpdatePersonalInfoRequest
 import com.synrgy.data.user.model.request.UserRequest
 import com.synrgy.data.user.model.response.ImageProfileResponse
+import com.synrgy.data.user.model.response.PassportDataResponse
+import com.synrgy.data.user.model.response.PassportResponse
 import com.synrgy.data.user.model.response.PersonalInfoResponse
 import com.synrgy.data.user.model.response.UserDataResponse
 import com.synrgy.data.user.model.response.UserResponse
@@ -98,5 +101,45 @@ class UserDataStore(
             onEmit = { data -> emit(data) }
         )
     }.flowDispatcherIO()
+
+    override suspend fun addPassport(body: PassportRequest): Flow<Resource<KaboorResponse>> =
+        flow {
+            enqueue(
+                body,
+                error::convertGenericError,
+                api::addPassport,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
+
+    override suspend fun getAllPassport(): Flow<Resource<ResponseWrapper<PassportResponse>>> =
+        flow {
+            enqueue(
+                error::convertGenericError,
+                api::getAllPassport,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
+
+    override suspend fun deletePassport(id: String): Flow<Resource<KaboorResponse>> =
+        flow {
+            enqueue(
+                id,
+                error::convertGenericError,
+                api::deletePassport,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
+
+    override suspend fun updatePassport(id: String, body: PassportRequest): Flow<Resource<ResponseWrapper<PassportDataResponse>>> =
+        flow {
+            enqueue(
+                id,
+                body,
+                error::convertGenericError,
+                api::updatePassport,
+                onEmit = { data -> emit(data) }
+            )
+        }.flowDispatcherIO()
 
 }

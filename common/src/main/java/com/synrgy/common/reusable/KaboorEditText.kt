@@ -32,6 +32,7 @@ class KaboorEditText @JvmOverloads constructor(
     private lateinit var binding: LayoutBaseEditTextBinding
 
     val textInput by lazy { binding.til }
+    val editText by lazy { binding.et }
 
     private var hint: String? = emptyString()
     private var label: String? = emptyString()
@@ -102,4 +103,7 @@ class KaboorEditText @JvmOverloads constructor(
         isPasswordShow = !isPasswordShow
     }
 
+    fun setOnEndIconClick(action: () -> Unit) = with(binding) {
+        til.endIconClick { action() }
+    }
 }

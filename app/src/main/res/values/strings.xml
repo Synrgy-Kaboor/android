@@ -259,4 +259,7 @@
     <string name="format_string">%s %s</string>
     <string name="message_expired_time">Waktu habis! Tidak dapat menggunggah bukti transfer!</string>
     <string name="payment_status">Status Pembayaran</string>
+    <string name="error_required_passport">Nomor passport tidak boleh kosong</string>
+    <string name="error_required_date">Tanggal penerbitan passport tidak boleh kosong</string>
+    <string name="error_required_country">Negara tidak boleh kosong</string>
 </resources>

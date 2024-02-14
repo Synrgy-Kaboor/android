@@ -1,6 +1,7 @@
 package com.synrgy.kaboor.utils.di
 
 import com.synrgy.kaboor.account.AccountViewModel
+import com.synrgy.kaboor.account.passport.PassportViewModel
 import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.authentication.change.ChangeViewModel
 import com.synrgy.kaboor.authentication.forgot.ForgotPasswordViewModel
@@ -36,4 +37,5 @@ val viewModelModule = module {
     viewModel { OrderViewModel(get()) }
     viewModel { NotificationViewModel(get()) }
     viewModel { ChangeViewModel(get(), get()) }
+    viewModel { PassportViewModel(get()) }
 }
