@@ -77,6 +77,8 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
                 if (user.imageUrl?.isNotEmpty() == true) {
                     imgProfile.setImageUrl(requireContext(), user.imageUrl.toString())
                 }
+
+                debug { "DATA USER --> $user" }
             }
         }
 
@@ -89,6 +91,7 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
     override fun onResume() {
         super.onResume()
         viewModel.getUser()
+        viewModel.getPercentage()
     }
 
     private fun showLogoutDialog() {

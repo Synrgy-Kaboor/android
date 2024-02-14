@@ -16,15 +16,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class ChangeViewModel(
-    private val auth: AuthUseCase,
-    private val user: UserUseCase
+    private val auth: AuthUseCase
 ) : ViewModel() {
 
     private val _generic = MutableLiveData<Resource<KaboorResponse>>()
     val generic: LiveData<Resource<KaboorResponse>> get() = _generic
 
-    private val _userData = MutableLiveData<User>()
-    val userData: LiveData<User> get() = _userData
 
 
     fun changeEmail(body: EmailParam) {
@@ -42,18 +39,4 @@ class ChangeViewModel(
                 .collectLatest { _generic.value = it }
         }
     }
-
-    fun getUser() {
-        viewModelScope.launch {
-            user.getUser()
-                .collectLatest { _userData.value = it }
-        }
-    }
-
-    fun saveUserInfo(data: User){
-        viewModelScope.launch {
-            user.setUser(data.toParam())
-        }
-    }
-
 }

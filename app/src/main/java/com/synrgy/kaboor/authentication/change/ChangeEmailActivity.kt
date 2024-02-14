@@ -53,15 +53,9 @@ class ChangeEmailActivity : KaboorPassiveActivity<ActivityChangeEmailBinding>() 
             onFailure = { _, message -> showErrorDialog(message.toString()) },
             onSuccess = {
                 hideLoading()
-                viewModel.getUser()
+                OtpActivity.start(this, OtpType.CHANGE_EMAIL, email = binding.etEmail.getText())
             }
         )
-
-        viewModel.userData.observe(this ){
-            val user = it.copy(email = binding.etEmail.getText())
-            viewModel.saveUserInfo(user)
-            OtpActivity.start(this, OtpType.CHANGE_EMAIL)
-        }
     }
 
     override fun initUI() {

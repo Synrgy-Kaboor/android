@@ -30,6 +30,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
 
     private var otp: String? = emptyString()
     private var email: String? = emptyString()
+    private var phone: String? = emptyString()
 
     private val countDown = setTimer(
         Constant.OTP_TIMER,
@@ -44,10 +45,18 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
     companion object {
         private const val EXTRA_DATA = "extra_data"
         private const val EXTRA_EMAIL = "email"
-        fun start(context: Context, type: OtpType, email: String? = null) {
+        private const val EXTRA_PHONE = "phone"
+
+        fun start(
+            context: Context,
+            type: OtpType,
+            email: String? = null,
+            phone: String? = null
+        ) {
             context.startActivity(Intent(context, OtpActivity::class.java).apply {
                 putExtra(EXTRA_DATA, type)
                 putExtra(EXTRA_EMAIL, email)
+                putExtra(EXTRA_PHONE, phone)
             })
         }
     }
@@ -60,6 +69,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
 
         otpType = intent.getSerializableExtra(EXTRA_DATA) as OtpType
         email = intent.getStringExtra(EXTRA_EMAIL)
+        phone = intent.getStringExtra(EXTRA_PHONE)
     }
 
     override fun initUI() {
@@ -67,7 +77,10 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
     }
 
     override fun initAction() = with(binding) {
-        otpView.setOtpCompletionListener {otp = it}
+        otpView.setOtpCompletionListener {
+            btnVerification.isEnabled = true
+            otp = it
+        }
         appbar.setOnBackClickListener { onBackPress() }
         btnVerification.onClick { verifyOtp() }
         btnSendAgain.onClick { resendOtp() }
@@ -80,11 +93,11 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
             onFailure = { _, message -> showErrorDialog(message.toString()) },
             onSuccess = {
                 hideLoading()
-                navigate()
+                viewModel.getUser()
             }
         )
 
-        viewModel.generic.observerLiveData(
+        viewModel.resend.observerLiveData(
             this,
             onLoading = { showLoading() },
             onFailure = { _, message -> showErrorDialog(message.toString()) },
@@ -95,6 +108,18 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
                 binding.btnSendAgain.isEnabled = false
             }
         )
+
+        viewModel.userData.observe(this){user ->
+            if (otpType == OtpType.CHANGE_PHONE) {
+                val param = user.copy(phoneNumber = phone)
+                viewModel.saveUserInfo(param)
+            } else if (otpType == OtpType.CHANGE_EMAIL){
+                val param = user.copy(email = email)
+                viewModel.saveUserInfo(param)
+            }
+
+            navigate()
+        }
     }
 
     private fun resendOtp(){
@@ -116,6 +141,7 @@ class OtpActivity : KaboorActivity<ActivityOtpBinding>() {
         super.onRestart()
         countDown.start()
     }
+
 
     private fun navigate() {
         otpType.let { NavDirection.navOtpDirection(it,  email, this) }

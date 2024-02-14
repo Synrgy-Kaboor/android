@@ -14,6 +14,7 @@ import com.synrgy.kaboor.order.OrderViewModel
 import com.synrgy.kaboor.payment.PaymentViewModel
 import com.synrgy.kaboor.promo.PromoViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.scope.get
 import org.koin.dsl.module
 
 
@@ -25,7 +26,7 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { AuthViewModel(get(), get()) }
-    viewModel { OtpViewModel(get()) }
+    viewModel { OtpViewModel(get(), get()) }
     viewModel { ForgotPasswordViewModel(get()) }
     viewModel { SharedViewModel(get()) }
     viewModel { FlightViewModel(get()) }
@@ -36,6 +37,6 @@ val viewModelModule = module {
     viewModel { AccountViewModel(get()) }
     viewModel { OrderViewModel(get()) }
     viewModel { NotificationViewModel(get()) }
-    viewModel { ChangeViewModel(get(), get()) }
+    viewModel { ChangeViewModel(get()) }
     viewModel { PassportViewModel(get()) }
 }

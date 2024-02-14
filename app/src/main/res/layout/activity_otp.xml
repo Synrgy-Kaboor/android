@@ -63,6 +63,7 @@
         android:id="@+id/btn_verification"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_42dp"
+        android:enabled="false"
         style="@style/KaboorButton.Gradient"
         android:layout_marginHorizontal="@dimen/dimen_16dp"
         android:layout_marginTop="@dimen/dimen_28dp"

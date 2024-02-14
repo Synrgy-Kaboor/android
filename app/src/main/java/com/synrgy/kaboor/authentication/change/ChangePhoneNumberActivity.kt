@@ -51,15 +51,9 @@ class ChangePhoneNumberActivity : KaboorPassiveActivity<ActivityChangePhoneNumbe
             onFailure = { _, message -> showErrorDialog(message.toString()) },
             onSuccess = {
                 hideLoading()
-                viewModel.getUser()
+                OtpActivity.start(this, OtpType.CHANGE_PHONE, phone = binding.etPhone.getText())
             }
         )
-
-        viewModel.userData.observe(this ){
-            val user = it.copy(phoneNumber = binding.etPhone.getText())
-            viewModel.saveUserInfo(user)
-            OtpActivity.start(this, OtpType.CHANGE_PHONE)
-        }
     }
 
 
