@@ -66,7 +66,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         initDataUser()
 
         titleList = ArrayList(
-            listOf("Mr", "Mrs", "Miss")
+            listOf("Mr.", "Mrs.", "Miss.")
         )
         genderList = ArrayList(
             listOf("Laki-laki", "Perempuan")

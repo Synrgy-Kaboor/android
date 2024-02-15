@@ -9,6 +9,7 @@ import com.synrgy.kaboor.R
 import com.synrgy.kaboor.authentication.AuthViewModel
 import com.synrgy.kaboor.authentication.forgot.ForgotPasswordActivity
 import com.synrgy.kaboor.authentication.register.RegisterActivity
+import com.synrgy.kaboor.authentication.register.RegisterDetailActivity
 import com.synrgy.kaboor.databinding.ActivityLoginBinding
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -70,7 +71,7 @@ class LoginActivity : KaboorPassiveActivity<ActivityLoginBinding>() {
                 description = getString(R.string.message_account_was_not_registered_description),
                 primaryTextButton = getString(R.string.label_register_account),
                 secondaryTextButton = getString(R.string.label_later),
-                primaryAction = { LoginPasswordActivity.start(this, binding.etEmail.getText()) },
+                primaryAction = { RegisterDetailActivity.start(this, binding.etEmail.getText()) },
             )
         } else {
             showErrorDialog(response.message)
