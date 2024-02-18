@@ -12,7 +12,6 @@ import com.synrgy.kaboor.databinding.ItemHelpCenterBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
 import com.wahidabd.library.utils.exts.gone
-import com.wahidabd.library.utils.exts.isNotNull
 import com.wahidabd.library.utils.exts.onClick
 
 
@@ -48,17 +47,17 @@ class HelpCenterAdapter(
 
             tvContentBottom.goneIf { data.item.contentBottom?.isEmpty() == true }
 
-            if (data.item.contentList != 0){
+            if (data.item.contentList != 0) {
                 val list = context.resources.getStringArray(data.item.contentList)
                 list.forEachIndexed { i, s ->
-                    tvContentList.append("${i+1}. $s\n")
+                    tvContentList.append("${i + 1}. $s\n")
                 }
-            }else tvContentList.gone()
+            } else tvContentList.gone()
 
 
             setSelected(data.selected)
 
-            root.onClick {
+            imgToggle.onClick {
                 val previousSelectedIndex = currentSelectedIndex
                 currentSelectedIndex = bindingAdapterPosition
 

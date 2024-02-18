@@ -15,12 +15,11 @@ object AppConfig {
     const val minSdk = 24
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-    const val majorVersion = 0 // raise this number for major revamp/refactoring
+    const val majorVersion = 1 // raise this number for major revamp/refactoring
     const val minorVersion = 0 // raise this number for feature release or regular release, max 99
-    const val patchVersion = 1 // raise this number for hotfix release, max 99
+    const val patchVersion = 0 // raise this number for hotfix release, max 99
     const val bumpVersion = 0 // raise this number for daily build (firebase), max 99
-    const val preRelease =
-        "Beta" // leave this empty for production release, otherwise use "Beta", "Alpha", etc
+    const val preRelease = "" // leave this empty for production release, otherwise use "Beta", "Alpha", etc
 
     const val namespace_app = "com.synrgy.kaboor"
     const val namespace_data = "com.synrgy.data"
