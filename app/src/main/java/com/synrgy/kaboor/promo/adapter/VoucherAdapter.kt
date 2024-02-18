@@ -10,9 +10,10 @@ import com.synrgy.domain.promo.model.response.Voucher
 import com.synrgy.kaboor.databinding.ItemVoucherBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
-import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.exts.disable
+import com.wahidabd.library.utils.exts.getCompatColor
 import com.wahidabd.library.utils.exts.onClick
+import com.synrgy.common.R as comR
 
 
 /**
@@ -46,24 +47,22 @@ class VoucherAdapter(
             tvCode.text = data.code
             tvEndDate.text = data.expiredTime.toPromoDate()
 
-            val eligible =
-                data.eligiblePaymentMethods.contains(eligible.first) && data.maximumDiscount <= eligible.second
+            val eligible = data.eligiblePaymentMethods.contains(eligible.first) && data.maximumDiscount <= eligible.second
             data.isEligible = eligible
-
-            debug { "$data" }
 
             if (data.isEligible) card.onClick { onItemClick.invoke(data) }
             else setDisableCard()
         }
 
         private fun setDisableCard() = with(binding as ItemVoucherBinding) {
-            headerContainer.disable()
             tvVoucherType.disable()
             imgIcon.disable()
             tvSave.disable()
             tvTitle.disable()
             tvCode.disable()
             tvEndDate.disable()
+
+            headerContainer.setBackgroundColor(context.getCompatColor(comR.color.neutral5))
         }
     }
 

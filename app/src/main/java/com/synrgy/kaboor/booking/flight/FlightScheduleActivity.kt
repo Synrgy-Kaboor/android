@@ -26,6 +26,7 @@ import com.synrgy.kaboor.booking.viewmodel.PassengerViewModel
 import com.synrgy.kaboor.databinding.ActivityFlightScheduleBinding
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
+import com.wahidabd.library.utils.exts.setImageUrl
 import org.koin.android.ext.android.inject
 import com.synrgy.common.R as comR
 
@@ -72,6 +73,7 @@ class FlightScheduleActivity : KaboorActivity<ActivityFlightScheduleBinding>() {
         super.initObservers()
         passengerViewModel.user.observe(this) {
             binding.tvUserName.text = it.fullName?.toGreeting()
+            binding.imgUser.setImageUrl(this, it.imageUrl.orEmpty(), comR.drawable.img_logo)
         }
         flightViewModel.airports.observerLiveData(
             this,

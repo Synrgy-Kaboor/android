@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import com.synrgy.common.presentation.KaboorFragment
 import com.synrgy.common.utils.ext.showLoginState
 import com.synrgy.kaboor.R
+import com.synrgy.common.R as comR
 import com.synrgy.kaboor.account.help.HelpCenterActivity
 import com.synrgy.kaboor.account.passport.PassportActivity
 import com.synrgy.kaboor.authentication.change.ChangeEmailActivity
@@ -13,8 +14,6 @@ import com.synrgy.kaboor.authentication.login.LoginActivity
 import com.synrgy.kaboor.base.SplashActivity
 import com.synrgy.kaboor.databinding.FragmentAccountBinding
 import com.synrgy.kaboor.home.SharedViewModel
-import com.wahidabd.library.utils.common.emptyString
-import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.setImageUrl
@@ -73,12 +72,7 @@ class AccountFragment : KaboorFragment<FragmentAccountBinding>() {
                 tvUserName.text = user.fullName
                 tvEmail.text = user.email
                 tvPhone.text = user.phoneNumber
-
-                if (user.imageUrl?.isNotEmpty() == true) {
-                    imgProfile.setImageUrl(requireContext(), user.imageUrl.toString())
-                }
-
-                debug { "DATA USER --> $user" }
+                imgProfile.setImageUrl(requireContext(), user.imageUrl.toString(), comR.drawable.img_logo)
             }
         }
 

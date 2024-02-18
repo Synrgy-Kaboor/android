@@ -134,9 +134,7 @@ class AccountDetailActivity : KaboorPassiveActivity<ActivityAccountDetailBinding
         )
 
         viewModel.profile.observe(this) { profile ->
-            if (profile.isNotEmpty()) {
-                binding.imgProfile.setImageUrl(this, profile)
-            }
+            binding.imgProfile.setImageUrl(this, profile, comR.drawable.img_logo)
         }
     }
 
